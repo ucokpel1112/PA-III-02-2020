@@ -1,11 +1,23 @@
 .slider_bg_1{
-    background-image: url(../img/banner/banner.png);
+    background-image: url(../img/banner/toba1.jpg);
 }
 .slider_bg_2{
-    background-image: url(../img/banner/banner2.png);
+    background-image: url(../img/banner/toba2.jpg);
 }
 .slider_bg_3{
-    background-image: url(../img/banner/banner3.png);
+    background-image: url(../img/banner/toba3.jpg);
+}
+.slider_bg_4{
+    background-image: url(../img/banner/toba4.jpg);
+}
+.slider_bg_5{
+    background-image: url(../img/banner/toba5.jpg);
+}
+.slider_bg_6{
+    background-image: url(../img/banner/toba6.jpg);
+}
+.slider_bg_7{
+    background-image: url(../img/banner/toba7.jpg);
 }
 .slider_area{
     position: relative;
@@ -40,7 +52,7 @@
             font-size: 150px;
             text-transform: capitalize;
             font-weight: 400;
-            line-height: .5;
+            line-height: .;
             color: #fff;
             margin-bottom: 0;
              @media #{$mobile_device} {
