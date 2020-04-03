@@ -533,28 +533,28 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="single_travel text-center">
                         <div class="icon">
-                            <img src="img/svg_icon/1.svg" alt="">
+                            <img src="img/icon_fitur/tour.png" alt="">
                         </div>
-                        <h3>Comfortable Journey</h3>
-                        <p>A wonderful serenity has taken to the possession of my entire soul.</p>
+                        <h3>Paket Wisata</h3>
+                        <p>Perjalanan wisata yang dirancang agar perjalanan lebih menyenangkan.</p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="single_travel text-center">
                         <div class="icon">
-                            <img src="img/svg_icon/2.svg" alt="">
+                            <img src="img/icon_fitur/komunitas.png" alt="">
                         </div>
-                        <h3>Luxuries Hotel</h3>
-                        <p>A wonderful serenity has taken to the possession of my entire soul.</p>
+                        <h3>Comunity Based Tourism</h3>
+                        <p>Komunitas yang dibangun untuk meningkatkan produktivitas penyaji wisata.</p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="single_travel text-center">
                         <div class="icon">
-                            <img src="img/svg_icon/3.svg" alt="">
+                            <img src="img/icon_fitur/kalender.png" alt="">
                         </div>
-                        <h3>Travel Guide</h3>
-                        <p>A wonderful serenity has taken to the possession of my entire soul.</p>
+                        <h3>Kalender Event</h3>
+                        <p>.</p>
                     </div>
                 </div>
             </div>
