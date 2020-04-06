@@ -16,5 +16,8 @@ Route::get('/', function () {
 });
 
 Route::get('/eventkalender', function () {
-    return view('eventkalender');
-});
+    return view('front.eventkalender');
+})->name('event');
+Route::get('/paket', function () {
+    return view('front.view-paket');
+})->name('paket');
