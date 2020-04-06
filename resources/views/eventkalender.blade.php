@@ -50,31 +50,26 @@
                                 <div class="main-menu  d-none d-lg-block">
                                     <nav>
                                         <ul id="navigation">
-                                            <li><a class="active" href="index.html">home</a></li>
+                                            <li><a class="active" href="index.html">Home</a></li>
                                             <li><a href="about.html">About</a></li>
-                                            <li><a class="" href="travel_destination.html">Destination</a></l/li>
-                                            <li><a href="#">pages <i class="ti-angle-down"></i></a>
+                                            <li><a class="" href="travel_destination.html"> Destinasi</a></l/li>
+                                            <li><a href="#">Paket Wisata <i class="ti-angle-down"></i></a>
                                                 <ul class="submenu">
-                                                        <li><a href="destination_details.html">Destinations details</a></li>
+                                                        <li><a href="destination_details.html">Testimoni</a></li>
                                                         <li><a href="elements.html">elements</a></li>
                                                 </ul>
                                             </li>
-                                            <li><a href="#">blog <i class="ti-angle-down"></i></a>
-                                                <ul class="submenu">
-                                                    <li><a href="blog.html">blog</a></li>
-                                                    <li><a href="single-blog.html">single-blog</a></li>
-                                                </ul>
+                                            <li><a href="{{ url('/eventkalender') }}">Kalender Event <i class="ti-angle-down"></i></a>
+                                                
                                             </li>
-                                            <li><a href="contact.html">Contact</a></li>
+                                            <li><a href="contact.html">Kontak   </a></li>
                                         </ul>
                                     </nav>
                                 </div>
                             </div>
                             <div class="col-xl-4 col-lg-4 d-none d-lg-block">
                                 <div class="social_wrap d-flex align-items-center justify-content-end">
-                                    <div class="number">
-                                        <p> <i class="fa fa-phone"></i> 10(256)-928 256</p>
-                                    </div>
+                                    
                                     <div class="social_links d-none d-xl-block">
                                         <ul>
                                             <li><a href="#"> <i class="fa fa-instagram"></i> </a></li>
@@ -108,8 +103,8 @@
             <div class="row">
                 <div class="col-xl-12">
                     <div class="bradcam_text text-center">
-                        <h3>blog</h3>
-                        <p>Pixel perfect design with awesome contents</p>
+                        <h3>Event Kalender</h3>
+                        <p>Lihat dan Kunjungi Event yang Ada</p>
                     </div>
                 </div>
             </div>
@@ -126,110 +121,109 @@
                     <div class="blog_left_sidebar">
                         <article class="blog_item">
                             <div class="blog_item_img">
-                                <img class="card-img rounded-0" src="img/blog/single_blog_1.png" alt="">
+                                <img class="card-img rounded-0" src="img/kalender-event/samosir-ultra.jpg" alt="">
                                 <a href="#" class="blog_item_date">
-                                    <h3>15</h3>
-                                    <p>Jan</p>
+                                    <h3>21</h3>
+                                    <p>April</p>
                                 </a>
                             </div>
 
                             <div class="blog_details">
                                 <a class="d-inline-block" href="single-blog.html">
-                                    <h2>Google inks pact for new 35-storey office</h2>
+                                    <h2>Samosir Lake Toba Ultra</h2>
                                 </a>
-                                <p>That dominion stars lights dominion divide years for fourth have don't stars is that
-                                    he earth it first without heaven in place seed it second morning saying.</p>
+                                <p>The Sixth SAMOSIR LAKE TOBA ULTRA 2020 will be held on 26 September 2020. The race will be the 5 km, 12km, 25km and 50 km and having course that will take runners around the largest caldera TOBA lake, through many traditional villages, 
+                                past the beauty of samosir ancient places and some of the most beauty and stunning scenery in Indonesia.</p>
                                 <ul class="blog-info-link">
-                                    <li><a href="#"><i class="fa fa-user"></i> Travel, Lifestyle</a></li>
-                                    <li><a href="#"><i class="fa fa-comments"></i> 03 Comments</a></li>
+                                    <li><a href="#"><i class="fa fa-user"></i> Sport, Tourism</a></li>
+                                    <!-- <li><a href="#"><i class="fa fa-comments"></i> 21 Comments</a></li> -->
                                 </ul>
                             </div>
                         </article>
 
                         <article class="blog_item">
                             <div class="blog_item_img">
-                                <img class="card-img rounded-0" src="img/blog/single_blog_2.png" alt="">
+                                <img class="card-img rounded-0" src="img/kalender-event/samosir-ultra.jpg" alt="">
                                 <a href="#" class="blog_item_date">
-                                    <h3>15</h3>
-                                    <p>Jan</p>
+                                    <h3>21</h3>
+                                    <p>April</p>
                                 </a>
                             </div>
 
                             <div class="blog_details">
                                 <a class="d-inline-block" href="single-blog.html">
-                                    <h2>Google inks pact for new 35-storey office</h2>
+                                    <h2>Samosir Lake Toba Ultra</h2>
                                 </a>
-                                <p>That dominion stars lights dominion divide years for fourth have don't stars is that
-                                    he earth it first without heaven in place seed it second morning saying.</p>
+                                <p>The Sixth SAMOSIR LAKE TOBA ULTRA 2020 will be held on 26 September 2020. The race will be the 5 km, 12km, 25km and 50 km and having course that will take runners around the largest caldera TOBA lake, through many traditional villages, 
+                                past the beauty of samosir ancient places and some of the most beauty and stunning scenery in Indonesia.</p>
                                 <ul class="blog-info-link">
-                                    <li><a href="#"><i class="fa fa-user"></i> Travel, Lifestyle</a></li>
-                                    <li><a href="#"><i class="fa fa-comments"></i> 03 Comments</a></li>
+                                    <li><a href="#"><i class="fa fa-user"></i> Sport, Tourism</a></li>
+                                    <!-- <li><a href="#"><i class="fa fa-comments"></i> 21 Comments</a></li> -->
                                 </ul>
                             </div>
                         </article>
 
                         <article class="blog_item">
                             <div class="blog_item_img">
-                                <img class="card-img rounded-0" src="img/blog/single_blog_3.png" alt="">
+                                <img class="card-img rounded-0" src="img/kalender-event/samosir-ultra.jpg" alt="">
                                 <a href="#" class="blog_item_date">
-                                    <h3>15</h3>
-                                    <p>Jan</p>
+                                    <h3>21</h3>
+                                    <p>April</p>
                                 </a>
                             </div>
 
                             <div class="blog_details">
                                 <a class="d-inline-block" href="single-blog.html">
-                                    <h2>Google inks pact for new 35-storey office</h2>
+                                    <h2>Samosir Lake Toba Ultra</h2>
                                 </a>
-                                <p>That dominion stars lights dominion divide years for fourth have don't stars is that
-                                    he earth it first without heaven in place seed it second morning saying.</p>
+                                <p>The Sixth SAMOSIR LAKE TOBA ULTRA 2020 will be held on 26 September 2020. The race will be the 5 km, 12km, 25km and 50 km and having course that will take runners around the largest caldera TOBA lake, through many traditional villages, 
+                                past the beauty of samosir ancient places and some of the most beauty and stunning scenery in Indonesia.</p>
                                 <ul class="blog-info-link">
-                                    <li><a href="#"><i class="fa fa-user"></i> Travel, Lifestyle</a></li>
-                                    <li><a href="#"><i class="fa fa-comments"></i> 03 Comments</a></li>
+                                    <li><a href="#"><i class="fa fa-user"></i> Sport, Tourism</a></li>
+                                    <!-- <li><a href="#"><i class="fa fa-comments"></i> 21 Comments</a></li> -->
                                 </ul>
                             </div>
                         </article>
 
                         <article class="blog_item">
                             <div class="blog_item_img">
-                                <img class="card-img rounded-0" src="img/blog/single_blog_4.png" alt="">
+                                <img class="card-img rounded-0" src="img/kalender-event/samosir-ultra.jpg" alt="">
                                 <a href="#" class="blog_item_date">
-                                    <h3>15</h3>
-                                    <p>Jan</p>
+                                    <h3>21</h3>
+                                    <p>April</p>
                                 </a>
                             </div>
 
                             <div class="blog_details">
                                 <a class="d-inline-block" href="single-blog.html">
-                                    <h2>Google inks pact for new 35-storey office</h2>
+                                    <h2>Samosir Lake Toba Ultra</h2>
                                 </a>
-                                <p>That dominion stars lights dominion divide years for fourth have don't stars is that
-                                    he earth it first without heaven in place seed it second morning saying.</p>
+                                <p>The Sixth SAMOSIR LAKE TOBA ULTRA 2020 will be held on 26 September 2020. The race will be the 5 km, 12km, 25km and 50 km and having course that will take runners around the largest caldera TOBA lake, through many traditional villages, 
+                                past the beauty of samosir ancient places and some of the most beauty and stunning scenery in Indonesia.</p>
                                 <ul class="blog-info-link">
-                                    <li><a href="#"><i class="fa fa-user"></i> Travel, Lifestyle</a></li>
-                                    <li><a href="#"><i class="fa fa-comments"></i> 03 Comments</a></li>
+                                    <li><a href="#"><i class="fa fa-user"></i> Sport, Tourism</a></li>
+                                    <!-- <li><a href="#"><i class="fa fa-comments"></i> 21 Comments</a></li> -->
                                 </ul>
                             </div>
                         </article>
-
                         <article class="blog_item">
                             <div class="blog_item_img">
-                                <img class="card-img rounded-0" src="img/blog/single_blog_5.png" alt="">
+                                <img class="card-img rounded-0" src="img/kalender-event/samosir-ultra.jpg" alt="">
                                 <a href="#" class="blog_item_date">
-                                    <h3>15</h3>
-                                    <p>Jan</p>
+                                    <h3>21</h3>
+                                    <p>April</p>
                                 </a>
                             </div>
 
                             <div class="blog_details">
                                 <a class="d-inline-block" href="single-blog.html">
-                                    <h2>Google inks pact for new 35-storey office</h2>
+                                    <h2>Samosir Lake Toba Ultra</h2>
                                 </a>
-                                <p>That dominion stars lights dominion divide years for fourth have don't stars is that
-                                    he earth it first without heaven in place seed it second morning saying.</p>
+                                <p>The Sixth SAMOSIR LAKE TOBA ULTRA 2020 will be held on 26 September 2020. The race will be the 5 km, 12km, 25km and 50 km and having course that will take runners around the largest caldera TOBA lake, through many traditional villages, 
+                                past the beauty of samosir ancient places and some of the most beauty and stunning scenery in Indonesia.</p>
                                 <ul class="blog-info-link">
-                                    <li><a href="#"><i class="fa fa-user"></i> Travel, Lifestyle</a></li>
-                                    <li><a href="#"><i class="fa fa-comments"></i> 03 Comments</a></li>
+                                    <li><a href="#"><i class="fa fa-user"></i> Sport, Tourism</a></li>
+                                    <!-- <li><a href="#"><i class="fa fa-comments"></i> 21 Comments</a></li> -->
                                 </ul>
                             </div>
                         </article>
@@ -420,9 +414,9 @@
                                     <img src="img/footer_logo.png" alt="">
                                 </a>
                             </div>
-                            <p>5th flora, 700/D kings road, green <br> lane New York-1782 <br>
-                                <a href="#">+10 367 826 2567</a> <br>
-                                <a href="#">contact@carpenter.com</a>
+                            <p>Jl. P.I. Del, Sitoluama, Lagu Boti, Kabupaten Toba Samosir, Sumatera Utara 22381 <br>
+                                <a href="#">(0632) 331234</a> <br>
+                                <a href="#">visitoba@del.ac.id</a>
                             </p>
                             <div class="socail_links">
                                 <ul>
@@ -472,17 +466,16 @@
                     <div class="col-xl-3 col-md-6 col-lg-3">
                         <div class="footer_widget">
                             <h3 class="footer_title">
-                                Popular destination
+                                7 Kabupaten sekitar Danau Toba
                             </h3>
                             <ul class="links double_links">
-                                <li><a href="#">Indonesia</a></li>
-                                <li><a href="#">America</a></li>
-                                <li><a href="#">India</a></li>
-                                <li><a href="#">Switzerland</a></li>
-                                <li><a href="#">Italy</a></li>
-                                <li><a href="#">Canada</a></li>
-                                <li><a href="#">Franch</a></li>
-                                <li><a href="#">England</a></li>
+                                <li><a href="#">Simalungun</a></li>
+                                <li><a href="#">Samosir</a></li>
+                                <li><a href="#">Dairi</a></li>
+                                <li><a href="#">Toba</a></li>
+                                <li><a href="#">Tapanuli Utara</a></li>
+                                <li><a href="#">Humbang</a></li>
+                                <li><a href="#">Karo</a></li>
                             </ul>
                         </div>
                     </div>
@@ -535,7 +528,7 @@
                     <div class="col-xl-12">
                         <p class="copy_right text-center">
                             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | @ucokpelx </a>
 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                         </p>
                     </div>
