@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- <link rel="manifest" href="site.webmanifest"> -->
-    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="img/logos.png">
     <!-- Place favicon.ico in the root directory -->
 
     <!-- CSS here -->
@@ -63,11 +63,8 @@
                                                         <li><a href="elements.html">elements</a></li>
                                                 </ul>
                                             </li>
-                                            <li><a href="#">Kalender Event <i class="ti-angle-down"></i></a>
-                                                <ul class="submenu">
-                                                    <li><a href="blog.html">blog</a></li>
-                                                    <li><a href="single-blog.html">single-blog</a></li>
-                                                </ul>
+                                            <li><a href="{{ url('/eventkalender') }}">Kalender Event <i class="ti-angle-down"></i></a>
+                                                
                                             </li>
                                             <li><a href="contact.html">Kontak   </a></li>
                                         </ul>
