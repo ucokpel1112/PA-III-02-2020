@@ -63,7 +63,7 @@
                                                         <li><a href="elements.html">elements</a></li>
                                                 </ul>
                                             </li>
-                                            <li><a href="{{ url('/eventkalender') }}">Kalender Event <i class="ti-angle-down"></i></a>
+                                            <li><a href="{{ url('/eventkalender') }}">Kalender Event </a>
                                                 
                                             </li>
                                             <li><a href="contact.html">Kontak   </a></li>
