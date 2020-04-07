@@ -24,3 +24,6 @@ Route::get('/paket', function () {
 Route::get('/detail-paket', function () {
     return view('front.detail-paket');
 })->name('paket.detail');
+Route::get('/dashboard',function(){
+    return view('layout.admin.dashboard');
+});
