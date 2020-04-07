@@ -18,3 +18,7 @@ Route::get('/', function () {
 Route::get('/eventkalender', function () {
     return view('eventkalender');
 });
+
+Route::get('/dashboard',function(){
+    return view('layouts_admin/dashboard');
+});
