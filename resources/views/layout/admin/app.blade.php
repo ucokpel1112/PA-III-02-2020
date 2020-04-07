@@ -31,11 +31,11 @@
 <div class="wrapper">
 
   <!-- Navbar -->
-    @include('layouts_admin.header')
+    @include('layout.admin.header')
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
-  @include('layouts_admin.sidebar')
+  @include('layout.admin.sidebar')
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -43,13 +43,13 @@
     @yield('content')
   </div>
   <!-- /.content-wrapper -->
-  
+
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
     <!-- Control sidebar content goes here -->
   </aside>
   <!-- /.control-sidebar -->
-  @include('layouts_admin.footer')
+  @include('layout.admin.footer')
 </div>
 <!-- ./wrapper -->
 
