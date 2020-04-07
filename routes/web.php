@@ -19,6 +19,12 @@ Route::get('/eventkalender', function () {
     return view('eventkalender');
 });
 
-Route::get('/dashboard',function(){
+Route::get('/adm/dashboard',function(){
     return view('layouts_admin/dashboard');
+});
+Route::get('/adm/eventkalender',function(){
+    return view('layouts_admin/eventkalender');
+});
+Route::get('/adm/addkalender',function(){
+    return view('layouts_admin/tambahkalender');
 });
