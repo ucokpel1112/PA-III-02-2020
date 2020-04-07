@@ -16,9 +16,14 @@ Route::get('/', function () {
 });
 
 Route::get('/eventkalender', function () {
-    return view('eventkalender');
-});
-
+    return view('front.eventkalender');
+})->name('event');
+Route::get('/paket', function () {
+    return view('front.view-paket');
+})->name('paket');
+Route::get('/detail-paket', function () {
+    return view('front.detail-paket');
+})->name('paket.detail');
 Route::get('/dashboard',function(){
-    return view('layouts_admin/dashboard');
+    return view('layout.admin.dashboard');
 });
