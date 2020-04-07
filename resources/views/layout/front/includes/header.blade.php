@@ -21,7 +21,7 @@
                                         <li><a href="{{route('event')}}">Event Kalender</a></li>
                                         <li><a href="#">pages <i class="ti-angle-down"></i></a>
                                             <ul class="submenu">
-                                                <li><a href="destination_details.html">Destinations details</a></li>
+                                                <li><a href="{{route('paket.detail')}}">Destinations details</a></li>
                                                 <li><a href="elements.html">elements</a></li>
                                             </ul>
                                         </li>

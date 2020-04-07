@@ -21,3 +21,6 @@ Route::get('/eventkalender', function () {
 Route::get('/paket', function () {
     return view('front.view-paket');
 })->name('paket');
+Route::get('/detail-paket', function () {
+    return view('front.detail-paket');
+})->name('paket.detail');
