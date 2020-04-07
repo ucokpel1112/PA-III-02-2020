@@ -1,8 +1,6 @@
 @extends('layouts_admin.app')
 
 @section('content')
-
-@endsection
 <section class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
@@ -46,3 +44,4 @@
       <!-- /.card -->
 
     </section>
+@endsection
