@@ -1,4 +1,4 @@
-@extends('layouts_admin.app')
+@extends('layout.admin.app')
 
 @section('content')
 <section class="content-header">
@@ -44,4 +44,7 @@
       <!-- /.card -->
 
     </section>
+<<<<<<< HEAD:resources/views/layouts_admin/dashboard.blade.php
 @endsection
+=======
+>>>>>>> master:resources/views/layout/admin/dashboard.blade.php

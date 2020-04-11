@@ -16,6 +16,7 @@ Route::get('/', function () {
 });
 
 Route::get('/eventkalender', function () {
+<<<<<<< HEAD
     return view('eventkalender');
 });
 
@@ -31,3 +32,16 @@ Route::get('/adm/addkalender',function(){
 Route::get('/adm/updatekalender',function(){
     return view('layouts_admin/updatekalender');
 });
+=======
+    return view('front.eventkalender');
+})->name('event');
+Route::get('/paket', function () {
+    return view('front.view-paket');
+})->name('paket');
+Route::get('/detail-paket', function () {
+    return view('front.detail-paket');
+})->name('paket.detail');
+Route::get('/dashboard',function(){
+    return view('layout.admin.dashboard');
+});
+>>>>>>> master
