@@ -87,7 +87,7 @@
             </ul>
           </li>       
           <li class="nav-item">
-            <a href="{{ url('/adm/eventkalender') }}" class="nav-link">
+            <a href="#" class="nav-link">
               <i class="nav-icon far fa-calendar-alt"></i>
               <p>
                 Kalender Event
@@ -97,6 +97,12 @@
             <ul class="nav nav-treeview">
               </li>
               <li class="nav-item">
+              <li class="nav-item">
+                <a href="{{ url('/adm/listkalender') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Daftar Event</p>
+                </a>
+              </li>
               <li class="nav-item">
                 <a href="{{ url('/adm/addkalender') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
