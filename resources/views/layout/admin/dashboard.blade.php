@@ -1,8 +1,6 @@
 @extends('layout.admin.app')
 
 @section('content')
-
-@endsection
 <section class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
@@ -46,3 +44,7 @@
       <!-- /.card -->
 
     </section>
+<<<<<<< HEAD:resources/views/layouts_admin/dashboard.blade.php
+@endsection
+=======
+>>>>>>> master:resources/views/layout/admin/dashboard.blade.php
