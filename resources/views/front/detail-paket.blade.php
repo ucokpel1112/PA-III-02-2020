@@ -6,6 +6,36 @@
         <div class="destination_text text-center">
             <h3>Destinasi Alam Desa Meat</h3>
             <p>Kabupaten Toba</p>
+            <a style="margin-top: 50px;" href="#pemesanan" class="boxed-btn3">Pemesanan</a>
+            {{--            <a    class="genric-btn info e-large">Pemesanan</a>--}}
+        </div>
+    </div>
+    <div class="container-fluid" >
+        <div class="row cakupan">
+            <div class="col item">
+                <div class="row simbol">
+                    <div class="col">
+                        <i class="fa fa-clock-o simbol-detail" aria-hidden="true"></i>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <h1 style="color: white;">5 Hari</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="col item">
+                <div class="row simbol">
+                    <div class="col">
+                        <i class="fa fa-user simbol-detail" aria-hidden="true"></i>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <h1 style="color: white;">5 Orang</h1>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <div class="destination_details_info">
@@ -14,25 +44,71 @@
                 <div class="col-lg-8 col-md-9">
                     <div class="destination_info">
                         <h3>Description</h3>
+                        <hr>
                         <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing.</p>
                         <p>Variations of passages of lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing.</p>
-                        <div class="single_destination">
-                            <h4>Day-01</h4>
-                            <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words.</p>
+                        <br><br>
+                        <h3>Itenary</h3>
+                        <hr>
+                        <h4>Day-01</h4>
+                        <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words.</p>
+                        <h4>Day-02</h4>
+                        <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words.</p>
+                        <h4>Day-03</h4>
+                        <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words.</p>
+                        <br><br>
+                    </div>
+                    <div class="destination_info">
+                        <h3>Tambahan</h3>
+                        <hr>
+                        <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="pemesanan" class="newletter_area overlay">
+        <div class="container">
+            <div class="row justify-content-center align-items-center">
+                <div class="col-lg-10">
+                    <div class="row align-items-center">
+                        <div class="col-lg-6">
+                            <div class="newsletter_text">
+                                <center><h4>Included</h4></center>
+                                <ul class="unordered-list ior">
+                                    <li>Fta Keys</li>
+                                    <li>For Women Only Your Computer Usage</li>
+                                    <li>Dealing With Technical Support 10 Useful Tips</li>
+                                    <li>Make Myspace Your Best Designed Space</li>
+                                    <li>Cleaning And Organizing Your Computer</li>
+                                </ul>
+                            </div>
                         </div>
-                        <div class="single_destination">
-                            <h4>Day-02</h4>
-                            <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words.</p>
-                        </div>
-                        <div class="single_destination">
-                            <h4>Day-03</h4>
-                            <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words.</p>
+                        <div class="col-lg-6">
+                            <div class="newsletter_text">
+                                <center><h4>Not Included</h4></center>
+                                <ul class="unordered-list ior">
+                                    <li>Fta Keys</li>
+                                    <li>For Women Only Your Computer Usage</li>
+                                    <li>Dealing With Technical Support 10 Useful Tips</li>
+                                    <li>Make Myspace Your Best Designed Space</li>
+                                    <li>Cleaning And Organizing Your Computer</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                    <div class="bordered_1px"></div>
-                    <div class="contact_join">
-                        <h3>Pemesanan</h3>
-                        <form action="#">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="destination_details_info">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 col-md-9">
+                    <div ></div>
+                    <div  class="contact_join">
+                        <h3>Pemesanan (Rp.100.000 / Person)</h3>
+                        <form  action="#">
                             <div class="row">
                                 <div class="col-lg-12 col-md-12">
                                     <div class="single_input">
@@ -58,39 +134,39 @@
     </div>
 
     <!-- newletter_area_start  -->
-{{--    <div class="newletter_area overlay">--}}
-{{--        <div class="container">--}}
-{{--            <div class="row justify-content-center align-items-center">--}}
-{{--                <div class="col-lg-10">--}}
-{{--                    <div class="row align-items-center">--}}
-{{--                        <div class="col-lg-5">--}}
-{{--                            <div class="newsletter_text">--}}
-{{--                                <h4>Subscribe Our Newsletter</h4>--}}
-{{--                                <p>Subscribe newsletter to get offers and about--}}
-{{--                                    new places to discover.</p>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                        <div class="col-lg-7">--}}
-{{--                            <div class="mail_form">--}}
-{{--                                <div class="row no-gutters">--}}
-{{--                                    <div class="col-lg-9 col-md-8">--}}
-{{--                                        <div class="newsletter_field">--}}
-{{--                                            <input type="email" placeholder="Your mail" >--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                    <div class="col-lg-3 col-md-4">--}}
-{{--                                        <div class="newsletter_btn">--}}
-{{--                                            <button class="boxed-btn4 " type="submit" >Subscribe</button>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--    </div>--}}
+    {{--    <div class="newletter_area overlay">--}}
+    {{--        <div class="container">--}}
+    {{--            <div class="row justify-content-center align-items-center">--}}
+    {{--                <div class="col-lg-10">--}}
+    {{--                    <div class="row align-items-center">--}}
+    {{--                        <div class="col-lg-5">--}}
+    {{--                            <div class="newsletter_text">--}}
+    {{--                                <h4>Subscribe Our Newsletter</h4>--}}
+    {{--                                <p>Subscribe newsletter to get offers and about--}}
+    {{--                                    new places to discover.</p>--}}
+    {{--                            </div>--}}
+    {{--                        </div>--}}
+    {{--                        <div class="col-lg-7">--}}
+    {{--                            <div class="mail_form">--}}
+    {{--                                <div class="row no-gutters">--}}
+    {{--                                    <div class="col-lg-9 col-md-8">--}}
+    {{--                                        <div class="newsletter_field">--}}
+    {{--                                            <input type="email" placeholder="Your mail" >--}}
+    {{--                                        </div>--}}
+    {{--                                    </div>--}}
+    {{--                                    <div class="col-lg-3 col-md-4">--}}
+    {{--                                        <div class="newsletter_btn">--}}
+    {{--                                            <button class="boxed-btn4 " type="submit" >Subscribe</button>--}}
+    {{--                                        </div>--}}
+    {{--                                    </div>--}}
+    {{--                                </div>--}}
+    {{--                            </div>--}}
+    {{--                        </div>--}}
+    {{--                    </div>--}}
+    {{--                </div>--}}
+    {{--            </div>--}}
+    {{--        </div>--}}
+    {{--    </div>--}}
     <!-- newletter_area_end  -->
 
     <div class="popular_places_area">
@@ -98,7 +174,7 @@
             <div class="row justify-content-center">
                 <div class="col-lg-6">
                     <div class="section_title text-center mb_70">
-                        <h3>More Places</h3>
+                        <h3>Paket Wisata Lainnya</h3>
                     </div>
                 </div>
             </div>
