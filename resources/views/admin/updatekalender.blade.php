@@ -1,5 +1,4 @@
-{{--<<<<<<< HEAD--}}
-@extends('layouts_admin.app')
+@extends('layout.admin.app')
 
 @section('content')
         <section class="content-header">

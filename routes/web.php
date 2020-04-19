@@ -24,13 +24,13 @@ Route::get('/eventkalender', function () {
 Route::get('/adm/dashboard',function(){
     return view('layout.admin.dashboard');
 });
-Route::get('/adm/listkalender',function(){
+Route::get('/adm/kalender/listkalender',function(){
     return view('admin.eventkalender');
 });
-Route::get('/adm/addkalender',function(){
+Route::get('/adm/kalender/addkalender',function(){
     return view('admin.tambahkalender');
 });
-Route::get('/adm/updatekalender',function(){
+Route::get('/adm/kalender/updatekalender',function(){
     return view('admin.updatekalender');
 });
 Route::get('/paket', function () {
@@ -39,3 +39,9 @@ Route::get('/paket', function () {
 Route::get('/detail-paket', function () {
     return view('front.detail-paket');
 })->name('paket.detail');
+
+//Paket Wisata admin
+Route::get('/adm/paket',function(){
+    return view('admin.paket_wisata');
+})->name('admin.paket');
+Route::get('/adm/paket/add','PaketWisataController@create')->name('admin.paket.tambah');
