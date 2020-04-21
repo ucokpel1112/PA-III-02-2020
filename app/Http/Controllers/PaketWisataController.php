@@ -23,7 +23,12 @@ class PaketWisataController extends Controller
      */
     public function create()
     {
+        $options=$this->fill_unit_select_box();
         return view('admin.tambah_paket_wisata');
+    }
+    protected function fill_unit_select_box(){
+        $layanan = '';
+        return $layanan;
     }
 
     /**

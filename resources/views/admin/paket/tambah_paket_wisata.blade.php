@@ -17,5 +17,5 @@
         </div><!-- /.container-fluid -->
     </section>
 
-    @include('admin.form')
+    @include('admin.paket.form')
 @endsection
