@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\daerah;
+use App\paketWisata;
 use Illuminate\Http\Request;
 
 class PaketWisataController extends Controller
@@ -13,7 +15,8 @@ class PaketWisataController extends Controller
      */
     public function index()
     {
-        //
+        $pakets = paketWisata::with(['getIncludedNotIncluded','getDaerah'])->get();
+        return view('admin.paket.paket_wisata',compact('pakets'));
     }
 
     /**

@@ -41,9 +41,7 @@ Route::get('/detail-paket', function () {
 })->name('paket.detail');
 
 //Paket Wisata admin
-Route::get('/adm/paket',function(){
-    return view('admin.paket.paket_wisata');
-})->name('admin.paket');
+Route::get('/adm/paket','PaketWisataController@index')->name('admin.paket');
 Route::get('/adm/paket/edit',function(){
     return view('admin.paket.edit_paket_wisata');
 });

@@ -53,25 +53,27 @@
                     </tr>
                     </thead>
                     <tbody>
+{{--                    mulai loop data--}}
+                    @foreach($pakets as $paket)
                     <tr>
                         <td>
-                            1
+                            {{$paket->id_paket}}
                         </td>
                         <td>
                             <ul class="list-inline">
                                 <li class="list-inline-item">
-                                    <img alt="Avatar" class="table-avatar" src="{{asset('img/banner/toba1.jpg')}}">
+                                    <img alt="Avatar" class="table-avatar" src="{{asset('img/banner/$paket->gambar')}}">
                                 </li>
                             </ul>
                         </td>
                         <td>
-                            Nama Paket
+                            {{$paket->nama_paket}}
                         </td>
                         <td class="project-state">
-                            <span class="badge badge-success">Harga</span>
+                            <span class="badge badge-success">{{number_format($paket->harga_paket)}}</span>
                         </td>
                         <td class="project-state">
-                            <span class="badge badge-primary">Daerah</span>
+                            <span class="badge badge-primary">{{$paket->getDaerah->nama_daerah}}</span>
                         </td>
                         <td class="project-actions text-right">
                             <a class="btn btn-primary btn-sm" href="#">
@@ -91,6 +93,7 @@
                             </a>
                         </td>
                     </tr>
+                    @endforeach
                     </tbody>
                 </table>
             </div>
