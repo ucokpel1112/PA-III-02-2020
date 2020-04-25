@@ -45,8 +45,6 @@ Route::get('/adm/paket','PaketWisataController@index')->name('admin.paket');
 Route::get('/adm/paket/edit',function(){
     return view('admin.paket.edit_paket_wisata');
 });
-Route::get('/adm/paket/detail',function(){
-    return view('admin.paket.detail_paket_wisata');
-});
+Route::get('/adm/paket/{id_paket}','PaketWisataController@show')->name('admin.paket.show');
 Route::get('/adm/paket/add','PaketWisataController@create')->name('admin.paket.tambah');
 Route::delete('/adm/paket/{id_paket}','PaketWisataController@destroy')->name('admin.paket.hapus');

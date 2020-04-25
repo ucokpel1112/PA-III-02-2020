@@ -15,6 +15,6 @@ class paketWisata extends Model
         return $this->belongsTo(kabupaten::class,'kabupaten_id','id_kabupaten');
     }
     public function getPaketLayanan(){
-        return $this->hasMany(PaketLayanan::class,'paket_wisata_id','id_paket');
+        return $this->belongsToMany(LayananWisata::class,'paket_layanans','paket_wisata_id','layanan_wisata_id','id_paket','id');
     }
 }

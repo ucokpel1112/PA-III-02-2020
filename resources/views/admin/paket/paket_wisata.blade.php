@@ -9,7 +9,7 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Paket Wisata</li>
+                        <li class="breadcrumb-item active">Administrator</li>
                     </ol>
                 </div>
             </div>
@@ -79,7 +79,7 @@
                                 <span class="badge badge-primary">{{$paket->getKabupaten->nama_kabupaten}}</span>
                             </td>
                             <td class="project-actions text-right">
-                                <a class="btn btn-primary btn-sm" href="#">
+                                <a class="btn btn-primary btn-sm" href="{{route('admin.paket.show',$paket->id_paket)}}">
                                     <i class="fas fa-folder">
                                     </i>
                                     View

@@ -15,6 +15,7 @@ class CreateJenisLayanansTable extends Migration
     {
         Schema::create('jenis_layanans', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('nama_jenis_layanan');
             $table->timestamps();
         });
     }

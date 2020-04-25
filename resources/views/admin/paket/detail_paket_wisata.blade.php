@@ -24,47 +24,50 @@
                     <div class="card">
                         <div class="card-header p-2">
                             <ul class="nav nav-pills">
-                                <li class="nav-item"><a class="nav-link active" href="#detail" data-toggle="tab">Detail</a></li>
-                                <li class="nav-item"><a class="nav-link" href="#layanan-wisata" data-toggle="tab">Layanan Wisata</a></li>
-                                <li class="nav-item"><a class="nav-link" href="#included-not-included" data-toggle="tab">Included & Not Included</a></li>
+                                <li class="nav-item"><a class="nav-link active" href="#detail"
+                                                        data-toggle="tab">Detail</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#layanan-wisata" data-toggle="tab">Layanan
+                                        Wisata</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#included-not-included"
+                                                        data-toggle="tab">Included & Not Included</a></li>
                             </ul>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
                             <div class="tab-content">
                                 <div class="active tab-pane" id="detail">
-                                    <strong>Nama Paket Wisata</strong>
+                                    <strong>{{$paket->nama_paket}}</strong>
 
                                     <p class="text-muted">
-                                        Paket Wisata Toba
+                                        Paket Kabupaten {{$paket->getKabupaten->nama_kabupaten}}
                                     </p>
 
                                     <hr>
                                     <strong>Harga Paket Wisata</strong>
 
                                     <p class="text-muted">
-                                        Rp. 800,000
+                                        {{number_format($paket->harga_paket)}}
                                     </p>
 
                                     <hr>
                                     <strong>Avalability</strong>
 
                                     <p class="text-muted">
-                                        2 Orang
+                                        {{$paket->availability}}
                                     </p>
 
                                     <hr>
                                     <strong>Durasi</strong>
 
                                     <p class="text-muted">
-                                        1 Hari
+                                        {{$paket->durasi}}
                                     </p>
 
                                     <hr>
                                     <strong>Deskripsi Paket</strong>
 
                                     <p class="text-muted">
-                                        cc c c cc
+                                        <?php echo $paket->deskripsi_paket; ?>
                                         <br>
                                     </p>
 
@@ -72,15 +75,15 @@
                                     <strong>Rencana Perjalanan</strong>
 
                                     <p class="text-muted">
-                                        cc c c cc
+                                        <?php echo $paket->rencana_perjalanan; ?>
                                         <br>
                                     </p>
 
                                     <hr>
-                                    <strong>Tmabahan</strong>
+                                    <strong>Tambahan</strong>
 
                                     <p class="text-muted">
-                                        cc c c cc
+                                        <?php echo $paket->tambahan; ?>
                                         <br>
                                     </p>
 
@@ -88,7 +91,7 @@
                                     <strong>Daerah</strong>
 
                                     <p class="text-muted">
-                                        Kabupaten Toba
+                                        Kabupaten {{$paket->getKabupaten->nama_kabupaten}}
                                         <br>
                                     </p>
 
@@ -97,38 +100,44 @@
                                     <p></p>
                                     <div class="row">
                                         <div class="col-sm-10">
-                                            <img class="img-fluid" src="{{asset('img/banner/banner2.png')}}" alt="Photo">
+                                            <img class="img-fluid" src="{{asset('img/banner/'.$paket->gambar)}}"
+                                                 alt="Photo">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="tab-pane" id="layanan-wisata">
-                                    <strong>Layanan Wisata 1</strong>
+                                    @foreach($paket->getPaketLayanan as $layanan)
+                                        <hr>
+                                        <strong>{{$layanan->nama_layanan}}</strong>
 
-                                    <p class="text-muted">
-                                        Detailnya
-                                    </p>
-
-                                    <hr>
-                                    <strong>Layanan Wisata 2</strong>
-
-                                    <p class="text-muted">
-                                        Detailnya
-                                    </p>
+                                        <p class="text-muted">
+                                            {{$layanan->deskripsi_layanan}}
+                                        </p>
+                                    @endforeach
                                 </div>
                                 <div class="tab-pane" id="included-not-included">
                                     <strong>Included</strong>
-
                                     <ul>
-                                        <li>satu</li>
-                                        <li>dua</li>
-                                    </ul>
+                                        @foreach($paket->getIncludedNotIncluded as $ini)
+                                            @if($ini->jenis=='included')
+                                                <li>
+                                                    {{$ini->keterangan}}
+                                                </li>
+                                            @endif
 
+                                        @endforeach
+                                    </ul>
                                     <hr>
                                     <strong>Not Included</strong>
 
                                     <ul>
-                                        <li>satu</li>
-                                        <li>dua</li>
+                                        @foreach($paket->getIncludedNotIncluded as $ini)
+                                            @if($ini->jenis=='not included')
+                                                <li>
+                                                    {{$ini->keterangan}}
+                                                </li>
+                                            @endif
+                                        @endforeach
                                     </ul>
 
                                     <hr>

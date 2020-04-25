@@ -51,9 +51,11 @@ class PaketWisataController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id_paket)
     {
-        //
+        $paket = paketWisata::where('id_paket',$id_paket)->with(['getKabupaten','getIncludedNotIncluded','getPaketLayanan'])->first();
+
+        return view('admin.paket.detail_paket_wisata',compact('paket'));
     }
 
     /**
