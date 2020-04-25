@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\daerah;
+use App\Kabupaten;
 use App\paketWisata;
 use Illuminate\Http\Request;
 
@@ -15,7 +15,7 @@ class PaketWisataController extends Controller
      */
     public function index()
     {
-        $pakets = paketWisata::with(['getIncludedNotIncluded','getDaerah'])->get();
+        $pakets = paketWisata::with(['getIncludedNotIncluded','getKabupaten'])->orderBy('created_at','DESC')->paginate(10);
         return view('admin.paket.paket_wisata',compact('pakets'));
     }
 
@@ -85,8 +85,19 @@ class PaketWisataController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id_paket)
     {
-        //
+        $paket = paketWisata::withCount(['getPaketLayanan'])->where('id_paket',$id_paket)->get();
+        $count=null;
+        foreach ($paket as $pakets){
+            $count=$pakets->get_paket_layanan_count;
+        }
+//        print_r($paket);
+        if($count == 0){
+            paketWisata::where('id_paket',$id_paket)->delete();
+
+            return redirect(route('admin.paket'));
+        }
+        return redirect(route('admin.paket'));
     }
 }

@@ -23,9 +23,11 @@
                 <h3 class="card-title">Paket Wisata</h3>
 
                 <div class="card-tools">
-                    <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip"
+                            title="Collapse">
                         <i class="fas fa-minus"></i></button>
-                    <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
+                    <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip"
+                            title="Remove">
                         <i class="fas fa-times"></i></button>
                 </div>
             </div>
@@ -53,49 +55,84 @@
                     </tr>
                     </thead>
                     <tbody>
-{{--                    mulai loop data--}}
+                    {{--                    mulai loop data--}}
                     @foreach($pakets as $paket)
+                        <tr>
+                            <td>
+                                {{$paket->id_paket}}
+                            </td>
+                            <td>
+                                <ul class="list-inline">
+                                    <li class="list-inline-item">
+                                        <img alt="Avatar" class="table-avatar"
+                                             src="{{asset('img/banner/'.$paket->gambar)}}">
+                                    </li>
+                                </ul>
+                            </td>
+                            <td>
+                                {{$paket->nama_paket}}
+                            </td>
+                            <td class="project-state">
+                                <span class="badge badge-success">{{number_format($paket->harga_paket)}}</span>
+                            </td>
+                            <td class="project-state">
+                                <span class="badge badge-primary">{{$paket->getKabupaten->nama_kabupaten}}</span>
+                            </td>
+                            <td class="project-actions text-right">
+                                <a class="btn btn-primary btn-sm" href="#">
+                                    <i class="fas fa-folder">
+                                    </i>
+                                    View
+                                </a>
+                                <a class="btn btn-info btn-sm" href="#">
+                                    <i class="fas fa-pencil-alt">
+                                    </i>
+                                    Edit
+                                </a>
+                                <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
+                                        data-target="#delete">
+                                    Delete
+                                </button>
+                                <div class="modal fade" id="delete" tabindex="-1" role="dialog"
+                                     aria-labelledby="deleteModalCenterTitle" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="hapusModalLongTitle">Hapus Paket Wisata</h5>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                Anda Yakin Ingin Menhapus Paket ...
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                                    Batal
+                                                </button>
+                                                <form action="{{route('admin.paket.hapus',$paket->id_paket)}}"
+                                                      method="post">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-primary">Hapus</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+
+                    @endforeach
                     <tr>
-                        <td>
-                            {{$paket->id_paket}}
-                        </td>
-                        <td>
-                            <ul class="list-inline">
-                                <li class="list-inline-item">
-                                    <img alt="Avatar" class="table-avatar" src="{{asset('img/banner/$paket->gambar')}}">
-                                </li>
-                            </ul>
-                        </td>
-                        <td>
-                            {{$paket->nama_paket}}
-                        </td>
-                        <td class="project-state">
-                            <span class="badge badge-success">{{number_format($paket->harga_paket)}}</span>
-                        </td>
-                        <td class="project-state">
-                            <span class="badge badge-primary">{{$paket->getDaerah->nama_daerah}}</span>
-                        </td>
-                        <td class="project-actions text-right">
-                            <a class="btn btn-primary btn-sm" href="#">
-                                <i class="fas fa-folder">
-                                </i>
-                                View
-                            </a>
-                            <a class="btn btn-info btn-sm" href="#">
-                                <i class="fas fa-pencil-alt">
-                                </i>
-                                Edit
-                            </a>
-                            <a class="btn btn-danger btn-sm" href="#">
-                                <i class="fas fa-trash">
-                                </i>
-                                Delete
-                            </a>
+                        <td colspan="6">
+                            {!! $pakets->links() !!}
                         </td>
                     </tr>
-                    @endforeach
                     </tbody>
                 </table>
+
             </div>
             <!-- /.card-body -->
         </div>

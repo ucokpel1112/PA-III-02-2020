@@ -49,3 +49,4 @@ Route::get('/adm/paket/detail',function(){
     return view('admin.paket.detail_paket_wisata');
 });
 Route::get('/adm/paket/add','PaketWisataController@create')->name('admin.paket.tambah');
+Route::delete('/adm/paket/{id_paket}','PaketWisataController@destroy')->name('admin.paket.hapus');

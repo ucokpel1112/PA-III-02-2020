@@ -23,8 +23,8 @@ class CreatePaketWisatasTable extends Migration
             $table->text('rencana_perjalanan')->nullable();
             $table->text('tambahan')->nullable();
             $table->text('gambar');
-            $table->unsignedBigInteger('daerah');
-            $table->foreign('daerah')->references('id_daerah')->on('daerahs');
+            $table->unsignedBigInteger('kabupaten_id');
+            $table->foreign('kabupaten_id')->references('id_kabupaten')->on('kabupatens');
             $table->timestamps();
         });
     }
