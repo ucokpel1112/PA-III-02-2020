@@ -20,8 +20,15 @@
         <!-- Default box -->
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Paket Wisata</h3>
-
+                <h3 class="card-title">
+                    Paket Wisata
+                    |
+                    <a class="btn btn-success btn-sm" href="{{route('admin.paket.tambah')}}">
+                        <i class="fas fa-pencil-alt">
+                        </i>
+                        Create
+                    </a>
+                </h3>
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip"
                             title="Collapse">
@@ -56,7 +63,7 @@
                     </thead>
                     <tbody>
                     {{--                    mulai loop data--}}
-                    @foreach($pakets as $paket)
+                    @forelse($pakets as $paket)
                         <tr>
                             <td>
                                 {{$paket->id_paket}}
@@ -65,7 +72,7 @@
                                 <ul class="list-inline">
                                     <li class="list-inline-item">
                                         <img alt="Avatar" class="table-avatar"
-                                             src="{{asset('img/banner/'.$paket->gambar)}}">
+                                             src="{{asset('img/paket/'.$paket->gambar)}}">
                                     </li>
                                 </ul>
                             </td>
@@ -84,7 +91,7 @@
                                     </i>
                                     View
                                 </a>
-                                <a class="btn btn-info btn-sm" href="#">
+                                <a class="btn btn-info btn-sm" href="{{ route('admin.paket.editChoice',$paket->id_paket) }}">
                                     <i class="fas fa-pencil-alt">
                                     </i>
                                     Edit
@@ -123,10 +130,13 @@
                                 </div>
                             </td>
                         </tr>
-
-                    @endforeach
+                    @empty
+                        <tr>
+                            <td colspan="6" class="text-center">Tidak Ada Data</td>
+                        </tr>
+                    @endforelse
                     <tr>
-                        <td colspan="6">
+                        <td colspan="6" class="text-center">
                             {!! $pakets->links() !!}
                         </td>
                     </tr>

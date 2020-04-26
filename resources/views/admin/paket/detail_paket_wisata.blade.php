@@ -100,7 +100,7 @@
                                     <p></p>
                                     <div class="row">
                                         <div class="col-sm-10">
-                                            <img class="img-fluid" src="{{asset('img/banner/'.$paket->gambar)}}"
+                                            <img class="img-fluid" src="{{asset('img/paket/'.$paket->gambar)}}"
                                                  alt="Photo">
                                         </div>
                                     </div>

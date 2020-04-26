@@ -8,6 +8,7 @@ class LayananWisata extends Model
 {
     protected $table = 'layanan_wisatas';
 
+
     public function getJenisLayanan(){
         return $this->belongsTo(JenisLayanan::class, 'jenislayanan_id','id_jenis_layanan');
     }

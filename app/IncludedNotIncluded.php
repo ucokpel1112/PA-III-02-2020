@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class IncludedNotIncluded extends Model
 {
     protected $table = 'included_not_includeds';
+    protected $fillable = ['jenis','keterangan','paket_wisata_id'];
+    protected $primaryKey = 'id_ini';
 
     public function getPaketWisata(){
         return $this->belongsTo(paketWisata::class,'paket_wisata_id','id_ini');
