@@ -1,4 +1,3 @@
-{{--<<<<<<< HEAD--}}
 @extends('layout.admin.app')
 
 @section('content')
