@@ -5,6 +5,7 @@
 </head>
 <body>
 @include('layout.front.includes.header')
+
 @yield("content")
 @include('layout.front.includes.footer')
 @include('layout.front.includes.modal')
