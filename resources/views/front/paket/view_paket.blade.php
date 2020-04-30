@@ -21,36 +21,42 @@
                     <div class="filter_result_wrap">
                         <h3>Filter Result</h3>
                         <div class="filter_bordered">
-                            <div class="filter_inner">
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="single_select">
-                                            <select>
-                                                <option data-display="Daerah">Daerah</option>
-                                                <option value="1">Africa</option>
-                                                <option value="2">canada</option>
-                                                <option value="4">USA</option>
-                                            </select>
+
+                            <form action="{{route('paket.filter')}}" method="post">
+                                @csrf
+                                <div class="filter_inner">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="single_select">
+                                                <select name="kabupaten">
+                                                    <option data-display="{{isset($kabnya)?$kabnya:'Kabupaten'}}">Kabupaten</option>
+                                                    @foreach($kabupaten as $row)
+                                                        <option
+                                                            value="{{$row->id_kabupaten}}">{{$row->nama_kabupaten}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <div class="single_select">
-                                            <select>
-                                                <option data-display="Tipe Perjalanan">Tipe Perjalanan</option>
-                                                <option value="1">advance</option>
-                                                <option value="2">advance</option>
-                                                <option value="4">premium</option>
-                                            </select>
+                                        <div class="col-lg-12">
+                                            <div class="single_select">
+                                                <select name="jenis">
+                                                    <option data-display="Jenis Perjalanan">Tipe/Jenis Perjalanan
+                                                    </option>
+                                                    @foreach($jenis as $row)
+                                                        <option
+                                                            value="{{$row->jenis_paket}}">{{$row->jenis_paket}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
 
+                                <div class="reset_btn">
+                                    <button class="boxed-btn4" type="submit">Reset</button>
+                                </div>
+                            </form>
 
-                            </div>
-
-                            <div class="reset_btn">
-                                <button class="boxed-btn4" type="submit">Reset</button>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -172,7 +178,7 @@
             </div>
         </div>
     </div>
-{{--Awal Recent Trip--}}
+    {{--Awal Recent Trip--}}
     <div class="recent_trip_area">
         <div class="container">
             <div class="row justify-content-center">
@@ -234,5 +240,5 @@
             </div>
         </div>
     </div>
-{{--Akhir Recent Trip--}}
+    {{--Akhir Recent Trip--}}
 @endsection

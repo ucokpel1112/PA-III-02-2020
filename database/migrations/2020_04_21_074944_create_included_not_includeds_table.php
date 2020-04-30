@@ -17,7 +17,7 @@ class CreateIncludedNotIncludedsTable extends Migration
             $table->bigIncrements('id_ini');
             $table->unsignedBigInteger('paket_wisata_id');
             $table->foreign('paket_wisata_id')->references('id_paket')->on('paket_wisatas');
-            $table->char('jenis');
+            $table->char('jenis_ini');
             $table->string('keterangan');
             $table->timestamps();
         });

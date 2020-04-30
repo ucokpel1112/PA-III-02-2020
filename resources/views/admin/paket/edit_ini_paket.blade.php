@@ -34,7 +34,7 @@
                             <div class="mb-3">
                                 {{--                                mulai loop--}}
                                 @foreach($paket->getIncludedNotIncluded as $row)
-                                    @if($row->jenis=='included')
+                                    @if($row->jenis_ini=='included')
                                         <div class="row" id="includeds">
                                             <div class="col-10">
                                                 <br>
@@ -59,7 +59,7 @@
                             <div class="mb-3">
                                 {{--                                mulai loop--}}
                                 @foreach($paket->getIncludedNotIncluded as $row)
-                                    @if($row->jenis=='not included')
+                                    @if($row->jenis_ini=='not included')
                                         <div class="row" id="includedss">
                                             <div class="col-10">
                                                 <br>

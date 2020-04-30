@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\IncludedNotIncluded;
 use App\Kabupaten;
@@ -82,8 +82,8 @@ class PaketWisataController extends Controller
                 'nama_paket' => $request->nama_paket_wisata,
                 'harga_paket' => $request->harga_paket_wisata,
                 'availability' => $request->availability,
-
                 'durasi' => $request->durasi,
+                'jenis_paket'=> $request->jenis,
                 'deskripsi_paket' => $request->deskripsi,
                 'rencana_perjalanan' => $request->rencana_perjalanan,
                 'tambahan' => $request->tambahan,
@@ -93,13 +93,13 @@ class PaketWisataController extends Controller
             echo $paket->id_paket;
             for ($i = 1; $i <= $request->jlh_included; $i++) {
                 $paket->getIncludedNotIncluded()->create([
-                    'jenis' => 'included',
+                    'jenis_ini' => 'included',
                     'keterangan' => $_POST['included_' . $i],
                 ]);
             }
             for ($i = 1; $i <= $request->jlh_not_included; $i++) {
                 $paket->getIncludedNotIncluded()->create([
-                    'jenis' => 'not included',
+                    'jenis_ini' => 'not included',
                     'keterangan' => $_POST['not_included_' . $i],
                 ]);
             }
@@ -166,8 +166,9 @@ class PaketWisataController extends Controller
             'nama_paket' => $request->nama_paket_wisata,
             'harga_paket' => $request->harga_paket_wisata,
             'availability' => $request->availability,
-
             'durasi' => $request->durasi,
+            'status' => $request->status,
+            'jenis_paket'=> $request->jenis,
             'deskripsi_paket' => $request->deskripsi,
             'rencana_perjalanan' => $request->rencana_perjalanan,
             'tambahan' => $request->tambahan,
@@ -210,7 +211,7 @@ class PaketWisataController extends Controller
         if($request->jlh_included!=0){
             for ($i = 1; $i <= $request->jlh_included; $i++) {
                 $paket->getIncludedNotIncluded()->create([
-                    'jenis' => 'included',
+                    'jenis_ini' => 'included',
                     'keterangan' => $_POST['included_' . $i],
                 ]);
             }
@@ -219,7 +220,7 @@ class PaketWisataController extends Controller
         if($request->jlh_not_included!=0){
             for ($i = 1; $i <= $request->jlh_not_included; $i++) {
                 $paket->getIncludedNotIncluded()->create([
-                    'jenis' => 'not included',
+                    'jenis_ini' => 'not included',
                     'keterangan' => $_POST['not_included_' . $i],
                 ]);
             }

@@ -119,7 +119,7 @@
                                     <strong>Included</strong>
                                     <ul>
                                         @foreach($paket->getIncludedNotIncluded as $ini)
-                                            @if($ini->jenis=='included')
+                                            @if($ini->jenis_ini=='included')
                                                 <li>
                                                     {{$ini->keterangan}}
                                                 </li>
@@ -132,7 +132,7 @@
 
                                     <ul>
                                         @foreach($paket->getIncludedNotIncluded as $ini)
-                                            @if($ini->jenis=='not included')
+                                            @if($ini->jenis_ini=='not included')
                                                 <li>
                                                     {{$ini->keterangan}}
                                                 </li>

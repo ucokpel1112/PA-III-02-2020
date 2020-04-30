@@ -21,43 +21,52 @@ Route::get('/eventkalender', function () {
     return view('front.eventkalender');
 })->name('event');
 
-Route::get('/adm/dashboard',function(){
+Route::get('/adm/dashboard', function () {
     return view('layout.admin.dashboard');
 });
-Route::get('/adm/kalender/listkalender',function(){
+Route::get('/adm/kalender/listkalender', function () {
     return view('admin.kalender-event.eventkalender');
 });
-Route::get('/adm/kalender/addkalender',function(){
+Route::get('/adm/kalender/addkalender', function () {
     return view('admin.kalender-event.tambahkalender');
 });
-Route::get('/adm/kalender/updatekalender',function(){
+Route::get('/adm/kalender/updatekalender', function () {
     return view('admin.kalender-event.updatekalender');
 });
-Route::get('/paket', function () {
-    return view('front.view-paket');
-})->name('paket');
-Route::get('/detail-paket', function () {
-    return view('front.detail-paket');
-})->name('paket.detail');
+
+//paket wisata Customer
+Route::namespace('Front')->group(function (){
+    Route::get('/paket', 'PaketWisataController@index')->name('paket');
+    Route::post('/paket', 'PaketWisataController@indexFilter')->name('paket.filter');
+    Route::get('/detail-paket', function () {
+        return view('front.paket.detail_paket');
+    })->name('paket.detail');
+});
 
 //Paket Wisata admin
-Route::get('/adm/paket','PaketWisataController@index')->name('admin.paket');
+Route::namespace('Admin')->group(function () {
+    Route::get('/adm/paket', 'PaketWisataController@index')->name('admin.paket');
 //edit paket
-Route::get('/adm/paket/edit/{id_paket}/choice','PaketWisataController@editChoice')->name('admin.paket.editChoice');
-Route::get('/adm/paket/edit/{id_paket}/utama','PaketWisataController@edit')->name('admin.paket.edit');
-Route::put('/adm/paket/edit/{id_paket}/utama/update','PaketWisataController@update')->name('admin.paket.update');
-Route::get('/adm/paket/edit/{id_paket}/ini','PaketWisataController@editIni')->name('admin.paket.ini');
-Route::get('/adm/paket/edit/{id_ini}/ini/hapus','PaketWisataController@hapusIni')->name('admin.paket.hapus.ini');
-Route::put('/adm/paket/edit/{id_paket}/ini/update','PaketWisataController@updateIni')->name('admin.paket.update.ini');
-Route::get('/adm/paket/edit/{id_paket}/layanan','PaketWisataController@editLayanan')->name('admin.paket.layanan');
-Route::get('/adm/paket/edit/{id_layanan}/{id_paket}/layanan/hapus','PaketWisataController@hapusLayanan')->name('admin.paket.hapus.layanan');
-Route::put('/adm/paket/edit/{id_paket}/layanan/update','PaketWisataController@updateLayanan')->name('admin.paket.update.layanan');
+    Route::get('/adm/paket/edit/{id_paket}/choice', 'PaketWisataController@editChoice')->name('admin.paket.editChoice');
+
+    Route::get('/adm/paket/edit/{id_paket}/utama', 'PaketWisataController@edit')->name('admin.paket.edit');
+    Route::put('/adm/paket/edit/{id_paket}/utama/update', 'PaketWisataController@update')->name('admin.paket.update');
+
+    Route::get('/adm/paket/edit/{id_paket}/ini', 'PaketWisataController@editIni')->name('admin.paket.ini');
+    Route::get('/adm/paket/edit/{id_ini}/ini/hapus', 'PaketWisataController@hapusIni')->name('admin.paket.hapus.ini');
+    Route::put('/adm/paket/edit/{id_paket}/ini/update', 'PaketWisataController@updateIni')->name('admin.paket.update.ini');
+
+    Route::get('/adm/paket/edit/{id_paket}/layanan', 'PaketWisataController@editLayanan')->name('admin.paket.layanan');
+    Route::get('/adm/paket/edit/{id_layanan}/{id_paket}/layanan/hapus', 'PaketWisataController@hapusLayanan')->name('admin.paket.hapus.layanan');
+    Route::put('/adm/paket/edit/{id_paket}/layanan/update', 'PaketWisataController@updateLayanan')->name('admin.paket.update.layanan');
 
 //view Paket
-Route::get('/adm/paket/show/{id_paket}','PaketWisataController@show')->name('admin.paket.show');
+    Route::get('/adm/paket/show/{id_paket}', 'PaketWisataController@show')->name('admin.paket.show');
 
 //craete new paket
-Route::get('/adm/paket/add','PaketWisataController@create')->name('admin.paket.tambah');
-Route::post('/adm/paket','PaketWisataController@store')->name('admin.paket.store');
+    Route::get('/adm/paket/add', 'PaketWisataController@create')->name('admin.paket.tambah');
+    Route::post('/adm/paket', 'PaketWisataController@store')->name('admin.paket.store');
 //hapus
-Route::delete('/adm/paket/delete/{id_paket}','PaketWisataController@destroy')->name('admin.paket.hapus');
+    Route::delete('/adm/paket/delete/{id_paket}', 'PaketWisataController@destroy')->name('admin.paket.hapus');
+
+});
