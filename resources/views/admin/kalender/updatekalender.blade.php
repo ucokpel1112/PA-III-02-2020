@@ -30,7 +30,7 @@
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form role="form" action="{{ route('admin.kalender.updatekalender',$kalenders->$id_kalenderevent) }}"  method="post" enctype="multipart/form-data">
+                <form role="form" action="{{ route('updatekalender',$kalenders->id_kalenderevent) }}"  method="post" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
                         <div class="card-body">

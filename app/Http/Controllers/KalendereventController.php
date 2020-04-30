@@ -72,4 +72,11 @@ class KalendereventController extends Controller
         return view ('front.eventkalender',compact('kalenders'));
     }
 
+    public function edit($id_kalenderevent){
+        $id = $id_kalenderevent;
+        $kalenders = KalenderEvent::find($id);
+//        print_r($kalenders);
+        return view('admin.kalender.updatekalender',compact('kalenders'));
+    }
+
 }

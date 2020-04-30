@@ -17,7 +17,7 @@
         </div><!-- /.container-fluid -->
         </section>
 
-    
+
     <!-- Main content -->
                 <section class="content">
                 <div class="card card-solid">
@@ -48,7 +48,7 @@
                         </div>
                         <div class="card-footer">
                     <div class="text-right">
-                        <a href="{{ url('/adm/updatekalender',$kalenders->id_kalenderevent) }}" class="btn btn-sm bg-warning">
+                        <a href="{{ route('editkalender',$kalenders->id_kalenderevent) }}" class="btn btn-sm bg-warning">
                         <i class="fas fa-edit"></i> Update
                         </a>
                         <a href="#" class="btn btn-sm btn-danger">
@@ -56,17 +56,17 @@
                         </a>
                     </div>
                     </div>
-                        
+
                     </div>
                     </div>
-                    
-                    
-                    
-                    @endforeach 
+
+
+
+                    @endforeach
 
                 </div>
                 </div>
-                
+
             <!-- /.card-body -->
             <div class="card-footer">
             <nav aria-label="Contacts Page Navigation">

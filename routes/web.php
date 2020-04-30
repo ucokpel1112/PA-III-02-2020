@@ -26,10 +26,9 @@ Route::get('/detail-event', function () {
 })->name('event');
 //admin
 
-Route::get('/adm/dashboard', function () {
+Route::get('/adm/dashboard',function(){
     return view('layout.admin.dashboard');
 });
-
 //kalender
 Route::get('/adm/listkalender','KalendereventController@index')->name('listkalender');
 Route::get('/adm/addkalender',function(){
@@ -40,9 +39,7 @@ Route::get('/adm/addkalender',function(){
 // });
 Route::post('/adm/tambahkalender','KalendereventController@store')->name('tambahkalender');
 Route::put('/adm/updatekalender/{id_kalenderevent}/utama/update','KalendereventController@update')->name('updatekalender');
-Route::get('/adm/updatekalender',function(){
-    return view('admin.kalender.updatekalender');
-});
+Route::get('/adm/updatekalender/{id_kalenderevent}','KalendereventController@edit')->name('editkalender');
 
 
 
