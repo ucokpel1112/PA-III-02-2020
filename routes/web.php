@@ -37,12 +37,11 @@ Route::get('/adm/addkalender',function(){
 // Route::get('/adm/listkalender',function(){
 //     return view('admin.kalender.eventkalender');
 // });
+
 Route::post('/adm/tambahkalender','KalendereventController@store')->name('tambahkalender');
 Route::put('/adm/updatekalender/{id_kalenderevent}/utama/update','KalendereventController@update')->name('updatekalender');
-Route::get('/adm/updatekalender',function(){
-    return view('admin.kalender.updatekalender');
-});
-
+Route::get('/adm/updatekalender/{id_kalenderevent}','KalendereventController@edit')->name('editkalender');
+Route::get('/eventkalender/detail/show/{id_kalenderevent}','KalendereventController@detail')->name('detail-eventkalender');
 
 
 

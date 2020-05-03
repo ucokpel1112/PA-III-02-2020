@@ -50,6 +50,7 @@ class KalendereventController extends Controller
 
             $file->move('public/storage/Image/kalender/', $gambar);
         }
+
         $kalender->update([
             'nama_event' => $request->nama_event,
             'nama_tempat' => $request->nama_tempat,
@@ -60,16 +61,28 @@ class KalendereventController extends Controller
             'gambar_event' => $gambar,
 
         ]);
-        return redirect(route('admin.kalender.updatekalender', $id_kalenderevent));
+        return view ('admin/kalender/eventkalender')->with('admin/kalender/eventkalender',$id_kalenderevent);
+
     }
     public function getAll(){
         $kalenders = KalenderEvent::inRandomOrder()->limit(1)->get();
         return view('admin.kalender.updatekalender',compact('kalenders'));
     }
     public function customer_all(){
-        $kalenders = KalenderEvent::inRandomOrder()->limit(1)->get();
+        $kalenders = KalenderEvent::inRandomOrder()->limit(3)->get();
 
         return view ('front.eventkalender',compact('kalenders'));
+    }
+    public function detail($id_kalenderevent){
+        $kalenders = KalenderEvent::where('id_kalenderevent', $id_kalenderevent)->first();
+        return view('front.detail-eventkalender',compact('kalenders'));
+    }
+
+    public function edit($id_kalenderevent){
+        $id = $id_kalenderevent;
+        $kalenders = KalenderEvent::find($id);
+//        print_r($kalenders);
+        return view('admin.kalender.updatekalender',compact('kalenders'));
     }
 
 }
