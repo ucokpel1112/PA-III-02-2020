@@ -44,4 +44,10 @@
       <!-- /.card -->
 
     </section>
+<<<<<<< HEAD
 @endsection
+=======
+
+@endsection
+
+>>>>>>> kris_2

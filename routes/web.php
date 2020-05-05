@@ -17,22 +17,35 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/eventkalender', function () {
-    return view('front.eventkalender');
+// Route::get('/eventkalender', function () {
+//     return view('front.eventkalender');
+// })->name('event');
+Route::get('/eventkalender','KalendereventController@customer_all')->name('eventkalender');
+Route::get('/detail-event', function () {
+    return view('front.detail-eventkalender');
 })->name('event');
+//admin
 
 Route::get('/adm/dashboard',function(){
     return view('layout.admin.dashboard');
 });
-Route::get('/adm/kalender/listkalender',function(){
-    return view('admin.kalender-event.eventkalender');
+//kalender
+Route::get('/adm/listkalender','KalendereventController@index')->name('listkalender');
+Route::get('/adm/addkalender',function(){
+    return view('admin.kalender.tambahkalender');
 });
-Route::get('/adm/kalender/addkalender',function(){
-    return view('admin.kalender-event.tambahkalender');
+// Route::get('/adm/listkalender',function(){
+//     return view('admin.kalender.eventkalender');
+// });
+Route::post('/adm/tambahkalender','KalendereventController@store')->name('tambahkalender');
+Route::put('/adm/updatekalender/{id_kalenderevent}/utama/update','KalendereventController@update')->name('updatekalender');
+Route::get('/adm/updatekalender',function(){
+    return view('admin.kalender.updatekalender');
 });
-Route::get('/adm/kalender/updatekalender',function(){
-    return view('admin.kalender-event.updatekalender');
-});
+
+
+
+
 Route::get('/paket', function () {
     return view('front.view-paket');
 })->name('paket');
