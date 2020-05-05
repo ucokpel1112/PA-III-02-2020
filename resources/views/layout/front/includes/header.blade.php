@@ -6,7 +6,7 @@
                         <div class="row align-items-center">
                             <div class="col-xl-2 col-lg-2">
                                 <div class="logo">
-                                    <a href="index.html">
+                                    <a href="/">
                                         <img src="img/logos.png" alt="">
                                     </a>
                                 </div>
@@ -15,17 +15,12 @@
                                 <div class="main-menu  d-none d-lg-block">
                                     <nav>
                                         <ul id="navigation">
-                                            <li><a class="active" href="index.html">Home</a></li>
+                                            <li><a class="active" href="/">Home</a></li>
                                             <li><a href="about.html">About</a></li>
                                             <li><a class="" href="travel_destination.html"> Destinasi</a></l/li>
-                                            <li><a href="#">Paket Wisata <i class="ti-angle-down"></i></a>
-                                                <ul class="submenu">
-                                                        <li><a href="destination_details.html">Testimoni</a></li>
-                                                        <li><a href="elements.html">elements</a></li>
-                                                </ul>
-                                            </li>
+                                            <li><a href="{{route('paket')}}">Paket Wisata </a></li>
                                             <li><a href="{{ url('/eventkalender') }}">Kalender Event </a>
-                                                
+
                                             </li>
                                             <li><a href="contact.html">Kontak   </a></li>
                                         </ul>
@@ -34,7 +29,7 @@
                             </div>
                             <div class="col-xl-4 col-lg-4 d-none d-lg-block">
                                 <div class="social_wrap d-flex align-items-center justify-content-end">
-                                    
+
                                     <div class="social_links d-none d-xl-block">
                                         <ul>
                                             <li><a href="#"> <i class="fa fa-instagram"></i> </a></li>
