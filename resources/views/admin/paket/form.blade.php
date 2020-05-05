@@ -48,6 +48,18 @@
                                     {{--                                    <p class="text-danger">{{$error->first('durasi')}}</p>--}}
                                 </div>
                                 <div class="form-group">
+                                    <label for="jadwal">Jadwal Mulai Kegiatan Paket</label>
+                                    <input type="date" class="form-control" name="jadwal" id="jadwal" required>
+                                    {{--                                    <p class="text-danger">{{$error->first('durasi')}}</p>--}}
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="kuota">Kuota Batas Pesanan</label>
+                                    <input type="number" class="form-control" min="1" name="kuota" id="kuota"
+                                           placeholder="Kuota Batas Pesanan" required>
+                                    {{--                                    <p class="text-danger">{{$error->first('durasi')}}</p>--}}
+                                </div>
+                                <div class="form-group">
                                     <label for="deskripsi">Deskripsi Paket</label>
                                     <div class="mb-3">
                                     <textarea class="textarea" id="deskripsi" name="deskripsi"
@@ -270,11 +282,18 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for=jenis">Jenis Paket Wisata</label>
-                                    <input type="text" class="form-control" name="jenis" id="jenis"
-                                           placeholder="Jenis Paket Wisata" required>
+                                    <label for="jadwal">Jadwal Mulai Kegiatan Paket</label>
+                                    <input type="date" class="form-control" value="{{$paket->jadwal}}" name="jadwal" id="jadwal" required>
                                     {{--                                    <p class="text-danger">{{$error->first('durasi')}}</p>--}}
                                 </div>
+
+                                <div class="form-group">
+                                    <label for="kuota">Kuota Batas Pesanan</label>
+                                    <input type="number" class="form-control" min="1" value="{{$paket->kuota_pesanan}}" name="kuota" id="kuota"
+                                           placeholder="Kuota Batas Pesanan" required>
+                                    {{--                                    <p class="text-danger">{{$error->first('durasi')}}</p>--}}
+                                </div>
+
                                 <div class="form-group">
                                     <label for="deskripsi">Deskripsi Paket</label>
                                     <div class="mb-3">

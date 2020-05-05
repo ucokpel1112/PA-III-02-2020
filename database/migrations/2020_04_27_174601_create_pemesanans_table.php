@@ -21,7 +21,6 @@ class CreatePemesanansTable extends Migration
             $table->foreign('paket_id')->references('id_paket')->on('paket_wisatas');
             $table->integer('status');
             $table->string('pesan');
-            $table->string('tanggal_rencana_wisata');
             $table->integer('jumlah_peserta');
             $table->timestamps();
         });

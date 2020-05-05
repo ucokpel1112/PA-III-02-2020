@@ -2,15 +2,16 @@
 @section('content')
 
 
-    <div class="destination_banner_wrap overlay" style="background-image: url({{asset('/img/banner/lake-toba-1.jpg')}});">
+    <div class="destination_banner_wrap overlay"
+         style="background-image: url({{asset('/img/paket/'.$paket->gambar)}});">
         <div class="destination_text text-center">
-            <h3>Destinasi Alam Desa Meat</h3>
-            <p>Kabupaten Toba</p>
+            <h3>{{$paket->nama_paket}}</h3>
+            <p>Kabupaten {{ucfirst($paket->getKabupaten->nama_kabupaten)}}</p>
             <a style="margin-top: 50px;" href="#pemesanan" class="boxed-btn3">Pemesanan</a>
             {{--            <a    class="genric-btn info e-large">Pemesanan</a>--}}
         </div>
     </div>
-    <div class="container-fluid" >
+    <div class="container-fluid">
         <div class="row cakupan">
             <div class="col item">
                 <div class="row simbol">
@@ -20,7 +21,7 @@
                 </div>
                 <div class="row">
                     <div class="col">
-                        <h1 style="color: white;">5 Hari</h1>
+                        <h2 style="color: white;">{{$paket->durasi}}</h2>
                     </div>
                 </div>
             </div>
@@ -32,7 +33,7 @@
                 </div>
                 <div class="row">
                     <div class="col">
-                        <h1 style="color: white;">5 Orang</h1>
+                        <h2 style="color: white;">{{$paket->availability}} Orang</h2>
                     </div>
                 </div>
             </div>
@@ -45,42 +46,40 @@
                     <div class="destination_info">
                         <h3>Description</h3>
                         <hr>
-                        <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing.</p>
-                        <p>Variations of passages of lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing.</p>
+                        {{--                        Mulai Deskripsi--}}
+                        <?php echo($paket->deskripsi_paket); ?>
+                        {{--                        Akhir Deskripsi--}}
                         <br><br>
-                        <h3>Itenary</h3>
+                        <h3>Itinerary</h3>
                         <hr>
-                        <h4>Day-01</h4>
-                        <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words.</p>
-                        <h4>Day-02</h4>
-                        <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words.</p>
-                        <h4>Day-03</h4>
-                        <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words.</p>
+                        {{--                    Mulai Itinerary        --}}
+                        <?= $paket->rencana_perjalanan ?>
+                        {{--                        Akhir Itinerary--}}
                         <br><br>
                     </div>
                     <div class="destination_info">
                         <h3>Tambahan</h3>
                         <hr>
-                        <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing.</p>
+                        <?= $paket->tambahan ?>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div id="pemesanan" class="newletter_area overlay">
+    <div class="newletter_area overlay">
         <div class="container">
             <div class="row justify-content-center align-items-center">
                 <div class="col-lg-10">
-                    <div class="row align-items-center">
+                    <div class="row">
                         <div class="col-lg-6">
                             <div class="newsletter_text">
                                 <center><h4>Included</h4></center>
                                 <ul class="unordered-list ior">
-                                    <li>Fta Keys</li>
-                                    <li>For Women Only Your Computer Usage</li>
-                                    <li>Dealing With Technical Support 10 Useful Tips</li>
-                                    <li>Make Myspace Your Best Designed Space</li>
-                                    <li>Cleaning And Organizing Your Computer</li>
+                                    @foreach($paket->getIncludedNotIncluded as $row)
+                                        @if($row->jenis_ini=='included')
+                                            <li>{{$row->keterangan}}</li>
+                                        @endif
+                                    @endforeach
                                 </ul>
                             </div>
                         </div>
@@ -88,11 +87,11 @@
                             <div class="newsletter_text">
                                 <center><h4>Not Included</h4></center>
                                 <ul class="unordered-list ior">
-                                    <li>Fta Keys</li>
-                                    <li>For Women Only Your Computer Usage</li>
-                                    <li>Dealing With Technical Support 10 Useful Tips</li>
-                                    <li>Make Myspace Your Best Designed Space</li>
-                                    <li>Cleaning And Organizing Your Computer</li>
+                                    @foreach($paket->getIncludedNotIncluded as $row)
+                                        @if($row->jenis_ini=='not included')
+                                            <li>{{$row->keterangan}}</li>
+                                        @endif
+                                    @endforeach
                                 </ul>
                             </div>
                         </div>
@@ -101,25 +100,31 @@
             </div>
         </div>
     </div>
-    <div class="destination_details_info">
+    <div id="pemesanan" class="destination_details_info">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 col-md-9">
-                    <div ></div>
-                    <div  class="contact_join">
-                        <h3>Pemesanan (Rp.100.000 / Person)</h3>
-                        <form  action="#">
+                    <div></div>
+                    <div class="contact_join">
+                        <h3>Pemesanan <br><br>(Rp.{{number_format($paket->harga_paket)}} / Person)</h3>
+                        <form action="{{route('paket.pesan',$paket->id_paket)}}">
+                            @csrf
+                            @method('PUT')
                             <div class="row">
                                 <div class="col-lg-12 col-md-12">
                                     <div class="single_input">
-                                        <input type="number" placeholder="Number of Person">
+                                        <input type="number" min="1" name="jumlah_peserta" placeholder="Jumlah Peserta Wisata">
                                     </div>
                                 </div>
+                            </div>
+                            <div class="row">
                                 <div class="col-lg-12">
                                     <div class="single_input">
-                                        <textarea name="" id="" cols="30" rows="10"placeholder="Message" ></textarea>
+                                        <textarea name="pesan" id="pesan" cols="30" rows="10" placeholder="Pesan/Pertanyaan Untuk Pemesanan"></textarea>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="row">
                                 <div class="col-lg-12">
                                     <div class="submit_btn">
                                         <button class="boxed-btn4" type="submit">submit</button>

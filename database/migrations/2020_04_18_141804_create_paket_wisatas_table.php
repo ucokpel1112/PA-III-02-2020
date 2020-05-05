@@ -24,6 +24,8 @@ class CreatePaketWisatasTable extends Migration
             $table->text('deskripsi_paket');
             $table->text('rencana_perjalanan')->nullable();
             $table->text('tambahan')->nullable();
+            $table->text('jadwal');
+            $table->integer('kuota_pesanan');
             $table->text('gambar');
             $table->unsignedBigInteger('kabupaten_id');
             $table->foreign('kabupaten_id')->references('id_kabupaten')->on('kabupatens');

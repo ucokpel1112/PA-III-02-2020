@@ -18,7 +18,7 @@ Route::get('/', function () {
 });
 
 Route::get('/eventkalender', function () {
-    return view('front.eventkalender');
+    return view('front.kalender-event.eventkalender');
 })->name('event');
 
 Route::get('/adm/dashboard', function () {
@@ -33,14 +33,15 @@ Route::get('/adm/kalender/addkalender', function () {
 Route::get('/adm/kalender/updatekalender', function () {
     return view('admin.kalender-event.updatekalender');
 });
-
+Route::get('/design',function(){
+   return view('home');
+});
 //paket wisata Customer
 Route::namespace('Front')->group(function (){
     Route::get('/paket', 'PaketWisataController@index')->name('paket');
     Route::post('/paket', 'PaketWisataController@indexFilter')->name('paket.filter');
-    Route::get('/detail-paket', function () {
-        return view('front.paket.detail_paket');
-    })->name('paket.detail');
+    Route::get('/paket/detail/{id_paket}', 'PaketWisataController@show')->name('paket.detail');
+    Route::put('/paket/{id_paket}/pesan','PaketWisataController@store')->name('paket.pesan');
 });
 
 //Paket Wisata admin
@@ -70,3 +71,7 @@ Route::namespace('Admin')->group(function () {
     Route::delete('/adm/paket/delete/{id_paket}', 'PaketWisataController@destroy')->name('admin.paket.hapus');
 
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

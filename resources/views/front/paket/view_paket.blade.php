@@ -29,10 +29,11 @@
                                         <div class="col-lg-12">
                                             <div class="single_select">
                                                 <select name="kabupaten">
-                                                    <option data-display="{{isset($kabnya)?$kabnya:'Kabupaten'}}">Kabupaten</option>
+                                                    <option data-display="Kabupaten">Kabupaten</option>
                                                     @foreach($kabupaten as $row)
                                                         <option
-                                                            value="{{$row->id_kabupaten}}">{{$row->nama_kabupaten}}</option>
+                                                            value="{{$row->id_kabupaten}}"
+                                                            data-display="{{$row->nama_kabupaten}}" {{(isset($id_kab)&&($id_kab==$row->id_kabupaten))?'selected':null}}>{{$row->nama_kabupaten}}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -40,11 +41,11 @@
                                         <div class="col-lg-12">
                                             <div class="single_select">
                                                 <select name="jenis">
-                                                    <option data-display="Jenis Perjalanan">Tipe/Jenis Perjalanan
+                                                    <option data-display="Tipe/Jenis Perjalanan">Tipe/Jenis Perjalanan
                                                     </option>
                                                     @foreach($jenis as $row)
-                                                        <option
-                                                            value="{{$row->jenis_paket}}">{{$row->jenis_paket}}</option>
+                                                        <option value="{{$row->jenis_paket}}"
+                                                                data-display="{{$row->jenis_paket}}" {{(isset($jeniss)&&(strcmp($jeniss,$row->jenis_paket)==0)?'selected':null)}}>{{$row->jenis_paket}}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -62,16 +63,17 @@
                 </div>
                 <div class="col-lg-8">
                     <div class="row">
-                        <div class="col-lg-6 col-md-6">
-                            <div class="single_place">
-                                <div class="thumb">
-                                    <img src="img/banner/toba1.jpg" alt="">
-                                    <a href="#" class="prise">Rp.800.000</a>
-                                </div>
-                                <div class="place_info">
-                                    <a href="destination_details.html"><h3>Destinasi Alam Samosir</h3></a>
-                                    <p>Kabupaten Samosir</p>
-                                    <div class="rating_days d-flex justify-content-between">
+                        @forelse($paket as $row)
+                            <div class="col-lg-6 col-md-6">
+                                <div class="single_place">
+                                    <div class="thumb">
+                                        <img src="{{asset('img/paket/'.$row->gambar)}}" alt="">
+                                        <a href="#" class="prise">Rp.{{number_format($row->harga_paket)}}</a>
+                                    </div>
+                                    <div class="place_info">
+                                        <a href="{{route('paket.detail',$row->id_paket)}}"><h3>{{$row->nama_paket}}</h3></a>
+                                        <p>{{$row->getKabupaten->nama_kabupaten}}</p>
+                                        <div class="rating_days d-flex justify-content-between">
                                         <span class="d-flex justify-content-center align-items-center">
                                              <i class="fa fa-star"></i>
                                              <i class="fa fa-star"></i>
@@ -80,98 +82,25 @@
                                              <i class="fa fa-star"></i>
                                              <a href="#">(20 Review)</a>
                                         </span>
-                                        <div class="days">
-                                            <i class="fa fa-clock-o"></i>
-                                            <a href="#">1 Hari</a>
+                                            <div class="days">
+                                                <i class="fa fa-clock-o"></i>
+                                                <a href="#">{{$row->durasi}}</a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6">
-                            <div class="single_place">
-                                <div class="thumb">
-                                    <img src="img/banner/toba2.jpg" alt="">
-                                    <a href="#" class="prise">Rp.800.000</a>
-                                </div>
-                                <div class="place_info">
-                                    <a href="destination_details.html"><h3>Destinasi Alam Samosir</h3></a>
-                                    <p>Kabupaten Samosir</p>
-                                    <div class="rating_days d-flex justify-content-between">
-                                        <span class="d-flex justify-content-center align-items-center">
-                                             <i class="fa fa-star"></i>
-                                             <i class="fa fa-star"></i>
-                                             <i class="fa fa-star"></i>
-                                             <i class="fa fa-star"></i>
-                                             <i class="fa fa-star"></i>
-                                             <a href="#">(20 Review)</a>
-                                        </span>
-                                        <div class="days">
-                                            <i class="fa fa-clock-o"></i>
-                                            <a href="#">1 Hari</a>
-                                        </div>
-                                    </div>
-                                </div>
+                        @empty
+                            <div class="col"></div>
+                            <div class="text-center col-lg-6 col-md-6">
+                                    <h4>Paket Wisata Sedang Tidak Ada !</h4>
                             </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6">
-                            <div class="single_place">
-                                <div class="thumb">
-                                    <img src="img/banner/toba3.jpg" alt="">
-                                    <a href="#" class="prise">Rp.800.000</a>
-                                </div>
-                                <div class="place_info">
-                                    <a href="destination_details.html"><h3>Destinasi Alam Samosir</h3></a>
-                                    <p>Kabupaten Samosir</p>
-                                    <div class="rating_days d-flex justify-content-between">
-                                        <span class="d-flex justify-content-center align-items-center">
-                                             <i class="fa fa-star"></i>
-                                             <i class="fa fa-star"></i>
-                                             <i class="fa fa-star"></i>
-                                             <i class="fa fa-star"></i>
-                                             <i class="fa fa-star"></i>
-                                             <a href="#">(20 Review)</a>
-                                        </span>
-                                        <div class="days">
-                                            <i class="fa fa-clock-o"></i>
-                                            <a href="#">1 Hari</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6">
-                            <div class="single_place">
-                                <div class="thumb">
-                                    <img src="img/banner/toba5.jpg" alt="">
-                                    <a href="#" class="prise">Rp.800.000</a>
-                                </div>
-                                <div class="place_info">
-                                    <a href="destination_details.html"><h3>Destinasi Alam Samosir</h3></a>
-                                    <p>Kabupaten Samosir</p>
-                                    <div class="rating_days d-flex justify-content-between">
-                                        <span class="d-flex justify-content-center align-items-center">
-                                             <i class="fa fa-star"></i>
-                                             <i class="fa fa-star"></i>
-                                             <i class="fa fa-star"></i>
-                                             <i class="fa fa-star"></i>
-                                             <i class="fa fa-star"></i>
-                                             <a href="#">(20 Review)</a>
-                                        </span>
-                                        <div class="days">
-                                            <i class="fa fa-clock-o"></i>
-                                            <a href="#">1 Hari</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                                <div class="col"></div>
+                        @endforelse
                     </div>
                     <div class="row">
                         <div class="col-lg-12">
-                            <div class="more_place_btn text-center">
-                                <a class="boxed-btn4" href="#">Paket Lainnya</a>
-                            </div>
+                                {!! $paket->links() !!}
                         </div>
                     </div>
                 </div>

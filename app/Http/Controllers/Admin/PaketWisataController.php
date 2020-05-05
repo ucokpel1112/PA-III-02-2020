@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+use App\Http\Controllers\Controller;
 
 use App\IncludedNotIncluded;
 use App\Kabupaten;
@@ -84,6 +85,8 @@ class PaketWisataController extends Controller
                 'availability' => $request->availability,
                 'durasi' => $request->durasi,
                 'jenis_paket'=> $request->jenis,
+                'jadwal'=>$request->jadwal,
+                'kuota_pesanan'=>$request->kuota,
                 'deskripsi_paket' => $request->deskripsi,
                 'rencana_perjalanan' => $request->rencana_perjalanan,
                 'tambahan' => $request->tambahan,
@@ -169,6 +172,8 @@ class PaketWisataController extends Controller
             'durasi' => $request->durasi,
             'status' => $request->status,
             'jenis_paket'=> $request->jenis,
+            'jadwal'=>$request->jadwal,
+            'kuota_pesanan'=>$request->kuota,
             'deskripsi_paket' => $request->deskripsi,
             'rencana_perjalanan' => $request->rencana_perjalanan,
             'tambahan' => $request->tambahan,
