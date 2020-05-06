@@ -85,3 +85,7 @@ Route::get('/adm/paket/add','PaketWisataController@create')->name('admin.paket.t
 Route::post('/adm/paket','PaketWisataController@store')->name('admin.paket.store');
 //hapus
 Route::delete('/adm/paket/delete/{id_paket}','PaketWisataController@destroy')->name('admin.paket.hapus');
+
+Auth::routes(['verify' => true]);
+
+Route::get('/home', 'HomeController@index')->name('home');
