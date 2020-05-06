@@ -30,8 +30,8 @@ Route::get('/adm/dashboard',function(){
     return view('layout.admin.dashboard');
 });
 //kalender
-Route::get('/adm/listkalender','KalendereventController@index')->name('listkalender');
-Route::get('/adm/addkalender',function(){
+Route::get('/adm/kalender/listkalender','KalendereventController@index')->name('listkalender');
+Route::get('/adm/kalender/addkalender',function(){
     return view('admin.kalender.tambahkalender');
 });
 // Route::get('/adm/listkalender',function(){
