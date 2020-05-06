@@ -8,9 +8,10 @@ class LayananWisata extends Model
 {
     protected $table = 'layanan_wisatas';
 
+    protected $fillable = ['nama_layanan','jenisLayanan_id','kabupaten_id','deskripsi_layanan'];
 
     public function getJenisLayanan(){
-        return $this->belongsTo(JenisLayanan::class, 'jenislayanan_id','id_jenis_layanan');
+        return $this->belongsTo(JenisLayanan::class, 'jenisLayanan_id','id');
     }
     public function getKabupaten(){
         return $this->belongsTo(Kabupaten::class, 'kabupaten_id','id_kabupaten');
