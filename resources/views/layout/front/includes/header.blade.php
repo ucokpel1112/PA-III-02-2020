@@ -17,7 +17,12 @@
                                     <ul id="navigation">
                                         <li><a class="active" href="index.html">home</a></li>
                                         <li><a href="about.html">About</a></li>
-                                        <li><a href="{{route('paket')}}">Paket Wisata</a></li>
+                                        <li><a href="#">Paket Wisata<i class="ti-angle-down"></i></a>
+                                            <ul class="submenu">
+                                                <li><a href="{{route('paket')}}">Paket Wisata</a></li>
+                                                <li><a href="{{route('pemesanan')}}">Pesanan Saya</a></li>
+                                            </ul>
+                                        </li>
                                         <li><a href="{{route('event')}}">Event Kalender</a></li>
                                         <li><a href="#">pages <i class="ti-angle-down"></i></a>
                                             <ul class="submenu">

@@ -10,10 +10,10 @@ class Transaksi extends Model
 
     protected $primaryKey = 'id_transaksi';
 
-    protected $fillable = ['pemesanan_id ','rekening_id','jumlah','gambar'];
+    protected $fillable = ['pemesanan_id','rekening_id','jumlah','gambar'];
 
     public function getPemesanan(){
-        return $this->hasMany(Pemesanan::class,'pemesanan_id','id_transaksi');
+        return $this->belongsTo(Pemesanan::class,'pemesanan_id','id_pemesanan');
     }
 
     public function getRekening(){

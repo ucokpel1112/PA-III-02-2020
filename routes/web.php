@@ -38,10 +38,16 @@ Route::get('/design',function(){
 });
 //paket wisata Customer
 Route::namespace('Front')->group(function (){
+    //paket
     Route::get('/paket', 'PaketWisataController@index')->name('paket');
     Route::post('/paket', 'PaketWisataController@indexFilter')->name('paket.filter');
     Route::get('/paket/detail/{id_paket}', 'PaketWisataController@show')->name('paket.detail');
-    Route::put('/paket/{id_paket}/pesan','PaketWisataController@store')->name('paket.pesan');
+    //pemesanan
+    Route::get('/pemesanan','PemesananController@index')->name('pemesanan');
+    Route::put('/paket/{id_paket}/pesan','PemesananController@store')->name('paket.pesan');
+    Route::put('/pemesanan/detail/{id_pemesanan}/upload','PemesananController@kirimTransaksi')->name('transaksi.kirim');
+    Route::get('/pemesanan/detail/{id_pemesanan}','PemesananController@show')->name('pemesanan.detail');
+    Route::delete('/pemesanan/cancel/{id_pemesanan}','PemesananController@cancel')->name('pemesanan.batal');
 });
 
 //Paket Wisata admin

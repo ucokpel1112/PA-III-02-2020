@@ -107,7 +107,7 @@
                     <div></div>
                     <div class="contact_join">
                         <h3>Pemesanan <br><br>(Rp.{{number_format($paket->harga_paket)}} / Person)</h3>
-                        <form action="{{route('paket.pesan',$paket->id_paket)}}">
+                        <form name="pemesanan" action="{{route('paket.pesan',$paket->id_paket)}}" method="POST">
                             @csrf
                             @method('PUT')
                             <div class="row">

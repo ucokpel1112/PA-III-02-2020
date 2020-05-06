@@ -12,7 +12,7 @@ class PaketWisataController extends Controller
 {
     public function index()
     {
-        $paket = paketWisata::orderBy('created_at', 'DESC')->paginate(10);;
+        $paket = paketWisata::where('status',1)->orderBy('created_at', 'DESC')->paginate(10);;
         $jenis = DB::table('paket_wisatas')->select('jenis_paket')->groupBy('jenis_paket')->get();
         $kabupaten = Kabupaten::all();
         return view('front.paket.view_paket', compact('paket', 'jenis', 'kabupaten'));
@@ -27,15 +27,15 @@ class PaketWisataController extends Controller
 
         if ($request->jenis == 'Tipe/Jenis Perjalanan') {
             if ($request->kabupaten == 'Kabupaten') {
-                $paket = paketWisata::orderBy('created_at', 'DESC')->paginate(10);
+                $paket = paketWisata::where('status',1)->orderBy('created_at', 'DESC')->paginate(10);
             } else {
-                $paket = paketWisata::where('kabupaten_id', $id_kab)->orderBy('created_at', 'DESC')->paginate(10);
+                $paket = paketWisata::where([['kabupaten_id', $id_kab],['status',1]])->orderBy('created_at', 'DESC')->paginate(10);
             }
         } else {
             if ($request->kabupaten == 'Kabupaten') {
-                $paket = paketWisata::where('jenis_paket','LIKE','%'.$request->jenis.'%')->orderBy('created_at', 'DESC')->paginate(10);
+                $paket = paketWisata::where([['jenis_paket','LIKE','%'.$request->jenis.'%'],['status',1]])->orderBy('created_at', 'DESC')->paginate(10);
             } else {
-                $paket = paketWisata::where([['kabupaten_id', $id_kab],['jenis_paket','LIKE','%'.$request->jenis.'%']])->orderBy('created_at', 'DESC')->paginate(10);
+                $paket = paketWisata::where([['status',1],['kabupaten_id', $id_kab],['jenis_paket','LIKE','%'.$request->jenis.'%']])->orderBy('created_at', 'DESC')->paginate(10);
             }
         }
 
