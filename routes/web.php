@@ -55,7 +55,7 @@ Route::namespace('Admin')->group(function () {
     //pemesanan
     Route::get('/adm/pemesanan','PemesananController@index')->name('admin.pemesanan');
     Route::get('/adm/pemesanan/show/{id_pemesanan}','PemesananController@show')->name('admin.pemesanan.show');
-    Route::post('/adm/pemesanan', 'PaketWisataController@indexFilter')->name('admin.pemesanan.filter');
+    Route::post('/adm/pemesanan', 'PemesananController@indexFilter')->name('admin.pemesanan.filter');
 
     Route::get('/adm/paket', 'PaketWisataController@index')->name('admin.paket');
 //edit paket

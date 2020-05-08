@@ -116,7 +116,7 @@
                     <a href="#" class="nav-link {{Request::segment(2) === 'pemesanan' ? 'active' : null}}">
                         <i class="nav-icon fas fa-copy"></i>
                         <p>
-                            Paket Wisata
+                            Pemesanan
                             <i class="fas fa-angle-left right"></i>
                         </p>
                     </a>

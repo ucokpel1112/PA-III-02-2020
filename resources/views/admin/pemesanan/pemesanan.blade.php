@@ -65,9 +65,9 @@
                             <td></td>
                             <td>
                                 <div class="form-group">
-                                    <label for="inputStatus">Paket</label>
                                     <select name="paket" class="form-control custom-select">
                                         <option selected="" disabled="">Pilih Paket</option>
+                                        <option value="semua">Semua Paket</option>
                                         @foreach($paket as $row)
                                             <option
                                                 value="{{$row->id_paket}}" {{(isset($id_paket)&&($id_paket==$row->id_paket))?'selected':null}}>{{$row->nama_paket}}</option>
@@ -77,9 +77,9 @@
                             </td>
                             <td>
                                 <div class="form-group">
-                                    <label for="inputStatus">Status</label>
                                     <select name="status" class="form-control custom-select">
                                         <option selected="" disabled="">Pilih Status</option>
+                                        <option value="semua">Semua Status</option>
                                         <option value="0" {{(isset($status)&&($status==0))?'selected':null}}>Pemesanan
                                             Dibatalkan
                                         </option>
