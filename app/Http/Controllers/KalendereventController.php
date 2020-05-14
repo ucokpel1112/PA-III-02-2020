@@ -17,7 +17,7 @@ class KalendereventController extends Controller
     public function index()
     {
 
-        $kalenders = KalenderEvent::latest()->limit(9)->get();
+        $kalenders = KalenderEvent::latest()->limit(20)->get();
         return view('admin.kalender.eventkalender', compact('kalenders'));
     }
 
@@ -34,7 +34,7 @@ class KalendereventController extends Controller
         $gambar = $file->getClientOriginalName();
         $kalender->gambar_event = $gambar;
         if ($kalender->save()) {
-            $file->move(\base_path() . "/public/storage/Image/kalender", $gambar);
+            $file->move(\base_path() . "/public/storage/img/kalender", $gambar);
 
             return view('admin/kalender/eventkalender')->with('admin/kalender/eventkalender', $kalender);
         }
@@ -52,7 +52,7 @@ class KalendereventController extends Controller
             $file = $request->file('gambar_event');
             $gambar = time() . Str::slug($request->nama_paket_wisata) . '.' . $file->getClientOriginalExtension();
 
-            $file->move('public/storage/Image/kalender/', $gambar);
+            $file->move('public/storage/img/kalender/', $gambar);
         }
 
         $kalender->update([
@@ -87,6 +87,10 @@ class KalendereventController extends Controller
         return view('front.detail-eventkalender', compact('kalenders'));
     }
 
+    public function admin_detail($id_kalenderevent){
+        $kalenders = KalenderEvent::where('id_kalenderevent',$id_kalenderevent)->first();
+        return view ('admin.kalender.detail-kalender',compact('kalenders'));
+    }
 
     public function edit($id_kalenderevent)
     {

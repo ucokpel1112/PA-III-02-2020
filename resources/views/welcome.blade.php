@@ -53,7 +53,7 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="single_destination">
                         <div class="thumb">
-                            <img src="{{asset('storage/Image/kalender/'.$kals->gambar_event)}}" width="200px" alt="">
+                            <img src="{{asset('storage/img/kalender/'.$kals->gambar_event)}}" width="200px" alt="">
                         </div>
                         <div class="content">
                               <a href="{{ route('detail-eventkalender',$kals->id_kalenderevent) }}"> <p class="d-flex align-items-center">{{$kals->nama_event}}</p></a>

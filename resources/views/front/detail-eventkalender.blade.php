@@ -18,7 +18,7 @@
                 <div class="col-lg-8 posts-list">
                     <div class="single-post">
                         <div class="feature-img">
-                            <img class="img-fluid" src="{{asset('storage/Image/kalender/'.$kalenders->gambar_event)}}" alt="">
+                            <img class="img-fluid" src="{{asset('storage/img/kalender/'.$kalenders->gambar_event)}}" alt="">
                         </div>
                         <div class="blog_details">
                             <h2>{{$kalenders->nama_event}}

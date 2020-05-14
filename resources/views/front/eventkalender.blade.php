@@ -21,7 +21,7 @@
                     @foreach($kalenders as $kalenders)
                     <article class="blog_item">
                         <div class="blog_item_img">
-                            <img class="card-img rounded-0" src="{{asset('storage/Image/kalender/'.$kalenders->gambar_event)}}" alt="">
+                            <img class="card-img rounded-0" src="{{asset('storage/img/kalender/'.$kalenders->gambar_event)}}" alt="">
                             <a href="#" class="blog_item_date">
                                 <h3>{{$kalenders->tanggal_event}}
 <!--                                    --><?php //echo date('d F Y');?>

@@ -43,9 +43,7 @@ Route::get('/adm/updatekalender/{id_kalenderevent}','KalendereventController@edi
 
 //detail customer
 Route::get('/eventkalender/detail/show/{id_kalenderevent}','KalendereventController@detail')->name('detail-eventkalender');
-Route::get('/adm/detailkalender/',function(){
-    return view('admin.kalender.detail-kalender');
-});
+Route::get('/adm/detailkalender/detail/show/{id_kalenderevent}','KalendereventController@admin_detail')->name('detail-admin');
 
 Route::delete('/adm/eventkalender/delete/{id_kalenderevent}','KalendereventController@destroy')->name('delete-eventkalender');
 

@@ -33,7 +33,7 @@
                                     <div class="row">
                                         <div class="col-7">
                                             <h2 class="lead"><b>Lokasi</b></h2>
-                                            <p class="text-muted text-sm"><b>   Deskripsi :</b> <?php echo substr(strip_tags(str_replace(PHP_EOL,'<br>',$kalenders->deskripsi_event),'<br>'),0,150);?> <a href="#">  baca selengkapnya...</a> </p>
+                                            <p class="text-muted text-sm"><b>   Deskripsi :</b> <?php echo substr(strip_tags(str_replace(PHP_EOL,'<br>',$kalenders->deskripsi_event),'<br>'),0,150);?> <a href="{{ route('detail-admin',$kalenders->id_kalenderevent) }}">  baca selengkapnya...</a> </p>
                                             <ul class="ml-4 mb-0 fa-ul text-muted">
                                                 <li class="small"><span class="fa-li"><i class="fa fa-map-marker "></i></span> {{$kalenders->nama_tempat}}</li>
                                                 <li class="small"><span class="fa-li"><i class="fa fa-calendar"></i></span> {{$kalenders->tanggal_event}}</li>
@@ -42,7 +42,7 @@
                                             </ul>
                                         </div>
                                         <div class="col-5 text-center">
-                                            <img src="{{asset('/storage/Image/kalender/'.$kalenders->gambar_event)}}" alt="" class="img-circle img-fluid">
+                                            <img src="{{asset('/storage/img/kalender/'.$kalenders->gambar_event)}}" alt="" class="img-circle img-fluid">
                                         </div>
                                     </div>
                                 </div>
