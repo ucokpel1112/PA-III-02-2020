@@ -1,5 +1,4 @@
 @extends('layout.admin.app')
-
 @section('content')
 <br>
     <section class="content">
@@ -15,14 +14,18 @@
                     <div class="col-12 col-sm-6">
                         <h3 class="my-3">{{$kalenders->nama_event}}</h3>
                         <hr>
+                        <ul class="ml-4 mb-0 fa-ul text-muted">
+                            <li class="small"><span class="fa-li"><i class="fa fa-map-marker "></i></span> {{$kalenders->nama_tempat}}</li>
+                            <li class="small"><span class="fa-li"><i class="fa fa-calendar"></i></span> {{$kalenders->tanggal_event}}</li>
+                            <li class="small"><span class="fa-li"><i class="fa fa-clock"></i></span> {{$kalenders->jam_event}}</li>
+                            <li class="small"><span class="fa-li"><i class="fa fa-location-arrow"></i></span> {{$kalenders->alamat_event}}</li>
+                        </ul>
+                        <hr>
                         <p><?php echo $kalenders->deskripsi_event;?></p>
                     </div>
                 </div>
             </div>
-            <!-- /.card-body -->
         </div>
-        <!-- /.card -->
-
     </section>
 
 @endsection
