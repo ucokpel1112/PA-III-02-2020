@@ -127,12 +127,12 @@
                                     <ul class="list-inline">
                                         <li class="list-inline-item">
                                             <img alt="Avatar" class="table-avatar"
-                                                 src="{{asset('img/paket/'.$row->getPaket->gambar)}}">
+                                                 src="{{asset('storage/img/paket/'.$row->getSesi->getPaket->gambar)}}">
                                         </li>
                                     </ul>
                                 </td>
                                 <td>
-                                    {{$row->getPaket->nama_paket}}
+                                    {{$row->getSesi->getPaket->nama_paket}}
                                 </td>
                                 <td class="project-state">
                                     <span class="badge badge-success">{{$row->defineStatus($row->status)}}</span>
@@ -161,12 +161,12 @@
                                     <ul class="list-inline">
                                         <li class="list-inline-item">
                                             <img alt="Avatar" class="table-avatar"
-                                                 src="{{asset('img/paket/'.$row->getPaket->gambar)}}">
+                                                 src="{{asset('storage/img/paket/'.$row->getSesi->getPaket->gambar)}}">
                                         </li>
                                     </ul>
                                 </td>
                                 <td>
-                                    {{$row->getPaket->nama_paket}}
+                                    {{$row->getSesi->getPaket->nama_paket}}
                                 </td>
                                 <td class="project-state">
                                     <span class="badge badge-success">{{$row->defineStatus($row->status)}}</span>
@@ -195,12 +195,12 @@
                                     <ul class="list-inline">
                                         <li class="list-inline-item">
                                             <img alt="Avatar" class="table-avatar"
-                                                 src="{{asset('img/paket/'.$row->getPaket->gambar)}}">
+                                                 src="{{asset('storage/img/paket/'.$row->getSesi->getPaket->gambar)}}">
                                         </li>
                                     </ul>
                                 </td>
                                 <td>
-                                    {{$row->getPaket->nama_paket}}
+                                    {{$row->getSesi->getPaket->nama_paket}}
                                 </td>
                                 <td class="project-state">
                                     <span class="badge badge-success">{{$row->defineStatus($row->status)}}</span>
@@ -229,12 +229,12 @@
                                     <ul class="list-inline">
                                         <li class="list-inline-item">
                                             <img alt="Avatar" class="table-avatar"
-                                                 src="{{asset('img/paket/'.$row->getPaket->gambar)}}">
+                                                 src="{{asset('storage/img/paket/'.$row->getSesi->getPaket->gambar)}}">
                                         </li>
                                     </ul>
                                 </td>
                                 <td>
-                                    {{$row->getPaket->nama_paket}}
+                                    {{$row->getSesi->getPaket->nama_paket}}
                                 </td>
                                 <td class="project-state">
                                     <span class="badge badge-success">{{$row->defineStatus($row->status)}}</span>
@@ -263,12 +263,12 @@
                                     <ul class="list-inline">
                                         <li class="list-inline-item">
                                             <img alt="Avatar" class="table-avatar"
-                                                 src="{{asset('img/paket/'.$row->getPaket->gambar)}}">
+                                                 src="{{asset('storage/img/paket/'.$row->getSesi->getPaket->gambar)}}">
                                         </li>
                                     </ul>
                                 </td>
                                 <td>
-                                    {{$row->getPaket->nama_paket}}
+                                    {{$row->getSesi->getPaket->nama_paket}}
                                 </td>
                                 <td class="project-state">
                                     <span class="badge badge-success">{{$row->defineStatus($row->status)}}</span>

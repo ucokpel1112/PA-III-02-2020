@@ -13,6 +13,6 @@ class Rekening extends Model
     protected $fillable = ['nama_bank ','nomor_rekening','gambar'];
 
     public function getTransaksi(){
-        return $this->belongsTo(Transaksi::class,'rekening_id','id_rekening');
+        return $this->hasMany(Transaksi::class,'rekening_id','id_rekening');
     }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Front;
 use App\Http\Controllers\Controller;
 use App\Kabupaten;
 use App\paketWisata;
+use App\Sesi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -45,7 +46,8 @@ class PaketWisataController extends Controller
 
     public function show($id_paket){
         $paket = paketWisata::find($id_paket);
+        $sesi = Sesi::where([['paket_id',$id_paket],['status',1]])->get();
 
-        return view('front.paket.detail_paket',compact('paket'));
+        return view('front.paket.detail_paket',compact('paket','sesi'));
     }
 }

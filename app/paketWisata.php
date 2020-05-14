@@ -13,8 +13,8 @@ class paketWisata extends Model
     public function getIncludedNotIncluded(){
         return $this->hasMany(IncludedNotIncluded::class,'paket_wisata_id','id_paket');
     }
-    public function getPemesanan(){
-        return $this->hasMany(Pemesanan::class,'paket_id','id_paket');
+    public function getSesi(){
+        return $this->hasMany(Sesi::class,'paket_id','id_paket');
     }
     public function getKabupaten(){
         return $this->belongsTo(kabupaten::class,'kabupaten_id','id_kabupaten');

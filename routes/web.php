@@ -52,10 +52,21 @@ Route::namespace('Front')->group(function (){
 
 //Paket Wisata admin
 Route::namespace('Admin')->group(function () {
+    //sesi
+    Route::get('/adm/sesi/add/{id_paket}', 'PaketWisataController@createSesi')->name('admin.sesi.create');
+    Route::put('/adm/sesi/{id_paket}', 'PaketWisataController@storeSesi')->name('admin.sesi.store');
+    Route::get('/adm/sesi/edit/{id_sesi}','PaketWisataController@editSesi')->name('admin.sesi.edit');
+    Route::put('/adm/sesi/edit/{id_sesi}/update', 'PaketWisataController@updateSesi')->name('admin.sesi.update');
+    Route::delete('/adm/sesi/delete/{id_sesi}', 'PaketWisataController@destroySesi')->name('admin.sesi.delete');
+
+
+
     //pemesanan
     Route::get('/adm/pemesanan','PemesananController@index')->name('admin.pemesanan');
     Route::get('/adm/pemesanan/show/{id_pemesanan}','PemesananController@show')->name('admin.pemesanan.show');
     Route::post('/adm/pemesanan', 'PemesananController@indexFilter')->name('admin.pemesanan.filter');
+    Route::put('/adm/pemesanan/transaksi/konfirmasi/{id_pemesanan}', 'PemesananController@konfirmasiPembayaran')->name('admin.pemesanan.konfirmasi');
+    Route::put('/adm/pemesanan/ubahPesan/{id_pemesanan}', 'PemesananController@ubahPesan')->name('admin.pemesanan.ubahPesan');
 
     Route::get('/adm/paket', 'PaketWisataController@index')->name('admin.paket');
 //edit paket

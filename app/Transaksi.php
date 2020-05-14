@@ -17,6 +17,6 @@ class Transaksi extends Model
     }
 
     public function getRekening(){
-        return $this->hasMany(Rekening::class,'rekening_id','id_transaksi');
+        return $this->belongsTo(Rekening::class,'rekening_id','id_rekening');
     }
 }

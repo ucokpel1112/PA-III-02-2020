@@ -114,7 +114,7 @@
                 </li>
                 <li class="nav-item has-treeview {{Request::segment(2) === 'pemesanan' ? 'menu-open' : null}}">
                     <a href="#" class="nav-link {{Request::segment(2) === 'pemesanan' ? 'active' : null}}">
-                        <i class="nav-icon fas fa-copy"></i>
+                        <i class="nav-icon fas fa-edit"></i>
                         <p>
                             Pemesanan
                             <i class="fas fa-angle-left right"></i>

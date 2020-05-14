@@ -30,6 +30,8 @@
                                         Wisata</a></li>
                                 <li class="nav-item"><a class="nav-link" href="#included-not-included"
                                                         data-toggle="tab">Included & Not Included</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#sesi"
+                                                        data-toggle="tab">Sesi/Jadwal Paket Wisata</a></li>
                             </ul>
                         </div>
                         <!-- /.card-header -->
@@ -100,7 +102,7 @@
                                     <p></p>
                                     <div class="row">
                                         <div class="col-sm-10">
-                                            <img class="img-fluid" src="{{asset('img/paket/'.$paket->gambar)}}"
+                                            <img class="img-fluid" src="{{asset('storage/img/paket/'.$paket->gambar)}}"
                                                  alt="Photo">
                                         </div>
                                     </div>
@@ -141,6 +143,115 @@
                                     </ul>
 
                                     <hr>
+                                </div>
+                                <div class="tab-pane" id="sesi">
+                                    <a class="btn btn-success btn-sm" href="{{route('admin.sesi.create',$paket->id_paket)}}">
+                                        <i class="fas fa-pencil-alt">
+                                        </i>
+                                        Create
+                                    </a>
+                                    <table class="table table-striped projects">
+                                        <thead>
+                                        <tr>
+                                            <th style="width: 1%">
+                                                ID
+                                            </th>
+                                            <th style="width: 20%">
+                                                Kuota Peserta
+                                            </th>
+                                            <th style="width: 30%">
+                                                Jadwal/tanggal Kegiatan Paket
+                                            </th>
+                                            <th class="text-center">
+                                                Status
+                                            </th>
+                                            <th style="width: 30%">
+                                            </th>
+
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {{--                    mulai loop data--}}
+                                        @forelse($sesi as $index =>  $row)
+                                            <tr>
+                                                <td>
+                                                    {{$index+1}}
+                                                </td>
+                                                <td>
+                                                    <ul class="list-inline">
+                                                        <li class="list-inline-item">
+                                                            {{$row->kuota_peserta}}
+                                                        </li>
+                                                    </ul>
+                                                </td>
+                                                <td>
+                                                    {{$row->jadwal}}
+                                                </td>
+                                                <td class="project-state">
+                                                    {{$row->defineStatus($row->status)}}
+                                                </td>
+
+                                                <td class="project-actions text-right">
+                                                    <a class="btn btn-info btn-sm"
+                                                       href="{{ route('admin.sesi.edit',$row->id_sesi) }}">
+                                                        <i class="fas fa-pencil-alt">
+                                                        </i>
+                                                        Edit
+                                                    </a>
+                                                    <button type="button" class="btn btn-danger btn-sm"
+                                                            data-toggle="modal"
+                                                            data-target="#delete_sesi_{{$row->id_sesi}}">
+                                                        Delete
+                                                    </button>
+                                                    <div class="modal fade" id="delete_sesi_{{$row->id_sesi}}"
+                                                         tabindex="-1" role="dialog"
+                                                         aria-labelledby="deleteModalCenterTitle" aria-hidden="true">
+                                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="hapusModalLongTitle">
+                                                                        Hapus Sesi Paket Wisata</h5>
+                                                                    <button type="button" class="close"
+                                                                            data-dismiss="modal"
+                                                                            aria-label="Close">
+                                                                        <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    Anda Yakin Ingin Menhapus Sesi Paket ...
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary"
+                                                                            data-dismiss="modal">
+                                                                        Batal
+                                                                    </button>
+                                                                    <form
+                                                                        action="{{route('admin.sesi.delete',$row->id_sesi)}}"
+                                                                        method="post">
+                                                                        @csrf
+                                                                        @method('DELETE')
+                                                                        <button type="submit" class="btn btn-primary">
+                                                                            Hapus
+                                                                        </button>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        @empty
+                                            <tr>
+                                                <td colspan="6" class="text-center">Belum Ada Sesi</td>
+                                            </tr>
+                                        @endforelse
+                                        <tr>
+                                            <td colspan="6" class="text-center">
+                                                {!! $sesi->links() !!}
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>

@@ -72,7 +72,7 @@
                                 <ul class="list-inline">
                                     <li class="list-inline-item">
                                         <img alt="Avatar" class="table-avatar"
-                                             src="{{asset('img/paket/'.$paket->gambar)}}">
+                                             src="{{asset('storage/img/paket/'.$paket->gambar)}}">
                                     </li>
                                 </ul>
                             </td>

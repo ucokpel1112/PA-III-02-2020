@@ -1,3 +1,4 @@
+//pemesanan
 <?php
 
 use Illuminate\Support\Facades\Schema;
@@ -17,8 +18,8 @@ class CreatePemesanansTable extends Migration
             $table->bigIncrements('id_pemesanan');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
-            $table->unsignedBigInteger('paket_id');
-            $table->foreign('paket_id')->references('id_paket')->on('paket_wisatas');
+            $table->unsignedBigInteger('sesi_id');
+            $table->foreign('sesi_id')->references('id_sesi')->on('sesis');
             $table->integer('status');
             $table->string('pesan');
             $table->integer('jumlah_peserta');

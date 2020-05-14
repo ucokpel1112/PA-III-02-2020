@@ -10,14 +10,14 @@ class Pemesanan extends Model
 
     protected $primaryKey = 'id_pemesanan';
 
-    protected $fillable=['user_id','paket_id','status','pesan','jumlah_peserta'];
+    protected $fillable=['user_id','sesi_id','status','pesan','jumlah_peserta'];
 
-    public function getPaket(){
-        return $this->belongsTo(paketWisata::class,'paket_id','id_paket');
+    public function getSesi(){
+        return $this->belongsTo(Sesi::class,'sesi_id','id_sesi');
     }
 
     public function getUser(){
-        return $this->belongsTo(paketWisata::class,'paket_id','id_pemesanan');
+        return $this->belongsTo(User::class,'user_id','id');
     }
 
     public function getTransaksi(){

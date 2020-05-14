@@ -28,7 +28,7 @@
                             {{$index+1}}
                         </div>
                         <div class="col">
-                            {{$row->getPaket->nama_paket}}
+                            {{$row->getSesi->getPaket->nama_paket}}
                         </div>
                         <div class="col">
                             {{$row->defineStatus($row->status)}}

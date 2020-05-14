@@ -21,14 +21,14 @@
                                 <div class="col-lg-7 col-md-7">
                                     <div class="single_place">
                                         <div class="thumb">
-                                            <img src="{{asset('img/paket/'.$pemesanan->getPaket->gambar)}}" alt="">
+                                            <img src="{{asset('storage/img/paket/'.$pemesanan->getSesi->getPaket->gambar)}}" alt="">
                                             <a href="#"
-                                               class="prise">Rp.{{number_format($pemesanan->getPaket->harga_paket)}}</a>
+                                               class="prise">Rp.{{number_format($pemesanan->getSesi->getPaket->harga_paket)}}</a>
                                         </div>
                                         <div class="place_info">
-                                            <a href="{{route('paket.detail',$pemesanan->getPaket->id_paket)}}">
-                                                <h3>{{$pemesanan->getPaket->nama_paket}}</h3></a>
-                                            <p>{{$pemesanan->getPaket->getKabupaten->nama_kabupaten}}</p>
+                                            <a href="{{route('paket.detail',$pemesanan->getSesi->getPaket->id_paket)}}">
+                                                <h3>{{$pemesanan->getSesi->getPaket->nama_paket}}</h3></a>
+                                            <p>{{$pemesanan->getSesi->getPaket->getKabupaten->nama_kabupaten}}</p>
                                             <div class="rating_days d-flex justify-content-between">
                                         <span class="d-flex justify-content-center align-items-center">
                                              <i class="fa fa-star"></i>
@@ -40,7 +40,7 @@
                                         </span>
                                                 <div class="days">
                                                     <i class="fa fa-clock-o"></i>
-                                                    <a href="#">{{$pemesanan->getPaket->durasi}}</a>
+                                                    <a href="#">{{$pemesanan->getSesi->getPaket->durasi}}</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -60,7 +60,7 @@
                                     <div class="media contact-info">
                                         <div class="media-body">
                                             <h3>Jadwal Perjalan</h3>
-                                            <p>{{$pemesanan->getPaket->jadwal}}</p>
+                                            <p>{{$pemesanan->getSesi->getPaket->jadwal}}</p>
                                         </div>
                                     </div>
                                     <div class="media contact-info">
@@ -76,7 +76,7 @@
                                             <div class="media-body">
                                                 <h3>Bukti Pembayaran</h3>
                                                 <br>
-                                                    <img src="{{asset('img/pembayaran/'.$row->gambar)}}" style="width: 90%" >
+                                                    <img src="{{asset('storage/img/pembayaran/'.$row->gambar)}}" style="width: 90%" >
                                             </div>
                                         </div>
                                     @empty
@@ -120,13 +120,18 @@
                                                                                        value="{{$row->id_rekening}}"
                                                                                        checked>
                                                                                 <img style="width: 40px"
-                                                                                     src="{{asset('img/rekening/'.$row->gambar)}}">
+                                                                                     src="{{asset('storage/img/rekening/'.$row->gambar)}}">
                                                                                 <label class="form-check-label"
                                                                                        for="rekening_{{$row->id_rekening}}">
                                                                                     ({{$row->nomor_rekening}}
                                                                                     ) {{$row->nama_bank}}
                                                                                 </label><br><br>
                                                                             @endforeach
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col">
+                                                                            <input type="number" min="0" name="jumlah" placeholder="Jumlah Nilai Transaksi (Rp)">
                                                                         </div>
                                                                     </div>
                                                                     <div class="row">
