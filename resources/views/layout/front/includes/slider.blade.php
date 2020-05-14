@@ -5,9 +5,7 @@
                     <div class="row align-items-center">
                         <div class="col-xl-12 col-md-12">
                             <div class="slider_text text-center">
-                                <h3>Simalungun</h3>
-                                <p>Deskripsi Singkat</p>
-                                <a href="#" class="boxed-btn3">Explore Now</a>
+
                             </div>
                         </div>
                     </div>
@@ -18,9 +16,8 @@
                     <div class="row align-items-center">
                         <div class="col-xl-12 col-md-12">
                             <div class="slider_text text-center">
-                                <h3>Simalungun  </h3>
-                                <p>Deskripsi Singkat</p>
-                                
+
+
                             </div>
                         </div>
                     </div>
@@ -31,9 +28,8 @@
                     <div class="row align-items-center">
                         <div class="col-xl-12 col-md-12">
                             <div class="slider_text text-center">
-                            <h3>Simalungun  </h3>
-                            <p>Deskripsi Singkat</p>
-                               
+
+
                             </div>
                         </div>
                     </div>
@@ -43,11 +39,7 @@
                 <div class="container">
                     <div class="row align-items-center">
                         <div class="col-xl-12 col-md-12">
-                            <div class="slider_text text-center">
-                            <h3>Simalungun  </h3>
-                                <p>Pixel perfect design with awesome contents</p>
-                                
-                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -56,11 +48,7 @@
                 <div class="container">
                     <div class="row align-items-center">
                         <div class="col-xl-12 col-md-12">
-                            <div class="slider_text text-center">
-                            <h3>Simalungun  </h3>
-                                <p>Pixel perfect design with awesome contents</p>
-                              >
-                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -69,11 +57,7 @@
                 <div class="container">
                     <div class="row align-items-center">
                         <div class="col-xl-12 col-md-12">
-                            <div class="slider_text text-center">
-                            <h3>Simalungun  </h3>
-                                <p>Pixel perfect design with awesome contents</p>
-                                
-                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -83,9 +67,7 @@
                     <div class="row align-items-center">
                         <div class="col-xl-12 col-md-12">
                             <div class="slider_text text-center">
-                            <h3>Simalungun  </h3>
-                                <p>Pixel perfect design with awesome contents</p>
-                                
+
                             </div>
                         </div>
                     </div>
@@ -96,9 +78,7 @@
                     <div class="row align-items-center">
                         <div class="col-xl-12 col-md-12">
                             <div class="slider_text text-center">
-                            <h3>Simalungun  </h3>
-                                <p>Pixel perfect design with awesome contents</p>
-                                
+
                             </div>
                         </div>
                     </div>
@@ -109,9 +89,7 @@
                     <div class="row align-items-center">
                         <div class="col-xl-12 col-md-12">
                             <div class="slider_text text-center">
-                            <h3>Simalungun  </h3>
-                                <p>Pixel perfect design with awesome contents</p>
-                                <a href="#" class="boxed-btn3">Explore Now</a>
+
                             </div>
                         </div>
                     </div>

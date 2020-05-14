@@ -5,8 +5,7 @@
             <div class="row">
                 <div class="col-xl-12">
                     <div class="bradcam_text text-center">
-                        <h3>Event Kalender</h3>
-                        <p>Lihat dan Kunjungi Event yang Ada</p>
+
                     </div>
                 </div>
             </div>
@@ -19,7 +18,7 @@
                 <div class="col-lg-8 posts-list">
                     <div class="single-post">
                         <div class="feature-img">
-                            <img class="img-fluid" src="img/kalender-event/samosir-ultra.jpg" alt="">
+                            <img class="img-fluid" src="{{asset('storage/Image/kalender/'.$kalenders->gambar_event)}}" alt="">
                         </div>
                         <div class="blog_details">
                             <h2>{{$kalenders->nama_event}}

@@ -5,8 +5,7 @@
             <div class="row">
                 <div class="col-xl-12">
                     <div class="bradcam_text text-center">
-                        <h3>Event Kalender</h3>
-                        <p>Lihat dan Kunjungi Event yang Ada</p>
+
                     </div>
                 </div>
             </div>
@@ -22,7 +21,7 @@
                     @foreach($kalenders as $kalenders)
                     <article class="blog_item">
                         <div class="blog_item_img">
-                            <img class="card-img rounded-0" src="/storage/Image/kalender/{{$kalenders->gambar_event}}" alt="">
+                            <img class="card-img rounded-0" src="{{asset('storage/Image/kalender/'.$kalenders->gambar_event)}}" alt="">
                             <a href="#" class="blog_item_date">
                                 <h3>{{$kalenders->tanggal_event}}
 <!--                                    --><?php //echo date('d F Y');?>
@@ -35,7 +34,9 @@
                                 <h2>{{ $kalenders->nama_event}}</h2>
                             </a>
                             <p>
-                                <?php echo $kalenders->deskripsi_event;?>
+                                <?php echo substr(strip_tags(str_replace(PHP_EOL,'<br>',$kalenders->deskripsi_event),'<br>'),0,310);?>
+
+                                    <a href="{{ route('detail-eventkalender',$kalenders->id_kalenderevent) }}">  baca selengkapnya...</a>
                             </p>
                             <ul class="blog-info-link">
                                 <li><a href="#"><i class="fa fa-user"></i> Travel, Lifestyle</a></li>

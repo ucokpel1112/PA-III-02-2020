@@ -14,13 +14,15 @@ use Illuminate\Notifications\Notifiable;
 
 class KalendereventController extends Controller
 {
-    public function index(){
+    public function index()
+    {
 
-        $kalenders = KalenderEvent::inRandomOrder()->limit(9)->get();
-
-        return view ('admin.kalender.eventkalender',compact('kalenders'));
+        $kalenders = KalenderEvent::latest()->limit(9)->get();
+        return view('admin.kalender.eventkalender', compact('kalenders'));
     }
-    public function store(Request $request){
+
+    public function store(Request $request)
+    {
         $kalender = new KalenderEvent();
         $kalender->nama_event = $request->input('nama_event');
         $kalender->nama_tempat = $request->input('nama_tempat');
@@ -31,15 +33,17 @@ class KalendereventController extends Controller
         $file = $request->file('gambar_event');
         $gambar = $file->getClientOriginalName();
         $kalender->gambar_event = $gambar;
-        if($kalender->save()){
-            $file->move(\base_path() ."/public/storage/Image/kalender", $gambar);
+        if ($kalender->save()) {
+            $file->move(\base_path() . "/public/storage/Image/kalender", $gambar);
 
-            return view ('admin/kalender/eventkalender')->with('admin/kalender/eventkalender',$kalender);
+            return view('admin/kalender/eventkalender')->with('admin/kalender/eventkalender', $kalender);
         }
 
 
     }
-    public function update(Request $request,$id_kalenderevent){
+
+    public function update(Request $request, $id_kalenderevent)
+    {
         $kalender = KalenderEvent::find($id_kalenderevent);
         $gambar = $kalender->gambar_event;
 
@@ -61,28 +65,44 @@ class KalendereventController extends Controller
             'gambar_event' => $gambar,
 
         ]);
-        return view ('admin/kalender/eventkalender')->with('admin/kalender/eventkalender',$id_kalenderevent);
+        return view('admin/kalender/eventkalender')->with('admin/kalender/eventkalender', $id_kalenderevent);
 
     }
-    public function getAll(){
-        $kalenders = KalenderEvent::inRandomOrder()->limit(1)->get();
-        return view('admin.kalender.updatekalender',compact('kalenders'));
-    }
-    public function customer_all(){
-        $kalenders = KalenderEvent::inRandomOrder()->limit(3)->get();
 
-        return view ('front.eventkalender',compact('kalenders'));
+    public function getAll()
+    {
+        $kalenders = KalenderEvent::latest()->limit(1)->get();
+        return view('admin.kalender.updatekalender', compact('kalenders'));
     }
-    public function detail($id_kalenderevent){
+
+    public function customer_all()
+    {
+        $kalenders = KalenderEvent::latest()->limit(9)->get();
+        return view('front.eventkalender', compact('kalenders'));
+    }
+
+    public function detail($id_kalenderevent)
+    {
         $kalenders = KalenderEvent::where('id_kalenderevent', $id_kalenderevent)->first();
-        return view('front.detail-eventkalender',compact('kalenders'));
+        return view('front.detail-eventkalender', compact('kalenders'));
     }
 
-    public function edit($id_kalenderevent){
+
+    public function edit($id_kalenderevent)
+    {
         $id = $id_kalenderevent;
         $kalenders = KalenderEvent::find($id);
 //        print_r($kalenders);
-        return view('admin.kalender.updatekalender',compact('kalenders'));
+        return view('admin.kalender.updatekalender', compact('kalenders'));
     }
 
+    public function destroy($id_kalenderevent)
+    {
+        $kalenders = KalenderEvent::all();
+        $kalender = KalenderEvent::find($id_kalenderevent);
+        $kalender->delete();
+
+        return view('admin.kalender.eventkalender', compact('kalenders'));
+    }
 }
+

@@ -36,7 +36,7 @@
         </div>
     </div>
     <!-- where_togo_area_end  -->
-    
+
     <!-- popular_destination_area_start  -->
     <div class="popular_destination_area">
         <div class="container">
@@ -49,72 +49,18 @@
                 </div>
             </div>
             <div class="row">
+                @foreach($kals as $kals)
                 <div class="col-lg-4 col-md-6">
                     <div class="single_destination">
                         <div class="thumb">
-                            <img src="img/kalender-event/gondang-naposo.jpg" alt="">
+                            <img src="{{asset('storage/Image/kalender/'.$kals->gambar_event)}}" width="200px" alt="">
                         </div>
                         <div class="content">
-                            <p class="d-flex align-items-center">Nama Event</a></p>
-                            
+                              <a href="{{ route('detail-eventkalender',$kals->id_kalenderevent) }}"> <p class="d-flex align-items-center">{{$kals->nama_event}}</p></a>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="single_destination">
-                        <div class="thumb">
-                        <img src="img/kalender-event/samosir-band.png" alt="">
-                        </div>
-                        <div class="content">
-                        <p class="d-flex align-items-center">Nama Event</a></p>
-                            
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="single_destination">
-                        <div class="thumb">
-                            <img src="img/kalender-event/Karnaval-Sigale-gale.jpg" alt="">
-                        </div>
-                        <div class="content">
-                        <p class="d-flex align-items-center">Nama Event</a></p>
-                            
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="single_destination">
-                        <div class="thumb">
-                            <img src="img/kalender-event/Karnaval-Sigale-gale.jpg" alt="">
-                        </div>
-                        <div class="content">
-                        <p class="d-flex align-items-center">Nama Event</a></p>
-                            
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="single_destination">
-                        <div class="thumb">
-                            <img src="img/kalender-event/Karnaval-Sigale-gale.jpg" alt="">
-                        </div>
-                        <div class="content">
-                             <p class="d-flex align-items-center">Nama Event</a></p>
-                            
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="single_destination">
-                        <div class="thumb">
-                            <img src="img/kalender-event/Karnaval-Sigale-gale.jpg" alt="">
-                        </div>
-                        <div class="content">
-                              <p class="d-flex align-items-center">Nama Event</a></p>
-                            
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>
@@ -170,12 +116,12 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="single_place">
                         <div class="thumb">
-                            <img src="img/place/1.png" alt="">     
+                            <img src="img/place/1.png" alt="">
                         </div>
                         <div class="place_info">
                             <a href="destination_details.html"><h3>Samosir</h3></a>
                             <div class="rating_days d-flex justify-content-between">
-                                
+
                                 <div class="days">
                                     <i class="fa fa-clock-o"></i>
                                     <a href="#">4 Paket Wisata</a>
@@ -187,12 +133,12 @@
                 <div class="col-lg-4 col-md-6">
                 <div class="single_place">
                         <div class="thumb">
-                            <img src="img/place/1.png" alt="">     
+                            <img src="img/place/1.png" alt="">
                         </div>
                         <div class="place_info">
                             <a href="destination_details.html"><h3>Samosir</h3></a>
                             <div class="rating_days d-flex justify-content-between">
-                                
+
                                 <div class="days">
                                     <i class="fa fa-clock-o"></i>
                                     <a href="#">4 Paket Wisata</a>
@@ -204,12 +150,12 @@
                 <div class="col-lg-4 col-md-6">
                 <div class="single_place">
                         <div class="thumb">
-                            <img src="img/place/1.png" alt="">     
+                            <img src="img/place/1.png" alt="">
                         </div>
                         <div class="place_info">
                             <a href="destination_details.html"><h3>Samosir</h3></a>
                             <div class="rating_days d-flex justify-content-between">
-                                
+
                                 <div class="days">
                                     <i class="fa fa-clock-o"></i>
                                     <a href="#">4 Paket Wisata</a>
@@ -221,12 +167,12 @@
                 <div class="col-lg-4 col-md-6">
                 <div class="single_place">
                         <div class="thumb">
-                            <img src="img/place/1.png" alt="">     
+                            <img src="img/place/1.png" alt="">
                         </div>
                         <div class="place_info">
                             <a href="destination_details.html"><h3>Samosir</h3></a>
                             <div class="rating_days d-flex justify-content-between">
-                                
+
                                 <div class="days">
                                     <i class="fa fa-clock-o"></i>
                                     <a href="#">4 Paket Wisata</a>
@@ -238,12 +184,12 @@
                 <div class="col-lg-4 col-md-6">
                 <div class="single_place">
                         <div class="thumb">
-                            <img src="img/place/1.png" alt="">     
+                            <img src="img/place/1.png" alt="">
                         </div>
                         <div class="place_info">
                             <a href="destination_details.html"><h3>Samosir</h3></a>
                             <div class="rating_days d-flex justify-content-between">
-                                
+
                                 <div class="days">
                                     <i class="fa fa-clock-o"></i>
                                     <a href="#">4 Paket Wisata</a>
@@ -255,12 +201,12 @@
                 <div class="col-lg-4 col-md-6">
                 <div class="single_place">
                         <div class="thumb">
-                            <img src="img/place/1.png" alt="">     
+                            <img src="img/place/1.png" alt="">
                         </div>
                         <div class="place_info">
                             <a href="destination_details.html"><h3>Samosir</h3></a>
                             <div class="rating_days d-flex justify-content-between">
-                                
+
                                 <div class="days">
                                     <i class="fa fa-clock-o"></i>
                                     <a href="#">4 Paket Wisata</a>
@@ -288,7 +234,7 @@
                     <div class="video_wrap text-center">
                         <h3>Enjoy Video</h3>
                         <div class="video_icon">
-                            <a class="popup-video video_play_button" href="https://www.youtube.com/watch?v=ULkyAG3C1_Q">
+                            <a class="popup-video video_play_button" href="https://www.youtube.com/watch?v=Za2zEoGcfmU">
                                 <i class="fa fa-play"></i>
                             </a>
                         </div>
@@ -326,7 +272,7 @@
                             <img src="img/icon_fitur/kalender.png" alt="">
                         </div>
                         <h3>Kalender Event</h3>
-                        <p>.</p>
+                        <p>Event di Kawasan Danau Toba sangatlah banyak, sehingga kita perlu tahu ecent apakah yang akan berlangsung atau sedang berlansung.</p>
                     </div>
                 </div>
             </div>
