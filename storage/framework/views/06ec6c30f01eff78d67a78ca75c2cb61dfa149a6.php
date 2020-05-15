@@ -112,6 +112,23 @@
                         </li>
                     </ul>
                 </li>
+                <li class="nav-item has-treeview <?php echo e(Request::segment(2) === 'pemesanan' ? 'menu-open' : null); ?>">
+                    <a href="#" class="nav-link <?php echo e(Request::segment(2) === 'pemesanan' ? 'active' : null); ?>">
+                        <i class="nav-icon fas fa-edit"></i>
+                        <p>
+                            Pemesanan
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="<?php echo e(route('admin.pemesanan')); ?>" class="nav-link <?php echo e((Request::segment(3)==null)&&(Request::segment(2)=='pemesanan')? 'active' : null); ?>">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Daftar Pemesanan Paket Wisata</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
                 <li class="nav-item has-treeview <?php echo e(Request::segment(2) === 'kalender' ? 'menu-open' : null); ?>">
                     <a href="#" class="nav-link <?php echo e(Request::segment(2) === 'kalender' ? 'active' : null); ?>">
                         <i class="nav-icon far fa-calendar-alt"></i>
