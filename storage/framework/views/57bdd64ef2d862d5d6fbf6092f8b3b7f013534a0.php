@@ -1,7 +1,5 @@
-@extends('layout.front.main')
-
-@section('content')
-@include('layout.front.includes.slider')
+<?php $__env->startSection('content'); ?>
+<?php echo $__env->make('layout.front.includes.slider', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 <div class="where_togo_area">
         <div class="container">
             <div class="row align-items-center">
@@ -458,4 +456,5 @@
 
 
 
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layout.front.main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\PA-III-02-2020\resources\views/welcome.blade.php ENDPATH**/ ?>

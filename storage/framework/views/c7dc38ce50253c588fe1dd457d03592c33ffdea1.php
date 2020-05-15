@@ -1,6 +1,4 @@
-@extends('layout.admin.app')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
 <section class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
@@ -44,5 +42,7 @@
       <!-- /.card -->
 
     </section>
-@endsection
+<?php $__env->stopSection(); ?>
 
+
+<?php echo $__env->make('layout.admin.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\PA-III-02-2020\resources\views/layout/admin/dashboard.blade.php ENDPATH**/ ?>

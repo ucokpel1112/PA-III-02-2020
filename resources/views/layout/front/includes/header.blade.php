@@ -6,8 +6,8 @@
                     <div class="row align-items-center">
                         <div class="col-xl-2 col-lg-2">
                             <div class="logo">
-                                <a href="index.html">
-                                    <img src="img/logo.png" alt="">
+                                <a href="/">
+                                    <img src="img/logos.png" alt="">
                                 </a>
                             </div>
                         </div>
@@ -15,7 +15,7 @@
                             <div class="main-menu  d-none d-lg-block">
                                 <nav>
                                     <ul id="navigation">
-                                        <li><a class="active" href="index.html">home</a></li>
+                                        <li><a class="active" href="/">Home</a></li>
                                         <li><a href="about.html">About</a></li>
                                         <li><a href="#">Paket Wisata<i class="ti-angle-down"></i></a>
                                             <ul class="submenu">
@@ -23,29 +23,17 @@
                                                 <li><a href="{{route('pemesanan')}}">Pesanan Saya</a></li>
                                             </ul>
                                         </li>
-                                        <li><a href="{{route('event')}}">Event Kalender</a></li>
-                                        <li><a href="#">pages <i class="ti-angle-down"></i></a>
-                                            <ul class="submenu">
-{{--                                                <li><a href="{{route('paket.detail')}}">Destinations details</a></li>--}}
-                                                <li><a href="elements.html">elements</a></li>
-                                            </ul>
+                                        <li><a href="{{ url('/eventkalender') }}">Kalender Event </a>
+
                                         </li>
-                                        <li><a href="#">blog <i class="ti-angle-down"></i></a>
-                                            <ul class="submenu">
-                                                <li><a href="blog.html">blog</a></li>
-                                                <li><a href="single-blog.html">single-blog</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="contact.html">Contact</a></li>
+                                        <li><a href="contact.html">Kontak </a></li>
                                     </ul>
                                 </nav>
                             </div>
                         </div>
                         <div class="col-xl-4 col-lg-4 d-none d-lg-block">
                             <div class="social_wrap d-flex align-items-center justify-content-end">
-                                <div class="number">
-                                    <p> <i class="fa fa-phone"></i> 10(256)-928 256</p>
-                                </div>
+
                                 <div class="social_links d-none d-xl-block">
                                     <ul>
                                         <li><a href="#"> <i class="fa fa-instagram"></i> </a></li>
