@@ -108,6 +108,26 @@
 
                     </ul>
                 </li>
+
+                <li class="nav-item has-treeview {{Request::segment(2) === 'layananwisata' ? 'menu-open' : null}}">
+                    <a href="#" class="nav-link {{Request::segment(2) === 'layananwisata' ? 'active' : null}}">
+                        <i class="nav-icon far fa-calendar-alt"></i>
+                        <p>
+                            Layanan Wisata
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item"></li>
+                        <li class="nav-item">
+                            <a href="{{route('anggotacbt.layanan')}}" class="nav-link {{Request::segment(2) === 'layananwisata' ? 'active' : null}}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Daftar Layanan</p>
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

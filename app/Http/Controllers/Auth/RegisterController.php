@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Mail;
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Str;
+use App\Mail\KonfirmasiEmail;
 
 class RegisterController extends Controller
 {
@@ -72,16 +74,26 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
 
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
             'no_KTP' => $data['no_KTP'],
             'photo'=> $data['photo'],
             'no_WA' => $data['no_WA'],
             'no_HP' => $data['no_HP'],
-            /*'jenisLayanan_id' => $data['jenisLayanan_id'],
-            'kabupaten_id' => $data['kabupaten_id'],*/
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'token' => Str::random(40),
         ]);
+
+        Mail::to($user['email'])->send(new KonfirmasiEmail($user));
+
+        return $user;
+    }
+
+    public function konfirmasiemail($email, $token)
+    {
+        User::where(['email' => $email, 'token' => $token])->update(['register_status' => '1', 'token' => NULL]);
+
+        return redirect('login')->withInfo('Selamat, akun anda telah aktif.');
     }
 }
