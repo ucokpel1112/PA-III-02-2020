@@ -49,7 +49,7 @@
                                 <div class="card-footer">
                                     <div class="text-right">
                                         <a href="{{ route('editkalender',$kalenders->id_kalenderevent) }}" class="btn btn-sm bg-warning">
-                                            <i class="fas fa-edit"></i> Update
+                                            <i class="fas  fa-edit"></i> Update
                                         </a>
                                         <a href="" class="btn btn-sm btn-danger" data-toggle="modal"
                                            data-target="#delete">

@@ -28,7 +28,7 @@ Route::get('/detail-event', function () {
 
 //admin
 Route::get('/adm/dashboard',function(){
-    return view('layout.admin.dashboard');
+    return view('admin.dashboard');
 });
 //kalender
 Route::get('/adm/listkalender','KalendereventController@index')->name('listkalenders');
@@ -47,7 +47,8 @@ Route::get('/adm/detailkalender/detail/show/{id_kalenderevent}','KalendereventCo
 
 Route::delete('/adm/eventkalender/delete/{id_kalenderevent}','KalendereventController@destroy')->name('delete-eventkalender');
 
-
+//dashboard
+Route::get('/adm/dashboard','DashboardController@count_kalender')->name('count-kalender');
 Route::get('/paket', function () {
     return view('front.view-paket');
 })->name('paket');
