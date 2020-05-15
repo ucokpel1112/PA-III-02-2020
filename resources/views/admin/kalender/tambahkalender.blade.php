@@ -30,20 +30,24 @@
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form role="form" action="{{route('tambahkalender')}}" method="post" enctype="multipart/form-data">
+                        <form role="form" action="{{route('tambahkalender')}}" method="post"
+                              enctype="multipart/form-data">
                             {{ csrf_field() }}
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="Nama Event">Nama Event</label>
-                                    <input type="text" name="nama_event" class="form-control" id="Nama Event" placeholder="Nama Event">
+                                    <input type="text" name="nama_event" class="form-control" id="Nama Event"
+                                           placeholder="Nama Event">
                                 </div>
                                 <div class="form-group">
                                     <label for="Nama Tempat">Nama Tempat</label>
-                                    <input type="text" name="nama_tempat" class="form-control" id="Nama Tempat" placeholder="Nama Tempat">
+                                    <input type="text" name="nama_tempat" class="form-control" id="Nama Tempat"
+                                           placeholder="Nama Tempat">
                                 </div>
                                 <div class="form-group">
                                     <label for="Tanggal">Tanggal</label>
-                                    <input type="date" name="tanggal_event" class="form-control" id="Tanggal" placeholder="Tanggal">
+                                    <input type="date" name="tanggal_event" class="form-control" id="Tanggal"
+                                           placeholder="Tanggal">
                                 </div>
                                 <div class="form-group">
                                     <label for="Jam">Jam</label>
@@ -51,7 +55,8 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="Alamat">Alamat</label>
-                                    <input type="text" name="alamat_event" class="form-control" id="Alamat" placeholder="Alamat">
+                                    <input type="text" name="alamat_event" class="form-control" id="Alamat"
+                                           placeholder="Alamat">
                                 </div>
                                 <div class="form-group">
                                     <label for="Deskripsi">Deskripsi</label>
@@ -64,7 +69,8 @@
                                     <label for="exampleInputFile">Gambar/Poster</label>
                                     <div class="input-group">
                                         <div class="custom-file">
-                                            <input type="file" name="gambar_event" class="custom-file-input" id="exampleInputFile">
+                                            <input type="file" name="gambar_event" class="custom-file-input"
+                                                   id="exampleInputFile">
                                             <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                                         </div>
                                     </div>
@@ -81,6 +87,6 @@
             </div>
 
 
-
+        </div>
     </section>
 @endsection

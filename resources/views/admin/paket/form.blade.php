@@ -40,6 +40,14 @@
                                            placeholder="Durasi" required>
                                     {{--                                    <p class="text-danger">{{$error->first('durasi')}}</p>--}}
                                 </div>
+
+                                <div class="form-group">
+                                    <label for="jenis">Jenis Paket Wisata</label>
+                                    <input type="text" class="form-control" name="jenis" id="jenis"
+                                           placeholder="Jenis Paket Wisata" required>
+                                    {{--                                    <p class="text-danger">{{$error->first('durasi')}}</p>--}}
+                                </div>
+
                                 <div class="form-group">
                                     <label for="deskripsi">Deskripsi Paket</label>
                                     <div class="mb-3">
@@ -123,7 +131,7 @@
                                         <div class="row" id="new-layanan_1">
                                             <div class="col-md-10">
                                                 <select class="form-control custom-select" name="layanan_1" required>
-                                                    <option selected="" disabled="">Pilih Daerah</option>
+                                                    <option selected="" disabled="">Pilih Layanan</option>
                                                     <?= $options ?>
                                                 </select>
                                                 <input type="number" id="jlh_layanan" name="jlh_layanan" hidden
@@ -252,6 +260,16 @@
                                            placeholder="Durasi" required>
                                     {{--                                    <p class="text-danger">{{$error->first('durasi')}}</p>--}}
                                 </div>
+
+                                <div class="form-group">
+                                    <label for="status">Status Paket</label>
+                                    <select class="form-control custom-select" name="status" id="status" required>
+                                        <option disabled="">Pilih Status</option>
+                                        <option value="1" {{($paket->status==1)?'selected':''}}>Aktif</option>
+                                        <option value="0" {{($paket->status==0)?'selected':''}}>Tidak Aktif</option>
+                                    </select>
+                                </div>
+
                                 <div class="form-group">
                                     <label for="deskripsi">Deskripsi Paket</label>
                                     <div class="mb-3">
@@ -292,12 +310,12 @@
                                     <div class="input-group">
                                         <div class="custom-file">
                                             <input type="file" class="custom-file-input" name="gambar" id="gambar"
-                                                   required>
+                                                   >
                                             <label class="custom-file-label" for="gambar">Choose file</label>
                                         </div>
                                         <div class="row">
                                             <div class="col-sm-10">
-                                                <img class="img-fluid" src="{{asset('img/paket/'.$paket->gambar)}}"
+                                                <img class="img-fluid" src="{{asset('storage/img/paket/'.$paket->gambar)}}"
                                                      alt="Photo">
                                             </div>
                                         </div>

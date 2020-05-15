@@ -8,10 +8,13 @@ class paketWisata extends Model
 {
     protected $table = 'paket_wisatas';
     protected $primaryKey = 'id_paket';
-    protected $fillable =['nama_paket','harga_paket','availability','durasi','deskripsi_paket','rencana_perjalanan','tambahan','gambar','kabupaten_id'];
+    protected $fillable =['nama_paket','jenis_paket','status','harga_paket','availability','durasi','deskripsi_paket','rencana_perjalanan','tambahan','gambar','kabupaten_id'];
 
     public function getIncludedNotIncluded(){
         return $this->hasMany(IncludedNotIncluded::class,'paket_wisata_id','id_paket');
+    }
+    public function getSesi(){
+        return $this->hasMany(Sesi::class,'paket_id','id_paket');
     }
     public function getKabupaten(){
         return $this->belongsTo(kabupaten::class,'kabupaten_id','id_kabupaten');

@@ -19,6 +19,8 @@ class CreatePaketWisatasTable extends Migration
             $table->bigInteger('harga_paket');
             $table->integer('availability');
             $table->string('durasi');
+            $table->integer('status')->default(1);
+            $table->string('jenis_paket');
             $table->text('deskripsi_paket');
             $table->text('rencana_perjalanan')->nullable();
             $table->text('tambahan')->nullable();

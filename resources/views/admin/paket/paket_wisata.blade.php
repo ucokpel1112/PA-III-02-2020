@@ -72,7 +72,7 @@
                                 <ul class="list-inline">
                                     <li class="list-inline-item">
                                         <img alt="Avatar" class="table-avatar"
-                                             src="{{asset('img/paket/'.$paket->gambar)}}">
+                                             src="{{asset('storage/img/paket/'.$paket->gambar)}}">
                                     </li>
                                 </ul>
                             </td>
@@ -97,10 +97,10 @@
                                     Edit
                                 </a>
                                 <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
-                                        data-target="#delete">
+                                        data-target="#delete_{{$paket->id_paket}}">
                                     Delete
                                 </button>
-                                <div class="modal fade" id="delete" tabindex="-1" role="dialog"
+                                <div class="modal fade" id="delete_{{$paket->id_paket}}" tabindex="-1" role="dialog"
                                      aria-labelledby="deleteModalCenterTitle" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content">

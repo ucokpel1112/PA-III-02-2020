@@ -1,12 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
+use App\Http\Controllers\Controller;
 
 use App\IncludedNotIncluded;
 use App\Kabupaten;
 use App\LayananWisata;
 use App\PaketLayanan;
 use App\paketWisata;
+use App\Sesi;
 use File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -77,13 +79,13 @@ class PaketWisataController extends Controller
             $file = $request->file('gambar');
             $filename = time() . Str::slug($request->nama_paket_wisata) . '.' . $file->getClientOriginalExtension();
 
-            $file->move('img/paket', $filename);
+            $file->move('storage/img/paket', $filename);
             $paket = paketWisata::create([
                 'nama_paket' => $request->nama_paket_wisata,
                 'harga_paket' => $request->harga_paket_wisata,
                 'availability' => $request->availability,
-
                 'durasi' => $request->durasi,
+                'jenis_paket'=> $request->jenis,
                 'deskripsi_paket' => $request->deskripsi,
                 'rencana_perjalanan' => $request->rencana_perjalanan,
                 'tambahan' => $request->tambahan,
@@ -93,20 +95,20 @@ class PaketWisataController extends Controller
             echo $paket->id_paket;
             for ($i = 1; $i <= $request->jlh_included; $i++) {
                 $paket->getIncludedNotIncluded()->create([
-                    'jenis' => 'included',
+                    'jenis_ini' => 'included',
                     'keterangan' => $_POST['included_' . $i],
                 ]);
             }
             for ($i = 1; $i <= $request->jlh_not_included; $i++) {
                 $paket->getIncludedNotIncluded()->create([
-                    'jenis' => 'not included',
+                    'jenis_ini' => 'not included',
                     'keterangan' => $_POST['not_included_' . $i],
                 ]);
             }
             for ($i = 1; $i <= $request->jlh_layanan; $i++) {
                 $paket->getPaketLayanan()->attach($_POST['layanan_' . $i]);
             }
-            return redirect(route('admin.paket'));
+            return redirect(route('admin.paket.show',$paket->id_paket));
         }
     }
 
@@ -119,8 +121,8 @@ class PaketWisataController extends Controller
     public function show($id_paket)
     {
         $paket = paketWisata::where('id_paket', $id_paket)->with(['getKabupaten', 'getIncludedNotIncluded', 'getPaketLayanan'])->first();
-
-        return view('admin.paket.detail_paket_wisata', compact('paket'));
+        $sesi = Sesi::where('paket_id',$id_paket)->orderBy('status','DESC')->paginate(10);
+        return view('admin.paket.detail_paket_wisata', compact('sesi','paket'));
     }
 
     /**
@@ -155,19 +157,20 @@ class PaketWisataController extends Controller
         $photo = $paket->gambar;
 
         if ($request->hasFile('gambar')) {
-            !empty($photo) ? File::delete(public_path('img/paket/' . $photo)) : null;
+            !empty($photo) ? File::delete(public_path('storage/img/paket/' . $photo)) : null;
             $file = $request->file('gambar');
             $photo = time() . Str::slug($request->nama_paket_wisata) . '.' . $file->getClientOriginalExtension();
 
-            $file->move('img/paket', $photo);
+            $file->move('storage/img/paket', $photo);
         }
 
         $paket->update([
             'nama_paket' => $request->nama_paket_wisata,
             'harga_paket' => $request->harga_paket_wisata,
             'availability' => $request->availability,
-
             'durasi' => $request->durasi,
+            'status' => $request->status,
+            'jenis_paket'=> $request->jenis,
             'deskripsi_paket' => $request->deskripsi,
             'rencana_perjalanan' => $request->rencana_perjalanan,
             'tambahan' => $request->tambahan,
@@ -210,7 +213,7 @@ class PaketWisataController extends Controller
         if($request->jlh_included!=0){
             for ($i = 1; $i <= $request->jlh_included; $i++) {
                 $paket->getIncludedNotIncluded()->create([
-                    'jenis' => 'included',
+                    'jenis_ini' => 'included',
                     'keterangan' => $_POST['included_' . $i],
                 ]);
             }
@@ -219,7 +222,7 @@ class PaketWisataController extends Controller
         if($request->jlh_not_included!=0){
             for ($i = 1; $i <= $request->jlh_not_included; $i++) {
                 $paket->getIncludedNotIncluded()->create([
-                    'jenis' => 'not included',
+                    'jenis_ini' => 'not included',
                     'keterangan' => $_POST['not_included_' . $i],
                 ]);
             }
@@ -269,5 +272,47 @@ class PaketWisataController extends Controller
         return redirect(route('admin.paket'));
 //        }
 //        return redirect(route('admin.paket'));
+    }
+
+    public function createSesi($id_paket){
+
+        return view('admin.paket.create_sesi',compact('id_paket'));
+    }
+
+    public function storeSesi(Request $request, $id_paket){
+        $sesi = Sesi::create([
+            'paket_id'=>$id_paket,
+            'kuota_peserta'=>$request->kuota_peserta,
+            'jadwal'=>$request->jadwal,
+            'status'=>1
+        ]);
+
+        return redirect(route('admin.paket.show',$id_paket));
+    }
+
+    public function destroySesi($id_sesi){
+        $sesi = Sesi::find($id_sesi);
+        $id_paket= $sesi->paket_id;
+        $sesi->status = 0;
+        $sesi->save();
+
+        return Redirect(Route('admin.paket.show',$id_paket));
+    }
+
+    public function editSesi($id_sesi){
+        $sesi = Sesi::find($id_sesi);
+        return view('admin.paket.edit_sesi',compact('sesi'));
+    }
+
+    public function updateSesi(Request $request,$id_sesi){
+        $sesi = Sesi::find($id_sesi);
+        $id_paket = $sesi->paket_id;
+        $sesi->update([
+           'kuota_peserta'=>$request->kuota_peserta,
+           'status'=>$request->status,
+           'jadwal'=>$request->jadwal
+        ]);
+
+        return Redirect(Route('admin.paket.show',$id_paket));
     }
 }
