@@ -17,6 +17,6 @@ class LayananWisata extends Model
         return $this->belongsTo(Kabupaten::class, 'kabupaten_id','id_kabupaten');
     }
     public function getPaketLayanan(){
-        return $this->belongsToMany(LayananWisata::class,'paket_layanans','layanan_wisata_id','paket_wisata_id','id','id_paket');
+        return $this->belongsToMany(LayananWisata::class,'paket_layanans','layanan_wisata_id','paket_wisata_id','id_paket','id');
     }
 }
