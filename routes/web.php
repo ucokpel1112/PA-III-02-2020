@@ -29,7 +29,7 @@ Route::get('/detail-event', function () {
 
 Route::get('/adm/dashboard', function () {
     return view('layout.admin.dashboard');
-});
+})->name('admin.home');
 //kalender
 Route::get('/adm/kalender/listkalender', 'KalendereventController@index')->name('listkalender');
 Route::get('/adm/kalender/addkalender', function () {
