@@ -9,9 +9,10 @@
                 <div class="alert alert-success">
                     <i class="fa fa-info-circle"></i>{{session('info')}}
                 </div>
+
             @endif
             <div class="card" style=" background-color: #2F4F4F">
-                <center><div class="card-header"><img src="{{asset('img/Login.png')}}"
+                <center><div class="card-header"><img src="member/img/Login.png"
                                                       alt="CBT Logo"
                                                       class="brand-image img-circle elevation-3"
                                                       style="width: 150px"></div></center>

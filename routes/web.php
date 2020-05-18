@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home.customer');
 
 // Route::get('/eventkalender', function () {
 //     return view('front.eventkalender');
@@ -69,7 +69,7 @@ Route::put('/adm/paket/edit/{id_paket}/layanan/update','PaketWisataController@up
 //anggota CBT
 Route::get('anggotacbt/dashboard',function(){
     return view('layout.anggotacbt.dashboard');
-});
+})->name('home.anggota');
 //Layanan Wisata
 Route::get('anggotacbt/layananwisata','LayananWisataController@index')->name('anggotacbt.layanan');
 Route::post('anggotacbt/layananwisata/create','LayananWisataController@create')->name('anggotacbt.layanan.tambah');
@@ -89,3 +89,12 @@ Route::delete('/adm/paket/delete/{id_paket}','PaketWisataController@destroy')->n
 Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('design',function(){
+   return view('design');
+});
+
+Route::namespace('Auth')->group(function () {
+    Route::get('register/menu/pilih','RegisterController@choice')->name('register.choice');
+    Route::get('konfirmasiemail/{email}/{token}','RegisterController@konfirmasiemail')->name('konfirmasiemail');
+});

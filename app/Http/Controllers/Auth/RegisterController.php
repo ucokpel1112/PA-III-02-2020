@@ -71,23 +71,44 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
+
+
     protected function create(array $data)
     {
+        if(isset($data['komunitas'])){
+            $user = User::create([
+                'name' => $data['name'],
+                'no_KTP' => $data['no_KTP'],
+                'photo'=> $data['photo'],
+                'no_WA' => $data['no_WA'],
+                'no_HP' => $data['no_HP'],
+                'email' => $data['email'],
+                'status'=>1,
+                'password' => Hash::make($data['password']),
+                'token' => Str::random(40),
+            ]);
+            Mail::to($user['email'])->send(new KonfirmasiEmail($user));
+        }else{
+            $user = User::create([
+                'name' => $data['name'],
+                'no_KTP' => $data['no_KTP'],
+                'photo'=> $data['photo'],
+                'no_WA' => $data['no_WA'],
+                'no_HP' => $data['no_HP'],
+                'email' => $data['email'],
+                'status' => 0,
+                'password' => Hash::make($data['password']),
+                'token' => Str::random(40),
+            ]);
+            Mail::to($user['email'])->send(new KonfirmasiEmail($user));
+        }
 
-        $user = User::create([
-            'name' => $data['name'],
-            'no_KTP' => $data['no_KTP'],
-            'photo'=> $data['photo'],
-            'no_WA' => $data['no_WA'],
-            'no_HP' => $data['no_HP'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-            'token' => Str::random(40),
-        ]);
-
-        Mail::to($user['email'])->send(new KonfirmasiEmail($user));
 
         return $user;
+    }
+
+    public function choice(){
+        return view('auth.register_choice');
     }
 
     public function konfirmasiemail($email, $token)
