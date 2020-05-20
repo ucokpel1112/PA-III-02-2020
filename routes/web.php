@@ -91,16 +91,6 @@ Route::namespace('Admin')->group(function () {
     Route::get('/adm/paket/edit/{id_layanan}/{id_paket}/layanan/hapus', 'PaketWisataController@hapusLayanan')->name('admin.paket.hapus.layanan');
     Route::put('/adm/paket/edit/{id_paket}/layanan/update', 'PaketWisataController@updateLayanan')->name('admin.paket.update.layanan');
 
-//anggota CBT
-    Route::get('anggotacbt/dashboard',function(){
-        return view('layout.anggotacbt.dashboard');
-    })->name('home.anggota');
-//Layanan Wisata
-    Route::get('anggotacbt/layananwisata', 'LayananWisataController@index')->name('anggotacbt.layanan');
-    Route::post('anggotacbt/layananwisata/create', 'LayananWisataController@create')->name('anggotacbt.layanan.tambah');
-    Route::get('anggotacbt/layananwisata/{id}/edit', 'LayananWisataController@edit')->name('anggotacbt.layanan.edit');
-    Route::post('anggotacbt/layanan_wisata/{id}/update', 'LayananWisataController@update')->name('anggotacbt.layanan.update');
-    Route::get('anggotacbt/layanan_wisata/{id}/delete', 'LayananWisataController@delete')->name('anggotacbt.layanan.delete');
 
 //view Paket
     Route::get('/adm/paket/show/{id_paket}', 'PaketWisataController@show')->name('admin.paket.show');
@@ -110,6 +100,23 @@ Route::namespace('Admin')->group(function () {
     Route::post('/adm/paket', 'PaketWisataController@store')->name('admin.paket.store');
 //hapus
     Route::delete('/adm/paket/delete/{id_paket}', 'PaketWisataController@destroy')->name('admin.paket.hapus');
+
+});
+//anggota CBT
+
+
+Route::namespace('AnggotaCBT')->group(function () {
+    Route::get('anggotacbt/dashboard', function () {
+        return view('layout.anggotacbt.dashboard');
+    });
+
+
+//Layanan Wisata
+    Route::get('anggotacbt/layananwisata', 'LayananWisataController@index')->name('anggotacbt.layanan');
+    Route::post('anggotacbt/layananwisata/create', 'LayananWisataController@create')->name('anggotacbt.layanan.tambah');
+    Route::get('anggotacbt/layananwisata/{id}/edit', 'LayananWisataController@edit')->name('anggotacbt.layanan.edit');
+    Route::post('anggotacbt/layanan_wisata/{id}/update', 'LayananWisataController@update')->name('anggotacbt.layanan.update');
+    Route::get('anggotacbt/layanan_wisata/{id}/delete', 'LayananWisataController@delete')->name('anggotacbt.layanan.delete');
 
 });
 

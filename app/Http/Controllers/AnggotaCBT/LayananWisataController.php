@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\AnggotaCBT;
 
+use App\Http\Controllers\Controller;
 use App\JenisLayanan;
 use App\Kabupaten;
 use App\LayananWisata;
