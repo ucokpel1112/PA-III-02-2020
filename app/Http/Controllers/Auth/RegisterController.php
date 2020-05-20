@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Mail;
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use App\Mail\KonfirmasiEmail;
 
 class RegisterController extends Controller
 {
@@ -28,7 +32,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/';
+    protected $redirectTo = '/home';
 
     /**
      * Create a new controller instance.
@@ -50,10 +54,16 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
+            'no_KTP' => ['required', 'string'],
+            'photo' => ['required', 'string'],
+            'no_WA' => ['required', 'string'],
+            'no_HP' => ['required', 'string'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
+
+
 
     /**
      * Create a new user instance after a valid registration.
@@ -61,12 +71,50 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
+
+
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
+        if(isset($data['komunitas'])){
+            $user = User::create([
+                'name' => $data['name'],
+                'no_KTP' => $data['no_KTP'],
+                'photo'=> $data['photo'],
+                'no_WA' => $data['no_WA'],
+                'no_HP' => $data['no_HP'],
+                'email' => $data['email'],
+                'status'=>1,
+                'password' => Hash::make($data['password']),
+                'token' => Str::random(40),
+            ]);
+            Mail::to($user['email'])->send(new KonfirmasiEmail($user));
+        }else{
+            $user = User::create([
+                'name' => $data['name'],
+                'no_KTP' => $data['no_KTP'],
+                'photo'=> $data['photo'],
+                'no_WA' => $data['no_WA'],
+                'no_HP' => $data['no_HP'],
+                'email' => $data['email'],
+                'status' => 0,
+                'password' => Hash::make($data['password']),
+                'token' => Str::random(40),
+            ]);
+            Mail::to($user['email'])->send(new KonfirmasiEmail($user));
+        }
+
+
+        return $user;
+    }
+
+    public function choice(){
+        return view('auth.register_choice');
+    }
+
+    public function konfirmasiemail($email, $token)
+    {
+        User::where(['email' => $email, 'token' => $token])->update(['register_status' => '1', 'token' => NULL]);
+
+        return redirect('login')->withInfo('Selamat, akun anda telah aktif.');
     }
 }

@@ -13,9 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home.customer');
 
 
 // Route::get('/eventkalender', function () {
@@ -91,9 +92,9 @@ Route::namespace('Admin')->group(function () {
     Route::put('/adm/paket/edit/{id_paket}/layanan/update', 'PaketWisataController@updateLayanan')->name('admin.paket.update.layanan');
 
 //anggota CBT
-    Route::get('anggotacbt/dashboard', function () {
+    Route::get('anggotacbt/dashboard',function(){
         return view('layout.anggotacbt.dashboard');
-    });
+    })->name('home.anggota');
 //Layanan Wisata
     Route::get('anggotacbt/layananwisata', 'LayananWisataController@index')->name('anggotacbt.layanan');
     Route::post('anggotacbt/layananwisata/create', 'LayananWisataController@create')->name('anggotacbt.layanan.tambah');
@@ -112,6 +113,10 @@ Route::namespace('Admin')->group(function () {
 
 });
 
-Auth::routes();
+Auth::routes(['verify' => false]);
+Route::namespace('Auth')->group(function () {
+    Route::get('register/menu/pilih','RegisterController@choice')->name('register.choice');
+    Route::get('konfirmasiemail/{email}/{token}','RegisterController@konfirmasiemail')->name('konfirmasiemail');
+});
 
 Route::get('/home', 'HomeController@index')->name('home');

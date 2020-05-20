@@ -36,11 +36,22 @@
                             <div class="social_wrap d-flex align-items-center justify-content-end">
 
                                 <div class="social_links d-none d-xl-block">
-                                    <ul>@if(\Illuminate\Support\Facades\Auth::check())
-                                            <li><a href="{{route('logout')}}"> <i class="fa fa-sign-out"></i> Logout</a></li>
+                                    <ul>
+                                        @if(Auth::check())
+                                            <li><a href="{{route('logout')}}" onclick="event.preventDefault();
+                                                         document.getElementById('logout-form').submit();">
+                                                    <i class="fa fa-sign-out"></i> {{ __('Logout') }}
+                                                </a>
+                                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                                      style="display: none;">
+                                                    @csrf
+                                                </form>
+                                            </li>
                                         @else
-                                            <li><a href="{{route('login')}}"> <i class="fa fa-sign-in"></i> Login</a></li>
-                                            <li><a href="{{route('register')}}"> <i class="fa fa-registered"></i> Register</a></li>
+                                            <li><a href="{{route('login')}}"> <i class="fa fa-sign-in"></i> Login</a>
+                                            </li>
+                                            <li><a href="{{route('register.choice')}}"> <i class="fa fa-registered"></i>
+                                                    Register</a></li>
                                         @endif
                                     </ul>
                                 </div>

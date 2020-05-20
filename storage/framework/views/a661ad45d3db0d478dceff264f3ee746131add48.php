@@ -9,9 +9,10 @@
                     <i class="fa fa-info-circle"></i><?php echo e(session('info')); ?>
 
                 </div>
+
             <?php endif; ?>
             <div class="card" style=" background-color: #2F4F4F">
-                <center><div class="card-header"><img src="<?php echo e(asset('img/Login.png')); ?>"
+                <center><div class="card-header"><img src="member/img/Login.png"
                                                       alt="CBT Logo"
                                                       class="brand-image img-circle elevation-3"
                                                       style="width: 150px"></div></center>
@@ -100,4 +101,4 @@ endif; ?>
 </div>
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make('layout.auth.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\PA-III-02-2020\resources\views/auth/login.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layout.auth.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\PA-III-02-2020\resources\views/design.blade.php ENDPATH**/ ?>

@@ -12,6 +12,10 @@ class Kabupaten extends Model
         return $this->hasMany(paketWisata::class,'kabupaten_id','id_kabupaten');
     }
 
+    public function getKomunitas(){
+        return $this->hasMany(Komunitas::class,'id_kabupaten','id_kabupaten');
+    }
+
     public function getLayananWisata(){
         return $this->hasMany(LayananWisata::class,'kabupaten_id','id_kabupaten');
     }

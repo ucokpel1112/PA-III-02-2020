@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
 class HomeController extends Controller
 {
     /**
@@ -23,6 +21,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        if (checkPermission(['customer']))
+            return redirect(route('home.customer'));
+        elseif (checkPermission(['member']))
+            return redirect(route('home.anggota'));
+
     }
 }

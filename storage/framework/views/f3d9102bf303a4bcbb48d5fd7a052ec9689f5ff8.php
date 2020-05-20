@@ -1,5 +1,4 @@
-@extends('layout.auth.app')
-@section('content')
+<?php $__env->startSection('content'); ?>
     <div class="container">
         <div class="row justify-content-center" style="opacity: 80%">
             <div class="col-md-8">
@@ -15,7 +14,7 @@
                         </center>
                         <br>
                         <h4><b>
-                                <center><img src="{{asset('img/Register-.png')}}"
+                                <center><img src="<?php echo e(asset('img/Register-.png')); ?>"
                                              alt="CBT Logo"
                                              class="brand-image img-circle elevation-3"
                                              style="width: 150px"></center>
@@ -29,22 +28,30 @@
                     </div> -->
 
                     <div class="card-body">
-                        <form method="POST" action="{{ url('register') }}">
-                            @csrf
+                        <form method="POST" action="<?php echo e(url('register')); ?>">
+                            <?php echo csrf_field(); ?>
                             <div class="form-group row">
                                 <label for="name" class="col-md-3 col-form-label text-md-right"></label>
 
                                 <div class="col-md-6">
                                     <input id="name" type="text"
-                                           class="form-control @error('name') is-invalid @enderror" name="name"
-                                           value="{{ old('name') }}" required autocomplete="name"
+                                           class="form-control <?php if ($errors->has('name')) :
+if (isset($message)) { $messageCache = $message; }
+$message = $errors->first('name'); ?> is-invalid <?php unset($message);
+if (isset($messageCache)) { $message = $messageCache; }
+endif; ?>" name="name"
+                                           value="<?php echo e(old('name')); ?>" required autocomplete="name"
                                            placeholder="Nama Lengkap" autofocus>
 
-                                    @error('name')
+                                    <?php if ($errors->has('name')) :
+if (isset($message)) { $messageCache = $message; }
+$message = $errors->first('name'); ?>
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        <strong><?php echo e($message); ?></strong>
                                     </span>
-                                    @enderror
+                                    <?php unset($message);
+if (isset($messageCache)) { $message = $messageCache; }
+endif; ?>
                                 </div>
                             </div>
 
@@ -53,15 +60,23 @@
 
                                 <div class="col-md-6">
                                     <input id="no_KTP" type="text"
-                                           class="form-control @error('no_KTP') is-invalid @enderror" name="no_KTP"
-                                           value="{{ old('no_KTP') }}" required autocomplete="no_KTP"
+                                           class="form-control <?php if ($errors->has('no_KTP')) :
+if (isset($message)) { $messageCache = $message; }
+$message = $errors->first('no_KTP'); ?> is-invalid <?php unset($message);
+if (isset($messageCache)) { $message = $messageCache; }
+endif; ?>" name="no_KTP"
+                                           value="<?php echo e(old('no_KTP')); ?>" required autocomplete="no_KTP"
                                            placeholder="Nomor KTP" autofocus>
 
-                                    @error('no_KTP')
+                                    <?php if ($errors->has('no_KTP')) :
+if (isset($message)) { $messageCache = $message; }
+$message = $errors->first('no_KTP'); ?>
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        <strong><?php echo e($message); ?></strong>
                                     </span>
-                                    @enderror
+                                    <?php unset($message);
+if (isset($messageCache)) { $message = $messageCache; }
+endif; ?>
                                 </div>
                             </div>
 
@@ -70,15 +85,23 @@
 
                                 <div class="col-md-6">
                                     <input id="no_WA" type="text"
-                                           class="form-control @error('no_WA') is-invalid @enderror" name="no_WA"
-                                           value="{{ old('no_WA') }}" required autocomplete="no_WA"
+                                           class="form-control <?php if ($errors->has('no_WA')) :
+if (isset($message)) { $messageCache = $message; }
+$message = $errors->first('no_WA'); ?> is-invalid <?php unset($message);
+if (isset($messageCache)) { $message = $messageCache; }
+endif; ?>" name="no_WA"
+                                           value="<?php echo e(old('no_WA')); ?>" required autocomplete="no_WA"
                                            placeholder="Nomor WhatsApp" autofocus>
 
-                                    @error('no_WA')
+                                    <?php if ($errors->has('no_WA')) :
+if (isset($message)) { $messageCache = $message; }
+$message = $errors->first('no_WA'); ?>
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        <strong><?php echo e($message); ?></strong>
                                     </span>
-                                    @enderror
+                                    <?php unset($message);
+if (isset($messageCache)) { $message = $messageCache; }
+endif; ?>
                                 </div>
                             </div>
 
@@ -87,15 +110,23 @@
 
                                 <div class="col-md-6">
                                     <input id="no_HP" type="text"
-                                           class="form-control @error('no_HP') is-invalid @enderror" name="no_HP"
-                                           value="{{ old('no_HP') }}" required autocomplete="no_HP"
+                                           class="form-control <?php if ($errors->has('no_HP')) :
+if (isset($message)) { $messageCache = $message; }
+$message = $errors->first('no_HP'); ?> is-invalid <?php unset($message);
+if (isset($messageCache)) { $message = $messageCache; }
+endif; ?>" name="no_HP"
+                                           value="<?php echo e(old('no_HP')); ?>" required autocomplete="no_HP"
                                            placeholder="Nomor Handphone" autofocus>
 
-                                    @error('no_HP')
+                                    <?php if ($errors->has('no_HP')) :
+if (isset($message)) { $messageCache = $message; }
+$message = $errors->first('no_HP'); ?>
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        <strong><?php echo e($message); ?></strong>
                                     </span>
-                                    @enderror
+                                    <?php unset($message);
+if (isset($messageCache)) { $message = $messageCache; }
+endif; ?>
                                 </div>
                             </div>
 
@@ -105,15 +136,23 @@
 
                                 <div class="col-md-6">
                                     <input id="email" type="email"
-                                           class="form-control @error('email') is-invalid @enderror" name="email"
-                                           value="{{ old('email') }}" placeholder="E-mail" required
+                                           class="form-control <?php if ($errors->has('email')) :
+if (isset($message)) { $messageCache = $message; }
+$message = $errors->first('email'); ?> is-invalid <?php unset($message);
+if (isset($messageCache)) { $message = $messageCache; }
+endif; ?>" name="email"
+                                           value="<?php echo e(old('email')); ?>" placeholder="E-mail" required
                                            autocomplete="email">
 
-                                    @error('email')
+                                    <?php if ($errors->has('email')) :
+if (isset($message)) { $messageCache = $message; }
+$message = $errors->first('email'); ?>
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        <strong><?php echo e($message); ?></strong>
                                     </span>
-                                    @enderror
+                                    <?php unset($message);
+if (isset($messageCache)) { $message = $messageCache; }
+endif; ?>
                                 </div>
                             </div>
 
@@ -122,14 +161,22 @@
 
                                 <div class="col-md-6">
                                     <input id="password" type="password"
-                                           class="form-control @error('password') is-invalid @enderror" name="password"
+                                           class="form-control <?php if ($errors->has('password')) :
+if (isset($message)) { $messageCache = $message; }
+$message = $errors->first('password'); ?> is-invalid <?php unset($message);
+if (isset($messageCache)) { $message = $messageCache; }
+endif; ?>" name="password"
                                            placeholder="Kata Sandi" required autocomplete="new-password">
 
-                                    @error('password')
+                                    <?php if ($errors->has('password')) :
+if (isset($message)) { $messageCache = $message; }
+$message = $errors->first('password'); ?>
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        <strong><?php echo e($message); ?></strong>
                                     </span>
-                                    @enderror
+                                    <?php unset($message);
+if (isset($messageCache)) { $message = $messageCache; }
+endif; ?>
                                 </div>
                             </div>
 
@@ -147,39 +194,48 @@
                                 <label for="photo" class="col-md-3 col-form-label text-md-right"></label>
                                 &nbsp;&nbsp;&nbsp;&nbsp;<div class="col-md-6">
                                     <input type="file" name="photo"
-                                           class="custom-file-input @error('photo') is-invalid @enderror" required
+                                           class="custom-file-input <?php if ($errors->has('photo')) :
+if (isset($message)) { $messageCache = $message; }
+$message = $errors->first('photo'); ?> is-invalid <?php unset($message);
+if (isset($messageCache)) { $message = $messageCache; }
+endif; ?>" required
                                            autocomplete="photo">
                                     <label class="custom-file-label" style="width: 330px">Foto KTP</label>
 
-                                    @error('photo')
+                                    <?php if ($errors->has('photo')) :
+if (isset($message)) { $messageCache = $message; }
+$message = $errors->first('photo'); ?>
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        <strong><?php echo e($message); ?></strong>
                                     </span>
-                                    @enderror
+                                    <?php unset($message);
+if (isset($messageCache)) { $message = $messageCache; }
+endif; ?>
                                 </div>
                             </div>
 
-                            @if($status==1)
+                            <?php if($status==1): ?>
                                 <div class="form-group row">
                                     <label for="member" class="col-md-3 col-form-label text-md-right"></label>
                                     <div class="col-md-6">
 
                                         <select name="komunitas" id="komunitas" class="form-control" required>
                                             <option disabled="" selected="">== Select Komunitas ==</option>
-                                            @foreach($komunitas as $row)
-                                                <option value="{{$row->id}}">{{$row->nama_komunitas}}</option>
-                                            @endforeach
+                                            <?php $__currentLoopData = $komunitas; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                <option value="<?php echo e($row->id); ?>"><?php echo e($row->nama_komunitas); ?></option>
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                         </select>
                                     </div>
                                 </div>
 
-                            @endif
+                            <?php endif; ?>
 
                             <br>
                             <div class="form-group row mb-0" style="padding-left: 280px; ">
                                 <div class="col-md-6 offset-md-4">
                                     <button type="submit" class="btn btn-primary" style="background-color: #2E8B57">
-                                        {{ __('Register') }}
+                                        <?php echo e(__('Register')); ?>
+
                                     </button>
                                 </div>
                             </div>
@@ -190,4 +246,6 @@
             </div>
         </div>
     </div>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layout.auth.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\PA-III-02-2020\resources\views/auth/register.blade.php ENDPATH**/ ?>
