@@ -11,11 +11,7 @@
                                 </a>
                             </div>
                         </div>
-<<<<<<< HEAD
                         <div class="col-xl-7 col-lg-7">
-=======
-                        <div class="col-xl-6 col-lg-6">
->>>>>>> master
                             <div class="main-menu  d-none d-lg-block">
                                 <nav>
                                     <ul id="navigation">
@@ -31,15 +27,10 @@
 
                                         </li>
                                         <li><a href="contact.html">Kontak </a></li>
-<<<<<<< HEAD
-                                        <li><a href="#">Anggota CBT </a></li>
-=======
->>>>>>> master
                                     </ul>
                                 </nav>
                             </div>
                         </div>
-<<<<<<< HEAD
                         <div class="col-xl-3 col-lg-3 d-none d-lg-block">
                             <div class="social_wrap d-flex align-items-center justify-content-end">
 
@@ -65,28 +56,6 @@
                                     </ul>
                                 </div>
                             </div>
-=======
-                        <div class="col-xl-4 col-lg-4 d-none d-lg-block">
-                            <div class="social_wrap d-flex align-items-center justify-content-end">
-
-                                <div class="social_links d-none d-xl-block">
-                                    <ul>
-                                        <li><a href="#"> <i class="fa fa-instagram"></i> </a></li>
-                                        <li><a href="#"> <i class="fa fa-linkedin"></i> </a></li>
-                                        <li><a href="#"> <i class="fa fa-facebook"></i> </a></li>
-                                        <li><a href="#"> <i class="fa fa-google-plus"></i> </a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="seach_icon">
-                            <a data-toggle="modal" data-target="#exampleModalCenter" href="#">
-                                <i class="fa fa-search"></i>
-                            </a>
-                        </div>
-                        <div class="col-12">
-                            <div class="mobile_menu d-block d-lg-none"></div>
->>>>>>> master
                         </div>
                     </div>
                 </div>
