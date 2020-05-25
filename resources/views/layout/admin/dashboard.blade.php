@@ -44,6 +44,5 @@
       <!-- /.card -->
 
     </section>
-
 @endsection
 

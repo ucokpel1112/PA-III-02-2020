@@ -6,7 +6,7 @@
                     <div class="footer_widget">
                         <div class="footer_logo">
                             <a href="#">
-                                <img src="img/footer_logo.png" alt="">
+                                <img src="{{asset('img/footer_logo.png')}}" alt="">
                             </a>
                         </div>
                         <p>Jl. P.I. Del, Sitoluama, Lagu Boti, Kabupaten Toba Samosir, Sumatera Utara 22381 <br>
