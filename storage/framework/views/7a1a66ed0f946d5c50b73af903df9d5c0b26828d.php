@@ -6,12 +6,12 @@
                     <div class="row align-items-center">
                         <div class="col-xl-2 col-lg-2">
                             <div class="logo">
-                                <a href="/">
-                                    <img src="img/logos.png" alt="">
+                                <a href="<?php echo e(url('/')); ?>">
+                                    <img src="img/logo.png" alt="">
                                 </a>
                             </div>
                         </div>
-                        <div class="col-xl-7 col-lg-7">
+                        <div class="col-xl-6 col-lg-6">
                             <div class="main-menu  d-none d-lg-block">
                                 <nav>
                                     <ul id="navigation">
@@ -23,15 +23,13 @@
                                                 <li><a href="<?php echo e(route('pemesanan')); ?>">Pesanan Saya</a></li>
                                             </ul>
                                         </li>
-                                        <li><a href="<?php echo e(url('/eventkalender')); ?>">Kalender Event </a>
-
-                                        </li>
+                                        <li><a href="<?php echo e(url('/eventkalender')); ?>">Kalender Event</a></li>
                                         <li><a href="contact.html">Kontak </a></li>
                                     </ul>
                                 </nav>
                             </div>
                         </div>
-                        <div class="col-xl-3 col-lg-3 d-none d-lg-block">
+                        <div class="col-xl-4 col-lg-4 d-none d-lg-block">
                             <div class="social_wrap d-flex align-items-center justify-content-end">
 
                                 <div class="social_links d-none d-xl-block">

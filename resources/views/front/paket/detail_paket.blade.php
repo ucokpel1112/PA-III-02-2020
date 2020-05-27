@@ -114,8 +114,8 @@
                                 <div class="col-lg-12 col-md-12">
                                     <div class="mt-10">
                                         <input min="1" type="number" name="jumlah_peserta" placeholder="Jumlah Peserta Wisata"
-                                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Jumlah Peserta Wisata'" required
-                                    class="single-input-primary">
+                                               onfocus="this.placeholder = ''" onblur="this.placeholder = 'Jumlah Peserta Wisata'" required
+                                               class="single-input-primary">
 
                                     </div>
                                 </div>
@@ -123,40 +123,40 @@
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="input-group-icon mt-10">
-                                <div class="icon"><i class="fa fa-plane" aria-hidden="true"></i></div>
-                                <div class="form-select single-input-primary" id="default-select"">
-                                            <select name="sesi">
-                                                    <option>Pilih Jadwal</option>
-                                                    @foreach($sesi as $row)
-                                                        <option
-                                                            value="{{$row->id_sesi}}"
-                                                            >{{$row->jadwal}}</option>
-                                                    @endforeach
-                                                </select>
-                                </div>
-                            </div>
-                            </div>
-                                </div>
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <div class="mt-10">
-                                        <textarea name="pesan" class="single-textarea single-input-primary" placeholder="Pesan/Pertanyaan Untuk Pemesanan" onfocus="this.placeholder = ''"
-                                    onblur="this.placeholder = 'Pesan/Pertanyaan Untuk Pemesanan'" required></textarea>
+                                        <div class="icon"><i class="fa fa-plane" aria-hidden="true"></i></div>
+                                        <div class="form-select single-input-primary" id="default-select"">
+                                        <select name="sesi">
+                                            <option>Pilih Jadwal</option>
+                                            @foreach($sesi as $row)
+                                                <option
+                                                    value="{{$row->id_sesi}}"
+                                                >{{$row->jadwal}}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <div class="submit_btn mt-10">
-                                        <button class="boxed-btn4" type="submit">submit</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
                     </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="mt-10">
+                                        <textarea name="pesan" class="single-textarea single-input-primary" placeholder="Pesan/Pertanyaan Untuk Pemesanan" onfocus="this.placeholder = ''"
+                                                  onblur="this.placeholder = 'Pesan/Pertanyaan Untuk Pemesanan'" required></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="submit_btn mt-10">
+                                <button class="boxed-btn4" type="submit">submit</button>
+                            </div>
+                        </div>
+                    </div>
+                    </form>
                 </div>
             </div>
         </div>
+    </div>
     </div>
 
     <!-- newletter_area_start  -->

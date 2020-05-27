@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Travelo</title>
+    <title>Visit-Toba</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -13,7 +13,7 @@
     <!-- Place favicon.ico in the root directory -->
 
     <!-- CSS here -->
-    
+
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/owl.carousel.min.css">
     <link rel="stylesheet" href="/css/magnific-popup.css">
@@ -76,7 +76,7 @@
                             </div>
                             <div class="col-xl-4 col-lg-4 d-none d-lg-block">
                                 <div class="social_wrap d-flex align-items-center justify-content-end">
-                                    
+
                                     <div class="social_links d-none d-xl-block">
                                         <ul>
                                             <li><a href="#"> <i class="fa fa-instagram"></i> </a></li>
@@ -127,7 +127,7 @@
                             <div class="slider_text text-center">
                                 <h3>Simalungun  </h3>
                                 <p>Deskripsi Singkat</p>
-                                
+
                             </div>
                         </div>
                     </div>
@@ -140,7 +140,7 @@
                             <div class="slider_text text-center">
                             <h3>Simalungun  </h3>
                             <p>Deskripsi Singkat</p>
-                               
+
                             </div>
                         </div>
                     </div>
@@ -153,7 +153,7 @@
                             <div class="slider_text text-center">
                             <h3>Simalungun  </h3>
                                 <p>Pixel perfect design with awesome contents</p>
-                                
+
                             </div>
                         </div>
                     </div>
@@ -179,7 +179,7 @@
                             <div class="slider_text text-center">
                             <h3>Simalungun  </h3>
                                 <p>Pixel perfect design with awesome contents</p>
-                                
+
                             </div>
                         </div>
                     </div>
@@ -192,7 +192,7 @@
                             <div class="slider_text text-center">
                             <h3>Simalungun  </h3>
                                 <p>Pixel perfect design with awesome contents</p>
-                                
+
                             </div>
                         </div>
                     </div>
@@ -205,7 +205,7 @@
                             <div class="slider_text text-center">
                             <h3>Simalungun  </h3>
                                 <p>Pixel perfect design with awesome contents</p>
-                                
+
                             </div>
                         </div>
                     </div>
@@ -264,7 +264,7 @@
         </div>
     </div>
     <!-- where_togo_area_end  -->
-    
+
     <!-- popular_destination_area_start  -->
     <div class="popular_destination_area">
         <div class="container">
@@ -284,7 +284,7 @@
                         </div>
                         <div class="content">
                             <p class="d-flex align-items-center">Nama Event</a></p>
-                            
+
                         </div>
                     </div>
                 </div>
@@ -295,7 +295,7 @@
                         </div>
                         <div class="content">
                         <p class="d-flex align-items-center">Nama Event</a></p>
-                            
+
                         </div>
                     </div>
                 </div>
@@ -306,7 +306,7 @@
                         </div>
                         <div class="content">
                         <p class="d-flex align-items-center">Nama Event</a></p>
-                            
+
                         </div>
                     </div>
                 </div>
@@ -317,7 +317,7 @@
                         </div>
                         <div class="content">
                         <p class="d-flex align-items-center">Nama Event</a></p>
-                            
+
                         </div>
                     </div>
                 </div>
@@ -328,7 +328,7 @@
                         </div>
                         <div class="content">
                              <p class="d-flex align-items-center">Nama Event</a></p>
-                            
+
                         </div>
                     </div>
                 </div>
@@ -339,7 +339,7 @@
                         </div>
                         <div class="content">
                               <p class="d-flex align-items-center">Nama Event</a></p>
-                            
+
                         </div>
                     </div>
                 </div>
@@ -406,10 +406,10 @@
                             <p>United State of America</p>
                             <div class="rating_days d-flex justify-content-between">
                                 <span class="d-flex justify-content-center align-items-center">
-                                     <i class="fa fa-star"></i> 
-                                     <i class="fa fa-star"></i> 
-                                     <i class="fa fa-star"></i> 
-                                     <i class="fa fa-star"></i> 
+                                     <i class="fa fa-star"></i>
+                                     <i class="fa fa-star"></i>
+                                     <i class="fa fa-star"></i>
+                                     <i class="fa fa-star"></i>
                                      <i class="fa fa-star"></i>
                                      <a href="#">(20 Review)</a>
                                 </span>
@@ -432,10 +432,10 @@
                             <p>United State of America</p>
                             <div class="rating_days d-flex justify-content-between">
                                 <span class="d-flex justify-content-center align-items-center">
-                                     <i class="fa fa-star"></i> 
-                                     <i class="fa fa-star"></i> 
-                                     <i class="fa fa-star"></i> 
-                                     <i class="fa fa-star"></i> 
+                                     <i class="fa fa-star"></i>
+                                     <i class="fa fa-star"></i>
+                                     <i class="fa fa-star"></i>
+                                     <i class="fa fa-star"></i>
                                      <i class="fa fa-star"></i>
                                      <a href="#">(20 Review)</a>
                                 </span>
@@ -458,10 +458,10 @@
                             <p>United State of America</p>
                             <div class="rating_days d-flex justify-content-between">
                                 <span class="d-flex justify-content-center align-items-center">
-                                     <i class="fa fa-star"></i> 
-                                     <i class="fa fa-star"></i> 
-                                     <i class="fa fa-star"></i> 
-                                     <i class="fa fa-star"></i> 
+                                     <i class="fa fa-star"></i>
+                                     <i class="fa fa-star"></i>
+                                     <i class="fa fa-star"></i>
+                                     <i class="fa fa-star"></i>
                                      <i class="fa fa-star"></i>
                                      <a href="#">(20 Review)</a>
                                 </span>
@@ -484,10 +484,10 @@
                             <p>United State of America</p>
                             <div class="rating_days d-flex justify-content-between">
                                 <span class="d-flex justify-content-center align-items-center">
-                                     <i class="fa fa-star"></i> 
-                                     <i class="fa fa-star"></i> 
-                                     <i class="fa fa-star"></i> 
-                                     <i class="fa fa-star"></i> 
+                                     <i class="fa fa-star"></i>
+                                     <i class="fa fa-star"></i>
+                                     <i class="fa fa-star"></i>
+                                     <i class="fa fa-star"></i>
                                      <i class="fa fa-star"></i>
                                      <a href="#">(20 Review)</a>
                                 </span>
@@ -510,10 +510,10 @@
                             <p>United State of America</p>
                             <div class="rating_days d-flex justify-content-between">
                                 <span class="d-flex justify-content-center align-items-center">
-                                     <i class="fa fa-star"></i> 
-                                     <i class="fa fa-star"></i> 
-                                     <i class="fa fa-star"></i> 
-                                     <i class="fa fa-star"></i> 
+                                     <i class="fa fa-star"></i>
+                                     <i class="fa fa-star"></i>
+                                     <i class="fa fa-star"></i>
+                                     <i class="fa fa-star"></i>
                                      <i class="fa fa-star"></i>
                                      <a href="#">(20 Review)</a>
                                 </span>
@@ -536,10 +536,10 @@
                             <p>United State of America</p>
                             <div class="rating_days d-flex justify-content-between">
                                 <span class="d-flex justify-content-center align-items-center">
-                                     <i class="fa fa-star"></i> 
-                                     <i class="fa fa-star"></i> 
-                                     <i class="fa fa-star"></i> 
-                                     <i class="fa fa-star"></i> 
+                                     <i class="fa fa-star"></i>
+                                     <i class="fa fa-star"></i>
+                                     <i class="fa fa-star"></i>
+                                     <i class="fa fa-star"></i>
                                      <i class="fa fa-star"></i>
                                      <a href="#">(20 Review)</a>
                                 </span>
@@ -887,16 +887,16 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     </div>
   </div>
     <!-- link that opens popup -->
-<!--     
+<!--
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://static.codepen.io/assets/common/stopExecutionOnTimeout-de7e2ef6bfefd24b79a3f68b414b87b8db5b08439cac3f1012092b2290c719cd.js"></script>
 
     <script src=" https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"> </script> -->
     <!-- JS here -->
-    <script src="js/vendor/modernizr-3.5.0.min.js"></script>
-    <script src="js/vendor/jquery-1.12.4.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <script src="{{url('js/vendor/modernizr-3.5.0.min.js')}}"></script>
+    <script src="{{url('js/vendor/jquery-1.12.4.min.js')}}"></script>
+    <script src="{{url('js/popper.min.js')}}"></script>
+    <script src="{{js/bootstrap.min.js}}"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/isotope.pkgd.min.js"></script>
     <script src="js/ajax-form.js"></script>
@@ -912,9 +912,9 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <script src="js/plugins.js"></script>
     <script src="js/gijgo.min.js"></script>
     <script src="js/slick.min.js"></script>
-   
 
-    
+
+
     <!--contact js-->
     <script src="js/contact.js"></script>
     <script src="js/jquery.ajaxchimp.min.js"></script>

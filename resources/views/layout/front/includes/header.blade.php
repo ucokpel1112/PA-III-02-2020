@@ -6,8 +6,8 @@
                     <div class="row align-items-center">
                         <div class="col-xl-2 col-lg-2">
                             <div class="logo">
-                                <a href="/">
-                                    <img src="img/logos.png" alt="">
+                                <a href="{{url('/')}}">
+                                    <img src="img/logo.png" alt="">
                                 </a>
                             </div>
                         </div>
@@ -16,16 +16,13 @@
                                 <nav>
                                     <ul id="navigation">
                                         <li><a class="active" href="/">Home</a></li>
-                                        <li><a href="about.html">About</a></li>
                                         <li><a href="#">Paket Wisata<i class="ti-angle-down"></i></a>
                                             <ul class="submenu">
                                                 <li><a href="<?php echo e(route('paket')); ?>">Paket Wisata</a></li>
                                                 <li><a href="<?php echo e(route('pemesanan')); ?>">Pesanan Saya</a></li>
                                             </ul>
                                         </li>
-                                        <li><a href="<?php echo e(url('/eventkalender')); ?>">Kalender Event </a>
-
-                                        </li>
+                                        <li><a href="{{ url('/eventkalender') }}">Kalender Event</a></li>
                                         <li><a href="contact.html">Kontak </a></li>
                                     </ul>
                                 </nav>
