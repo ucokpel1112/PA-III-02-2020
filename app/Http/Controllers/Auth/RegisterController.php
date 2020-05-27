@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Komunitas;
+use App\KomunitasMember;
+use App\Mail\PemberitahuanMemberEmail;
+use App\Member;
 use Mail;
 use App\User;
 use App\Http\Controllers\Controller;
@@ -50,12 +54,22 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    protected function validator(array $data)
+    protected function validatorr(array $data)
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'no_KTP' => ['required', 'string'],
-            'photo' => ['required', 'string'],
+            'photo' => ['required'],
+            'no_WA' => ['required', 'string'],
+            'no_HP' => ['required', 'string'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ]);
+    }
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'name' => ['required', 'string', 'max:255'],
             'no_WA' => ['required', 'string'],
             'no_HP' => ['required', 'string'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
@@ -73,33 +87,40 @@ class RegisterController extends Controller
      */
 
 
-    protected function create(array $data)
+    protected function create(array $data,string $filename=null)
     {
         if(isset($data['komunitas'])){
             $user = User::create([
                 'name' => $data['name'],
-                'no_KTP' => $data['no_KTP'],
-                'photo'=> $data['photo'],
                 'no_WA' => $data['no_WA'],
                 'no_HP' => $data['no_HP'],
                 'email' => $data['email'],
-                'status'=>1,
                 'password' => Hash::make($data['password']),
                 'token' => Str::random(40),
             ]);
-            Mail::to($user['email'])->send(new KonfirmasiEmail($user));
+            $user->status = 1;
+            $user->save();
+            $member = Member::create([
+                'user_id'=>$user['id'],
+                'no_KTP' => $data['no_KTP'],
+                'photo'=> $filename,
+            ]);
+            $komunitas_member = KomunitasMember::create([
+                'member_id'=>$member['id'],
+                'komunitas_id'=>$data['komunitas']
+            ]);
+            Mail::to($user['email'])->send(new PemberitahuanMemberEmail());
         }else{
             $user = User::create([
                 'name' => $data['name'],
-                'no_KTP' => $data['no_KTP'],
-                'photo'=> $data['photo'],
                 'no_WA' => $data['no_WA'],
                 'no_HP' => $data['no_HP'],
                 'email' => $data['email'],
-                'status' => 0,
                 'password' => Hash::make($data['password']),
                 'token' => Str::random(40),
             ]);
+            $user->status=0;
+            $user->save();
             Mail::to($user['email'])->send(new KonfirmasiEmail($user));
         }
 
@@ -113,7 +134,7 @@ class RegisterController extends Controller
 
     public function konfirmasiemail($email, $token)
     {
-        User::where(['email' => $email, 'token' => $token])->update(['register_status' => '1', 'token' => NULL]);
+        User::where(['email' => $email, 'token' => $token])->update(['email_verified_at'=>now(),'register_status' => '1', 'token' => NULL]);
 
         return redirect('login')->withInfo('Selamat, akun anda telah aktif.');
     }

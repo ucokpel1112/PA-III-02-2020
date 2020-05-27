@@ -262,6 +262,13 @@
                                 </div>
 
                                 <div class="form-group">
+                                    <label for="jenis">Jenis Paket Wisata</label>
+                                    <input type="text" value="{{$paket->jenis_paket}}" class="form-control" name="jenis" id="jenis"
+                                           placeholder="Jenis Paket Wisata" required>
+                                    {{--                                    <p class="text-danger">{{$error->first('durasi')}}</p>--}}
+                                </div>
+
+                                <div class="form-group">
                                     <label for="status">Status Paket</label>
                                     <select class="form-control custom-select" name="status" id="status" required>
                                         <option disabled="">Pilih Status</option>

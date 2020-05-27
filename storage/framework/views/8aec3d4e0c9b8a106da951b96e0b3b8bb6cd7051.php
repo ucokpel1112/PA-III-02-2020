@@ -66,7 +66,7 @@
                             <div class="col-lg-6 col-md-6">
                                 <div class="single_place">
                                     <div class="thumb">
-                                        <img src="<?php echo e(asset('storage/img/paket/'.$row->gambar)); ?>" alt="">
+                                        <img src="<?php echo e(asset('storage/paket/'.$row->gambar)); ?>" alt="">
                                         <a href="#" class="prise">Rp.<?php echo e(number_format($row->harga_paket)); ?></a>
                                     </div>
                                     <div class="place_info">

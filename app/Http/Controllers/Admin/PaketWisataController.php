@@ -1,12 +1,11 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-use App\Http\Controllers\Controller;
 
+use App\Http\Controllers\Controller;
 use App\IncludedNotIncluded;
 use App\Kabupaten;
 use App\LayananWisata;
-use App\PaketLayanan;
 use App\paketWisata;
 use App\Sesi;
 use File;
@@ -43,23 +42,23 @@ class PaketWisataController extends Controller
         return view('admin.paket.tambah_paket_wisata', compact('status', 'kabupaten', 'options', 'c', 'ci', 'cu'));
     }
 
-    protected function fill_unit_select_box($paket=null)
+    protected function fill_unit_select_box($paket = null)
     {
         $layanan = '';
-        if($paket==null){
+        if ($paket == null) {
             foreach (LayananWisata::with('getKabupaten', 'getJenisLayanan')->get() as $layanans) {
                 $layanan .= '<option value="' . $layanans['id'] . '">' . $layanans['nama_layanan'] . '</option>';
             }
 
-        }else{
+        } else {
             foreach (LayananWisata::with('getKabupaten', 'getJenisLayanan')->get() as $layanans) {
-                $s=0;
-                foreach ($paket->getPaketLayanan as $row){
-                    if($row->id==$layanans['id']){
-                        $s=1;
+                $s = 0;
+                foreach ($paket->getPaketLayanan as $row) {
+                    if ($row->id == $layanans['id']) {
+                        $s = 1;
                     }
                 }
-                if($s==0){
+                if ($s == 0) {
                     $layanan .= '<option value="' . $layanans['id'] . '">' . $layanans['nama_layanan'] . '</option>';
                 }
             }
@@ -85,7 +84,7 @@ class PaketWisataController extends Controller
                 'harga_paket' => $request->harga_paket_wisata,
                 'availability' => $request->availability,
                 'durasi' => $request->durasi,
-                'jenis_paket'=> $request->jenis,
+                'jenis_paket' => $request->jenis,
                 'deskripsi_paket' => $request->deskripsi,
                 'rencana_perjalanan' => $request->rencana_perjalanan,
                 'tambahan' => $request->tambahan,
@@ -108,7 +107,7 @@ class PaketWisataController extends Controller
             for ($i = 1; $i <= $request->jlh_layanan; $i++) {
                 $paket->getPaketLayanan()->attach($_POST['layanan_' . $i]);
             }
-            return redirect(route('admin.paket.show',$paket->id_paket));
+            return redirect(route('admin.paket.show', $paket->id_paket));
         }
     }
 
@@ -121,8 +120,8 @@ class PaketWisataController extends Controller
     public function show($id_paket)
     {
         $paket = paketWisata::where('id_paket', $id_paket)->with(['getKabupaten', 'getIncludedNotIncluded', 'getPaketLayanan'])->first();
-        $sesi = Sesi::where('paket_id',$id_paket)->orderBy('status','DESC')->paginate(10);
-        return view('admin.paket.detail_paket_wisata', compact('sesi','paket'));
+        $sesi = Sesi::where('paket_id', $id_paket)->orderBy('status', 'DESC')->paginate(10);
+        return view('admin.paket.detail_paket_wisata', compact('sesi', 'paket'));
     }
 
     /**
@@ -170,7 +169,7 @@ class PaketWisataController extends Controller
             'availability' => $request->availability,
             'durasi' => $request->durasi,
             'status' => $request->status,
-            'jenis_paket'=> $request->jenis,
+            'jenis_paket' => $request->jenis,
             'deskripsi_paket' => $request->deskripsi,
             'rencana_perjalanan' => $request->rencana_perjalanan,
             'tambahan' => $request->tambahan,
@@ -186,7 +185,7 @@ class PaketWisataController extends Controller
         $paket = paketWisata::where('id_paket', $id_paket)->with('getIncludedNotIncluded')->first();
         $ci = 0;
         $cu = 0;
-        return view('admin.paket.edit_ini_paket', compact('paket','ci','cu'));
+        return view('admin.paket.edit_ini_paket', compact('paket', 'ci', 'cu'));
     }
 
     public function hapusIni($id_ini)
@@ -195,22 +194,23 @@ class PaketWisataController extends Controller
         $id_paket = $ini->paket_wisata_id;
         $ini->delete();
 
-        return redirect(route('admin.paket.ini',$id_paket));
+        return redirect(route('admin.paket.ini', $id_paket));
     }
-    public function hapusLayanan($id_layanan,$id_paket)
+
+    public function hapusLayanan($id_layanan, $id_paket)
     {
 
 //        echo $id_layanan.' dan '.$id_paket;
         $paket = paketWisata::find($id_paket);
         $paket->getPaketLayanan()->detach($id_layanan);
 
-        return redirect(route('admin.paket.layanan',$id_paket));
+        return redirect(route('admin.paket.layanan', $id_paket));
     }
 
     public function updateIni(Request $request, $id_paket)
     {
         $paket = paketWisata::where('id_paket', $id_paket)->with('getIncludedNotIncluded')->first();
-        if($request->jlh_included!=0){
+        if ($request->jlh_included != 0) {
             for ($i = 1; $i <= $request->jlh_included; $i++) {
                 $paket->getIncludedNotIncluded()->create([
                     'jenis_ini' => 'included',
@@ -219,7 +219,7 @@ class PaketWisataController extends Controller
             }
 
         }
-        if($request->jlh_not_included!=0){
+        if ($request->jlh_not_included != 0) {
             for ($i = 1; $i <= $request->jlh_not_included; $i++) {
                 $paket->getIncludedNotIncluded()->create([
                     'jenis_ini' => 'not included',
@@ -228,27 +228,28 @@ class PaketWisataController extends Controller
             }
         }
 
-        return redirect(route('admin.paket.editChoice',$id_paket));
+        return redirect(route('admin.paket.editChoice', $id_paket));
     }
 
     public function updateLayanan(Request $request, $id_paket)
     {
         $paket = paketWisata::where('id_paket', $id_paket)->with('getPaketLayanan')->first();
-        if($request->jlh_layanan!=0){
+        if ($request->jlh_layanan != 0) {
             for ($i = 1; $i <= $request->jlh_layanan; $i++) {
                 $paket->getPaketLayanan()->attach($_POST['layanan_' . $i]);
             }
         }
 
-        return redirect(route('admin.paket.editChoice',$id_paket));
+        return redirect(route('admin.paket.editChoice', $id_paket));
     }
 
-    public function editLayanan($id_paket){
+    public function editLayanan($id_paket)
+    {
         $paket = paketWisata::where('id_paket', $id_paket)->with('getPaketLayanan')->first();
         $options = $this->fill_unit_select_box($paket);
         $c = 0;
 //        var_dump($paket->getPaketLayanan);
-        return view('admin.paket.edit_layanan_paket', compact('paket','c','options'));
+        return view('admin.paket.edit_layanan_paket', compact('paket', 'c', 'options'));
     }
 
     /**
@@ -274,45 +275,68 @@ class PaketWisataController extends Controller
 //        return redirect(route('admin.paket'));
     }
 
-    public function createSesi($id_paket){
+    public function createSesi($id_paket)
+    {
 
-        return view('admin.paket.create_sesi',compact('id_paket'));
+        return view('admin.paket.create_sesi', compact('id_paket'));
     }
 
-    public function storeSesi(Request $request, $id_paket){
+    public function storeSesi(Request $request, $id_paket)
+    {
         $sesi = Sesi::create([
-            'paket_id'=>$id_paket,
-            'kuota_peserta'=>$request->kuota_peserta,
-            'jadwal'=>$request->jadwal,
-            'status'=>1
+            'paket_id' => $id_paket,
+            'kuota_peserta' => $request->kuota_peserta,
+            'jadwal' => $request->jadwal,
+            'status' => 1
         ]);
 
-        return redirect(route('admin.paket.show',$id_paket));
+        return redirect(route('admin.paket.show', $id_paket));
     }
 
-    public function destroySesi($id_sesi){
+    public function destroySesi($id_sesi)
+    {
         $sesi = Sesi::find($id_sesi);
-        $id_paket= $sesi->paket_id;
+        $id_paket = $sesi->paket_id;
+        if ($sesi->getPemesanan->count() == 0) {
+            $sesi->delete();
+
+            return Redirect(Route('admin.paket.show', $id_paket));
+        } else {
+            $error =  'Mohon Maaf Sesi ini memiliki pemesanan, Sehingga sesi ini tidak dapat dihapus.';
+            $paket = paketWisata::where('id_paket', $id_paket)->with(['getKabupaten', 'getIncludedNotIncluded', 'getPaketLayanan'])->first();
+            $sesi = Sesi::where('paket_id', $id_paket)->orderBy('status', 'DESC')->paginate(10);
+            return view('admin.paket.detail_paket_wisata', compact('sesi', 'paket','error'));
+        }
+
+
+    }
+
+    public function nonaktifSesi($id_sesi)
+    {
+        $sesi = Sesi::find($id_sesi);
+        $id_paket = $sesi->paket_id;
         $sesi->status = 0;
         $sesi->save();
 
-        return Redirect(Route('admin.paket.show',$id_paket));
+        return Redirect(Route('admin.paket.show', $id_paket));
     }
 
-    public function editSesi($id_sesi){
+    public function editSesi($id_sesi)
+    {
         $sesi = Sesi::find($id_sesi);
-        return view('admin.paket.edit_sesi',compact('sesi'));
+        return view('admin.paket.edit_sesi', compact('sesi'));
     }
 
-    public function updateSesi(Request $request,$id_sesi){
+    public function updateSesi(Request $request, $id_sesi)
+    {
         $sesi = Sesi::find($id_sesi);
         $id_paket = $sesi->paket_id;
         $sesi->update([
-           'kuota_peserta'=>$request->kuota_peserta,
-           'status'=>$request->status,
-           'jadwal'=>$request->jadwal
+            'kuota_peserta' => $request->kuota_peserta,
+            'status' => $request->status,
+            'jadwal' => $request->jadwal
         ]);
 
-        return Redirect(Route('admin.paket.show',$id_paket));
+        return Redirect(Route('admin.paket.show', $id_paket));
     }
 }

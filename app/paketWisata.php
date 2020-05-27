@@ -27,6 +27,7 @@ class paketWisata extends Model
 
         static::deleting(function($paket) { // before delete() method call this
             $paket->getIncludedNotIncluded()->delete();
+            $paket->getSesi()->delete();
             // do the rest of the cleanup...
         });
     }

@@ -18,11 +18,13 @@ class CreateLayananWisatasTable extends Migration
             $table->string('nama_layanan');
             $table->unsignedBigInteger('jenisLayanan_id');
             $table->unsignedBigInteger('kabupaten_id');
+            $table->unsignedBigInteger('member_id');
             $table->string('deskripsi_layanan')->nullable();
             $table->timestamps();
 
             $table->foreign('jenislayanan_id')->references('id')->on('jenis_layanans');
             $table->foreign('kabupaten_id')->references('id_kabupaten')->on('kabupatens');
+            $table->foreign('member_id')->references('id')->on('members');
         });
     }
 

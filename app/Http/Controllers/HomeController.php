@@ -21,10 +21,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        if (checkPermission(['customer']))
+        if (checkPermission(['customer'])||checkPermission(['user']))
             return redirect(route('home.customer'));
         elseif (checkPermission(['member']))
             return redirect(route('home.anggota'));
-
+        elseif (checkPermission(['admin']))
+            return redirect(route('admin.home'));
     }
 }

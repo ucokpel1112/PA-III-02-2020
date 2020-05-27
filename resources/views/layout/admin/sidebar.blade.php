@@ -74,6 +74,29 @@
                         </li>
                     </ul>
                 </li>
+                <li class="nav-item has-treeview {{Request::segment(2) === 'member' ? 'menu-open' : null}}">
+                    <a href="#" class="nav-link {{Request::segment(2) === 'member' ? 'active' : null}}">
+                        <i class="nav-icon fas fa-edit"></i>
+                        <p>
+                            Member
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{route('member')}}" class="nav-link {{(Request::segment(3)==null)&&(Request::segment(2)=='member')? 'active' : null}}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Daftar Member</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('member.request')}}" class="nav-link {{(Request::segment(3)=='request')&&(Request::segment(2)=='member')? 'active' : null}}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Request Member</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
                 <li class="nav-item has-treeview {{Request::segment(2) === 'kalender' ? 'menu-open' : null}}">
                     <a href="#" class="nav-link {{Request::segment(2) === 'kalender' ? 'active' : null}}">
                         <i class="nav-icon far fa-calendar-alt"></i>

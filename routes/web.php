@@ -17,6 +17,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 })->name('home.customer');
+Route::get('/design', function () {
+    return view('desgin');
+})->name('design');
 
 
 // Route::get('/eventkalender', function () {
@@ -61,12 +64,23 @@ Route::namespace('Front')->group(function () {
 
 //Paket Wisata admin
 Route::namespace('Admin')->group(function () {
+   //member
+    Route::get('/adm/member','MemberController@index')->name('member');
+    Route::post('/adm/member','MemberController@indexFilterM')->name('member.filter');
+    Route::get('/adm/member/request','MemberController@index')->name('member.request');
+    Route::post('/adm/member/request','MemberController@indexFilterR')->name('member.request.filter');
+    Route::get('/adm/member/request/terima/{id_member}','MemberController@terima')->name('member.request.terima');
+    Route::get('/adm/member/request/tolak/{id_member}','MemberController@tolak')->name('member.request.tolak');
+    Route::get('/adm/member/request/hapus/{id_member}','MemberController@hapus')->name('member.request.hapus');
+    Route::get('/adm/member/request/detail/{id_member}','MemberController@showRequest')->name('member.request.detail');
+
     //sesi
     Route::get('/adm/sesi/add/{id_paket}', 'PaketWisataController@createSesi')->name('admin.sesi.create');
     Route::put('/adm/sesi/{id_paket}', 'PaketWisataController@storeSesi')->name('admin.sesi.store');
     Route::get('/adm/sesi/edit/{id_sesi}', 'PaketWisataController@editSesi')->name('admin.sesi.edit');
     Route::put('/adm/sesi/edit/{id_sesi}/update', 'PaketWisataController@updateSesi')->name('admin.sesi.update');
     Route::delete('/adm/sesi/delete/{id_sesi}', 'PaketWisataController@destroySesi')->name('admin.sesi.delete');
+    Route::delete('/adm/sesi/nonaktif/{id_sesi}', 'PaketWisataController@nonaktifSesi')->name('admin.sesi.nonaktif');
 
 
     //pemesanan
@@ -108,7 +122,7 @@ Route::namespace('Admin')->group(function () {
 Route::namespace('AnggotaCBT')->group(function () {
     Route::get('anggotacbt/dashboard', function () {
         return view('layout.anggotacbt.dashboard');
-    });
+    })->name('home.anggota');
 
 
 //Layanan Wisata
@@ -122,8 +136,8 @@ Route::namespace('AnggotaCBT')->group(function () {
 
 Auth::routes(['verify' => false]);
 Route::namespace('Auth')->group(function () {
-    Route::get('register/menu/pilih','RegisterController@choice')->name('register.choice');
-    Route::get('konfirmasiemail/{email}/{token}','RegisterController@konfirmasiemail')->name('konfirmasiemail');
+    Route::get('register/menu/pilih', 'RegisterController@choice')->name('register.choice');
+    Route::get('konfirmasiemail/{email}/{token}', 'RegisterController@konfirmasiemail')->name('konfirmasiemail');
 });
 
 Route::get('/home', 'HomeController@index')->name('home');

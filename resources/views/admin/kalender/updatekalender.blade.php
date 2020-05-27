@@ -70,7 +70,7 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-sm-10">
-                                                <img class="img-fluid" src="{{asset('storage/Image/kalender'.$kalenders->gambar_event)}}" alt="Photo">
+                                                <img class="img-fluid" src="{{asset('storage/kalender'.$kalenders->gambar_event)}}" alt="Photo">
                                             </div>
                                         </div>
                                     </div>

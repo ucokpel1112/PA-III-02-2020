@@ -262,6 +262,13 @@
                                 </div>
 
                                 <div class="form-group">
+                                    <label for="jenis">Jenis Paket Wisata</label>
+                                    <input type="text" value="<?php echo e($paket->jenis_paket); ?>" class="form-control" name="jenis" id="jenis"
+                                           placeholder="Jenis Paket Wisata" required>
+                                    
+                                </div>
+
+                                <div class="form-group">
                                     <label for="status">Status Paket</label>
                                     <select class="form-control custom-select" name="status" id="status" required>
                                         <option disabled="">Pilih Status</option>

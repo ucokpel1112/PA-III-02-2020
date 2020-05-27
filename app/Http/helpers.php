@@ -3,7 +3,7 @@
 
 function checkPermission($permissions){
 
-    $userAccess = getMyPermission(auth()->user()->is_permission);
+    $userAccess = getMyPermission(auth()->user()->status);
 
     foreach ($permissions as $key => $value) {
 

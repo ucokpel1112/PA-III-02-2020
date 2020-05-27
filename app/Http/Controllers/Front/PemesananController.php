@@ -23,6 +23,9 @@ class PemesananController extends Controller
     {
         $pemesanan = Pemesanan::find($id_pemesanan);
         if ($pemesanan->count() != 0) {
+            $sesi = Sesi::find($pemesanan->sesi_id);
+            $sesi->kuota_peserta += $pemesanan->jumlah_peserta;
+            $sesi->save();
             $pemesanan->status = 0;
             $pemesanan->save();
         }
@@ -77,7 +80,7 @@ class PemesananController extends Controller
                 $s=$this->refreshPaket($id_paket);
                 echo $s;
             } else if(($countK - $request->jumlah_peserta)>0){
-                $sesi->kuota_pesanan -= $request->jumlah_peserta;
+                $sesi->kuota_peserta -= $request->jumlah_peserta;
                 $sesi->save();
             }
             return redirect(route('pemesanan.detail', $pemesanan->id_pemesanan));

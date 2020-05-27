@@ -28,7 +28,7 @@
                     </div> -->
 
                     <div class="card-body">
-                        <form method="POST" action="<?php echo e(url('register')); ?>">
+                        <form method="POST" action="<?php echo e(url('register')); ?>" enctype="multipart/form-data">
                             <?php echo csrf_field(); ?>
                             <div class="form-group row">
                                 <label for="name" class="col-md-3 col-form-label text-md-right"></label>
@@ -55,30 +55,6 @@ endif; ?>
                                 </div>
                             </div>
 
-                            <div class="form-group row">
-                                <label for="no_KTP" class="col-md-3 col-form-label text-md-right"></label>
-
-                                <div class="col-md-6">
-                                    <input id="no_KTP" type="text"
-                                           class="form-control <?php if ($errors->has('no_KTP')) :
-if (isset($message)) { $messageCache = $message; }
-$message = $errors->first('no_KTP'); ?> is-invalid <?php unset($message);
-if (isset($messageCache)) { $message = $messageCache; }
-endif; ?>" name="no_KTP"
-                                           value="<?php echo e(old('no_KTP')); ?>" required autocomplete="no_KTP"
-                                           placeholder="Nomor KTP" autofocus>
-
-                                    <?php if ($errors->has('no_KTP')) :
-if (isset($message)) { $messageCache = $message; }
-$message = $errors->first('no_KTP'); ?>
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong><?php echo e($message); ?></strong>
-                                    </span>
-                                    <?php unset($message);
-if (isset($messageCache)) { $message = $messageCache; }
-endif; ?>
-                                </div>
-                            </div>
 
                             <div class="form-group row">
                                 <label for="no_WA" class="col-md-3 col-form-label text-md-right"></label>
@@ -190,31 +166,56 @@ endif; ?>
                                 </div>
                             </div>
 
-                            <div class="form-group row">
-                                <label for="photo" class="col-md-3 col-form-label text-md-right"></label>
-                                &nbsp;&nbsp;&nbsp;&nbsp;<div class="col-md-6">
-                                    <input type="file" name="photo"
-                                           class="custom-file-input <?php if ($errors->has('photo')) :
+
+                            <?php if($status==1): ?>
+                                <div class="form-group row">
+                                    <label for="no_KTP" class="col-md-3 col-form-label text-md-right"></label>
+
+                                    <div class="col-md-6">
+                                        <input id="no_KTP" type="text"
+                                               class="form-control <?php if ($errors->has('no_KTP')) :
+if (isset($message)) { $messageCache = $message; }
+$message = $errors->first('no_KTP'); ?> is-invalid <?php unset($message);
+if (isset($messageCache)) { $message = $messageCache; }
+endif; ?>" name="no_KTP"
+                                               value="<?php echo e(old('no_KTP')); ?>" required autocomplete="no_KTP"
+                                               placeholder="Nomor KTP" autofocus>
+
+                                        <?php if ($errors->has('no_KTP')) :
+if (isset($message)) { $messageCache = $message; }
+$message = $errors->first('no_KTP'); ?>
+                                        <span class="invalid-feedback" role="alert">
+                                        <strong><?php echo e($message); ?></strong>
+                                    </span>
+                                        <?php unset($message);
+if (isset($messageCache)) { $message = $messageCache; }
+endif; ?>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="photo" class="col-md-3 col-form-label text-md-right"></label>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;<div class="col-md-6">
+                                        <input type="file" name="photo"
+                                               class="custom-file-input <?php if ($errors->has('photo')) :
 if (isset($message)) { $messageCache = $message; }
 $message = $errors->first('photo'); ?> is-invalid <?php unset($message);
 if (isset($messageCache)) { $message = $messageCache; }
 endif; ?>" required
-                                           autocomplete="photo">
-                                    <label class="custom-file-label" style="width: 330px">Foto KTP</label>
+                                               autocomplete="photo">
+                                        <label class="custom-file-label" style="width: 330px">Foto KTP</label>
 
-                                    <?php if ($errors->has('photo')) :
+                                        <?php if ($errors->has('photo')) :
 if (isset($message)) { $messageCache = $message; }
 $message = $errors->first('photo'); ?>
-                                    <span class="invalid-feedback" role="alert">
+                                        <span class="invalid-feedback" role="alert">
                                         <strong><?php echo e($message); ?></strong>
                                     </span>
-                                    <?php unset($message);
+                                        <?php unset($message);
 if (isset($messageCache)) { $message = $messageCache; }
 endif; ?>
+                                    </div>
                                 </div>
-                            </div>
-
-                            <?php if($status==1): ?>
                                 <div class="form-group row">
                                     <label for="member" class="col-md-3 col-form-label text-md-right"></label>
                                     <div class="col-md-6">

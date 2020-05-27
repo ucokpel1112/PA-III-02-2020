@@ -1,6 +1,14 @@
 <?php $__env->startSection('content'); ?>
     <section class="content-header">
         <div class="container-fluid">
+            <?php if(isset($error)): ?>
+            <div class="row danger bg-danger">
+                <div class="col text-center" style="margin: 5px;">
+                    <?php echo e($error); ?>
+
+                </div>
+            </div>
+            <?php endif; ?>
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <h1>Detail Paket</h1>
@@ -151,7 +159,8 @@
                                     <hr>
                                 </div>
                                 <div class="tab-pane" id="sesi">
-                                    <a class="btn btn-success btn-sm" href="<?php echo e(route('admin.sesi.create',$paket->id_paket)); ?>">
+                                    <a class="btn btn-success btn-sm"
+                                       href="<?php echo e(route('admin.sesi.create',$paket->id_paket)); ?>">
                                         <i class="fas fa-pencil-alt">
                                         </i>
                                         Create
@@ -208,46 +217,97 @@
                                                         </i>
                                                         Edit
                                                     </a>
-                                                    <button type="button" class="btn btn-danger btn-sm"
-                                                            data-toggle="modal"
-                                                            data-target="#delete_sesi_<?php echo e($row->id_sesi); ?>">
-                                                        Delete
-                                                    </button>
-                                                    <div class="modal fade" id="delete_sesi_<?php echo e($row->id_sesi); ?>"
-                                                         tabindex="-1" role="dialog"
-                                                         aria-labelledby="deleteModalCenterTitle" aria-hidden="true">
-                                                        <div class="modal-dialog modal-dialog-centered" role="document">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h5 class="modal-title" id="hapusModalLongTitle">
-                                                                        Hapus Sesi Paket Wisata</h5>
-                                                                    <button type="button" class="close"
-                                                                            data-dismiss="modal"
-                                                                            aria-label="Close">
-                                                                        <span aria-hidden="true">&times;</span>
-                                                                    </button>
-                                                                </div>
-                                                                <div class="modal-body">
-                                                                    Anda Yakin Ingin Menhapus Sesi Paket ...
-                                                                </div>
-                                                                <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-secondary"
-                                                                            data-dismiss="modal">
-                                                                        Batal
-                                                                    </button>
-                                                                    <form
-                                                                        action="<?php echo e(route('admin.sesi.delete',$row->id_sesi)); ?>"
-                                                                        method="post">
-                                                                        <?php echo csrf_field(); ?>
-                                                                        <?php echo method_field('DELETE'); ?>
-                                                                        <button type="submit" class="btn btn-primary">
-                                                                            Hapus
+                                                    <?php if($row->status==0): ?>
+                                                        <button type="button" class="btn btn-danger btn-sm"
+                                                                data-toggle="modal"
+                                                                data-target="#delete_sesi_<?php echo e($row->id_sesi); ?>">
+                                                            Delete
+                                                        </button>
+                                                        <div class="modal fade" id="delete_sesi_<?php echo e($row->id_sesi); ?>"
+                                                             tabindex="-1" role="dialog"
+                                                             aria-labelledby="deleteModalCenterTitle"
+                                                             aria-hidden="true">
+                                                            <div class="modal-dialog modal-dialog-centered"
+                                                                 role="document">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title"
+                                                                            id="hapusModalLongTitle">
+                                                                            Hapus Sesi Paket Wisata</h5>
+                                                                        <button type="button" class="close"
+                                                                                data-dismiss="modal"
+                                                                                aria-label="Close">
+                                                                            <span aria-hidden="true">&times;</span>
                                                                         </button>
-                                                                    </form>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        Anda Yakin Ingin Menhapus Sesi Paket ...
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-secondary"
+                                                                                data-dismiss="modal">
+                                                                            Batal
+                                                                        </button>
+                                                                        <form
+                                                                            action="<?php echo e(route('admin.sesi.delete',$row->id_sesi)); ?>"
+                                                                            method="post">
+                                                                            <?php echo csrf_field(); ?>
+                                                                            <?php echo method_field('DELETE'); ?>
+                                                                            <button type="submit"
+                                                                                    class="btn btn-primary">
+                                                                                Hapus
+                                                                            </button>
+                                                                        </form>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
+                                                    <?php elseif($row->status==1): ?>
+                                                        <button type="button" class="btn btn-danger btn-sm"
+                                                                data-toggle="modal"
+                                                                data-target="#nonaktif_sesi_<?php echo e($row->id_sesi); ?>">
+                                                            Non-Aktifkan
+                                                        </button>
+                                                        <div class="modal fade" id="nonaktif_sesi_<?php echo e($row->id_sesi); ?>"
+                                                             tabindex="-1" role="dialog"
+                                                             aria-labelledby="deleteModalCenterTitle"
+                                                             aria-hidden="true">
+                                                            <div class="modal-dialog modal-dialog-centered"
+                                                                 role="document">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title"
+                                                                            id="hapusModalLongTitle">
+                                                                            Hapus Sesi Paket Wisata</h5>
+                                                                        <button type="button" class="close"
+                                                                                data-dismiss="modal"
+                                                                                aria-label="Close">
+                                                                            <span aria-hidden="true">&times;</span>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        Anda Yakin Ingin Menhapus Sesi Paket ...
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-secondary"
+                                                                                data-dismiss="modal">
+                                                                            Batal
+                                                                        </button>
+                                                                        <form
+                                                                            action="<?php echo e(route('admin.sesi.nonaktif',$row->id_sesi)); ?>"
+                                                                            method="post">
+                                                                            <?php echo csrf_field(); ?>
+                                                                            <?php echo method_field('DELETE'); ?>
+                                                                            <button type="submit"
+                                                                                    class="btn btn-primary">
+                                                                                Hapus
+                                                                            </button>
+                                                                        </form>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    <?php endif; ?>
                                                 </td>
                                             </tr>
                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>

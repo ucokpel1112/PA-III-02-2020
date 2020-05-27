@@ -15,7 +15,7 @@ class Sesi extends Model
     }
 
     public function getPemesanan(){
-        return $this->hasMany(Sesi::class,'sesi_id','id_sesi');
+        return $this->hasMany(Pemesanan::class,'sesi_id','id_sesi');
     }
 
     public function defineStatus($status){

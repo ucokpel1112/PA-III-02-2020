@@ -286,7 +286,7 @@
                                     <div class="row">
                                         <div class="col-sm-10">
                                             <img class="img-fluid"
-                                                 src="http://localhost:8000/storage/img/paket/1587832096.jpg"
+                                                 src="http://localhost:8000/storage/paket/1587832096.jpg"
                                                  alt="Photo">
                                         </div>
                                     </div>
