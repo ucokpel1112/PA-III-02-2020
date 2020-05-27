@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'no_KTP', 'photo', 'no_WA', 'no_HP', 'email', 'password', 'token', 'member',
+        'name', 'no_KTP', 'photo', 'no_WA', 'no_HP', 'email', 'password', 'token', 'status','register_status'
     ];
 
     /**
@@ -36,4 +36,8 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function getPemesanan(){
+        return $this->hasMany(Pemesanan::class,'user_id','id');
+    }
 }
