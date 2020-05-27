@@ -16,7 +16,6 @@
                                 <nav>
                                     <ul id="navigation">
                                         <li><a class="active" href="/">Home</a></li>
-                                        <li><a href="about.html">About</a></li>
                                         <li><a href="#">Paket Wisata<i class="ti-angle-down"></i></a>
                                             <ul class="submenu">
                                                 <li><a href="<?php echo e(route('paket')); ?>">Paket Wisata</a></li>
