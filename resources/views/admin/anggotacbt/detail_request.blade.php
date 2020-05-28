@@ -30,7 +30,7 @@
                         <div class="card-body box-profile">
                             <div class="text-center">
                                 <img style="max-width: 300px;height: 200px;border: 3px solid #adb5bd;padding: 3px;" class="rounded mx-auto d-block"
-                                     src="{{asset('storage/img/member/'.$member->photo)}}"
+                                     src="{{asset('/storage/img/member/'.$member->photo)}}"
                                      alt="User profile picture">
                             </div>
 

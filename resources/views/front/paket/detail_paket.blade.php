@@ -66,6 +66,32 @@
             </div>
         </div>
     </div>
+    @if(isset($hotel))
+        <div class="popular_places_area">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-6">
+                        <div class="section_title text-center mb_70">
+                            <h3>Rekomendasi Hotel</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    @foreach($hotel as $row)
+                        <div class="col-lg-4 col-md-6">
+                            <div class="single_place">
+
+                                <div class="place_info">
+                                    <a href="#"><h3>{{$row->nama_layanan}}</h3></a>
+                                    <p>{{$row->deskripsi_layanan}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+    @endif
     <div class="newletter_area overlay">
         <div class="container">
             <div class="row justify-content-center align-items-center">
@@ -105,58 +131,77 @@
             <div class="row justify-content-center">
                 <div class="col-lg-8 col-md-9">
                     <div></div>
-                    <div class="contact_join">
-                        <h3>Pemesanan <br><br>(Rp.{{number_format($paket->harga_paket)}} / Person)</h3>
-                        <form name="pemesanan" action="{{route('paket.pesan',$paket->id_paket)}}" method="POST">
-                            @csrf
-                            @method('PUT')
-                            <div class="row">
-                                <div class="col-lg-12 col-md-12">
-                                    <div class="mt-10">
-                                        <input min="1" type="number" name="jumlah_peserta" placeholder="Jumlah Peserta Wisata"
-                                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Jumlah Peserta Wisata'" required
-                                    class="single-input-primary">
+                    <div class="contact_join text-center">
+                        @if(Auth::check())
+                            <h3>P E M E S A N A N <br><br>(Rp.{{number_format($paket->harga_paket)}} / Person)</h3>
+                            <form name="pemesanan" action="{{route('paket.pesan',$paket->id_paket)}}" method="POST">
+                                @csrf
+                                @method('PUT')
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12">
+                                        <div class="mt-10">
+                                            <input min="1" type="number" name="jumlah_peserta"
+                                                   placeholder="Jumlah Peserta Wisata"
+                                                   onfocus="this.placeholder = ''"
+                                                   onblur="this.placeholder = 'Jumlah Peserta Wisata'" required
+                                                   class="single-input-primary">
 
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <div class="input-group-icon mt-10">
-                                <div class="icon"><i class="fa fa-plane" aria-hidden="true"></i></div>
-                                <div class="form-select single-input-primary" id="default-select"">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="input-group-icon mt-10">
+                                            <div class="icon"><i class="fa fa-plane" aria-hidden="true"></i></div>
+                                            <div class="form-select single-input-primary" id="default-select"
+                                            ">
                                             <select name="sesi">
-                                                    <option>Pilih Jadwal</option>
-                                                    @foreach($sesi as $row)
-                                                        <option
-                                                            value="{{$row->id_sesi}}"
-                                                            >{{$row->jadwal}}</option>
-                                                    @endforeach
-                                                </select>
-                                </div>
-                            </div>
-                            </div>
-                                </div>
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <div class="mt-10">
-                                        <textarea name="pesan" class="single-textarea single-input-primary" placeholder="Pesan/Pertanyaan Untuk Pemesanan" onfocus="this.placeholder = ''"
-                                    onblur="this.placeholder = 'Pesan/Pertanyaan Untuk Pemesanan'" required></textarea>
+                                                <option>Pilih Jadwal</option>
+                                                @foreach($sesi as $row)
+                                                    <option
+                                                        value="{{$row->id_sesi}}"
+                                                    >{{$row->jadwal}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <div class="submit_btn mt-10">
-                                        <button class="boxed-btn4" type="submit">submit</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
                     </div>
+
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="mt-10">
+                                        <textarea name="pesan" class="single-textarea single-input-primary"
+                                                  placeholder="Pesan/Pertanyaan Untuk Pemesanan"
+                                                  onfocus="this.placeholder = ''"
+                                                  onblur="this.placeholder = 'Pesan/Pertanyaan Untuk Pemesanan'"
+                                                  required></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="submit_btn mt-10">
+                                <button class="boxed-btn4" type="submit">submit</button>
+                            </div>
+                        </div>
+                    </div>
+                    </form>
+                    @else
+                        <h3>P E M E S A N A N <br><br></h3>
+                        <h4 class="text-dark">Untuk Melakukan Pemesanan, Anda Harus Login Terlebih Dahulu <br><br></h4>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="submit_btn mt-10">
+                                    <a href="{{route('login')}}" class="boxed-btn4" type="submit"><i class="fa fa-sign-in"></i> Login </a>
+                                </div>
+                            </div>
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>
+    </div>
     </div>
 
     <!-- newletter_area_start  -->

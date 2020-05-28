@@ -128,7 +128,7 @@
                                                 <td>{{$row->getUser->email}}</td>
                                                 <td>{{$row->defineStatus($row->getUser->register_status)}}</td>
                                                 <td>
-                                                    <a href="#" class="btn btn-sm btn-info">Detail</a>
+                                                    <a href="{{route('member.detail',$row->id)}}" class="btn btn-sm btn-info">Detail</a>
                                                     @if($row->getUser->register_status==1)
                                                         <a href="#" class="btn btn-sm btn-warning">Non-Aktif kan</a>
                                                     @elseif($row->getUser->register_status==2)

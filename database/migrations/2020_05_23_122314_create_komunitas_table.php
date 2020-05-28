@@ -17,6 +17,7 @@ class CreateKomunitasTable extends Migration
             $table->bigIncrements('id');
             $table->string('nama_komunitas');
             $table->unsignedBigInteger('id_kabupaten');
+            $table->string('link');
             $table->timestamps();
         });
     }

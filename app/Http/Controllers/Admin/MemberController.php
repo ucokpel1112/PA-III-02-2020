@@ -225,9 +225,10 @@ class MemberController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id_member)
     {
-        //
+        $member = Member::find($id_member);
+        return view('admin.anggotacbt.detail_member',compact('member'));
     }
 
     public function showRequest($id_member)

@@ -1,63 +1,72 @@
 <?php $__env->startSection('content'); ?>
 
-    <div class="container">
-        <div class="row">
-            <div class="col-10">
-                <div class="row">
-                    <div class="col-1">
-                        No
-                    </div>
-                    <div class="col">
-                        Nama Paket
-                    </div>
-                    <div class="col">
-                        Status
-                    </div>
-                    <div class="col">
-                        Jumlah Peserta
-                    </div>
-                    <div class="col">
-                        Aksi
+    <!-- bradcam_area  -->
+    <div class="bradcam_area bradcam_bg_4">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="bradcam_text text-center">
+                        <h3>Pesanan Saya</h3>
+                        <p>Riwayat Pemesanan yang Sudah Pernah Anda Lakukan</p>
                     </div>
                 </div>
-                <?php $__empty_1 = true; $__currentLoopData = $pemesanan; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $index => $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
-                    <div class="row">
-                        <div class="col-1">
-                            <?php echo e($index+1); ?>
-
-                        </div>
-                        <div class="col">
-                            <?php echo e($row->getSesi->getPaket->nama_paket); ?>
-
-                        </div>
-                        <div class="col">
-                            <?php echo e($row->defineStatus($row->status)); ?>
-
-                        </div>
-                        <div class="col">
-                            <?php echo e($row->jumlah_peserta); ?>
-
-                        </div>
-                        <div class="col">
-                            <a href="<?php echo e(route('pemesanan.detail',$row->id_pemesanan)); ?>" class="btn btn-success">Detail</a>
-                        </div>
-                    </div>
-                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
-                    <div class="row">
-                        <div class="col text-center">
-                            <h4>Anda Belum Memiliki Pemesanan</h4>
-                        </div>
-                    </div>
-                <?php endif; ?>
-                <?php echo $pemesanan->links(); ?>
-
             </div>
-            <div class="col"></div>
         </div>
     </div>
-    <div class="recent_trip_area">
 
+    <!-- Start Align Area -->
+    <div class="whole-wrap">
+        <div class="container box_1170">
+
+            <div class="section-top-border">
+                <h3 class="mb-30">Riwayat Pemesanan</h3>
+                <div class="progress-table-wrap">
+                    <div class="progress-table">
+                        <div class="table-head">
+                            <div class="serial">#</div>
+                            <div class="percentage">Nama Paket Wisata</div>
+                            <div class="country">Status Pemesanan</div>
+                            <div class="visit">Jumlah Peserta Perjalanan</div>
+                            <div class="visit"></div>
+                        </div>
+
+                        <?php $__empty_1 = true; $__currentLoopData = $pemesanan; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $index => $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
+                            <div class="table-row">
+                                <div class="serial">
+                                    <?php echo e($index+1); ?></div>
+                                <div class="percentage">
+                                    <?php echo e($row->getSesi->getPaket->nama_paket); ?>
+
+                                </div>
+                                <div class="country">
+                                    <?php echo e($row->defineStatus($row->status)); ?>
+
+                                </div>
+                                <div class="visit">
+                                    <?php echo e($row->jumlah_peserta); ?>
+
+                                </div>
+                                <div class="visit">
+                                    <a href="<?php echo e(route('pemesanan.detail',$row->id_pemesanan)); ?>"
+                                       class="btn btn-success">Detail</a>
+                                </div>
+
+                            </div>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
+                            <div class="table-row">
+                                <div class="serial"></div>
+                                <div class="percentage"></div>
+                                <div class="country"> Anda Belum Memiliki Riwayat Pemesanan</div>
+                                <div class="visit"></div>
+                                <div class="visit"></div>
+                            </div>
+                        <?php endif; ?>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+    
 <?php $__env->stopSection(); ?>
 
 <?php echo $__env->make('layout.front.main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\PA-III-02-2020\resources\views/front/Pemesanan/pemesanan.blade.php ENDPATH**/ ?>

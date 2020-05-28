@@ -7,7 +7,7 @@
                         <div class="col-xl-2 col-lg-2">
                             <div class="logo">
                                 <a href="/">
-                                    <img src="img/logos.png" alt="">
+                                    <img src="{{url('img/logos.png')}}" alt="">
                                 </a>
                             </div>
                         </div>
@@ -16,13 +16,18 @@
                                 <nav>
                                     <ul id="navigation">
                                         <li><a class="active" href="/">Home</a></li>
-                                        <li><a href="#">Paket Wisata<i class="ti-angle-down"></i></a>
-                                            <ul class="submenu">
-                                                <li><a href="<?php echo e(route('paket')); ?>">Paket Wisata</a></li>
-                                                <li><a href="<?php echo e(route('pemesanan')); ?>">Pesanan Saya</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="<?php echo e(url('/eventkalender')); ?>">Kalender Event </a>
+                                        @if(Auth::check())
+                                            <li><a href="#">Paket Wisata <i class="ti-angle-down"></i></a>
+                                                <ul class="submenu">
+                                                    <li><a href="{{route('paket')}}">Paket Wisata</a></li>
+                                                    <li><a href="{{route('pemesanan')}}">Pesanan Saya</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        @else
+                                            <li><a href="{{route('paket')}}">Paket Wisata</a></li>
+                                        @endif
+                                        <li><a href="{{url('/eventkalender')}}">Kalender Event </a>
 
                                         </li>
                                         <li><a href="contact.html">Kontak </a></li>
@@ -41,15 +46,18 @@
                                                 <i class="fa fa-sign-out"></i> <?php echo e(__('Logout')); ?>
 
                                             </a>
-                                            <form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST"
+                                            <form id="logout-form" action="<?php echo e(route('logout')); ?>"
+                                                  method="POST"
                                                   style="display: none;">
                                                 <?php echo csrf_field(); ?>
                                             </form>
                                         </li>
                                         <?php else: ?>
-                                        <li><a href="<?php echo e(route('login')); ?>"> <i class="fa fa-sign-in"></i> Login</a>
+                                        <li><a href="<?php echo e(route('login')); ?>"> <i class="fa fa-sign-in"></i>
+                                                Login</a>
                                         </li>
-                                        <li><a href="<?php echo e(route('register.choice')); ?>"> <i class="fa fa-registered"></i>
+                                        <li><a href="<?php echo e(route('register.choice')); ?>"> <i
+                                                    class="fa fa-registered"></i>
                                                 Register</a></li>
                                         <?php endif; ?>
                                     </ul>

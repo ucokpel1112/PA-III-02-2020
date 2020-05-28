@@ -73,6 +73,8 @@ Route::namespace('Admin')->group(function () {
     Route::get('/adm/member/request/tolak/{id_member}','MemberController@tolak')->name('member.request.tolak');
     Route::get('/adm/member/request/hapus/{id_member}','MemberController@hapus')->name('member.request.hapus');
     Route::get('/adm/member/request/detail/{id_member}','MemberController@showRequest')->name('member.request.detail');
+    Route::get('/adm/member/detail/{id_member}','MemberController@show')->name('member.detail');
+
 
     //sesi
     Route::get('/adm/sesi/add/{id_paket}', 'PaketWisataController@createSesi')->name('admin.sesi.create');
@@ -129,7 +131,7 @@ Route::namespace('AnggotaCBT')->group(function () {
     Route::get('anggotacbt/layananwisata', 'LayananWisataController@index')->name('anggotacbt.layanan');
     Route::post('anggotacbt/layananwisata/create', 'LayananWisataController@create')->name('anggotacbt.layanan.tambah');
     Route::get('anggotacbt/layananwisata/{id}/edit', 'LayananWisataController@edit')->name('anggotacbt.layanan.edit');
-    Route::post('anggotacbt/layanan_wisata/{id}/update', 'LayananWisataController@update')->name('anggotacbt.layanan.update');
+    Route::put('anggotacbt/layanan_wisata/{id}/update', 'LayananWisataController@update')->name('anggotacbt.layanan.update');
     Route::get('anggotacbt/layanan_wisata/{id}/delete', 'LayananWisataController@delete')->name('anggotacbt.layanan.delete');
 
 });

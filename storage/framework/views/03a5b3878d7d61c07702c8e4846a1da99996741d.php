@@ -127,7 +127,7 @@
                                                 <td><?php echo e($row->getUser->email); ?></td>
                                                 <td><?php echo e($row->defineStatus($row->getUser->register_status)); ?></td>
                                                 <td>
-                                                    <a href="#" class="btn btn-sm btn-info">Detail</a>
+                                                    <a href="<?php echo e(route('member.detail',$row->id)); ?>" class="btn btn-sm btn-info">Detail</a>
                                                     <?php if($row->getUser->register_status==1): ?>
                                                         <a href="#" class="btn btn-sm btn-warning">Non-Aktif kan</a>
                                                     <?php elseif($row->getUser->register_status==2): ?>
