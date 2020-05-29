@@ -14,39 +14,33 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home.customer');
-Route::get('/design', function () {
-    return view('desgin');
-})->name('design');
+Route::get('/','HomeController@home')->name('home.customer');
+Route::get('/home','HomeController@index');
 
-
-// Route::get('/eventkalender', function () {
-//     return view('front.eventkalender');
-// })->name('event');
 Route::get('/eventkalender', 'KalendereventController@customer_all')->name('eventkalender');
+
 Route::get('/detail-event', function () {
     return view('front.detail-eventkalender');
 })->name('event');
-//admin
 
-Route::get('/adm/dashboard', function () {
-    return view('layout.admin.dashboard');
-})->name('admin.home');
+
 //kalender
 Route::get('/adm/kalender/listkalender', 'KalendereventController@index')->name('listkalender');
 Route::get('/adm/kalender/addkalender', function () {
     return view('admin.kalender.tambahkalender');
 });
-// Route::get('/adm/listkalender',function(){
-//     return view('admin.kalender.eventkalender');
-// });
+
 Route::post('/adm/tambahkalender', 'KalendereventController@store')->name('tambahkalender');
 Route::put('/adm/updatekalender/{id_kalenderevent}/utama/update', 'KalendereventController@update')->name('updatekalender');
-Route::get('/adm/updatekalender', function () {
-    return view('admin.kalender.updatekalender');
-});
+Route::get('/adm/updatekalender/{id_kalenderevent}', 'KalendereventController@edit')->name('editkalender');
+
+//detail customer
+Route::get('/eventkalender/detail/show/{id_kalenderevent}', 'KalendereventController@detail')->name('detail-eventkalender');
+Route::get('/adm/detailkalender/detail/show/{id_kalenderevent}', 'KalendereventController@admin_detail')->name('detail-admin');
+
+Route::delete('/adm/eventkalender/delete/{id_kalenderevent}', 'KalendereventController@destroy')->name('delete-eventkalender');
+
+
 //paket wisata Customer
 Route::namespace('Front')->group(function () {
     //paket
@@ -78,6 +72,9 @@ Route::namespace('Admin')->group(function () {
     Route::get('/adm/member/aktif/{id_member}','MemberController@aktifkanStatus')->name('member.aktifkan');
     Route::get('/adm/member/non-aktif/{id_member}','MemberController@nonAktif')->name('member.nonaktifkan');
 
+
+    //dashboard
+    Route::get('/adm/dashboard', 'DashboardController@count')->name('home.admin');
 
     //sesi
     Route::get('/adm/sesi/add/{id_paket}', 'PaketWisataController@createSesi')->name('admin.sesi.create');
@@ -125,12 +122,9 @@ Route::namespace('Admin')->group(function () {
 
 
 Route::namespace('AnggotaCBT')->group(function () {
-    Route::get('anggotacbt/dashboard', function () {
-        return view('layout.anggotacbt.dashboard');
-    })->name('home.anggota');
+    Route::get('anggotacbt/dashboard','AnggotaCBTController@count')->name('home.anggotacbt');
 
-
-//Layanan Wisata
+    //Layanan Wisata
     Route::get('anggotacbt/layananwisata', 'LayananWisataController@index')->name('anggotacbt.layanan');
     Route::post('anggotacbt/layananwisata/create', 'LayananWisataController@create')->name('anggotacbt.layanan.tambah');
     Route::get('anggotacbt/layananwisata/{id}/edit', 'LayananWisataController@edit')->name('anggotacbt.layanan.edit');
@@ -139,10 +133,20 @@ Route::namespace('AnggotaCBT')->group(function () {
 
 });
 
-Auth::routes(['verify' => false]);
+Auth::routes();
 Route::namespace('Auth')->group(function () {
     Route::get('register/menu/pilih', 'RegisterController@choice')->name('register.choice');
     Route::get('konfirmasiemail/{email}/{token}', 'RegisterController@konfirmasiemail')->name('konfirmasiemail');
 });
 
-Route::get('/home', 'HomeController@index')->name('home');
+
+
+//komunitas admin
+Route::get('/adm/komunitas','KomunitasController@index')->name('data_komunitas');
+Route::post('adm/komunitas/create','KomunitasController@create')->name('tambah_komunitas');
+Route::get('/adm/komunitas/{id}/edit', 'KomunitasController@edit')->name('edit_komunitas');
+Route::post('/adm/komunitas/{id}/update', 'KomunitasController@update')->name('update_komunitas');
+Route::get('/adm/komunitas/{id}/hapus','KomunitasController@hapus')->name('hapus_komunitas');
+
+//komunitas anggota cbt
+Route::get('/anggotacbt/komunitas','KomunitasCBTController@index')->name('data_komunitas');

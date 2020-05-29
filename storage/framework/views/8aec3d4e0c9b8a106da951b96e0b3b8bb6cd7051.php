@@ -6,7 +6,6 @@
             <div class="row">
                 <div class="col-xl-12">
                     <div class="bradcam_text text-center">
-                        <h3>Paket Perjalanan</h3>
                     </div>
                 </div>
             </div>
@@ -92,14 +91,14 @@
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
                             <div class="col"></div>
                             <div class="text-center col-lg-6 col-md-6">
-                                    <h4>Paket Wisata Sedang Tidak Ada !</h4>
+                                <h4>Paket Wisata Sedang Tidak Ada !</h4>
                             </div>
-                                <div class="col"></div>
+                            <div class="col"></div>
                         <?php endif; ?>
                     </div>
                     <div class="row">
                         <div class="col-lg-12">
-                                <?php echo $paket->links(); ?>
+                            <?php echo $paket->links(); ?>
 
                         </div>
                     </div>

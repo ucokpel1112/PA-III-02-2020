@@ -155,90 +155,56 @@
                                             <div class="icon"><i class="fa fa-plane" aria-hidden="true"></i></div>
                                             <div class="form-select single-input-primary" id="default-select"
                                             ">
-                                            <select name="sesi">
-                                                <option>Pilih Jadwal</option>
-                                                @foreach($sesi as $row)
-                                                    <option
-                                                        value="{{$row->id_sesi}}"
-                                                    >{{$row->jadwal}}</option>
-                                                @endforeach
-                                            </select>
+                                                <select name="sesi">
+                                                    <option>Pilih Jadwal</option>
+                                                    @foreach($sesi as $row)
+                                                        <option
+                                                            value="{{$row->id_sesi}}"
+                                                        >{{$row->jadwal}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                    </div>
 
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="mt-10">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="mt-10">
                                         <textarea name="pesan" class="single-textarea single-input-primary"
                                                   placeholder="Pesan/Pertanyaan Untuk Pemesanan"
                                                   onfocus="this.placeholder = ''"
                                                   onblur="this.placeholder = 'Pesan/Pertanyaan Untuk Pemesanan'"
                                                   required></textarea>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="submit_btn mt-10">
-                                <button class="boxed-btn4" type="submit">submit</button>
-                            </div>
-                        </div>
-                    </div>
-                    </form>
-                    @else
-                        <h3>P E M E S A N A N <br><br></h3>
-                        <h4 class="text-dark">Untuk Melakukan Pemesanan, Anda Harus Login Terlebih Dahulu <br><br></h4>
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="submit_btn mt-10">
-                                    <a href="{{route('login')}}" class="boxed-btn4" type="submit"><i class="fa fa-sign-in"></i> Login </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="submit_btn mt-10">
+                                            <button class="boxed-btn4" type="submit">submit</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        @else
+                            <h3>P E M E S A N A N <br><br></h3>
+                            <h4 class="text-dark">Untuk Melakukan Pemesanan, Anda Harus Login Terlebih Dahulu <br><br>
+                            </h4>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="submit_btn mt-10">
+                                        <a href="{{route('login')}}" class="boxed-btn4" type="submit"><i
+                                                class="fa fa-sign-in"></i> Login </a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    @endif
+                        @endif
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    </div>
-
-    <!-- newletter_area_start  -->
-    {{--    <div class="newletter_area overlay">--}}
-    {{--        <div class="container">--}}
-    {{--            <div class="row justify-content-center align-items-center">--}}
-    {{--                <div class="col-lg-10">--}}
-    {{--                    <div class="row align-items-center">--}}
-    {{--                        <div class="col-lg-5">--}}
-    {{--                            <div class="newsletter_text">--}}
-    {{--                                <h4>Subscribe Our Newsletter</h4>--}}
-    {{--                                <p>Subscribe newsletter to get offers and about--}}
-    {{--                                    new places to discover.</p>--}}
-    {{--                            </div>--}}
-    {{--                        </div>--}}
-    {{--                        <div class="col-lg-7">--}}
-    {{--                            <div class="mail_form">--}}
-    {{--                                <div class="row no-gutters">--}}
-    {{--                                    <div class="col-lg-9 col-md-8">--}}
-    {{--                                        <div class="newsletter_field">--}}
-    {{--                                            <input type="email" placeholder="Your mail" >--}}
-    {{--                                        </div>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="col-lg-3 col-md-4">--}}
-    {{--                                        <div class="newsletter_btn">--}}
-    {{--                                            <button class="boxed-btn4 " type="submit" >Subscribe</button>--}}
-    {{--                                        </div>--}}
-    {{--                                    </div>--}}
-    {{--                                </div>--}}
-    {{--                            </div>--}}
-    {{--                        </div>--}}
-    {{--                    </div>--}}
-    {{--                </div>--}}
-    {{--            </div>--}}
-    {{--        </div>--}}
-    {{--    </div>--}}
-    <!-- newletter_area_end  -->
 
     <div class="popular_places_area">
         <div class="container">

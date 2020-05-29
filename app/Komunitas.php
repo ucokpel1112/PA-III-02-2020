@@ -10,10 +10,11 @@ class Komunitas extends Model
 
     protected $primaryKey = 'id';
 
-    protected $fillable = ['nama_komunitas','id_kabupaten'];
+    protected $fillable = ['nama_komunitas','deskripsi','kabupaten_id','link'];
+
 
     public function getKabupaten(){
-        return $this->belongsTo(kabupaten::class,'id_kabupaten','id_kabupaten');
+        return $this->belongsTo( Kabupaten::class, 'kabupaten_id','id_kabupaten');
     }
 
     public function getKomunitasMember(){

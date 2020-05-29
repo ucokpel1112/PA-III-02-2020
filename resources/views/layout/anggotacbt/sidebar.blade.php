@@ -26,12 +26,30 @@
                 <!-- Add icons to the links using the .nav-icon class
                      with font-awesome or any other icon font library -->
                 <li class="nav-item has-treeview {{Request::segment(2) === 'dashboard' ? 'menu-open' : null}}">
-                    <a href="#" class="nav-link {{Request::segment(2) === 'dashboard' ? 'active' : null}}">
+                    <a href="{{url('anggotacbt/dashboard')}}" class="nav-link {{Request::segment(2) === 'dashboard' ? 'active' : null}}">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Dashboard
                         </p>
                     </a>
+                </li>
+                <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-copy"></i>
+                        <p>
+                            Komunitas Pariwisita
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{url('/anggotacbt/komunitas')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Daftar Komunitas </p>
+                            </a>
+                        </li>
+
+                    </ul>
                 </li>
                 <li class="nav-item has-treeview {{Request::segment(2) === 'layananwisata' ? 'menu-open' : null}}">
                     <a href="#" class="nav-link {{Request::segment(2) === 'layananwisata' ? 'active' : null}}">
