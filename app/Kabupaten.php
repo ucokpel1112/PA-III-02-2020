@@ -8,12 +8,14 @@ class Kabupaten extends Model
 {
     protected $table="kabupatens";
 
+    protected $primaryKey = "id_kabupaten";
+
     public function getPaketWisata(){
         return $this->hasMany(paketWisata::class,'kabupaten_id','id_kabupaten');
     }
 
     public function getKomunitas(){
-        return $this->hasMany(Komunitas::class,'id_kabupaten','id_kabupaten');
+        return $this->hasMany(Komunitas::class,'kabupaten_id','id_kabupaten');
     }
 
     public function getLayananWisata(){

@@ -26,9 +26,9 @@ class HomeController extends Controller
         if (checkPermission(['customer'])||checkPermission(['user']))
             return redirect(route('home.customer'));
         elseif (checkPermission(['member']))
-            return redirect(route('home.anggota'));
+            return redirect(route('home.anggotacbt'));
         elseif (checkPermission(['admin']))
-            return redirect(route('admin.home'));
+            return redirect(route('home.admin'));
     }
 
     public function home(){

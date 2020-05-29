@@ -92,7 +92,7 @@
                                     </i>
                                     View
                                 </a>
-                                <a class="btn btn-info btn-sm" href="{{ route('admin.paket.editChoice',$paket->id_paket) }}">
+                                <a class="btn btn-info btn-sm" href="{{ route('admin.paket.editChoice',$paket->id_paket)}}">
                                     <i class="fas fa-pencil-alt">
                                     </i>
                                     Edit

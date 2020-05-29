@@ -154,90 +154,56 @@
                                             <div class="icon"><i class="fa fa-plane" aria-hidden="true"></i></div>
                                             <div class="form-select single-input-primary" id="default-select"
                                             ">
-                                            <select name="sesi">
-                                                <option>Pilih Jadwal</option>
-                                                <?php $__currentLoopData = $sesi; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                    <option
-                                                        value="<?php echo e($row->id_sesi); ?>"
-                                                    ><?php echo e($row->jadwal); ?></option>
-                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                            </select>
+                                                <select name="sesi">
+                                                    <option>Pilih Jadwal</option>
+                                                    <?php $__currentLoopData = $sesi; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                        <option
+                                                            value="<?php echo e($row->id_sesi); ?>"
+                                                        ><?php echo e($row->jadwal); ?></option>
+                                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                </select>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                    </div>
 
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="mt-10">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="mt-10">
                                         <textarea name="pesan" class="single-textarea single-input-primary"
                                                   placeholder="Pesan/Pertanyaan Untuk Pemesanan"
                                                   onfocus="this.placeholder = ''"
                                                   onblur="this.placeholder = 'Pesan/Pertanyaan Untuk Pemesanan'"
                                                   required></textarea>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="submit_btn mt-10">
-                                <button class="boxed-btn4" type="submit">submit</button>
-                            </div>
-                        </div>
-                    </div>
-                    </form>
-                    <?php else: ?>
-                        <h3>P E M E S A N A N <br><br></h3>
-                        <h4 class="text-dark">Untuk Melakukan Pemesanan, Anda Harus Login Terlebih Dahulu <br><br></h4>
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="submit_btn mt-10">
-                                    <a href="<?php echo e(route('login')); ?>" class="boxed-btn4" type="submit"><i class="fa fa-sign-in"></i> Login </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="submit_btn mt-10">
+                                            <button class="boxed-btn4" type="submit">submit</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        <?php else: ?>
+                            <h3>P E M E S A N A N <br><br></h3>
+                            <h4 class="text-dark">Untuk Melakukan Pemesanan, Anda Harus Login Terlebih Dahulu <br><br>
+                            </h4>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="submit_btn mt-10">
+                                        <a href="<?php echo e(route('login')); ?>" class="boxed-btn4" type="submit"><i
+                                                class="fa fa-sign-in"></i> Login </a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    <?php endif; ?>
+                        <?php endif; ?>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    </div>
-
-    <!-- newletter_area_start  -->
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    <!-- newletter_area_end  -->
 
     <div class="popular_places_area">
         <div class="container">

@@ -8,12 +8,8 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-<<<<<<< HEAD
                         <li class="breadcrumb-item">Administrator</li>
                         <li class="breadcrumb-item active">Paket Wisata</li>
-=======
-                        <li class="breadcrumb-item active">Administrator</li>
->>>>>>> 0b4a8137f8bfc709fd3533ad35bbe1f7a134ad45
                     </ol>
                 </div>
             </div>
@@ -67,17 +63,10 @@
                     </thead>
                     <tbody>
                     
-<<<<<<< HEAD
                     <?php $__empty_1 = true; $__currentLoopData = $pakets; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $index => $paket): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                         <tr>
                             <td>
                                 <?php echo e($index+1); ?>
-=======
-                    <?php $__empty_1 = true; $__currentLoopData = $pakets; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $paket): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
-                        <tr>
-                            <td>
-                                <?php echo e($paket->id_paket); ?>
->>>>>>> 0b4a8137f8bfc709fd3533ad35bbe1f7a134ad45
 
                             </td>
                             <td>
