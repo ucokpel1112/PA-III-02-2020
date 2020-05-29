@@ -5,11 +5,12 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Komunitas;
 use App\Mail\DitolakEmail;
-use App\User;
-use Mail;
 use App\Mail\TerkonfirmasiEmail;
 use App\Member;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Mail;
 
 class MemberController extends Controller
 {
@@ -37,7 +38,7 @@ class MemberController extends Controller
         $member = [];
         $members = Member::all();
         if ($id_komut === null || $id_komut == 'semua') {
-            if (($status === null || $status === 'semua') && ($status != '0')) {
+            if (($status === null || $status === 'semua')) {
                 foreach ($members as $row) {
                     if (($row->getUser->register_status == 1) || ($row->getUser->register_status == 2))
                         array_push($member, $row);
@@ -50,59 +51,7 @@ class MemberController extends Controller
                 }
             }
         } else {
-            if (($status === null || $status === 'semua') && ($status != '0')) {
-                foreach ($members as $row) {
-                    $s = 0;
-                    foreach ($row->getKomunitasMember as $rows) {
-                        if ($rows->id == $id_komut) {
-                            $s = 1;
-                        }
-                    }
-                    if ($s == 1) {
-                        if (($row->getUser->register_status == 1) || ($row->getUser->register_status == 2))
-                            array_push($member, $row);
-                    }
-                }
-            } else {
-                foreach ($members as $row) {
-                    if ($row->getUser->register_status == $status) {
-                        $s = 0;
-                        foreach ($row->getKomunitasMember as $rows) {
-                            if ($rows->id == $id_komut) {
-                                $s = 1;
-                            }
-                        }
-                        if ($s == 1) {
-                            array_push($member, $row);
-                        }
-                    }
-                }
-            }
-        }
-
-        return $member;
-    }
-
-    public function defineMemberR($id_komut, $status)
-    {
-        $member = [];
-        $members = Member::all();
-        if ($id_komut === null || $id_komut == 'semua') {
-            if (($status === null || $status === 'semua') && ($status != '0')) {
-//                echo $status.' ';
-                foreach ($members as $row) {
-                    if (($row->getUser->register_status == 0) || ($row->getUser->register_status == 4))
-                        array_push($member, $row);
-                }
-            } else {
-                foreach ($members as $row) {
-                    if ($row->getUser->register_status == $status) {
-                        array_push($member, $row);
-                    }
-                }
-            }
-        } else {
-            if (($status === null || $status == 'semua') && ($status != '0')) {
+            if ($status === null || $status === 'semua') {
                 foreach ($members as $row) {
                     $s = 0;
                     foreach ($row->getKomunitasMember as $rows) {
@@ -161,11 +110,82 @@ class MemberController extends Controller
         return view('admin.anggotacbt.member', compact('req', 'status_req', 'member', 'komunitas', 'id_komut_req', 'status'));
     }
 
-    public function terima($id_member){
+    public function defineMemberR($id_komut, $status)
+    {
+        $member = [];
+        $members = Member::all();
+        if ($id_komut === null || $id_komut == 'semua') {
+            if (($status === null || $status === 'semua')) {
+//                echo $status.' ';
+                foreach ($members as $row) {
+                    if (($row->getUser->register_status == 0) || ($row->getUser->register_status == 4))
+                        array_push($member, $row);
+                }
+            } else {
+                foreach ($members as $row) {
+                    if ($row->getUser->register_status == $status) {
+                        array_push($member, $row);
+                    }
+                }
+            }
+        } else {
+            if ($status === null || $status == 'semua') {
+                foreach ($members as $row) {
+                    $s = 0;
+                    foreach ($row->getKomunitasMember as $rows) {
+                        if ($rows->id == $id_komut) {
+                            $s = 1;
+                        }
+                    }
+                    if ($s == 1) {
+                        if (($row->getUser->register_status == 1) || ($row->getUser->register_status == 2))
+                            array_push($member, $row);
+                    }
+                }
+            } else {
+                foreach ($members as $row) {
+                    if ($row->getUser->register_status == $status) {
+                        $s = 0;
+                        foreach ($row->getKomunitasMember as $rows) {
+                            if ($rows->id == $id_komut) {
+                                $s = 1;
+                            }
+                        }
+                        if ($s == 1) {
+                            array_push($member, $row);
+                        }
+                    }
+                }
+            }
+        }
+
+        return $member;
+    }
+
+    public function nonAktif($id_member)
+    {
         $member = Member::find($id_member);
-        $member->getUser->email_verified_at=now();
+        $member->getUser->register_status = 2;
+        $member->getUser->save();
+
+        return redirect(route('member'));
+    }
+
+    public function aktifkanStatus($id_member)
+    {
+        $member = Member::find($id_member);
         $member->getUser->register_status = 1;
-        $member->getUser->token= NULL;
+        $member->getUser->save();
+
+        return redirect(route('member'));
+    }
+
+    public function terima($id_member)
+    {
+        $member = Member::find($id_member);
+        $member->getUser->email_verified_at = now();
+        $member->getUser->register_status = 1;
+        $member->getUser->token = NULL;
         $member->getUser->save();
         $user = User::find($member->getUser->id);
 
@@ -174,11 +194,12 @@ class MemberController extends Controller
         return redirect(route('member.request'));
     }
 
-    public function tolak($id_member){
+    public function tolak($id_member)
+    {
         $member = Member::find($id_member);
-        $member->getUser->email_verified_at=now();
+        $member->getUser->email_verified_at = now();
         $member->getUser->register_status = 4;
-        $member->getUser->token= NULL;
+        $member->getUser->token = NULL;
         $member->getUser->save();
         $user = User::find($member->getUser->id);
 
@@ -187,7 +208,8 @@ class MemberController extends Controller
         return redirect(route('member.request'));
     }
 
-    public function hapus($id_member){
+    public function hapus($id_member)
+    {
         $member = Member::find($id_member);
         $id_user = $member->user_id;
         $member->delete();
@@ -195,7 +217,6 @@ class MemberController extends Controller
 
         return redirect(route('member.request'));
     }
-
 
 
     /**
@@ -216,7 +237,22 @@ class MemberController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = User::create([
+            'name' => $request->name,
+            'no_WA' => $request->no_WA,
+            'no_HP' => $request->no_HP,
+            'email' => $request->email,
+            'email_verified_at' => now(),
+            'password' => Hash::make($request->password),
+            'register_status' => 1,
+            'status' => 1,
+        ]);
+        $member = Member::create([
+            'user_id' => $user->id,
+            'photo' => $request->photo,
+            'no_KTP' => $request->no_KTP
+        ]);
+        return redirect(route('member'));
     }
 
     /**
@@ -228,13 +264,13 @@ class MemberController extends Controller
     public function show($id_member)
     {
         $member = Member::find($id_member);
-        return view('admin.anggotacbt.detail_member',compact('member'));
+        return view('admin.anggotacbt.detail_member', compact('member'));
     }
 
     public function showRequest($id_member)
     {
         $member = Member::find($id_member);
-        return view('admin.anggotacbt.detail_request',compact('member'));
+        return view('admin.anggotacbt.detail_request', compact('member'));
     }
 
     /**

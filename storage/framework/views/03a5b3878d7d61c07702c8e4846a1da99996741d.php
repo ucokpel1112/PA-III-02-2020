@@ -31,11 +31,78 @@
                         <div class="card-body">
                             <div class="tab-content">
                                 <div class="tab-pane <?php echo e(((Request::segment(2) === 'member')&&(Request::segment(3) == null)) ? 'active' : null); ?> " id="member">
-                                    <a class="btn btn-success btn-sm" href="#">
-                                        <i class="fas fa-pencil-alt">
-                                        </i>
-                                        Tambah Member
-                                    </a><br>
+                                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
+                                            data-target="#exampleModal">
+                                        <i class="fas fa-plus"> </i> Tambah Data Layanan Wisata
+                                    </button>
+
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                                         aria-hidden="true">
+                                        <div class="modal-dialog modal-lg" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Tambah Member</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <form action="<?php echo e(route('member.tambah')); ?>" method="POST"
+                                                      enctype="multipart/form-data">
+                                                    <?php echo csrf_field(); ?>
+                                                    <div class="modal-body">
+
+                                                        <div class="form-group">
+                                                            <label for="name">Nama Anggota/Member</label>
+                                                            <input name="name" type="text" class="form-control" id="name"
+                                                                   aria-describedby="emailHelp" placeholder="Nama Anggota/Member">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="no_wa">Nomor WhatsApp (WA)</label>
+                                                            <input name="no_WA" type="text" class="form-control" id="no_WA"
+                                                                   aria-describedby="emailHelp" placeholder="Nomor WhatsApp (WA)">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="no_HP">Nomor Telepon (Hp)</label>
+                                                            <input name="no_HP" type="text" class="form-control" id="no_HP"
+                                                                   aria-describedby="emailHelp" placeholder="Nomor Telepon (Hp)">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="no_KTP">Nomor KTP </label>
+                                                            <input name="no_KTP" type="text" class="form-control" id="no_KTP"
+                                                                   aria-describedby="emailHelp" placeholder="Nomor KTP">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="email">Email</label>
+                                                            <input name="email" type="email" class="form-control" id="email"
+                                                                   aria-describedby="emailHelp" placeholder="Email">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="password">Password</label>
+                                                            <input name="password" type="text" class="form-control" id="password"
+                                                                   aria-describedby="emailHelp" placeholder="Password">
+                                                        </div>
+                                                        <div class="form-group input-group">
+                                                            <label for="photo">Foto KTP</label>
+                                                            <div class="input-group">
+                                                                <div class="custom-file">
+                                                                    <input name="photo" type="file" class="custom-file-input" id="exampleInputFile">
+                                                                    <label class="custom-file-label" for="exampleInputFile">Pilih file</label>
+                                                                </div>
+                                                                <div class="input-group-append">
+                                                                    <span class="input-group-text" id="">Upload</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <table class="table table-striped projects">
                                         <thead>
                                         <tr>
@@ -111,8 +178,7 @@
                                                 <td><?php echo e($index+1); ?></td>
                                                 <td><?php echo e($row->getUser->name); ?></td>
                                                 <?php if(($row->getUser->no_WA)==($row->getUser->no_HP)): ?>
-                                                    <td> <?php echo e($row->getUser->no_WA); ?>
-
+                                                    <td> <?php echo e($row->getUser->no_WA); ?> <b>(Nomor WA & Telopon)</b>
                                                     </td>
                                                 <?php else: ?>
                                                     <td><?php echo e($row->getUser->no_WA); ?> <br><b>(no wa)</b>
@@ -129,9 +195,9 @@
                                                 <td>
                                                     <a href="<?php echo e(route('member.detail',$row->id)); ?>" class="btn btn-sm btn-info">Detail</a>
                                                     <?php if($row->getUser->register_status==1): ?>
-                                                        <a href="#" class="btn btn-sm btn-warning">Non-Aktif kan</a>
+                                                        <a href="<?php echo e(route('member.nonaktifkan',$row->id)); ?>" class="btn btn-sm btn-warning">Non-Aktif kan</a>
                                                     <?php elseif($row->getUser->register_status==2): ?>
-                                                        <a href="#" class="btn btn-sm btn-success">Aktif-kan</a>
+                                                        <a href="<?php echo e(route('member.aktifkan',$row->id)); ?>" class="btn btn-sm btn-success">Aktif-kan</a>
                                                     <?php endif; ?>
                                                 </td>
                                             </tr>

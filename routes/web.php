@@ -74,6 +74,9 @@ Route::namespace('Admin')->group(function () {
     Route::get('/adm/member/request/hapus/{id_member}','MemberController@hapus')->name('member.request.hapus');
     Route::get('/adm/member/request/detail/{id_member}','MemberController@showRequest')->name('member.request.detail');
     Route::get('/adm/member/detail/{id_member}','MemberController@show')->name('member.detail');
+    Route::post('/adm/member/add','MemberController@store')->name('member.tambah');
+    Route::get('/adm/member/aktif/{id_member}','MemberController@aktifkanStatus')->name('member.aktifkan');
+    Route::get('/adm/member/non-aktif/{id_member}','MemberController@nonAktif')->name('member.nonaktifkan');
 
 
     //sesi
