@@ -50,7 +50,6 @@
                                     <a href="<?php echo e(route('pemesanan.detail',$row->id_pemesanan)); ?>"
                                        class="btn btn-success">Detail</a>
                                 </div>
-
                             </div>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
                             <div class="table-row">
@@ -66,7 +65,7 @@
             </div>
         </div>
     </div>
-    
+
 <?php $__env->stopSection(); ?>
 
 <?php echo $__env->make('layout.front.main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\PA-III-02-2020\resources\views/front/Pemesanan/pemesanan.blade.php ENDPATH**/ ?>

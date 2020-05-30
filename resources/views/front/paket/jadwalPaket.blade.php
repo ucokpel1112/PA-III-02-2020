@@ -20,21 +20,21 @@
                 </tr>
                 </tbody>
             </table>
-            <table style="margin:0 auto;width:600px"
-                   width="600" cellspacing="0" cellpadding="0" border="0" bgcolor="#eeeeed" align="center">
+            <table style="margin:0 auto;width:600px" width="600" cellspacing="0" cellpadding="0" border="0"
+                   bgcolor="#eeeeed" align="center">
                 <tbody>
                 <tr>
                     <td style="padding:0" valign="top" bgcolor="#ffffff">
                         <a href="#">
                             <img
-                                src="{{asset('img/banner/video.png')}}"
-                                alt="Smart Home Innovation Contest" style="display:block;width:600px"
-                                class="m_-5494568759671208177deviceWidth CToWUd" width="600" border="0"></a>
+                                src="{{asset('img/banner/video.png')}}" style="display:block;width:600px" width="600"
+                                border="0">
+                        </a>
                     </td>
                 </tr>
                 </tbody>
             </table>
-            <table class="m_-5494568759671208177deviceWidth" role="presentation" style="margin:0 auto;width:600px"
+            <table style="margin:0 auto;width:600px"
                    width="600" cellspacing="0" cellpadding="0" border="0" bgcolor="#FFFFFF" align="center">
                 <tbody>
                 <tr>
@@ -45,49 +45,58 @@
                 </tbody>
             </table>
             @foreach($kabupaten as $row)
-                <table class="m_-5494568759671208177deviceWidth" role="presentation" style="margin:0 auto;width:600px"
-                       width="600" cellspacing="0" cellpadding="0" border="0" bgcolor="#FFFFFF" align="center">
-                    <tbody>
-                    <tr>
-                        <td style="font-size:22px;line-height:26px;color:#000000;font-weight:normal;text-align:left;font-family:Arial,'Helvetica Neue',Helvetica,sans-serif;vertical-align:top;padding:15px 30px 5px 30px;margin:0">
-                            Kabupaten {{$row->nama_kabupaten}}
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-                <table class="m_-5494568759671208177deviceWidth" role="presentation" style="margin:0 auto;width:600px"
-                       width="600" cellspacing="0" cellpadding="0" border="0" bgcolor="#FFFFFF" align="center">
-                    <tbody>
-                    @foreach($row->getPaketWisata as $rows)
-                        @if($rows->status==1)
-                            <tr>
-                                <td style="font-size:18px;line-height:18px;color:#000000;font-weight:normal;text-align:left;font-family:Arial,'Helvetica Neue',Helvetica,sans-serif;vertical-align:top;padding:15px 60px 10px 60px;margin:0">
-                                    {{$rows->nama_paket}} (Rp.10.000/orang)
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style="font-size:14px;line-height:18px;color:#000000;font-weight:normal;text-align:left;font-family:Arial,'Helvetica Neue',Helvetica,sans-serif;vertical-align:top;padding:15px 70px 10px 70px;margin:0">
-                                    <?php echo $rows->deskripsi_paket; ?>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style="font-size:14px;line-height:18px;color:#000000;font-weight:normal;text-align:left;font-family:Arial,'Helvetica Neue',Helvetica,sans-serif;vertical-align:top;padding:15px 70px 10px 70px;margin:0">
-                                    Sesi/jadwal kegiatan paket
-                                    <ul>
-                                        @foreach($rows->getSesi as $sesi)
-                                            @if($sesi->status==1)
-                                                <li>{{$sesi->jadwal}}</li>
-                                            @endif
-                                        @endforeach
-                                    </ul>
-                                </td>
-                            </tr>
-                        @endif
-                    @endforeach
-                    </tbody>
-                </table>
+                @if($row->getPaketWisata->count()!=0)
+                    <table style="margin:0 auto;width:600px"
+                           width="600" cellspacing="0" cellpadding="0" border="0" bgcolor="#FFFFFF" align="center">
+                        <tbody>
+                        <tr>
+                            <td style="font-size:22px;line-height:26px;color:#000000;font-weight:normal;text-align:left;font-family:Arial,'Helvetica Neue',Helvetica,sans-serif;vertical-align:top;padding:15px 30px 5px 30px;margin:0">
+                                <u>Kabupaten {{$row->nama_kabupaten}}</u>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <table style="margin:0 auto;width:600px"
+                           width="600" cellspacing="0" cellpadding="0" border="0" bgcolor="#FFFFFF" align="center">
+                        <tbody>
+                        @foreach($row->getPaketWisata as $rows)
+                            @if($rows->status==1)
+                                <tr>
+                                    <td style="font-size:18px;line-height:18px;color:#000000;font-weight:normal;text-align:left;font-family:Arial,'Helvetica Neue',Helvetica,sans-serif;vertical-align:top;padding:15px 60px 10px 60px;margin:0">
+                                        {{$rows->nama_paket}} ({{$rows->harga_paket}}/orang)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="font-size:14px;line-height:18px;color:#000000;font-weight:normal;text-align:left;font-family:Arial,'Helvetica Neue',Helvetica,sans-serif;vertical-align:top;padding:15px 70px 10px 70px;margin:0">
+                                        <?php echo $rows->deskripsi_paket; ?>
+                                    </td>
+                                </tr>
+                                @if($rows->getSesi->count()!=0)
+                                    <tr>
+                                        <td style="font-size:18px;line-height:18px;color:#000000;font-weight:normal;text-align:left;font-family:Arial,'Helvetica Neue',Helvetica,sans-serif;vertical-align:top;padding:15px 60px 10px 60px;margin:0">
+                                            Sesi/jadwal kegiatan paket
+
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-size:12px;line-height:18px;color:#000000;font-weight:normal;text-align:left;font-family:Arial,'Helvetica Neue',Helvetica,sans-serif;vertical-align:top;padding:15px 70px 10px 70px;margin:0">
+                                            <ul>
+                                                @foreach($rows->getSesi as $sesi)
+                                                    @if($sesi->status==1)
+                                                        <li>{{$sesi->jadwal}}</li>
+                                                    @endif
+                                                @endforeach
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                @endif
+                            @endif
+                        @endforeach
+                        </tbody>
+                    </table>
+                @endif
             @endforeach
-            <table class="m_-5494568759671208177deviceWidth" role="presentation" style="margin:0 auto;width:600px"
+            <table style="margin:0 auto;width:600px"
                    width="600" cellspacing="0" cellpadding="0" border="0" bgcolor="#FFFFFF" align="center">
                 <tbody>
                 <tr>
@@ -98,7 +107,7 @@
                 </tbody>
             </table>
 
-            <table class="m_-5494568759671208177deviceWidth" role="presentation" style="margin:0 auto;width:600px"
+            <table role="presentation" style="margin:0 auto;width:600px"
                    width="600" cellspacing="0" cellpadding="0" border="0" bgcolor="#FFFFFF" align="center">
                 <tbody>
                 <tr>
@@ -108,7 +117,7 @@
                 </tr>
                 </tbody>
             </table>
-            <table class="m_-5494568759671208177deviceWidth" role="presentation" style="margin:0 auto;width:600px"
+            <table role="presentation" style="margin:0 auto;width:600px"
                    width="600" cellspacing="0" cellpadding="0" border="0" bgcolor="#FFFFFF" align="center">
                 <tbody>
                 <tr>
@@ -133,7 +142,7 @@
                 </tr>
                 </tbody>
             </table>
-            <table class="m_-5494568759671208177deviceWidth" role="presentation" style="margin:0 auto;width:600px"
+            <table style="margin:0 auto;width:600px"
                    width="600" cellspacing="0" cellpadding="0" border="0" bgcolor="#E6E6E6" align="center">
                 <tbody>
                 <tr height="30"></tr>

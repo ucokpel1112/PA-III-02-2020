@@ -46,6 +46,7 @@ Route::namespace('Front')->group(function () {
     //paket
     Route::get('/paket', 'PaketWisataController@index')->name('paket');
     Route::post('/paket', 'PaketWisataController@indexFilter')->name('paket.filter');
+    Route::get('/paket/kabupaten/{id_kabupaten}', 'PaketWisataController@indexFilterKabupaten')->name('paket.filter.kabupaten');
     Route::get('/paket/detail/{id_paket}', 'PaketWisataController@show')->name('paket.detail');
     //pemesanan
     Route::get('/pemesanan', 'PemesananController@index')->name('pemesanan');
@@ -142,11 +143,14 @@ Route::namespace('Auth')->group(function () {
 
 
 //komunitas admin
-Route::get('/adm/komunitas','KomunitasController@index')->name('data_komunitas');
+Route::get('/adm/komunitas','KomunitasController@index')->name('data_komunitas.admin');
 Route::post('adm/komunitas/create','KomunitasController@create')->name('tambah_komunitas');
 Route::get('/adm/komunitas/{id}/edit', 'KomunitasController@edit')->name('edit_komunitas');
 Route::post('/adm/komunitas/{id}/update', 'KomunitasController@update')->name('update_komunitas');
 Route::get('/adm/komunitas/{id}/hapus','KomunitasController@hapus')->name('hapus_komunitas');
 
 //komunitas anggota cbt
-Route::get('/anggotacbt/komunitas','KomunitasCBTController@index')->name('data_komunitas');
+Route::get('/anggotacbt/komunitas','KomunitasCBTController@index')->name('data_komunitas.anggota');
+Route::get('/design',function(){
+   return view('desgin');
+});

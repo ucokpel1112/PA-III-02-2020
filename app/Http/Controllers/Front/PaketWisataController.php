@@ -19,6 +19,18 @@ class PaketWisataController extends Controller
         return view('front.paket.view_paket', compact('paket', 'jenis', 'kabupaten'));
     }
 
+    public function indexFilterKabupaten($id_kabupaten)
+    {
+        $kabupaten = Kabupaten::all();
+        $id_kab = $id_kabupaten;
+        $jeniss = 'Tipe/Jenis Perjalanan';
+        $jenis = DB::table('paket_wisatas')->select('jenis_paket')->groupBy('jenis_paket')->get();
+
+        $paket = paketWisata::where([['kabupaten_id', $id_kab], ['status', 1]])->orderBy('created_at', 'DESC')->paginate(10);
+
+        return view('front.paket.view_paket', compact('paket', 'jenis', 'kabupaten', 'jeniss', 'id_kab'));
+    }
+
     public function indexFilter(Request $request)
     {
         $kabupaten = Kabupaten::all();

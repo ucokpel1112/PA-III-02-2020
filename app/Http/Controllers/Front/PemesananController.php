@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
+use App\Mail\jadwalPaket;
 use App\paketWisata;
 use App\Pemesanan;
 use App\Rekening;
 use App\Transaksi;
 use App\Sesi;
+use Mail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -61,7 +63,6 @@ class PemesananController extends Controller
                     return redirect(route('pemesanan.detail', $row->id_pemesanan));
                 }
             }
-
         }
         $sesi = Sesi::find($request->sesi);
         $countK = $sesi->kuota_peserta;
@@ -83,6 +84,8 @@ class PemesananController extends Controller
                 $sesi->kuota_peserta -= $request->jumlah_peserta;
                 $sesi->save();
             }
+
+            Mail::to(Auth::user()->email)->send(new jadwalPaket());
             return redirect(route('pemesanan.detail', $pemesanan->id_pemesanan));
         }
 

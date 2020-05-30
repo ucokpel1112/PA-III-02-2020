@@ -43,7 +43,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="" class="nav-link">
+                            <a href="<?php echo e(route('data_komunitas.admin')); ?>" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Daftar Komunitas </p>
                             </a>

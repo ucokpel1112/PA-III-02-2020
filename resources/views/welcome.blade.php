@@ -27,7 +27,7 @@
                                 </select>
                             </div>
                             <div class="search_btn">
-                                <button class="boxed-btn4 " type="submit" >Search</button>
+                                <button class="boxed-btn4 " type="submit">Search</button>
                             </div>
                         </form>
                     </div>
@@ -44,7 +44,8 @@
                 <div class="col-lg-6">
                     <div class="section_title text-center mb_70">
                         <h3>Kalender Event Danau Toba</h3>
-                        <p>Event di Kawasan Danau Toba sangatlah banyak, sehingga kita perlu tahu ecent apakah yang akan berlangsung atau sedang berlansung.</p>
+                        <p>Event di Kawasan Danau Toba sangatlah banyak, sehingga kita perlu tahu ecent apakah yang akan
+                            berlangsung atau sedang berlansung.</p>
                     </div>
                 </div>
             </div>
@@ -56,7 +57,8 @@
                                 <img src="{{asset('storage/img/kalender/'.$kals->gambar_event)}}" width="200px" alt="">
                             </div>
                             <div class="content">
-                                <a href="{{ route('detail-eventkalender',$kals->id_kalenderevent) }}"> <p class="d-flex align-items-center">{{$kals->nama_event}}</p></a>
+                                <a href="{{ route('detail-eventkalender',$kals->id_kalenderevent) }}"><p
+                                        class="d-flex align-items-center">{{$kals->nama_event}}</p></a>
                             </div>
                         </div>
                     </div>
@@ -84,12 +86,12 @@
                                 <div class="row no-gutters">
                                     <div class="col-lg-9 col-md-8">
                                         <div class="newsletter_field">
-                                            <input type="email" placeholder="Your mail" >
+                                            <input type="email" placeholder="Your mail">
                                         </div>
                                     </div>
                                     <div class="col-lg-3 col-md-4">
                                         <div class="newsletter_btn">
-                                            <button class="boxed-btn4 " type="submit" >Subscribe</button>
+                                            <button class="boxed-btn4 " type="submit">Subscribe</button>
                                         </div>
                                     </div>
                                 </div>
@@ -108,7 +110,8 @@
                 <div class="col-lg-6">
                     <div class="section_title text-center mb_70">
                         <h3>Paket Wisata</h3>
-                        <p>Paket wisata tersedia di 7 kabupaten disekitaran danau toba, pilih paketmu dan jelajahi lah indahnya Danau Toba</p>
+                        <p>Paket wisata tersedia di 7 kabupaten disekitaran danau toba, pilih paketmu dan jelajahi lah
+                            indahnya Danau Toba</p>
                     </div>
                 </div>
             </div>
@@ -119,14 +122,17 @@
                             <img src="img/place/1.png" alt="">
                         </div>
                         <div class="place_info">
-                            <a href="destination_details.html"><h3>Samosir</h3></a>
-                            <div class="rating_days d-flex justify-content-between">
-
-                                <div class="days">
-                                    <i class="fa fa-clock-o"></i>
-                                    <a href="#">4 Paket Wisata</a>
-                                </div>
-                            </div>
+                            @foreach($kabupaten as $row)
+                                @if($row->nama_kabupaten=='Toba')
+                                    <a href="{{route('paket.filter.kabupaten',$row->id_kabupaten)}}"><h3>Toba</h3></a>
+                                    <div class="rating_days d-flex justify-content-between">
+                                        <div class="days">
+                                            <i class="fa fa-clock-o"></i>
+                                            <a href="{{route('paket.filter.kabupaten',$row->id_kabupaten)}}">4 Paket Wisata</a>
+                                        </div>
+                                    </div>
+                                @endif
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -136,14 +142,20 @@
                             <img src="img/place/1.png" alt="">
                         </div>
                         <div class="place_info">
-                            <a href="destination_details.html"><h3>Samosir</h3></a>
-                            <div class="rating_days d-flex justify-content-between">
+                            @foreach($kabupaten as $row)
+                                @if($row->nama_kabupaten == 'Samosir')
+                                    <a href="{{route('paket.filter.kabupaten',$row->id_kabupaten)}}"><h3>Samosir</h3>
+                                    </a>
+                                    <div class="rating_days d-flex justify-content-between">
 
-                                <div class="days">
-                                    <i class="fa fa-clock-o"></i>
-                                    <a href="#">4 Paket Wisata</a>
-                                </div>
-                            </div>
+                                        <div class="days">
+                                            <i class="fa fa-clock-o"></i>
+                                            <a href="{{route('paket.filter.kabupaten',$row->id_kabupaten)}}">{{$row->getPaketWisata->count()}}
+                                                Paket Wisata</a>
+                                        </div>
+                                    </div>
+                                @endif
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -153,14 +165,20 @@
                             <img src="img/place/1.png" alt="">
                         </div>
                         <div class="place_info">
-                            <a href="destination_details.html"><h3>Samosir</h3></a>
-                            <div class="rating_days d-flex justify-content-between">
+                            @foreach($kabupaten as $row)
+                                @if($row->nama_kabupaten == 'Tapanuli Utara')
+                                    <a href="{{route('paket.filter.kabupaten',$row->id_kabupaten)}}"><h3>Tapanuli
+                                            Utara</h3></a>
+                                    <div class="rating_days d-flex justify-content-between">
 
-                                <div class="days">
-                                    <i class="fa fa-clock-o"></i>
-                                    <a href="#">4 Paket Wisata</a>
-                                </div>
-                            </div>
+                                        <div class="days">
+                                            <i class="fa fa-clock-o"></i>
+                                            <a href="{{route('paket.filter.kabupaten',$row->id_kabupaten)}}">{{$row->getPaketWisata->count()}}
+                                                Paket Wisata</a>
+                                        </div>
+                                    </div>
+                                @endif
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -170,14 +188,19 @@
                             <img src="img/place/1.png" alt="">
                         </div>
                         <div class="place_info">
-                            <a href="destination_details.html"><h3>Samosir</h3></a>
-                            <div class="rating_days d-flex justify-content-between">
+                            @foreach($kabupaten as $row)
+                                @if($row->nama_kabupaten == 'Karo')
+                                    <a href="{{route('paket.filter.kabupaten',$row->id_kabupaten)}}"><h3>Karo</h3></a>
+                                    <div class="rating_days d-flex justify-content-between">
 
-                                <div class="days">
-                                    <i class="fa fa-clock-o"></i>
-                                    <a href="#">4 Paket Wisata</a>
-                                </div>
-                            </div>
+                                        <div class="days">
+                                            <i class="fa fa-clock-o"></i>
+                                            <a href="{{route('paket.filter.kabupaten',$row->id_kabupaten)}}">{{$row->getPaketWisata->count()}}
+                                                Paket Wisata</a>
+                                        </div>
+                                    </div>
+                                @endif
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -187,14 +210,20 @@
                             <img src="img/place/1.png" alt="">
                         </div>
                         <div class="place_info">
-                            <a href="destination_details.html"><h3>Samosir</h3></a>
-                            <div class="rating_days d-flex justify-content-between">
+                            @foreach($kabupaten as $row)
+                                @if($row->nama_kabupaten == 'Simalungun')
+                                    <a href="{{route('paket.filter.kabupaten',$row->id_kabupaten)}}"><h3>Simalungun</h3>
+                                    </a>
+                                    <div class="rating_days d-flex justify-content-between">
 
-                                <div class="days">
-                                    <i class="fa fa-clock-o"></i>
-                                    <a href="#">4 Paket Wisata</a>
-                                </div>
-                            </div>
+                                        <div class="days">
+                                            <i class="fa fa-clock-o"></i>
+                                            <a href="{{route('paket.filter.kabupaten',$row->id_kabupaten)}}">{{$row->getPaketWisata->count()}}
+                                                Paket Wisata</a>
+                                        </div>
+                                    </div>
+                                @endif
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -204,22 +233,68 @@
                             <img src="img/place/1.png" alt="">
                         </div>
                         <div class="place_info">
-                            <a href="destination_details.html"><h3>Samosir</h3></a>
-                            <div class="rating_days d-flex justify-content-between">
+                            @foreach($kabupaten as $row)
+                                @if($row->nama_kabupaten == 'Humbang Hasundutan')
 
-                                <div class="days">
-                                    <i class="fa fa-clock-o"></i>
-                                    <a href="#">4 Paket Wisata</a>
-                                </div>
-                            </div>
+                                    <a href="{{route('paket.filter.kabupaten',$row->id_kabupaten)}}"><h3>Humbang
+                                            Hasundutan</h3></a>
+                                    <div class="rating_days d-flex justify-content-between">
+
+                                        <div class="days">
+                                            <i class="fa fa-clock-o"></i>
+                                            <a href="{{route('paket.filter.kabupaten',$row->id_kabupaten)}}">{{$row->getPaketWisata->count()}}
+                                                Paket Wisata</a>
+                                        </div>
+
+                                    </div>
+                                @endif
+                            @endforeach
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="more_place_btn text-center">
-                        <a class="boxed-btn4" href="#">More Places</a>
+                <div class="col-lg-4 col-md-6">
+                    <div class="single_place">
+                        <div class="thumb">
+                            <img src="img/place/1.png" alt="">
+                        </div>
+                        <div class="place_info">
+                            @foreach($kabupaten as $row)
+                                @if($row->nama_kabupaten == 'Dairi')
+                                    <a href="{{route('paket.filter.kabupaten',$row->id_kabupaten)}}"><h3>Dairi</h3></a>
+                                    <div class="rating_days d-flex justify-content-between">
+
+                                        <div class="days">
+                                            <i class="fa fa-clock-o"></i>
+                                            <a href="{{route('paket.filter.kabupaten',$row->id_kabupaten)}}">{{$row->getPaketWisata->count()}}
+                                                Paket Wisata</a>
+                                        </div>
+                                    </div>
+                                @endif
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="single_place">
+                        <div class="thumb">
+                            <img src="img/place/1.png" alt="">
+                        </div>
+                        <div class="place_info">
+                            @foreach($kabupaten as $row)
+                                @if($row->nama_kabupaten == 'Pakpak Barat')
+                                    <a href="{{route('paket.filter.kabupaten',$row->id_kabupaten)}}"><h3>Pakpak
+                                            Barat</h3></a>
+                                    <div class="rating_days d-flex justify-content-between">
+
+                                        <div class="days">
+                                            <i class="fa fa-clock-o"></i>
+                                            <a href="{{route('paket.filter.kabupaten',$row->id_kabupaten)}}">{{$row->getPaketWisata->count()}}
+                                                Paket Wisata</a>
+                                        </div>
+                                    </div>
+                                @endif
+                            @endforeach
+                        </div>
                     </div>
                 </div>
             </div>
@@ -272,7 +347,8 @@
                             <img src="img/icon_fitur/kalender.png" alt="">
                         </div>
                         <h3>Kalender Event</h3>
-                        <p>Event di Kawasan Danau Toba sangatlah banyak, sehingga kita perlu tahu ecent apakah yang akan berlangsung atau sedang berlansung.</p>
+                        <p>Event di Kawasan Danau Toba sangatlah banyak, sehingga kita perlu tahu ecent apakah yang akan
+                            berlangsung atau sedang berlansung.</p>
                     </div>
                 </div>
             </div>
@@ -293,7 +369,8 @@
                                         <div class="author_thumb">
                                             <img src="img/testmonial/author.png" alt="">
                                         </div>
-                                        <p>"Working in conjunction with humanitarian aid agencies, we have supported programmes to help alleviate human suffering.</p>
+                                        <p>"Working in conjunction with humanitarian aid agencies, we have supported
+                                            programmes to help alleviate human suffering.</p>
                                         <div class="testmonial_author">
                                             <h3>- Micky Mouse</h3>
                                         </div>
@@ -308,7 +385,8 @@
                                         <div class="author_thumb">
                                             <img src="img/testmonial/author.png" alt="">
                                         </div>
-                                        <p>"Working in conjunction with humanitarian aid agencies, we have supported programmes to help alleviate human suffering.</p>
+                                        <p>"Working in conjunction with humanitarian aid agencies, we have supported
+                                            programmes to help alleviate human suffering.</p>
                                         <div class="testmonial_author">
                                             <h3>- Tom Mouse</h3>
                                         </div>
@@ -323,7 +401,8 @@
                                         <div class="author_thumb">
                                             <img src="img/testmonial/author.png" alt="">
                                         </div>
-                                        <p>"Working in conjunction with humanitarian aid agencies, we have supported programmes to help alleviate human suffering.</p>
+                                        <p>"Working in conjunction with humanitarian aid agencies, we have supported
+                                            programmes to help alleviate human suffering.</p>
                                         <div class="testmonial_author">
                                             <h3>- Jerry Mouse</h3>
                                         </div>

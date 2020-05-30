@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Kabupaten;
 use App\KalenderEvent;
 
 class HomeController extends Controller
@@ -33,6 +34,7 @@ class HomeController extends Controller
 
     public function home(){
         $kals = KalenderEvent::latest()->limit(6)->get();
-        return view('welcome', compact('kals'));
+        $kabupaten = Kabupaten::all();
+        return view('welcome', compact('kabupaten','kals'));
     }
 }
