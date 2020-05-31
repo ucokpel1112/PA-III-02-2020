@@ -11,8 +11,8 @@
                 <tr>
                     <td align="center">
                         <a href="#">
-                            <img
-                                src="<?php echo e(asset('img/logo.png')); ?>" width="150" border="0"></a>
+                            <img src="<?php echo e(asset('img/logo.png')); ?>" width="150" border="0">
+                        </a>
                     </td>
                 </tr>
                 <tr height="24">
@@ -38,75 +38,96 @@
                    width="600" cellspacing="0" cellpadding="0" border="0" bgcolor="#FFFFFF" align="center">
                 <tbody>
                 <tr>
-                    <td style="font-size:16px;line-height:20px;color:#000000;font-weight:bold;text-align:center;font-family:Arial,'Helvetica Neue',Helvetica,sans-serif;vertical-align:top;padding:15px 50px 10px 50px;margin:0">
-                        Submit your most innovative smart home idea for a chance to win a share of $5,500 USD.
+                    <td style="font-size:16px;line-height:20px;color:#000000;font-weight:bold;text-align:justify;font-family:Arial,'Helvetica Neue',Helvetica,sans-serif;vertical-align:top;padding:15px 50px 10px 50px;margin:0">
+                        Visit toba adalah sebuah aplikasi berbasis website yang menyediakan berbagai informasi mengenai
+                        Danau toba beserta 7 kabpupaten yang mengelilinginya. Aplikasi ini menyediakan informasi seputar
+                        paket wisata di kawasan danau toba, informasi event atau acara, dan informasi tentang Comunity
+                        Based Tourism. Aplikasi ini juga ikut serta dalam memanejemen keanggotaan Comunity Based
+                        Tourism. Sehingga para pelaku/ pemilik layanan wisata bisa ikut serta berinteraksi dengan
+                        pelaku/pemilik layanan wisata di daerah-daerah lain.
                     </td>
                 </tr>
                 </tbody>
             </table>
-            <?php $__currentLoopData = $kabupaten; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                <?php if($row->getPaketWisata->count()!=0): ?>
-                    <table style="margin:0 auto;width:600px"
-                           width="600" cellspacing="0" cellpadding="0" border="0" bgcolor="#FFFFFF" align="center">
-                        <tbody>
+            <?php if($paket->status==1): ?>
+                <table style="margin:0 auto;width:600px"
+                       width="600" cellspacing="0" cellpadding="0" border="0" bgcolor="#FFFFFF" align="center">
+                    <tbody>
+                    <tr>
+                        <td style="font-size:22px;line-height:26px;color:#000000;font-weight:normal;text-align:left;font-family:Arial,'Helvetica Neue',Helvetica,sans-serif;vertical-align:top;padding:15px 30px 5px 30px;margin:0">
+                            <hr>
+                            <?php echo e($paket->nama_paket); ?> (Rp. <?php echo e(number_format($paket->harga_paket)); ?>/orang)
+                            <hr>
+                        </td>
+
+                    </tr>
+                    </tbody>
+                </table>
+                <table style="margin:0 auto;width:600px"
+                       width="600" cellspacing="0" cellpadding="0" border="0" bgcolor="#FFFFFF" align="center">
+                    <tbody>
+
+                    <tr>
+                        <td style="font-size:18px;line-height:18px;color:#000000;font-weight:normal;text-align:left;font-family:Arial,'Helvetica Neue',Helvetica,sans-serif;vertical-align:top;padding:15px 60px 10px 60px;margin:0">
+                            Availability : <span style="font-size: 16px"><?php echo e($paket->availability); ?></span>
+                        </td>
+                    </tr>
+                    
+                    
+                    
+                    
+                    
+                    <tr>
+                        <td style="font-size:18px;line-height:18px;color:#000000;font-weight:normal;text-align:left;font-family:Arial,'Helvetica Neue',Helvetica,sans-serif;vertical-align:top;padding:15px 60px 10px 60px;margin:0">
+                            Durasi &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <span style="font-size: 16px"><?php echo e($paket->durasi); ?></span>
+                        </td>
+                    </tr>
+                    
+                    
+                    
+                    
+                    
+                    <tr>
+                        <td style="font-size:18px;line-height:18px;color:#000000;font-weight:normal;text-align:left;font-family:Arial,'Helvetica Neue',Helvetica,sans-serif;vertical-align:top;padding:15px 60px 10px 60px;margin:0">
+                            Kabupaten : <span style="font-size: 16px"><?php echo e($paket->getKabupaten->nama_kabupaten); ?></span>
+                        </td>
+                    </tr>
+                    
+                    
+                    
+                    
+                    
+                    <tr>
+                        <td style="font-size:18px;line-height:18px;color:#000000;font-weight:normal;text-align:left;font-family:Arial,'Helvetica Neue',Helvetica,sans-serif;vertical-align:top;padding:15px 60px 10px 60px;margin:0">
+                            Deskripsi &nbsp;&nbsp;&nbsp;:
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="font-size:14px;line-height:18px;color:#000000;font-weight:normal;text-align:left;font-family:Arial,'Helvetica Neue',Helvetica,sans-serif;vertical-align:top;padding:15px 70px 10px 70px;margin:0">
+                            <?php echo $paket->deskripsi_paket; ?>
+                        </td>
+                    </tr>
+                    <?php if($paket->getSesi->count()!=0): ?>
                         <tr>
-                            <td style="font-size:22px;line-height:26px;color:#000000;font-weight:normal;text-align:left;font-family:Arial,'Helvetica Neue',Helvetica,sans-serif;vertical-align:top;padding:15px 30px 5px 30px;margin:0">
-                                <u>Kabupaten <?php echo e($row->nama_kabupaten); ?></u>
+                            <td style="font-size:18px;line-height:18px;color:#000000;font-weight:normal;text-align:left;font-family:Arial,'Helvetica Neue',Helvetica,sans-serif;vertical-align:top;padding:15px 60px 10px 60px;margin:0">
+                                Sesi/jadwal kegiatan paket :
                             </td>
                         </tr>
-                        </tbody>
-                    </table>
-                    <table style="margin:0 auto;width:600px"
-                           width="600" cellspacing="0" cellpadding="0" border="0" bgcolor="#FFFFFF" align="center">
-                        <tbody>
-                        <?php $__currentLoopData = $row->getPaketWisata; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $rows): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                            <?php if($rows->status==1): ?>
-                                <tr>
-                                    <td style="font-size:18px;line-height:18px;color:#000000;font-weight:normal;text-align:left;font-family:Arial,'Helvetica Neue',Helvetica,sans-serif;vertical-align:top;padding:15px 60px 10px 60px;margin:0">
-                                        <?php echo e($rows->nama_paket); ?> (<?php echo e($rows->harga_paket); ?>/orang)
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td style="font-size:14px;line-height:18px;color:#000000;font-weight:normal;text-align:left;font-family:Arial,'Helvetica Neue',Helvetica,sans-serif;vertical-align:top;padding:15px 70px 10px 70px;margin:0">
-                                        <?php echo $rows->deskripsi_paket; ?>
-                                    </td>
-                                </tr>
-                                <?php if($rows->getSesi->count()!=0): ?>
-                                    <tr>
-                                        <td style="font-size:18px;line-height:18px;color:#000000;font-weight:normal;text-align:left;font-family:Arial,'Helvetica Neue',Helvetica,sans-serif;vertical-align:top;padding:15px 60px 10px 60px;margin:0">
-                                            Sesi/jadwal kegiatan paket
-
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style="font-size:12px;line-height:18px;color:#000000;font-weight:normal;text-align:left;font-family:Arial,'Helvetica Neue',Helvetica,sans-serif;vertical-align:top;padding:15px 70px 10px 70px;margin:0">
-                                            <ul>
-                                                <?php $__currentLoopData = $rows->getSesi; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $sesi): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                    <?php if($sesi->status==1): ?>
-                                                        <li><?php echo e($sesi->jadwal); ?></li>
-                                                    <?php endif; ?>
-                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                            </ul>
-                                        </td>
-                                    </tr>
-                                <?php endif; ?>
-                            <?php endif; ?>
-                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                        </tbody>
-                    </table>
-                <?php endif; ?>
-            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-            <table style="margin:0 auto;width:600px"
-                   width="600" cellspacing="0" cellpadding="0" border="0" bgcolor="#FFFFFF" align="center">
-                <tbody>
-                <tr>
-                    <td style="font-size:22px;line-height:26px;color:#000000;font-weight:normal;text-align:left;font-family:Arial,'Helvetica Neue',Helvetica,sans-serif;vertical-align:top;padding:15px 30px 0px 30px;margin:0">
-
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-
+                        <tr>
+                            <td style="font-size:12px;line-height:18px;color:#000000;font-weight:normal;text-align:left;font-family:Arial,'Helvetica Neue',Helvetica,sans-serif;vertical-align:top;padding:10px 70px 10px 45px;margin:0">
+                                <ul>
+                                    <?php $__currentLoopData = $paket->getSesi; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $sesi): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <?php if($sesi->status==1): ?>
+                                            <li><?php echo e($sesi->jadwal); ?></li>
+                                        <?php endif; ?>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                </ul>
+                            </td>
+                        </tr>
+                    <?php endif; ?>
+                    </tbody>
+                </table>
+            <?php endif; ?>
             <table role="presentation" style="margin:0 auto;width:600px"
                    width="600" cellspacing="0" cellpadding="0" border="0" bgcolor="#FFFFFF" align="center">
                 <tbody>
@@ -126,7 +147,7 @@
                                cellpadding="0" border="0" align="center">
                             <tbody>
                             <tr>
-                                <td style="color:#ffffff;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:16px;text-align:center"
+                                <td style="margin-bottom: 40px;color:#ffffff;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:16px;text-align:center"
                                     nowrap="" height="30" bgcolor="#009ddc" align="center">
                                     <a href="<?php echo e(asset('/')); ?>"
                                        title="Visit Toba"
@@ -134,6 +155,12 @@
                                     >
                                         VISIT&nbsp;TOBA
                                     </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="margin-bottom: 40px;color:#ffffff;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:16px;text-align:center"
+                                    nowrap="" height="30" align="center">
+
                                 </td>
                             </tr>
                             </tbody>

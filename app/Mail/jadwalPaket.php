@@ -3,6 +3,7 @@
 namespace App\Mail;
 
 use App\Kabupaten;
+use App\paketWisata;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
@@ -17,8 +18,11 @@ class jadwalPaket extends Mailable
      *
      * @return void
      */
-    public function __construct()
+    private $pakets;
+
+    public function __construct($pakets)
     {
+        $this->pakets = $pakets;
         $this->subject('Jadwal Paket Wisata');
     }
 
@@ -29,7 +33,7 @@ class jadwalPaket extends Mailable
      */
     public function build()
     {
-        $kabupaten = Kabupaten::all();
-        return $this->view('front.paket.jadwalPaket',compact('kabupaten'));
+        $paket = $this->pakets;
+        return $this->view('front.paket.jadwalPaket',compact('paket'));
     }
 }

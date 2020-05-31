@@ -84,8 +84,8 @@ class PemesananController extends Controller
                 $sesi->kuota_peserta -= $request->jumlah_peserta;
                 $sesi->save();
             }
-
-            Mail::to(Auth::user()->email)->send(new jadwalPaket());
+            $paket = paketWisata::find($sesi->paket_id);
+            Mail::to(Auth::user()->email)->send(new jadwalPaket($paket));
             return redirect(route('pemesanan.detail', $pemesanan->id_pemesanan));
         }
 

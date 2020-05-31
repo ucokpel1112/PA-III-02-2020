@@ -152,5 +152,6 @@ Route::get('/adm/komunitas/{id}/hapus','KomunitasController@hapus')->name('hapus
 //komunitas anggota cbt
 Route::get('/anggotacbt/komunitas','KomunitasCBTController@index')->name('data_komunitas.anggota');
 Route::get('/design',function(){
-   return view('desgin');
+    $paket = \App\paketWisata::first();
+   return view('desgin',compact('paket'));
 });
