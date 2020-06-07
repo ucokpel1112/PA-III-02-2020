@@ -148,9 +148,14 @@ Route::post('adm/komunitas/create','KomunitasController@create')->name('tambah_k
 Route::get('/adm/komunitas/{id}/edit', 'KomunitasController@edit')->name('edit_komunitas');
 Route::post('/adm/komunitas/{id}/update', 'KomunitasController@update')->name('update_komunitas');
 Route::get('/adm/komunitas/{id}/hapus','KomunitasController@hapus')->name('hapus_komunitas');
+Route::get('/adm/komunitas/pendaftar','KomunitasController@view')->name('view_anggota');
+
 
 //komunitas anggota cbt
 Route::get('/anggotacbt/komunitas','KomunitasCBTController@index')->name('data_komunitas.anggota');
+Route::get('/anggotacbt/komunitas/pendaftar','PendaftarController@index')->name('view_anggota');
+Route::post('/anggotacbt/komunitas/pendaftar/create','PendaftarController@daftar')->name('gabung_daftar');
+
 Route::get('/design',function(){
     $paket = \App\paketWisata::first();
    return view('desgin',compact('paket'));

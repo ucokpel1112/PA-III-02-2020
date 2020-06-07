@@ -1,15 +1,15 @@
-@extends('layout.admin.app')
+@extends('layout.anggotacbt.app')
 @section('content')
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Komunitas Pariwisata</h1>
+                    <h1>Pendaftar Komunitas</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Komunitas Pariwisata</li>
+                        <li class="breadcrumb-item active">Pendaftar Pariwisata</li>
                     </ol>
                 </div>
             </div>
@@ -25,7 +25,7 @@
 
                     <button type="button" class="btn btn-primary btn-sm float-right" data-toggle="modal"
                             data-target="#exampleModal">
-                        Tambah data komunitas
+                        Bergabung Komunitas
                     </button>
 
 
@@ -40,42 +40,33 @@
                 <table class="table table-striped projects">
                     <thead>
                     <tr>
-                        <th style="width: 20%">
+                        <th>
+                            Nama Anggota
+                        </th>
+                        <th>
+                            Nomor Whatsapp
+                        </th>
+                        <th>
+                            Layanan Wisata
+                        </th>
+                        <th>
                             Nama Komunitas
                         </th>
-                        <th>
-                            Deskripsi
-                        </th>
-                        <th>
-                            Link Gabung Group Komunitas
-                        </th>
-                        <th class="text-center" style="width: 20%">
-                            Kabupaten
-                        </th>
-                        <th class="text-center" style="width:20%">
-                            Aksi
-                        </th>
+
 
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($data_komunitas as $komunitas)
-                        <tr>
-                            <td>{{$komunitas->nama_komunitas}}</td>
-                            <td> <?php echo $komunitas->deskripsi ?></td>
-                            <td><a href="{{$komunitas->link}}">{{$komunitas->link}}</a></td>
-                            <td>{{$komunitas->getKabupaten->nama_kabupaten}}</td>
-                            <td>
-                                <a href="{{ route('edit_komunitas',$komunitas->id)}}" class="btn btn-warning btn-sm">Edit</a>
-                                <a href="{{ route('hapus_komunitas',$komunitas->id)}}" class="btn btn-danger btn-sm"
-                                   onclick="return confirm('Apakah data ini ingin dihapus?')">Delete</a>
-                            </td>
-                        </tr>
+                    @foreach($data_pendaftar as $daftar)
+                    <tr>
+                        <td>{{$daftar->nama}}</td>
+                        <td>{{$daftar->no_wa}}</td>
+                        <td>{{$daftar->layanan}}</td>
+                        <td>{{$daftar->getKomunitas->nama_komunitas}}</td>
+                    </tr>
                     @endforeach
                 </table>
             </div>
-
-            <!-- Modal -->
 
             <!-- Modal -->
             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -88,32 +79,29 @@
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <form action="{{route('tambah_komunitas')}}" method="POST">
+                        <form action="{{route('gabung_daftar')}}" method="POST">
                             {{csrf_field()}}
                             <div class="modal-body">
                                 <div class="form-group">
-                                    <label>Nama Komunitas</label>
-                                    <input name="nama_komunitas" class="form-control" type="text"
-                                           placeholder="Nama Komunitas">
+                                    <label>Nama Pendaftar</label>
+                                    <input name="nama" class="form-control" type="text" placeholder="Nama Pendaftar" >
                                 </div>
                                 <div class="form-group">
-                                    <label for="Deskripsi">Deskripsi</label>
-                                    <textarea name="deskripsi" class="textarea" placeholder="Deskripsi"
-                                              style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                                    <label>Nomor WA</label>
+                                    <input name="no_wa" class="form-control" type="text" placeholder="Nomor WA" >
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="exampleFormControlTextarea1">Link WhatsApp Group Komunitas</label>
-                                    <textarea name="link" class="form-control" id="exampleFormControlTextarea1"
-                                              rows="3"></textarea>
+                                    <label>Layanan Pendaftar</label>
+                                    <input name="layanan" class="form-control" type="text" placeholder="Layanan Pendaftar">
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="exampleFormControlSelect1">Pilih Kabupaten</label>
-                                    <select name="kabupaten_id" class="form-control" id="exampleFormControlSelect1">
-                                        <option selected="" disabled="">Pilih Kabupaten</option>
-                                        @foreach($kabupaten as $row)
-                                            <option value="{{$row->id_kabupaten}}">{{$row->nama_kabupaten}}</option>
+                                    <label for="exampleFormControlSelect1">Pilih Komunitas</label>
+                                    <select name="komunitas_id" class="form-control" id="exampleFormControlSelect1">
+                                        <option selected="" disabled="">Pilih Komunitas</option>
+                                        @foreach($komunitas as $row)
+                                            <option value="{{$row->id}}" @if($row->id) selected @endif>{{$row->nama_komunitas}}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -121,12 +109,16 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="submit" class="btn btn-primary">Tambah</button>
+                                <button type="submit" class="btn btn-primary">Mendaftar</button>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
+
+
+            <!-- Modal -->
+
 
 
         </div>

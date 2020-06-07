@@ -1,5 +1,4 @@
-@extends('layout.admin.app')
-@section('content')
+<?php $__env->startSection('content'); ?>
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
@@ -59,19 +58,19 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($data_komunitas as $komunitas)
+                    <?php $__currentLoopData = $data_komunitas; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $komunitas): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <tr>
-                            <td>{{$komunitas->nama_komunitas}}</td>
+                            <td><?php echo e($komunitas->nama_komunitas); ?></td>
                             <td> <?php echo $komunitas->deskripsi ?></td>
-                            <td><a href="{{$komunitas->link}}">{{$komunitas->link}}</a></td>
-                            <td>{{$komunitas->getKabupaten->nama_kabupaten}}</td>
+                            <td><a href="<?php echo e($komunitas->link); ?>"><?php echo e($komunitas->link); ?></a></td>
+                            <td><?php echo e($komunitas->getKabupaten->nama_kabupaten); ?></td>
                             <td>
-                                <a href="{{ route('edit_komunitas',$komunitas->id)}}" class="btn btn-warning btn-sm">Edit</a>
-                                <a href="{{ route('hapus_komunitas',$komunitas->id)}}" class="btn btn-danger btn-sm"
+                                <a href="<?php echo e(route('edit_komunitas',$komunitas->id)); ?>" class="btn btn-warning btn-sm">Edit</a>
+                                <a href="<?php echo e(route('hapus_komunitas',$komunitas->id)); ?>" class="btn btn-danger btn-sm"
                                    onclick="return confirm('Apakah data ini ingin dihapus?')">Delete</a>
                             </td>
                         </tr>
-                    @endforeach
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </table>
             </div>
 
@@ -88,8 +87,9 @@
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <form action="{{route('tambah_komunitas')}}" method="POST">
-                            {{csrf_field()}}
+                        <form action="<?php echo e(route('tambah_komunitas')); ?>" method="POST">
+                            <?php echo e(csrf_field()); ?>
+
                             <div class="modal-body">
                                 <div class="form-group">
                                     <label>Nama Komunitas</label>
@@ -112,9 +112,9 @@
                                     <label for="exampleFormControlSelect1">Pilih Kabupaten</label>
                                     <select name="kabupaten_id" class="form-control" id="exampleFormControlSelect1">
                                         <option selected="" disabled="">Pilih Kabupaten</option>
-                                        @foreach($kabupaten as $row)
-                                            <option value="{{$row->id_kabupaten}}">{{$row->nama_kabupaten}}</option>
-                                        @endforeach
+                                        <?php $__currentLoopData = $kabupaten; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                            <option value="<?php echo e($row->id_kabupaten); ?>"><?php echo e($row->nama_kabupaten); ?></option>
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </select>
                                 </div>
 
@@ -136,4 +136,6 @@
         <!-- /.card -->
 
     </section>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layout.admin.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\Backup Data Kristopel\Kuliah ITdel\Semester 6\PA III\Project\git\v.3.1\PA-III-02-2020\resources\views/admin/komunitas/daftar_komunitas.blade.php ENDPATH**/ ?>
