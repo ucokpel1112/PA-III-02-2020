@@ -36,6 +36,10 @@ class Pemesanan extends Model
             $status = 'Pemesanan Telah Berhasil';
         }else if($src==4){
             $status = 'Pemesanan Telah Selesai/Berakhir';
+        }else if($src==5){
+            $status = 'Pesanan dibatalkan, Waktu Pembayaran Anda Telah Berakhir';
+        }else if($src==6){
+            $status = 'Bukti Pembayaran Ditolak';
         }
         return $status;
     }

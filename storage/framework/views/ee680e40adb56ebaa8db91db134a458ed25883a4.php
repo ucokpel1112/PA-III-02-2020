@@ -1,200 +1,209 @@
-<table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" align="center">
-    <tbody>
-    <tr>
-        <td style="padding-top:10px;background-color:#e6e6e6" width="100%" valign="top" bgcolor="#E6E6E6">
-            <table role="presentation" style="margin:0 auto;width:600px"
-                   width="600" cellspacing="0" cellpadding="0" border="0" bgcolor="#E6E6E6" align="center">
-                <tbody>
-                <tr height="24">
-                    <td></td>
-                </tr>
-                <tr>
-                    <td align="center">
-                        <a href="#">
-                            <img src="<?php echo e(asset('img/logo.png')); ?>" width="150" border="0">
-                        </a>
-                    </td>
-                </tr>
-                <tr height="24">
-                    <td></td>
-                </tr>
-                </tbody>
-            </table>
-            <table style="margin:0 auto;width:600px" width="600" cellspacing="0" cellpadding="0" border="0"
-                   bgcolor="#eeeeed" align="center">
-                <tbody>
-                <tr>
-                    <td style="padding:0" valign="top" bgcolor="#ffffff">
-                        <a href="#">
-                            <img
-                                src="<?php echo e(asset('img/banner/video.png')); ?>" style="display:block;width:600px" width="600"
-                                border="0">
-                        </a>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-            <table style="margin:0 auto;width:600px"
-                   width="600" cellspacing="0" cellpadding="0" border="0" bgcolor="#FFFFFF" align="center">
-                <tbody>
-                <tr>
-                    <td style="font-size:16px;line-height:20px;color:#000000;font-weight:bold;text-align:justify;font-family:Arial,'Helvetica Neue',Helvetica,sans-serif;vertical-align:top;padding:15px 50px 10px 50px;margin:0">
-                        Visit toba adalah sebuah aplikasi berbasis website yang menyediakan berbagai informasi mengenai
-                        Danau toba beserta 7 kabpupaten yang mengelilinginya. Aplikasi ini menyediakan informasi seputar
-                        paket wisata di kawasan danau toba, informasi event atau acara, dan informasi tentang Comunity
-                        Based Tourism. Aplikasi ini juga ikut serta dalam memanejemen keanggotaan Comunity Based
-                        Tourism. Sehingga para pelaku/ pemilik layanan wisata bisa ikut serta berinteraksi dengan
-                        pelaku/pemilik layanan wisata di daerah-daerah lain.
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-                <?php if($paket->status==1): ?>
-                    <table style="margin:0 auto;width:600px"
-                           width="600" cellspacing="0" cellpadding="0" border="0" bgcolor="#FFFFFF" align="center">
-                        <tbody>
-                        <tr>
-                            <td style="font-size:22px;line-height:26px;color:#000000;font-weight:normal;text-align:left;font-family:Arial,'Helvetica Neue',Helvetica,sans-serif;vertical-align:top;padding:15px 30px 5px 30px;margin:0">
-                                <hr>
-                                    <?php echo e($paket->nama_paket); ?> (Rp. <?php echo e(number_format($paket->harga_paket)); ?>/orang)
-                                <hr>
-                            </td>
+<?php $__env->startSection('content'); ?>
+    <div class="bradcam_area bradcam_bg_4">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl">
+                    <div class="bradcam_text text-center">
 
-                        </tr>
-                        </tbody>
-                    </table>
-                    <table style="margin:0 auto;width:600px"
-                           width="600" cellspacing="0" cellpadding="0" border="0" bgcolor="#FFFFFF" align="center">
-                        <tbody>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-                        <tr>
-                            <td style="font-size:18px;line-height:18px;color:#000000;font-weight:normal;text-align:left;font-family:Arial,'Helvetica Neue',Helvetica,sans-serif;vertical-align:top;padding:15px 60px 10px 60px;margin:0">
-                                Availability : <span style="font-size: 16px"><?php echo e($paket->availability); ?></span>
-                            </td>
-                        </tr>
+    <div class="container-fluid popular_places_area " style="margin-top: 1px">
+        <div class="row" style="margin-left: 10px">
+            <div style="padding-bottom: 0px;" class="col-4">
+                <div class="blog_right_sidebar border" style="background-color: white;border-radius: 5px;">
+                    <aside class="single_sidebar_widget post_category_widget" style="background: white;">
+                        <h4 class="widget_title">Paket Wisata</h4>
+                        <div class="single_place border cat-list">
+                            <div class="thumb">
+                                <img src="<?php echo e(asset('storage/img/paket/'.$pemesanan->getSesi->getPaket->gambar)); ?>" alt="">
+                                <a href="#"
+                                   class="prise">Rp.<?php echo e(number_format($pemesanan->getSesi->getPaket->harga_paket)); ?></a>
+                            </div>
+                            <div class="place_info">
+                                <a href="<?php echo e(route('paket.detail',$pemesanan->getSesi->getPaket->id_paket)); ?>">
+                                    <h3><?php echo e($pemesanan->getSesi->getPaket->nama_paket); ?></h3></a>
+                                <p><?php echo e($pemesanan->getSesi->getPaket->getKabupaten->nama_kabupaten); ?>
 
-
-
-
-
-                        <tr>
-                            <td style="font-size:18px;line-height:18px;color:#000000;font-weight:normal;text-align:left;font-family:Arial,'Helvetica Neue',Helvetica,sans-serif;vertical-align:top;padding:15px 60px 10px 60px;margin:0">
-                                Durasi &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp: <span style="font-size: 16px"><?php echo e($paket->durasi); ?></span>
-                            </td>
-                        </tr>
-
-
-
-
-
-                        <tr>
-                            <td style="font-size:18px;line-height:18px;color:#000000;font-weight:normal;text-align:left;font-family:Arial,'Helvetica Neue',Helvetica,sans-serif;vertical-align:top;padding:15px 60px 10px 60px;margin:0">
-                                Kabupaten : <span style="font-size: 16px"><?php echo e($paket->getKabupaten->nama_kabupaten); ?></span>
-                            </td>
-                        </tr>
-
-
-
-
-
-                        <tr>
-                            <td style="font-size:18px;line-height:18px;color:#000000;font-weight:normal;text-align:left;font-family:Arial,'Helvetica Neue',Helvetica,sans-serif;vertical-align:top;padding:15px 60px 10px 60px;margin:0">
-                                Deskripsi &nbsp&nbsp&nbsp:
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="font-size:14px;line-height:18px;color:#000000;font-weight:normal;text-align:left;font-family:Arial,'Helvetica Neue',Helvetica,sans-serif;vertical-align:top;padding:15px 70px 10px 70px;margin:0">
-                                <?php echo $paket->deskripsi_paket; ?>
-                            </td>
-                        </tr>
-                        <?php if($paket->getSesi->count()!=0): ?>
+                                    <a href="#" class="float-right"><i
+                                            class="fa fa-clock-o"> </i> <?php echo e($pemesanan->getSesi->getPaket->durasi); ?></a>
+                                </p>
+                            </div>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+            <div class=" col-lg" style="margin-left: 5px;">
+                <div class="row border"
+                     style="border-radius: 5px; background: white;padding: 10px;margin-bottom: 10px;">
+                    <div class="col ">
+                        <h2 class="gj-text-align-center">Detail Pemesanan</h2>
+                        <hr>
+                        <table width="100%">
                             <tr>
-                                <td style="font-size:18px;line-height:18px;color:#000000;font-weight:normal;text-align:left;font-family:Arial,'Helvetica Neue',Helvetica,sans-serif;vertical-align:top;padding:15px 60px 10px 60px;margin:0">
-                                    Sesi/jadwal kegiatan paket :
-                                </td>
+                                <th style="width: 48%"></th>
+                                <th></th>
+                                <th></th>
                             </tr>
                             <tr>
-                                <td style="font-size:12px;line-height:18px;color:#000000;font-weight:normal;text-align:left;font-family:Arial,'Helvetica Neue',Helvetica,sans-serif;vertical-align:top;padding:10px 70px 10px 45px;margin:0">
-                                    <ul>
-                                        <?php $__currentLoopData = $paket->getSesi; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $sesi): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                            <?php if($sesi->status==1): ?>
-                                                <li><?php echo e($sesi->jadwal); ?></li>
-                                            <?php endif; ?>
-                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                    </ul>
-                                </td>
-                            </tr>
-                        <?php endif; ?>
-                        </tbody>
-                    </table>
-                <?php endif; ?>
-            <table role="presentation" style="margin:0 auto;width:600px"
-                   width="600" cellspacing="0" cellpadding="0" border="0" bgcolor="#FFFFFF" align="center">
-                <tbody>
-                <tr>
-                    <td style="font-size:14px;line-height:18px;color:#000000;font-weight:normal;text-align:left;font-family:Arial,'Helvetica Neue',Helvetica,sans-serif;vertical-align:top;padding:15px 60px 10px 60px;margin:0">
-                        <strong>hubungi nomor 082160085708, jika ada pertanyaan/kritik/saran.</strong>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-            <table role="presentation" style="margin:0 auto;width:600px"
-                   width="600" cellspacing="0" cellpadding="0" border="0" bgcolor="#FFFFFF" align="center">
-                <tbody>
-                <tr>
-                    <td style="vertical-align:top;padding:0px 20px 0px 20px;margin:0" valign="top" align="center">
-                        <table width="160" cellspacing="0"
-                               cellpadding="0" border="0" align="center">
-                            <tbody>
-                            <tr>
-                                <td style="margin-bottom: 40px;color:#ffffff;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:16px;text-align:center"
-                                    nowrap="" height="30" bgcolor="#009ddc" align="center">
-                                    <a href="<?php echo e(asset('/')); ?>"
-                                       title="Visit Toba"
-                                       style="color:#ffffff;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:16px;display:block;text-decoration:none;text-transform:uppercase;font-style:normal;font-weight:bold;text-align:center;padding:7px 5px"
-                                    >
-                                        VISIT&nbsp;TOBA
-                                    </a>
-                                </td>
+                                <td><b>Status</b></td>
+                                <td><p>: </p></td>
+                                <td><p>Menunggu Pembayaran</p></td>
                             </tr>
                             <tr>
-                                <td style="margin-bottom: 40px;color:#ffffff;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:16px;text-align:center"
-                                    nowrap="" height="30" align="center">
+                                <td><b>Tanggal Pemesanan</b></td>
+                                <td><p>: </p></td>
+                                <td><p>12 Agustus 2019</p></td>
+                            </tr>
+                            <tr>
+                                <td><b>Total Pembayaran</b></td>
+                                <td><p>: </p></td>
+                                <td><p>Rp. 20.000,00</p></td>
+                            </tr>
+                            <tr>
+                                <td><b>Jumlah Peserta</b></td>
+                                <td><p>: </p></td>
+                                <td><p>3 Orang</p></td>
+                            </tr>
+                            <tr>
+                                <td><b>Pesan :</b></td>
+                                <td><p></p></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td colspan="3"><p>pesan pesan pesan pesan pesan pesan pesan pesan pesan pesan pesan
+                                        pesan </p></td>
 
-                                </td>
                             </tr>
-                            </tbody>
                         </table>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-            <table style="margin:0 auto;width:600px"
-                   width="600" cellspacing="0" cellpadding="0" border="0" bgcolor="#E6E6E6" align="center">
-                <tbody>
-                <tr height="30"></tr>
-                <tr height="19">
-                    <td height="19" align="center">
-            <span style="color:#74787d;font-size:12px;line-height:18px">
-              <p>
-                &nbsp;
-                <span>
-                  © Visit Toba
-                  <br>
-                  PA-III-02-2020
-                </span>
-                &nbsp;
-              </p>
-            </span>
-                    </td>
-                </tr>
-                <tr style="height:16px">
-                    <td style="height:16px" width="100%">&nbsp;</td>
-                </tr>
-                </tbody>
-            </table>
-        </td>
-    </tr>
-    </tbody>
-</table>
-<?php /**PATH C:\xampp\htdocs\PA-III-02-2020\resources\views/desgin.blade.php ENDPATH**/ ?>
+
+                    </div>
+                </div>
+                <div class="border row "
+                     style="border-radius: 5px; background: #fbf9ff;padding: 10px;margin-bottom: 10px;">
+                    <div class="col gj-text-align-center" style="padding-bottom: 20px">
+                        <p>Segera selesaikan pembayaran Anda !</p>
+                        <br>
+                        <h2>23 jam 40 menit 30 detik</h2>
+                        <br>
+                        <p><i>(Sebelum Sabtu, Juni 6 2020, 4:52:29 sore)</i></p>
+                    </div>
+                </div>
+                <div class="border row" style="background: white;padding: 10px;margin-bottom: 10px;border-radius: 5px">
+                    <div class="col ">
+                        <p class="gj-text-align-center">Transfer pembayaran ke nomor Virtual Account :</p>
+                        <hr>
+                        <h3 class="mb-30">Bank BRI</h3>
+                        <div class="row">
+                            <div class="col-md-2">
+                                <img src="img/elements/d.jpg" alt="" class="img-fluid">
+                            </div>
+                            <div class="col-md-10 mt-sm-20">
+                                <p><b>Nomor Rekening : 1212121212</b></p>
+                                <p>a/n Ruth Elvin Harianja </p>
+                            </div>
+                        </div>
+                        <hr>
+                        <h3 class="mb-30">Bank BNI</h3>
+                        <div class="row">
+                            <div class="col-md-2">
+                                <img src="img/elements/d.jpg" alt="" class="img-fluid">
+                            </div>
+                            <div class="col-md-10 mt-sm-20">
+                                <p><b>Nomor Rekening : 1212121212</b></p>
+                                <p>a/n Ruth Elvin Harianja </p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <button data-toggle="modal"
+                                    data-target="#exampleModal" type="button" class="btn btn-primary col-md mt-sm-20">
+                                Upload Bukti Pembayaran
+                            </button>
+
+                            <!-- Modal -->
+                            <div
+                                class="modal fade"
+                                id="exampleModal"
+                                tabindex="-1"
+                                role="dialog"
+                                aria-labelledby="exampleModalLabel"
+                                aria-hidden="true"
+                            >
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Upload Bukti Bayar</h5>
+                                            <button
+                                                type="button"
+                                                class="close"
+                                                data-dismiss="modal"
+                                                aria-label="Close"
+                                            >
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <form>
+                                            <div class="modal-body">
+                                                <p>Total Yang Harus Dibayar : <b>Rp. 50.000,00</b></p>
+                                                <hr>
+                                                <label for="rekening" class="small">Pilih Rekening</label>
+                                                <hr>
+                                                <div id="rekening" class="form-group">
+                                                    <input type="radio" id="rekening_1" name="rekening_id">
+                                                    <label for="rekening_1">
+                                                        <img src="img/elements/d.jpg" width="50"> Bank BRI
+                                                        (112313123123)</label>
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="radio" id="rekening_2" name="rekening_id">
+                                                    <label for="rekening_2">
+                                                        <img src="img/elements/d.jpg" width="50"> Bank BRI
+                                                        (112313123123)</label>
+                                                </div>
+                                                <br>
+                                                <hr>
+                                                <div class="form-group">
+                                                    <label for="bukti" class="small">Bukti Pembayaran</label>
+                                                    
+                                                    <div class="upload-btn-wrapper">
+                                                        <input id="bukti" name="gambar" class="form-control-file"
+                                                               type="file"
+                                                               name="myfile">
+                                                    </div>
+                                                    <small class="form-text text-muted"></small>
+                                                </div>
+                                            </div>
+                                        </form>
+                                        <div class="row modal-footer">
+                                            <div class="col-1">
+                                            </div>
+                                            <button type="submit" class="col btn btn-primary">Upload
+                                            </button>
+                                            <div class="col-1">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end Modal -->
+                        </div>
+                        <form action="#">
+                            <div class="row" style="margin-top:10px">
+                                <button class="btn btn-danger col-md mt-sm-20">
+                                    Batalkan Pemesanan
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layout.front.main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\PA-III-02-2020\resources\views/desgin.blade.php ENDPATH**/ ?>

@@ -52,6 +52,7 @@ Route::namespace('Front')->group(function () {
     Route::get('/pemesanan', 'PemesananController@index')->name('pemesanan');
     Route::put('/paket/{id_paket}/pesan', 'PemesananController@store')->name('paket.pesan');
     Route::put('/pemesanan/detail/{id_pemesanan}/upload', 'PemesananController@kirimTransaksi')->name('transaksi.kirim');
+    Route::put('/pemesanan/detail/{id_transaksi}/update', 'PemesananController@updateTransaksi')->name('transaksi.update');
     Route::get('/pemesanan/detail/{id_pemesanan}', 'PemesananController@show')->name('pemesanan.detail');
     Route::delete('/pemesanan/cancel/{id_pemesanan}', 'PemesananController@cancel')->name('pemesanan.batal');
 });
@@ -91,6 +92,8 @@ Route::namespace('Admin')->group(function () {
     Route::get('/adm/pemesanan/show/{id_pemesanan}', 'PemesananController@show')->name('admin.pemesanan.show');
     Route::post('/adm/pemesanan', 'PemesananController@indexFilter')->name('admin.pemesanan.filter');
     Route::put('/adm/pemesanan/transaksi/konfirmasi/{id_pemesanan}', 'PemesananController@konfirmasiPembayaran')->name('admin.pemesanan.konfirmasi');
+    Route::put('/adm/pemesanan/transaksi/tolak/{id_pemesanan}', 'PemesananController@tolakPembayaran')->name('admin.pemesanan.tolak');
+    Route::put('/adm/pemesanan/transaksi/upload/{id_pemesanan}', 'PemesananController@uploadUlangPembayaran')->name('admin.pemesanan.upload');
     Route::put('/adm/pemesanan/ubahPesan/{id_pemesanan}', 'PemesananController@ubahPesan')->name('admin.pemesanan.ubahPesan');
 
     Route::get('/adm/paket', 'PaketWisataController@index')->name('admin.paket');
@@ -152,6 +155,6 @@ Route::get('/adm/komunitas/{id}/hapus','KomunitasController@hapus')->name('hapus
 //komunitas anggota cbt
 Route::get('/anggotacbt/komunitas','KomunitasCBTController@index')->name('data_komunitas.anggota');
 Route::get('/design',function(){
-    $paket = \App\paketWisata::first();
-   return view('desgin',compact('paket'));
+    $pemesanan = \App\Pemesanan::first();
+   return view('desgin',compact('pemesanan'));
 });
