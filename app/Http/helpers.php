@@ -2,8 +2,10 @@
 
 
 function checkPermission($permissions){
-
-    $userAccess = getMyPermission(auth()->user()->status);
+    if(auth()->check())
+        $userAccess = getMyPermission(auth()->user()->status);
+    else
+        $userAccess = getMyPermission(-1);
 
     foreach ($permissions as $key => $value) {
 

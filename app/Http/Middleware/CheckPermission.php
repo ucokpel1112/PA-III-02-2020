@@ -41,7 +41,7 @@ class CheckPermission
         }
 
 
-        return response()->view('errors.check-permission');
+        return response()->view('error.check-permission');
 
     }
 

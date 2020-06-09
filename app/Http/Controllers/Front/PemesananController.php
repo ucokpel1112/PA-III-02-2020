@@ -144,6 +144,9 @@ class PemesananController extends Controller
         $data->save();
         $sesi = Sesi::find($data->sesi_id);
         $sesi->kuota_peserta += $data->jumlah_peserta;
+        if($sesi->status==0){
+            $sesi->status = 1;
+        }
         $sesi->save();
     }
     public function updateTransaksi(Request $request, $id_transaksi)
