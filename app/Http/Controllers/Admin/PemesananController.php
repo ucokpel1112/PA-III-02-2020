@@ -49,6 +49,20 @@ class PemesananController extends Controller
 
         return redirect(route('admin.pemesanan.show',$id_pemesanan));
     }
+    public function tolakPembayaran(Request $request, $id_pemesanan){
+        $pemesanan = Pemesanan::find($id_pemesanan);
+        $pemesanan->status = 0;
+        $pemesanan->save();
+
+        return redirect(route('admin.pemesanan.show',$id_pemesanan));
+    }
+    public function uploadUlangPembayaran(Request $request, $id_pemesanan){
+        $pemesanan = Pemesanan::find($id_pemesanan);
+        $pemesanan->status = 6;
+        $pemesanan->save();
+
+        return redirect(route('admin.pemesanan.show',$id_pemesanan));
+    }
 
     public function indexFilter(Request $request)
     {

@@ -181,6 +181,20 @@
                                                     <div class="col ">
                                                         <button class="btn btn-primary btn-md">Konfirmasi</button>
                                                     </div>
+                                                </form>||
+                                                <form action="{{route('admin.pemesanan.upload',$pemesanan->id_pemesanan)}}" method="post">
+                                                    @csrf
+                                                    @method('PUT')
+                                                    <div class="col ">
+                                                        <button class="btn btn-success btn-md">Ajukan untuk Upload Ulang</button>
+                                                    </div>
+                                                </form>||
+                                                <form action="{{route('admin.pemesanan.tolak',$pemesanan->id_pemesanan)}}" method="post">
+                                                    @csrf
+                                                    @method('PUT')
+                                                    <div class="col ">
+                                                        <button class="btn btn-danger btn-md">Tolak</button>
+                                                    </div>
                                                 </form>
                                             @endif
                                         </div>

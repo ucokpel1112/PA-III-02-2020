@@ -185,6 +185,20 @@
                                                     <div class="col ">
                                                         <button class="btn btn-primary btn-md">Konfirmasi</button>
                                                     </div>
+                                                </form>||
+                                                <form action="<?php echo e(route('admin.pemesanan.upload',$pemesanan->id_pemesanan)); ?>" method="post">
+                                                    <?php echo csrf_field(); ?>
+                                                    <?php echo method_field('PUT'); ?>
+                                                    <div class="col ">
+                                                        <button class="btn btn-success btn-md">Ajukan untuk Upload Ulang</button>
+                                                    </div>
+                                                </form>||
+                                                <form action="<?php echo e(route('admin.pemesanan.tolak',$pemesanan->id_pemesanan)); ?>" method="post">
+                                                    <?php echo csrf_field(); ?>
+                                                    <?php echo method_field('PUT'); ?>
+                                                    <div class="col ">
+                                                        <button class="btn btn-danger btn-md">Tolak</button>
+                                                    </div>
                                                 </form>
                                             <?php endif; ?>
                                         </div>

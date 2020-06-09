@@ -9,6 +9,7 @@ use App\Pemesanan;
 use App\Rekening;
 use App\Transaksi;
 use App\Sesi;
+use Carbon\Carbon;
 use Mail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -58,7 +59,7 @@ class PemesananController extends Controller
         if ($count != 0) {
             foreach ($pemesanan as $row) {
                 echo $row;
-                if (($row->status == 1) || ($row->status == 2)) {
+                if (($row->status == 1) || ($row->status == 2)|| ($row->status == 4)) {
 //                    echo 's';
                     return redirect(route('pemesanan.detail', $row->id_pemesanan));
                 }
@@ -129,6 +130,49 @@ class PemesananController extends Controller
             ]);
         }
         return redirect(route('pemesanan.detail', $id_pemesanan));
+    }
+
+    public function getDataPemesanan($id_pemesanan)
+    {
+        $data = Pemesanan::find($id_pemesanan);
+        return $data;
+    }
+    public function updateStatus($id_pemesanan)
+    {
+        $data = Pemesanan::find($id_pemesanan);
+        $data->status=5;
+        $data->save();
+        $sesi = Sesi::find($data->sesi_id);
+        $sesi->kuota_peserta += $data->jumlah_peserta;
+        if($sesi->status==0){
+            $sesi->status = 1;
+        }
+        $sesi->save();
+    }
+    public function updateTransaksi(Request $request, $id_transaksi)
+    {
+//        return $id_pemesanan;
+        $id = $id_transaksi;
+        $transaksi1 = Transaksi::find($id);
+        $pemesanan = $transaksi1->getPemesanan;
+        if ($request->hasFile('bukti')) {
+            if(file_exists("storage/img/pembayaran/".$transaksi1->gambar)){
+                unlink("storage/img/pembayaran/".$transaksi1->gambar);
+            }
+            $file = $request->file('bukti');
+            $filename = time() . '_' . Auth::id() . '_' . $pemesanan->id_pemesanan . '.' . $file->getClientOriginalExtension();
+
+            $file->move('storage/img/pembayaran', $filename);
+
+            $pemesanan->status = 2;
+            $pemesanan->save();
+
+            $transaksi1->rekening_id = $request->rekening;
+            $transaksi1->jumlah = $request->jumlah;
+            $transaksi1->gambar = $filename;
+            $transaksi1->save();
+        }
+        return redirect(route('pemesanan.detail', $pemesanan->id_pemesanan));
     }
 
 
