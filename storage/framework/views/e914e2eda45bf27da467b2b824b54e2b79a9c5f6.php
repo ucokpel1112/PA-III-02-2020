@@ -1,5 +1,4 @@
-@extends('layout.anggotacbt.app')
-@section('content')
+<?php $__env->startSection('content'); ?>
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
@@ -21,7 +20,7 @@
         <div class="card">
             <div class="card-header">
                 <h3 class="card-title">
-                    <a href="{{url('anggotacbt/komunitas/pendaftar')}}" class="btn btn-primary btn-sm"> Daftar Anggota Komunitas</a>
+                    <a href="<?php echo e(url('anggotacbt/komunitas/pendaftar')); ?>" class="btn btn-primary btn-sm"> Daftar Anggota Komunitas</a>
                 </h3>
             </div>
             <div class="card-body p-0">
@@ -48,17 +47,17 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($data_komunitas as $komunitas)
+                    <?php $__currentLoopData = $data_komunitas; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $komunitas): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <?php $a=1; ?>
                         <tr>
                             <td><?php echo $a++ ;?></td>
-                            <td>{{$komunitas->nama_komunitas}}</td>
+                            <td><?php echo e($komunitas->nama_komunitas); ?></td>
                             <td> <?php echo $komunitas->deskripsi ?></td>
-                            <td> <a href="{{$komunitas->link}}">{{$komunitas->link}}</a></td>
-                            <td>{{$komunitas->getKabupaten->nama_kabupaten}}</td>
+                            <td> <a href="<?php echo e($komunitas->link); ?>"><?php echo e($komunitas->link); ?></a></td>
+                            <td><?php echo e($komunitas->getKabupaten->nama_kabupaten); ?></td>
 
                         </tr>
-                    @endforeach
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </table>
             </div>
 
@@ -75,4 +74,6 @@
         <!-- /.card -->
 
     </section>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layout.anggotacbt.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\Backup Data Kristopel\Kuliah ITdel\Semester 6\PA III\Project\git\v.3.1\PA-III-02-2020\resources\views/anggotacbt/komunitas/komunitas.blade.php ENDPATH**/ ?>

@@ -151,9 +151,14 @@ Route::post('adm/komunitas/create',['middleware'=>'check-permission:admin','uses
 Route::get('/adm/komunitas/{id}/edit', ['middleware'=>'check-permission:admin','uses'=>'KomunitasController@edit'])->name('edit_komunitas');
 Route::post('/adm/komunitas/{id}/update', ['middleware'=>'check-permission:admin','uses'=>'KomunitasController@update'])->name('update_komunitas');
 Route::get('/adm/komunitas/{id}/hapus',['middleware'=>'check-permission:admin','uses'=>'KomunitasController@hapus'])->name('hapus_komunitas');
+Route::get('/adm/komunitas/pendaftar',['middleware'=>'check-permission:admin','uses'=>'KomunitasController@view'])->name('view_anggota');
+
 
 //komunitas anggota cbt
 Route::get('/anggotacbt/komunitas',['middleware'=>'check-permission:member','uses'=>'KomunitasCBTController@index'])->name('data_komunitas.anggota');
+Route::get('/anggotacbt/komunitas/pendaftar','PendaftarController@index')->name('view_anggota');
+Route::post('/anggotacbt/komunitas/pendaftar/create','PendaftarController@daftar')->name('gabung_daftar');
+
 Route::get('/design',function(){
     $pemesanan = \App\Pemesanan::first();
    return view('desgin',compact('pemesanan'));

@@ -13,4 +13,6 @@ class KomunitasCBTController extends Controller
         $kabupaten = Kabupaten::all();
         return view('anggotacbt.komunitas.komunitas',compact('data_komunitas','kabupaten'));
     }
+
+
 }
