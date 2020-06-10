@@ -8,8 +8,7 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item">Administrator</li>
+                        <li class="breadcrumb-item"><a href="{{route('home.admin')}}">Home</a></li>
                         <li class="breadcrumb-item active">Paket Wisata</li>
                     </ol>
                 </div>
@@ -25,9 +24,9 @@
                     Paket Wisata
                     |
                     <a class="btn btn-success btn-sm" href="{{route('admin.paket.tambah')}}">
-                        <i class="fas fa-pencil-alt">
-                        </i>
-                        Create
+                        <i class="fas fa-plus">
+                         </i>
+                        Tambah Paket Wisata
                     </a>
                 </h3>
                 <div class="card-tools">
@@ -81,25 +80,27 @@
                                 {{$paket->nama_paket}}
                             </td>
                             <td class="project-state">
-                                <span class="badge badge-success">{{number_format($paket->harga_paket)}}</span>
+                                <span class="badge badge-success">Rp. {{number_format($paket->harga_paket)}}</span>
                             </td>
                             <td class="project-state">
                                 <span class="badge badge-primary">{{$paket->getKabupaten->nama_kabupaten}}</span>
                             </td>
                             <td class="project-actions text-right">
                                 <a class="btn btn-primary btn-sm" href="{{route('admin.paket.show',$paket->id_paket)}}">
-                                    <i class="fas fa-folder">
+                                    <i class="fas fa-eye">
                                     </i>
-                                    View
+                                    Lihat
                                 </a>
                                 <a class="btn btn-info btn-sm" href="{{ route('admin.paket.editChoice',$paket->id_paket)}}">
-                                    <i class="fas fa-pencil-alt">
+                                    <i class="fas fa-edit">
                                     </i>
                                     Edit
                                 </a>
                                 <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
                                         data-target="#delete_{{$paket->id_paket}}">
-                                    Delete
+                                    <i class="fas fa-trash-alt">
+                                    </i>
+                                    Hapus
                                 </button>
                                 <div class="modal fade" id="delete_{{$paket->id_paket}}" tabindex="-1" role="dialog"
                                      aria-labelledby="deleteModalCenterTitle" aria-hidden="true">
@@ -112,8 +113,8 @@
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
-                                            <div class="modal-body">
-                                                Anda Yakin Ingin Menhapus Paket ...
+                                            <div class="modal-body text-left">
+                                                Anda Yakin Ingin Menghapus Paket ...
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">
@@ -123,7 +124,7 @@
                                                       method="post">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-primary">Hapus</button>
+                                                    <button type="submit" class="btn btn-danger">Hapus</button>
                                                 </form>
                                             </div>
                                         </div>

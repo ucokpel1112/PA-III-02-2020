@@ -16,8 +16,8 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item"><a href="#">Paket</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('home.admin')}}">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('admin.paket')}}">Paket Wisata</a></li>
                         <li class="breadcrumb-item active">Detail</li>
                     </ol>
                 </div>
@@ -39,6 +39,48 @@
                                                         data-toggle="tab">Included & Not Included</a></li>
                                 <li class="nav-item"><a class="nav-link" href="#sesi"
                                                         data-toggle="tab">Sesi/Jadwal Paket Wisata</a></li>
+                                <li class="nav-item" style="margin-left: 10px">
+                                    <a class="btn btn-info btn-md" href="{{ route('admin.paket.editChoice',$paket->id_paket)}}">
+                                        <i class="fas fa-edit"></i>
+                                        Edit Paket
+                                    </a>
+                                </li>
+                                <li class="nav-item" style="margin-left: 10px">
+                                    <button type="button" class="btn btn-danger btn-md" data-toggle="modal"
+                                            data-target="#delete_{{$paket->id_paket}}">
+                                        <i class="fas fa-trash-alt">
+                                        </i>
+                                        Hapus Paket
+                                    </button>
+                                    <div class="modal fade" id="delete_{{$paket->id_paket}}" tabindex="-1" role="dialog"
+                                         aria-labelledby="deleteModalCenterTitle" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="hapusModalLongTitle">Hapus Paket Wisata</h5>
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                            aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body text-left">
+                                                    Anda Yakin Ingin Menghapus Paket ...
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                                        Batal
+                                                    </button>
+                                                    <form action="{{route('admin.paket.hapus',$paket->id_paket)}}"
+                                                          method="post">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn btn-danger">Hapus</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
                             </ul>
                         </div>
                         <!-- /.card-header -->
@@ -107,8 +149,8 @@
                                     <hr>
                                     <strong>Gambar</strong>
                                     <p></p>
-                                    <div class="row">
-                                        <div class="col-sm-10">
+                                    <div class="row border" style="border-radius: 10px;padding: 5px">
+                                        <div class="col-sm-10 text-center">
                                             <img class="img-fluid" src="{{asset('storage/img/paket/'.$paket->gambar)}}"
                                                  alt="Photo">
                                         </div>
@@ -152,11 +194,11 @@
                                     <hr>
                                 </div>
                                 <div class="tab-pane" id="sesi">
-                                    <a class="btn btn-success btn-sm"
+                                    <a class="btn btn-success btn-sm" style="margin-bottom:10px"
                                        href="{{route('admin.sesi.create',$paket->id_paket)}}">
-                                        <i class="fas fa-pencil-alt">
+                                        <i class="fas fa-plus">
                                         </i>
-                                        Create
+                                        Tambah Sesi Paket
                                     </a>
                                     <table class="table table-striped projects">
                                         <thead>
@@ -164,11 +206,11 @@
                                             <th style="width: 1%">
                                                 ID
                                             </th>
-                                            <th style="width: 20%">
-                                                Kuota Peserta
-                                            </th>
                                             <th style="width: 30%">
                                                 Jadwal/tanggal Kegiatan Paket
+                                            </th>
+                                            <th style="width: 20%">
+                                                Kuota Peserta
                                             </th>
                                             <th class="text-center">
                                                 Status
@@ -186,14 +228,14 @@
                                                     {{$index+1}}
                                                 </td>
                                                 <td>
+                                                    {{$row->jadwal}}
+                                                </td>
+                                                <td>
                                                     <ul class="list-inline">
                                                         <li class="list-inline-item">
                                                             {{$row->kuota_peserta}}
                                                         </li>
                                                     </ul>
-                                                </td>
-                                                <td>
-                                                    {{$row->jadwal}}
                                                 </td>
                                                 <td class="project-state">
                                                     {{$row->defineStatus($row->status)}}
@@ -202,7 +244,7 @@
                                                 <td class="project-actions text-right">
                                                     <a class="btn btn-info btn-sm"
                                                        href="{{ route('admin.sesi.edit',$row->id_sesi) }}">
-                                                        <i class="fas fa-pencil-alt">
+                                                        <i class="fas fa-edit">
                                                         </i>
                                                         Edit
                                                     </a>
@@ -210,7 +252,9 @@
                                                         <button type="button" class="btn btn-danger btn-sm"
                                                                 data-toggle="modal"
                                                                 data-target="#delete_sesi_{{$row->id_sesi}}">
-                                                            Delete
+                                                            <i class="fas fa-trash-alt">
+                                                            </i>
+                                                            Hapus
                                                         </button>
                                                         <div class="modal fade" id="delete_sesi_{{$row->id_sesi}}"
                                                              tabindex="-1" role="dialog"
@@ -229,8 +273,8 @@
                                                                             <span aria-hidden="true">&times;</span>
                                                                         </button>
                                                                     </div>
-                                                                    <div class="modal-body">
-                                                                        Anda Yakin Ingin Menhapus Sesi Paket ...
+                                                                    <div class="modal-body text-left">
+                                                                        Anda Yakin Ingin Menghapus Sesi Paket ...
                                                                     </div>
                                                                     <div class="modal-footer">
                                                                         <button type="button" class="btn btn-secondary"
@@ -243,7 +287,7 @@
                                                                             @csrf
                                                                             @method('DELETE')
                                                                             <button type="submit"
-                                                                                    class="btn btn-primary">
+                                                                                    class="btn btn-danger">
                                                                                 Hapus
                                                                             </button>
                                                                         </form>
@@ -274,8 +318,8 @@
                                                                             <span aria-hidden="true">&times;</span>
                                                                         </button>
                                                                     </div>
-                                                                    <div class="modal-body">
-                                                                        Anda Yakin Ingin Menhapus Sesi Paket ...
+                                                                    <div class="modal-body text-left">
+                                                                        Anda Yakin Ingin Non-Aktifkan Sesi Paket ...
                                                                     </div>
                                                                     <div class="modal-footer">
                                                                         <button type="button" class="btn btn-secondary"
@@ -288,8 +332,8 @@
                                                                             @csrf
                                                                             @method('DELETE')
                                                                             <button type="submit"
-                                                                                    class="btn btn-primary">
-                                                                                Hapus
+                                                                                    class="btn btn-danger">
+                                                                                Non-Aktifkan
                                                                             </button>
                                                                         </form>
                                                                     </div>

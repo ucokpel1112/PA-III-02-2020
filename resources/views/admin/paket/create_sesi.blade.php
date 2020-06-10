@@ -9,7 +9,9 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Paket Wisata</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('home.admin')}}">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('admin.paket')}}">Paket Wisata</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('admin.paket.show',$id_paket)}}">Detail</a></li>
                         <li class="breadcrumb-item active">Tambah Sesi Wisata</li>
                     </ol>
                 </div>
@@ -50,7 +52,8 @@
                             </div>
 
                             <div class="card-footer">
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="submit" class="btn btn-primary">Simpan</button>
+                                <a href="{{route('admin.paket.show',$id_paket)}}" class="btn btn-danger">Batal</a>
                             </div>
                         </form>
                     </div>
