@@ -22,7 +22,7 @@
                 <h3 class="card-title">
 
 
-                    <button type="button" class="btn btn-primary btn-sm float-right" data-toggle="modal"
+                    <button type="button" class="btn btn-success btn-sm float-right" data-toggle="modal"
                             data-target="#exampleModal">
                         <i class="fa fa-plus"> </i> Tambah data komunitas
                     </button>
@@ -65,9 +65,39 @@
                             <td><?php echo e($komunitas->getKabupaten->nama_kabupaten); ?></td>
                             <td>
                                 <a href="<?php echo e(route('edit_komunitas',$komunitas->id)); ?>" class="btn btn-info btn-sm"><i class="fa fa-edit"> </i> Edit</a>
-                                <a href="<?php echo e(route('hapus_komunitas',$komunitas->id)); ?>" class="btn btn-danger btn-sm"
-                                   onclick="return confirm('Apakah data ini ingin dihapus?')"><i class="fa fa-trash-alt"> </i> Hapus</a>
-                            </td>
+                                <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
+                                        data-target="#delete_<?php echo e($komunitas->id_paket); ?>">
+                                    <i class="fas fa-trash-alt">
+                                    </i>
+                                    Hapus
+                                </button>
+                                <div class="modal fade" id="delete_<?php echo e($komunitas->id_paket); ?>" tabindex="-1" role="dialog"
+                                     aria-labelledby="deleteModalCenterTitle" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="hapusModalLongTitle">Hapus Komunitas</h5>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body text-left">
+                                                Anda Yakin Ingin Menghapus Komunitas ...
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                                    Batal
+                                                </button>
+                                                    <a href="<?php echo e(route('hapus_komunitas',$komunitas->id)); ?>"
+                                                       class="btn btn-danger btn-sm">
+                                                        <i class="fa fa-trash-alt"> </i> Hapus
+                                                    </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                </td>
                         </tr>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </table>
