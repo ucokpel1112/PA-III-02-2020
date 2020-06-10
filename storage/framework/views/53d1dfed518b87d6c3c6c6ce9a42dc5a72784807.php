@@ -24,7 +24,7 @@
 
                     <button type="button" class="btn btn-primary btn-sm float-right" data-toggle="modal"
                             data-target="#exampleModal">
-                        Tambah data komunitas
+                        <i class="fa fa-plus"> </i> Tambah data komunitas
                     </button>
 
                 </h3>
@@ -64,9 +64,9 @@
                             <td><a href="<?php echo e($komunitas->link); ?>"><?php echo e($komunitas->link); ?></a></td>
                             <td><?php echo e($komunitas->getKabupaten->nama_kabupaten); ?></td>
                             <td>
-                                <a href="<?php echo e(route('edit_komunitas',$komunitas->id)); ?>" class="btn btn-warning btn-sm">Edit</a>
+                                <a href="<?php echo e(route('edit_komunitas',$komunitas->id)); ?>" class="btn btn-info btn-sm"><i class="fa fa-edit"> </i> Edit</a>
                                 <a href="<?php echo e(route('hapus_komunitas',$komunitas->id)); ?>" class="btn btn-danger btn-sm"
-                                   onclick="return confirm('Apakah data ini ingin dihapus?')">Delete</a>
+                                   onclick="return confirm('Apakah data ini ingin dihapus?')"><i class="fa fa-trash-alt"> </i> Hapus</a>
                             </td>
                         </tr>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -81,7 +81,7 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Tambah Komunitas</h5>
+                            <h5 class="modal-title" id="exampleModalLabel"> Tambah Komunitas</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -119,7 +119,7 @@
 
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
                                 <button type="submit" class="btn btn-primary">Tambah</button>
                             </div>
                         </form>
