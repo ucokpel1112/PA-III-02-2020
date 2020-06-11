@@ -31,4 +31,24 @@ class paketWisata extends Model
             // do the rest of the cleanup...
         });
     }
+
+    public function defineStatus($status){
+        if($status==0){
+            return "Tidak Aktif";
+        }elseif($status==1){
+            return "Aktif";
+        }else{
+            return "Dihapus";
+        }
+    }
+
+    public function defineClass($status){
+        if($status==0){
+            return "danger";
+        }elseif($status==1){
+            return "success";
+        }else{
+            return "dark";
+        }
+    }
 }

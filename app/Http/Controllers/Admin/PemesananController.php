@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\paketWisata;
 use App\Pemesanan;
+use App\Sesi;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -49,13 +50,42 @@ class PemesananController extends Controller
 
         return redirect(route('admin.pemesanan.show',$id_pemesanan));
     }
+
+    protected function refreshPaket($id_paket, $status)
+    {
+        $paket = paketWisata::find($id_paket);
+        if ($status == 1) {
+            foreach ($paket->getSesi as $row) {
+                if ($row->status == 1) {
+                    return;
+                }
+            }
+            $paket->status = 0;
+        }elseif($status == 0){
+            foreach ($paket->getSesi as $row) {
+                if ($row->status == 1) {
+                    $paket->status = 1;
+                }
+            }
+        }
+        $paket->save();
+    }
+
     public function tolakPembayaran(Request $request, $id_pemesanan){
         $pemesanan = Pemesanan::find($id_pemesanan);
         $pemesanan->status = 0;
         $pemesanan->save();
 
+        $sesi = Sesi::find($pemesanan->getSesi->id_sesi);
+        $sesi->kuota_peserta += $pemesanan->jumlah_peserta;
+        if($sesi->status==0)
+            $sesi->status=1;
+        $sesi->save();
+        $this->refreshPaket($sesi->paket_id,0);
+
         return redirect(route('admin.pemesanan.show',$id_pemesanan));
     }
+
     public function uploadUlangPembayaran(Request $request, $id_pemesanan){
         $pemesanan = Pemesanan::find($id_pemesanan);
         $pemesanan->status = 6;

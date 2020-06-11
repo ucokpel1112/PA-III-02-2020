@@ -56,6 +56,9 @@
                         <th class="text-center">
                             Daerah
                         </th>
+                        <th class="text-center">
+                            Status
+                        </th>
                         <th style="width: 30%">
                         </th>
                     </tr>
@@ -81,10 +84,13 @@
 
                             </td>
                             <td class="project-state">
-                                <span class="badge badge-success">Rp. <?php echo e(number_format($paket->harga_paket)); ?></span>
+                                <span class="badge badge-info">Rp. <?php echo e(number_format($paket->harga_paket)); ?></span>
                             </td>
                             <td class="project-state">
                                 <span class="badge badge-primary"><?php echo e($paket->getKabupaten->nama_kabupaten); ?></span>
+                            </td>
+                            <td class="project-state">
+                                <span class="badge badge-<?php echo e($paket->defineClass($paket->status)); ?>"><?php echo e($paket->defineStatus($paket->status)); ?></span>
                             </td>
                             <td class="project-actions text-right">
                                 <a class="btn btn-primary btn-sm" href="<?php echo e(route('admin.paket.show',$paket->id_paket)); ?>">

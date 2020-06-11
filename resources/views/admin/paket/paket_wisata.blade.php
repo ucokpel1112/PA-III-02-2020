@@ -57,11 +57,15 @@
                         <th class="text-center">
                             Daerah
                         </th>
+                        <th class="text-center">
+                            Status
+                        </th>
                         <th style="width: 30%">
                         </th>
                     </tr>
                     </thead>
                     <tbody>
+                    
                     {{--                    mulai loop data--}}
                     @forelse($pakets as $index => $paket)
                         <tr>
@@ -80,10 +84,13 @@
                                 {{$paket->nama_paket}}
                             </td>
                             <td class="project-state">
-                                <span class="badge badge-success">Rp. {{number_format($paket->harga_paket)}}</span>
+                                <span class="badge badge-info">Rp. {{number_format($paket->harga_paket)}}</span>
                             </td>
                             <td class="project-state">
                                 <span class="badge badge-primary">{{$paket->getKabupaten->nama_kabupaten}}</span>
+                            </td>
+                            <td class="project-state">
+                                <span class="badge badge-{{$paket->defineClass($paket->status)}}">{{$paket->defineStatus($paket->status)}}</span>
                             </td>
                             <td class="project-actions text-right">
                                 <a class="btn btn-primary btn-sm" href="{{route('admin.paket.show',$paket->id_paket)}}">
