@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Kabupaten;
 use App\paketWisata;
 use App\Sesi;
+use App\Comment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -61,10 +62,12 @@ class PaketWisataController extends Controller
         $paket = paketWisata::find($id_paket);
         $sesi = Sesi::where([['paket_id', $id_paket], ['status', 1]])->get();
         $hotel = null;
+        $comments = Comment::latest('created_at')->get();
+
         foreach ($paket->getPaketLayanan as $row) {
             if ($row->jenisLayanan_id == 2)
                 array_push($hotel, $row);
         }
-        return view('front.paket.detail_paket', compact('paket', 'hotel', 'sesi'));
+        return view('front.paket.detail_paket', compact('comments','paket', 'hotel', 'sesi'));
     }
 }

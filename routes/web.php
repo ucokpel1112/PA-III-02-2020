@@ -48,6 +48,10 @@ Route::namespace('Front')->group(function () {
     Route::post('/paket', 'PaketWisataController@indexFilter')->name('paket.filter');
     Route::get('/paket/kabupaten/{id_kabupaten}', 'PaketWisataController@indexFilterKabupaten')->name('paket.filter.kabupaten');
     Route::get('/paket/detail/{id_paket}', 'PaketWisataController@show')->name('paket.detail');
+    //comment
+    Route::resource('/comments','CommentsController');
+    Route::resource('/replies','RepliesController');
+    Route::post('/replies/ajaxDelete','RepliesController@ajaxDelete');
     //pemesanan
     Route::get('/pemesanan', ['middleware'=>'check-permission:customer','uses'=>'PemesananController@index'])->name('pemesanan');
     Route::put('/paket/{id_paket}/pesan', ['middleware'=>'check-permission:customer','uses'=>'PemesananController@store'])->name('paket.pesan');
