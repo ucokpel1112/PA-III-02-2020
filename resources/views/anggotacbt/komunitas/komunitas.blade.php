@@ -21,15 +21,8 @@
         <div class="card">
             <div class="card-header">
                 <h3 class="card-title">
-
-
-
+                    <a href="{{url('anggotacbt/komunitas/pendaftar')}}" class="btn btn-primary btn-sm"> Daftar Anggota Komunitas</a>
                 </h3>
-                <div class="card-tools">
-                    <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip"
-                            title="Collapse">
-                        <i class="fas fa-minus"></i></button>
-                </div>
             </div>
             <div class="card-body p-0">
                 <table class="table table-striped projects">

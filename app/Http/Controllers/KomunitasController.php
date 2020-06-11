@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Komunitas;
 use Illuminate\Http\Request;
 use App\Kabupaten;
 
@@ -43,5 +44,13 @@ class KomunitasController extends Controller
         $komunitas->delete($komunitas);
         return redirect('adm/komunitas')->with('sukses', 'Data berhasil dihapus!');
     }
+    public function view()
+    {
+        $data_pendaftar = \App\Pendaftar::all();
+        $komunitas = Komunitas::all();
+        $kabupaten = Kabupaten::all();
+        return view('admin.komunitas.view_pendaftar',compact('data_pendaftar','komunitas', 'kabupaten'));
+    }
+
 
 }

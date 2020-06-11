@@ -35,7 +35,7 @@ class KalendereventController extends Controller
         $kalender->gambar_event = $gambar;
         if ($kalender->save()) {
             $file->move(\base_path() . "/public/storage/img/kalender", $gambar);
-            return view('admin/kalender/eventkalender')->with('admin/kalender/eventkalender', $kalender);
+            return view('admin/kalender/eventkalender',compact('kalender'));
         }
 
 
