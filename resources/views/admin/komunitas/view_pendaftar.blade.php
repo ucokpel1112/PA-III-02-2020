@@ -43,16 +43,12 @@
                         <th>
                             Nama Komunitas
                         </th>
-
-
                     </tr>
                     </thead>
                     <tbody>
                     @foreach($data_pendaftar as $daftar)
                         <tr>
-                            <td>
 
-                            </td>
                             <td>{{$daftar->nama}}</td>
                             <td>{{$daftar->no_wa}}</td>
                             <td>{{$daftar->layanan}}</td>
@@ -61,15 +57,6 @@
                     @endforeach
                 </table>
             </div>
-
-
-
-
         </div>
-        <!-- /.card-body -->
-
-
-        <!-- /.card -->
-
     </section>
 @endsection

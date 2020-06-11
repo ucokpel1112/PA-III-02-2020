@@ -30,38 +30,24 @@
                         <div class="icon">
                             <i class="ion ion-cube"></i>
                         </div>
-                        <a href="{{ url('/adm/paket') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="{{ url('/anggotacbt/layananwisata') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
-                <div class="col-lg-3 col-6">
-                    <!-- small box -->
-                    <div class="small-box bg-success">
-                        <div class="inner">
-                            <h3>{{$count}}</h3>
 
-                            <p>Kalender Wisata</p>
-                        </div>
-                        <div class="icon">
-                            <i class="ion ion-pricetag"></i>
-
-                        </div>
-                        <a href="{{ url('/adm/listkalender') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-                    </div>
-                </div>
                 <!-- ./col -->
                 <div class="col-lg-3 col-6">
                     <!-- small box -->
                     <div class="small-box bg-warning">
                         <div class="inner">
-                            <h3>44</h3>
+                            <h3>{{$count_m}}</h3>
 
                             <p>Member CBT</p>
                         </div>
                         <div class="icon">
                             <i class="ion ion-person"></i>
                         </div>
-                        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="{{url('anggotacbt/komunitas/pendaftar')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
@@ -76,7 +62,7 @@
                         <div class="icon">
                             <i class="ion ion-pie-graph"></i>
                         </div>
-                        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="{{url('anggotacbt/komunitas')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
