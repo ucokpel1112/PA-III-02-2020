@@ -35,7 +35,7 @@ class KalendereventController extends Controller
         $kalender->gambar_event = $gambar;
         if ($kalender->save()) {
             $file->move(\base_path() . "/public/storage/img/kalender", $gambar);
-            return view('admin/kalender/eventkalender',compact('kalender'));
+            return redirect(route('listkalender'));
         }
 
 
@@ -64,8 +64,7 @@ class KalendereventController extends Controller
             'gambar_event' => $gambar,
 
         ]);
-        return view('admin/kalender/eventkalender')->with('admin/kalender/eventkalender', $id_kalenderevent);
-
+        return redirect(route('listkalender'));
     }
 
     public function getAll()
@@ -105,7 +104,7 @@ class KalendereventController extends Controller
         $kalender = KalenderEvent::find($id_kalenderevent);
         $kalender->delete();
 
-        return view('admin.kalender.eventkalender', compact('kalenders'));
+        return redirect(route('listkalender'));
     }
 }
 

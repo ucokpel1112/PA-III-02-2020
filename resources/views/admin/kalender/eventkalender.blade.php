@@ -34,9 +34,10 @@
                                         <div class="col-7">
                                             <h2 class="lead"><b>Lokasi</b></h2>
                                             <p class="text-muted text-sm"><b> Deskripsi</b>
-                                                    <?php echo substr(strip_tags(str_replace(PHP_EOL,'<br>',$kalenders->deskripsi_event),'<br>'),0,300);?>
-                                                    <a href="{{ route('detail-admin',$kalenders->id_kalenderevent) }}">  baca selengkapnya...</a>
-                                                                                            </p>
+                                                <?php echo substr(strip_tags(str_replace(PHP_EOL, '<br>', $kalenders->deskripsi_event), '<br>'), 0, 300);?>
+                                                <a href="{{ route('detail-admin',$kalenders->id_kalenderevent) }}"> baca
+                                                    selengkapnya...</a>
+                                            </p>
                                             <ul class="ml-4 mb-0 fa-ul text-muted">
                                                 <li class="small"><span class="fa-li"><i class="fa fa-map-marker "></i></span> {{$kalenders->nama_tempat}}
                                                 </li>
@@ -52,21 +53,29 @@
                                             </ul>
                                         </div>
                                         <div class="col-5 text-center">
-                                            <img src="{{asset('storage/img/kalender/'.$kalenders->gambar_event)}}" alt="" class="img-circle img-fluid">
+                                            <img src="{{asset('storage/img/kalender/'.$kalenders->gambar_event)}}"
+                                                 alt="" class="img-circle img-fluid">
                                         </div>
                                     </div>
                                 </div>
-                                <div class="card-footer">
-                                    <div class="text-right">
-                                        <a href="{{ url('/adm/updatekalender',$kalenders->id_kalenderevent) }}"
-                                           class="btn btn-sm bg-warning">
-                                            <i class="fas fa-edit"></i> Update
-                                        </a>
-                                        <a href="#" class="btn btn-sm btn-danger">
-                                            <i class="fas fa-trash"></i> Hapus
-                                        </a>
+                                <form action="{{route('delete-eventkalender',$kalenders->id_kalenderevent)}}"
+                                      method="post">
+                                    <div class="card-footer">
+                                        <div class="text-right">
+                                            <a href="{{ url('/adm/updatekalender',$kalenders->id_kalenderevent) }}"
+                                               class="btn btn-sm bg-warning">
+                                                <i class="fas fa-edit"></i> Update
+                                            </a>
+                                            @csrf
+                                            @method('DELETE')
+
+                                            <button type="submit" class="btn btn-sm btn-danger">
+                                                <i class="fas fa-trash"></i> Hapus
+                                            </button>
+                                        </div>
                                     </div>
-                                </div>
+
+                                </form>
 
                             </div>
                         </div>
@@ -82,7 +91,7 @@
             <div class="card-footer">
                 <nav aria-label="Contacts Page Navigation">
                     <ul class="pagination justify-content-center m-0">
-{{--                        {!! $kalenders->links() !!}--}}
+                        {{--                        {!! $kalenders->links() !!}--}}
                     </ul>
                 </nav>
             </div>

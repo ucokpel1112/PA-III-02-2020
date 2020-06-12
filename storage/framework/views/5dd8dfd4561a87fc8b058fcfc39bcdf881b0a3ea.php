@@ -32,8 +32,11 @@
                                     <div class="row">
                                         <div class="col-7">
                                             <h2 class="lead"><b>Lokasi</b></h2>
-                                            <p class="text-muted text-sm"><b> Deskripsi
-                                                    :</b> <?php echo " {$kalenders->deskripsi_event}"?> </p>
+                                            <p class="text-muted text-sm"><b> Deskripsi</b>
+                                                <?php echo substr(strip_tags(str_replace(PHP_EOL, '<br>', $kalenders->deskripsi_event), '<br>'), 0, 300);?>
+                                                <a href="<?php echo e(route('detail-admin',$kalenders->id_kalenderevent)); ?>"> baca
+                                                    selengkapnya...</a>
+                                            </p>
                                             <ul class="ml-4 mb-0 fa-ul text-muted">
                                                 <li class="small"><span class="fa-li"><i class="fa fa-map-marker "></i></span> <?php echo e($kalenders->nama_tempat); ?>
 
@@ -53,21 +56,29 @@
                                             </ul>
                                         </div>
                                         <div class="col-5 text-center">
-                                            <img src="<?php echo e(asset('storage/img/kalender/',$kalenders->gambar_event)); ?>" alt="" class="img-circle img-fluid">
+                                            <img src="<?php echo e(asset('storage/img/kalender/'.$kalenders->gambar_event)); ?>"
+                                                 alt="" class="img-circle img-fluid">
                                         </div>
                                     </div>
                                 </div>
-                                <div class="card-footer">
-                                    <div class="text-right">
-                                        <a href="<?php echo e(url('/adm/updatekalender',$kalenders->id_kalenderevent)); ?>"
-                                           class="btn btn-sm bg-warning">
-                                            <i class="fas fa-edit"></i> Update
-                                        </a>
-                                        <a href="#" class="btn btn-sm btn-danger">
-                                            <i class="fas fa-trash"></i> Hapus
-                                        </a>
+                                <form action="<?php echo e(route('delete-eventkalender',$kalenders->id_kalenderevent)); ?>"
+                                      method="post">
+                                    <div class="card-footer">
+                                        <div class="text-right">
+                                            <a href="<?php echo e(url('/adm/updatekalender',$kalenders->id_kalenderevent)); ?>"
+                                               class="btn btn-sm bg-warning">
+                                                <i class="fas fa-edit"></i> Update
+                                            </a>
+                                            <?php echo csrf_field(); ?>
+                                            <?php echo method_field('DELETE'); ?>
+
+                                            <button type="submit" class="btn btn-sm btn-danger">
+                                                <i class="fas fa-trash"></i> Hapus
+                                            </button>
+                                        </div>
                                     </div>
-                                </div>
+
+                                </form>
 
                             </div>
                         </div>
@@ -83,14 +94,7 @@
             <div class="card-footer">
                 <nav aria-label="Contacts Page Navigation">
                     <ul class="pagination justify-content-center m-0">
-                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item"><a class="page-link" href="#">4</a></li>
-                        <li class="page-item"><a class="page-link" href="#">5</a></li>
-                        <li class="page-item"><a class="page-link" href="#">6</a></li>
-                        <li class="page-item"><a class="page-link" href="#">7</a></li>
-                        <li class="page-item"><a class="page-link" href="#">8</a></li>
+                        
                     </ul>
                 </nav>
             </div>

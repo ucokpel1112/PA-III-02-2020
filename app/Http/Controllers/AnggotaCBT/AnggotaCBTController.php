@@ -86,6 +86,6 @@ class AnggotaCBTController extends Controller
         $count_m = Pendaftar::count();
         $user = User::find(Auth::id());
 
-        return view('anggotacbt.dashboard',compact('usersChart','transaksi','tabel_chart',''user'','data','count','count_m','count_k'));
+        return view('anggotacbt.dashboard',compact('usersChart','transaksi','tabel_chart','user','data','count','count_m','count_k'));
     }
 }
