@@ -68,6 +68,7 @@ class PaketWisataController extends Controller
             if ($row->jenisLayanan_id == 2)
                 array_push($hotel, $row);
         }
-        return view('front.paket.detail_paket', compact('comments','paket', 'hotel', 'sesi'));
+        $paket_lain = paketWisata::where([['status', 1],['kabupaten_id',$paket->kabupaten_id]])->orderBy('created_at', 'DESC')->paginate(10);
+        return view('front.paket.detail_paket', compact('paket_lain','comments','paket', 'hotel', 'sesi'));
     }
 }
