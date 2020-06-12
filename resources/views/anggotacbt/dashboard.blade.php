@@ -67,11 +67,86 @@
                 </div>
                 <!-- ./col -->
             </div>
+            <div class="row">
+                <div class="col">
+
+                    <!-- Default box -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Title</h3>
+
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                                    <i class="fas fa-minus"></i></button>
+                                <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
+                                    <i class="fas fa-times"></i></button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            {!! $usersChart->container() !!}
+                        </div>
+                        <!-- /.card-body -->
+                        <div class="card-footer">
+                            Footer
+                        </div>
+                        <!-- /.card-footer-->
+                    </div>
+                    <!-- /.card -->
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="card">
+                                <div class="card-header">
+
+                                </div>
+                                <div class="body">
+                                    <table class="table">
+                                        <thead>
+                                        <tr>
+                                            <td>No</td>
+                                            <td>Nama Paket</td>
+                                            <td>Nama Layanan</td>
+                                            <td>Nama Jenis Layanan</td>
+                                            <td>Jumlah</td>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <?php
+                                        $no=1;
+                                        ?>
+                                        @foreach($tabel_chart as $tabel)
+                                            <tr>
+                                                <td><?=$no?></td>
+                                                <td><?=$tabel->nama_paket?></td>
+                                                <td><?=$tabel->nama_layanan?></td>
+                                                <td><?=$tabel->nama_jenis_layanan?></td>
+                                                <td><?=$tabel->jumlah?></td>
+                                            </tr>
+                                            <?php
+                                            $no++;
+                                            ?>
+                                        @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
             <!-- /.row -->
             <!-- Main row -->
         </div>
     </section>
-
+    <script src="{{ $usersChart->cdn() }}"></script>
+    {!! $usersChart->script() !!}
 @endsection
 
 

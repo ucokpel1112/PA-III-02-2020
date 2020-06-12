@@ -9,8 +9,10 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Paket Wisata</a></li>
-                        <li class="breadcrumb-item active">Edit Paket Wisata</li>
+                        <li class="breadcrumb-item"><a href="{{route('home.admin')}}">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('admin.paket')}}">Paket Wisata</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('admin.paket.editChoice',$paket->id_paket)}}">Edit Paket Wisata</a></li>
+                        <li class="breadcrumb-item active">Informasi Utama</li>
                     </ol>
                 </div>
             </div>

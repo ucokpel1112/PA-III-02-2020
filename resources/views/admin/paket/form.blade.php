@@ -158,7 +158,8 @@
                             <!-- /.card-body -->
 
                             <div class="card-footer">
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="submit" class="btn btn-primary">Simpan</button>
+                                <a href="{{route('admin.paket')}}" class="btn btn-danger">Batal</a>
                             </div>
                         </form>
 
@@ -320,11 +321,13 @@
                                                    >
                                             <label class="custom-file-label" for="gambar">Choose file</label>
                                         </div>
-                                        <div class="row">
-                                            <div class="col-sm-10">
-                                                <img class="img-fluid" src="{{asset('storage/img/paket/'.$paket->gambar)}}"
-                                                     alt="Photo">
-                                            </div>
+
+                                    </div>
+                                    <br>
+                                    <div class="row border" style="padding: 5px;border-radius: 10px">
+                                        <div class="col-sm-10 text-center">
+                                            <img class="img-fluid" src="{{asset('storage/img/paket/'.$paket->gambar)}}"
+                                                 alt="Photo">
                                         </div>
                                     </div>
                                 </div>
@@ -332,7 +335,8 @@
                             <!-- /.card-body -->
 
                             <div class="card-footer">
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="submit" class="btn btn-primary">Edit</button>
+                                <a href="{{route('admin.paket.editChoice',$paket->id_paket)}}" class="btn btn-danger">Batal</a>
                             </div>
                         </form>
                     @endif

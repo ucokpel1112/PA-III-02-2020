@@ -8,8 +8,8 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="<?php echo e(route('home.admin')); ?>">Home</a></li>
-                        <li class="breadcrumb-item"><a href="<?php echo e(route('data_komunitas.admin')); ?>">Kalender Event</a></li>
-                        <li class="breadcrumb-item active">Edit Kalender</li>
+                        <li class="breadcrumb-item"><a href="<?php echo e(route('data_komunitas.admin')); ?>">Komunitas Pariwisata</a></li>
+                        <li class="breadcrumb-item active">Edit</li>
                     </ol>
                 </div>
             </div>
@@ -61,7 +61,7 @@
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-primary">Edit</button>
 
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal" style="background-color: #FF0000;"><a href="/adm/komunitas" style="color: #ffffff">Close</a></button>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal" ><a href="/adm/komunitas" style="color: #ffffff">Batal</a></button>
                             </div>
                         </form>
                     </div>

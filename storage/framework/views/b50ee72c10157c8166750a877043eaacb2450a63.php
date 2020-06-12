@@ -7,7 +7,8 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Paket Wisata</a></li>
+                        <li class="breadcrumb-item"><a href="<?php echo e(route('home.admin')); ?>">Home</a></li>
+                        <li class="breadcrumb-item"><a href="<?php echo e(route('admin.paket')); ?>">Paket Wisata</a></li>
                         <li class="breadcrumb-item active">Edit Paket Wisata</li>
                     </ol>
                 </div>
@@ -43,7 +44,7 @@
                                 </a>
                             </div>
                             <div class="col">
-                                <a class="btn btn-dange btn-lg" href="<?php echo e(route('admin.paket.layanan',$id_paket)); ?>">
+                                <a class="btn btn-secondary btn-lg" href="<?php echo e(route('admin.paket.layanan',$id_paket)); ?>">
                                     <i class="fas fa-folder">
                                     </i>
                                     Layanan Paket

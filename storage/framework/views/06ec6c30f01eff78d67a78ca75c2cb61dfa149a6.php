@@ -48,6 +48,12 @@
                                 <p>Daftar Komunitas </p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="<?php echo e(url('adm/komunitas/pendaftar')); ?>" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Daftar Anggota Komunitas </p>
+                            </a>
+                        </li>
 
                     </ul>
                 </li>

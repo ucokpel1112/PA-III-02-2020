@@ -7,9 +7,10 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Paket Wisata</a></li>
-                        <li class="breadcrumb-item active">Edit Paket Wisata</li>
-                    </ol>
+                        <li class="breadcrumb-item"><a href="<?php echo e(route('home.admin')); ?>">Home</a></li>
+                        <li class="breadcrumb-item"><a href="<?php echo e(route('admin.paket')); ?>">Paket Wisata</a></li>
+                        <li class="breadcrumb-item"><a href="<?php echo e(route('admin.paket.editChoice',$paket->id_paket)); ?>">Edit Paket Wisata</a></li>
+                        <li class="breadcrumb-item active">Layanan Wisata</li></ol>
                 </div>
             </div>
         </div><!-- /.container-fluid -->
@@ -69,7 +70,8 @@
                             <!-- /.card-body -->
 
                             <div class="card-footer">
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="submit" class="btn btn-primary">Edit</button>
+                                <a href="<?php echo e(route('admin.paket.editChoice',$paket->id_paket)); ?>" class="btn btn-danger">Batal</a>
                             </div>
                         </form>
 

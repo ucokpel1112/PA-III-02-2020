@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateKomunitasTable extends Migration
+class CreateCommentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateKomunitasTable extends Migration
      */
     public function up()
     {
-        Schema::create('komunitas', function (Blueprint $table) {
+        Schema::create('comments', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('nama_komunitas');
-            $table->unsignedBigInteger('id_kabupaten');
-            $table->string('link');
+            $table->string('name');
+            $table->text('comment');
+            $table->integer('user_id');
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class CreateKomunitasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('komunitas');
+        Schema::dropIfExists('comments');
     }
 }

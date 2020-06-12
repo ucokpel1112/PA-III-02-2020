@@ -9,8 +9,10 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Paket Wisata</a></li>
-                        <li class="breadcrumb-item active">Tambah Sesi Wisata</li>
+                        <li class="breadcrumb-item"><a href="{{route('home.admin')}}">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('admin.paket')}}">Paket Wisata</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('admin.paket.show',$sesi->getPaket->id_paket)}}">Detail</a></li>
+                        <li class="breadcrumb-item active">Edit Sesi Wisata</li>
                     </ol>
                 </div>
             </div>
@@ -25,7 +27,7 @@
                     <!-- general form elements -->
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">Tambah Sesi Wisata</h3>
+                            <h3 class="card-title">Edit Sesi Wisata</h3>
                         </div>
                         <form action="{{ route('admin.sesi.update',$sesi->id_sesi) }}" method="post"
                               enctype="multipart/form-data"
@@ -61,7 +63,8 @@
                             </div>
 
                             <div class="card-footer">
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="submit" class="btn btn-primary">Edit</button>
+                                <a href="{{route('admin.paket.show',$sesi->getPaket->id_paket)}}" class="btn btn-danger">Batal</a>
                             </div>
                         </form>
                     </div>
