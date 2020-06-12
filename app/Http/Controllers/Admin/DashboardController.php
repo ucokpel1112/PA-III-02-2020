@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 
 use App\KalenderEvent;
 use App\paketWisata;
+use App\Pendaftar;
 use App\Pemesanan;
 use App\User;
 use App\Transaksi;
@@ -75,9 +76,10 @@ class DashboardController extends Controller
         //kalender event
         $count = KalenderEvent::count();
         $count_p = paketWisata::count();
+        $count_m = Pendaftar::count();
         //akhir kalender event
 
-        return view('admin.dashboard',compact('data','tabel_chart','transaksi','usersChart','count','count_p'));
+        return view('admin.dashboard',compact('data','tabel_chart','transaksi','usersChart','count','count_p','count_m'));
     }
 
 }

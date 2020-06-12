@@ -54,7 +54,7 @@
                     <div class="col-lg-4 col-md-6">
                         <div class="single_destination">
                             <div class="thumb">
-                                <img src="{{asset('storage/img/kalender/'.$kals->gambar_event)}}" width="200px" alt="">
+                                <img src="{{asset('storage/img/kalender/'.$kals->gambar_event)}}" alt="" style="height: 250px;">
                             </div>
                             <div class="content">
                                 <a href="{{ route('detail-eventkalender',$kals->id_kalenderevent) }}"><p
@@ -119,7 +119,7 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="single_place">
                         <div class="thumb">
-                            <img src="img/place/1.png" alt="">
+                            <img src="img/filter-paket/toba.png" alt="">
                         </div>
                         <div class="place_info">
                             @foreach($kabupaten as $row)
@@ -139,7 +139,7 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="single_place">
                         <div class="thumb">
-                            <img src="img/place/1.png" alt="">
+                            <img src="img/filter-paket/Samosir.png" alt="">
                         </div>
                         <div class="place_info">
                             @foreach($kabupaten as $row)
@@ -162,7 +162,7 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="single_place">
                         <div class="thumb">
-                            <img src="img/place/1.png" alt="">
+                            <img src="img/filter-paket/taput.png" alt="">
                         </div>
                         <div class="place_info">
                             @foreach($kabupaten as $row)
@@ -185,7 +185,7 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="single_place">
                         <div class="thumb">
-                            <img src="img/place/1.png" alt="">
+                            <img src="img/filter-paket/karo.png" alt="">
                         </div>
                         <div class="place_info">
                             @foreach($kabupaten as $row)
@@ -207,7 +207,7 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="single_place">
                         <div class="thumb">
-                            <img src="img/place/1.png" alt="">
+                            <img src="img/filter-paket/simalungun.png" alt="">
                         </div>
                         <div class="place_info">
                             @foreach($kabupaten as $row)
@@ -230,7 +230,7 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="single_place">
                         <div class="thumb">
-                            <img src="img/place/1.png" alt="">
+                            <img src="img/filter-paket/humbahas.png" alt="">
                         </div>
                         <div class="place_info">
                             @foreach($kabupaten as $row)
@@ -255,35 +255,12 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="single_place">
                         <div class="thumb">
-                            <img src="img/place/1.png" alt="">
+                            <img src="img/filter-paket/dairi.png" alt="">
                         </div>
                         <div class="place_info">
                             @foreach($kabupaten as $row)
                                 @if($row->nama_kabupaten == 'Dairi')
                                     <a href="{{route('paket.filter.kabupaten',$row->id_kabupaten)}}"><h3>Dairi</h3></a>
-                                    <div class="rating_days d-flex justify-content-between">
-
-                                        <div class="days">
-                                            <i class="fa fa-clock-o"></i>
-                                            <a href="{{route('paket.filter.kabupaten',$row->id_kabupaten)}}">{{$row->getPaketWisata->count()}}
-                                                Paket Wisata</a>
-                                        </div>
-                                    </div>
-                                @endif
-                            @endforeach
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="single_place">
-                        <div class="thumb">
-                            <img src="img/place/1.png" alt="">
-                        </div>
-                        <div class="place_info">
-                            @foreach($kabupaten as $row)
-                                @if($row->nama_kabupaten == 'Pakpak Barat')
-                                    <a href="{{route('paket.filter.kabupaten',$row->id_kabupaten)}}"><h3>Pakpak
-                                            Barat</h3></a>
                                     <div class="rating_days d-flex justify-content-between">
 
                                         <div class="days">

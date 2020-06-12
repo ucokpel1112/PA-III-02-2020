@@ -17,7 +17,7 @@ class KalendereventController extends Controller
     public function index()
     {
 
-        $kalenders = KalenderEvent::latest()->limit(20)->get();
+        $kalenders = KalenderEvent::orderBy('created_at', 'DESC')->paginate(10);
         return view('admin.kalender.eventkalender', compact('kalenders'));
     }
 

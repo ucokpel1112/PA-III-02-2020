@@ -6,6 +6,7 @@ use App\KalenderEvent;
 use App\Komunitas;
 use App\LayananWisata;
 use App\paketWisata;
+use App\Pendaftar;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -82,8 +83,9 @@ class AnggotaCBTController extends Controller
 
         $count = LayananWisata::count();
         $count_k = Komunitas::count();
+        $count_m = Pendaftar::count();
         $user = User::find(Auth::id());
 
-        return view('anggotacbt.dashboard',compact('usersChart','transaksi','tabel_chart','data','count','count_k'));
+        return view('anggotacbt.dashboard',compact('usersChart','transaksi','tabel_chart',''user'','data','count','count_m','count_k'));
     }
 }

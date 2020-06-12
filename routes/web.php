@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/','HomeController@home')->name('home.customer');
 Route::get('/home','HomeController@index');
+Route::get('/kontak','AboutController@index');
 
 Route::get('/eventkalender', 'KalendereventController@customer_all')->name('eventkalender');
 
