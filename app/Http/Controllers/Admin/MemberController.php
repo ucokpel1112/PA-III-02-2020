@@ -84,6 +84,19 @@ class MemberController extends Controller
         return $member;
     }
 
+    public function indexFilterK($id_komunitas)
+    {
+        $id_komut = $id_komunitas;
+        $status = 1;
+        $member = $this->defineMember($id_komut, $status);
+        $req = $this->defineMember(null, 0);
+
+        $komunitas = Komunitas::all();
+        $status_req = 0;
+//        return $member;
+        return view('admin.anggotacbt.member', compact('req', 'status_req', 'member', 'komunitas', 'id_komut', 'status'));
+    }
+
     public function indexFilterM(Request $request)
     {
         $id_komut = $request->komunitas;

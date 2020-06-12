@@ -64,20 +64,16 @@
                         <?php $__empty_1 = true; $__currentLoopData = $paket; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                             <div class="col-lg-6 col-md-6">
                                 <div class="single_place">
-                                    <div class="thumb">
+                                    <div class="thumb" style="max-height: 200px">
                                         <img src="<?php echo e(asset('storage/img/paket/'.$row->gambar)); ?>" alt="">
                                         <a href="#" class="prise">Rp.<?php echo e(number_format($row->harga_paket)); ?></a>
                                     </div>
                                     <div class="place_info">
-                                        <a href="<?php echo e(route('paket.detail',$row->id_paket)); ?>"><h3><?php echo e($row->nama_paket); ?></h3></a>
+                                        <a href="<?php echo e(route('paket.detail',$row->id_paket)); ?>"><h3><?php echo e($row->nama_paket); ?></h3>
+                                        </a>
                                         <p><?php echo e($row->getKabupaten->nama_kabupaten); ?></p>
                                         <div class="rating_days d-flex justify-content-between">
                                         <span class="d-flex justify-content-center align-items-center">
-                                             <i class="fa fa-star"></i>
-                                             <i class="fa fa-star"></i>
-                                             <i class="fa fa-star"></i>
-                                             <i class="fa fa-star"></i>
-                                             <i class="fa fa-star"></i>
                                              <a href="#">(20 Review)</a>
                                         </span>
                                             <div class="days">
@@ -112,59 +108,31 @@
             <div class="row justify-content-center">
                 <div class="col-lg-6">
                     <div class="section_title text-center mb_70">
-                        <h3>Paket Wisata Terbatu</h3>
+                        <h3>Paket Wisata Terbaru</h3>
                     </div>
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-4 col-md-6">
-                    <div class="single_trip">
-                        <div class="thumb">
-                            <img src="img/trip/1.png" alt="">
-                        </div>
-                        <div class="info">
-                            <div class="date">
-                                <span>Oct 12, 2019</span>
+                <?php $__currentLoopData = $paket_lainnya; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $roww): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="single_trip">
+                            <div class="thumb" style="max-height: 180px">
+                                <img src="<?php echo e(asset('/storage/img/paket/'.$roww->gambar)); ?>" alt="">
                             </div>
-                            <a href="#">
-                                <h3>Journeys Are Best Measured In
-                                    New Friends</h3>
-                            </a>
+                            <div class="info">
+                                <div class="date">
+                                    <span>
+                                        <i class="fa fa-clock-o"></i>
+                                        <a href="#"><?php echo e($row->durasi); ?></a>
+                                    </span>
+                                </div>
+                                <a href="#">
+                                    <h3><?php echo e(str_limit($roww->nama_paket,40)); ?></h3>
+                                </a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="single_trip">
-                        <div class="thumb">
-                            <img src="img/trip/2.png" alt="">
-                        </div>
-                        <div class="info">
-                            <div class="date">
-                                <span>Oct 12, 2019</span>
-                            </div>
-                            <a href="#">
-                                <h3>Journeys Are Best Measured In
-                                    New Friends</h3>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="single_trip">
-                        <div class="thumb">
-                            <img src="img/trip/3.png" alt="">
-                        </div>
-                        <div class="info">
-                            <div class="date">
-                                <span>Oct 12, 2019</span>
-                            </div>
-                            <a href="#">
-                                <h3>Journeys Are Best Measured In
-                                    New Friends</h3>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </div>
         </div>
     </div>

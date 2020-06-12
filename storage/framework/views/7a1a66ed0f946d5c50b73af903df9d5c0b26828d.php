@@ -30,7 +30,7 @@
                                         <li><a href="<?php echo e(url('/eventkalender')); ?>">Kalender Event </a>
 
                                         </li>
-                                        <li><a href="contact.html">Kontak </a></li>
+                                        <li><a href="<?php echo e(asset('/kontak')); ?>">Tentang Visit Toba</a></li>
                                     </ul>
                                 </nav>
                             </div>

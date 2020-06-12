@@ -14,10 +14,12 @@ class PaketWisataController extends Controller
 {
     public function index()
     {
-        $paket = paketWisata::where('status', 1)->orderBy('created_at', 'DESC')->paginate(10);;
+        $paket = paketWisata::where('status', 1)->orderBy('created_at', 'DESC')->paginate(10);
+        $pakets = paketWisata::where('status', 1)->orderBy('created_at', 'DESC')->get();
         $jenis = DB::table('paket_wisatas')->select('jenis_paket')->groupBy('jenis_paket')->get();
         $kabupaten = Kabupaten::all();
-        return view('front.paket.view_paket', compact('paket', 'jenis', 'kabupaten'));
+        $paket_lainnya = $pakets->take(3);
+        return view('front.paket.view_paket', compact('paket', 'jenis', 'kabupaten','paket_lainnya'));
     }
 
     public function indexFilterKabupaten($id_kabupaten)
@@ -28,8 +30,10 @@ class PaketWisataController extends Controller
         $jenis = DB::table('paket_wisatas')->select('jenis_paket')->groupBy('jenis_paket')->get();
 
         $paket = paketWisata::where([['kabupaten_id', $id_kab], ['status', 1]])->orderBy('created_at', 'DESC')->paginate(10);
+        $pakets = paketWisata::where('status', 1)->orderBy('created_at', 'DESC')->get();
 
-        return view('front.paket.view_paket', compact('paket', 'jenis', 'kabupaten', 'jeniss', 'id_kab'));
+        $paket_lainnya = $pakets->take(3);
+        return view('front.paket.view_paket', compact('paket', 'jenis', 'kabupaten', 'jeniss', 'paket_lainnya','id_kab'));
     }
 
     public function indexFilter(Request $request)
@@ -38,6 +42,8 @@ class PaketWisataController extends Controller
         $id_kab = $request->kabupaten;
         $jeniss = $request->jenis;
         $jenis = DB::table('paket_wisatas')->select('jenis_paket')->groupBy('jenis_paket')->get();
+        $pakets = paketWisata::where('status', 1)->orderBy('created_at', 'DESC')->get();
+        $paket_lainnya = $pakets->take(3);
 
         if ($request->jenis == 'Tipe/Jenis Perjalanan') {
             if ($request->kabupaten == 'Kabupaten') {
@@ -54,7 +60,7 @@ class PaketWisataController extends Controller
         }
 
 //        return $paket;
-        return view('front.paket.view_paket', compact('paket', 'jenis', 'kabupaten', 'jeniss', 'id_kab'));
+        return view('front.paket.view_paket', compact('paket', 'jenis', 'kabupaten', 'jeniss', 'id_kab','paket_lainnya'));
     }
 
     public function show($id_paket)
@@ -68,7 +74,7 @@ class PaketWisataController extends Controller
             if ($row->jenisLayanan_id == 2)
                 array_push($hotel, $row);
         }
-        $paket_lain = paketWisata::where([['status', 1],['kabupaten_id',$paket->kabupaten_id]])->orderBy('created_at', 'DESC')->paginate(10);
+        $paket_lain = paketWisata::where([['status', 1],['kabupaten_id',$paket->kabupaten_id],['id_paket','!=',$id_paket]])->orderBy('created_at', 'DESC')->paginate(3);
         return view('front.paket.detail_paket', compact('paket_lain','comments','paket', 'hotel', 'sesi'));
     }
 }

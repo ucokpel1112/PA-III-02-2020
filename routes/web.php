@@ -14,29 +14,29 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('/','HomeController@home')->name('home.customer');
-Route::get('/home','HomeController@index');
-Route::get('/kontak','AboutController@index');
+Route::get('/',['middleware'=>'check-permission:admin|customer|member|user','uses'=>'HomeController@index'])->name('home.customer');
+Route::get('/home',['middleware'=>'check-permission:admin|customer|member|user','uses'=>'HomeController@index']);
+Route::get('/kontak',['middleware'=>'check-permission:customer|user','uses'=>'AboutController@index']);
 
-Route::get('/eventkalender', 'KalendereventController@customer_all')->name('eventkalender');
+Route::get('/eventkalender', ['middleware'=>'check-permission:customer|user','uses'=>'KalendereventController@customer_all'])->name('eventkalender');
 
-Route::get('/detail-event', function () {
+Route::get('/detail-event', ['middleware'=>'check-permission:customer|user','uses'=>function () {
     return view('front.detail-eventkalender');
-})->name('event');
+}])->name('event');
 
 
 //kalender
 Route::get('/adm/kalender/listkalender', ['middleware'=>'check-permission:admin','uses'=>'KalendereventController@index'])->name('listkalender');
-Route::get('/adm/kalender/addkalender', function () {
+Route::get('/adm/kalender/addkalender', ['middleware'=>'check-permission:admin','uses'=>function () {
     return view('admin.kalender.tambahkalender');
-});
+}]);
 //['middleware'=>'check-permission:user|admin|superadmin','uses'=>'HomeController@allUsers']
 Route::post('/adm/tambahkalender', ['middleware'=>'check-permission:admin','uses'=>'KalendereventController@store'])->name('tambahkalender');
 Route::put('/adm/updatekalender/{id_kalenderevent}/utama/update', ['middleware'=>'check-permission:admin','uses'=>'KalendereventController@update'])->name('updatekalender');
 Route::get('/adm/updatekalender/{id_kalenderevent}', ['middleware'=>'check-permission:admin','uses'=>'KalendereventController@edit'])->name('editkalender');
 
 //detail customer
-Route::get('/eventkalender/detail/show/{id_kalenderevent}', 'KalendereventController@detail')->name('detail-eventkalender');
+Route::get('/eventkalender/detail/show/{id_kalenderevent}', ['middleware'=>'check-permission:customer|user','uses'=>'KalendereventController@detail'])->name('detail-eventkalender');
 Route::get('/adm/detailkalender/detail/show/{id_kalenderevent}', ['middleware'=>'check-permission:admin','uses'=>'KalendereventController@admin_detail'])->name('detail-admin');
 
 Route::delete('/adm/eventkalender/delete/{id_kalenderevent}', ['middleware'=>'check-permission:admin','uses'=>'KalendereventController@destroy'])->name('delete-eventkalender');
@@ -45,14 +45,14 @@ Route::delete('/adm/eventkalender/delete/{id_kalenderevent}', ['middleware'=>'ch
 //paket wisata Customer
 Route::namespace('Front')->group(function () {
     //paket
-    Route::get('/paket', 'PaketWisataController@index')->name('paket');
-    Route::post('/paket', 'PaketWisataController@indexFilter')->name('paket.filter');
-    Route::get('/paket/kabupaten/{id_kabupaten}', 'PaketWisataController@indexFilterKabupaten')->name('paket.filter.kabupaten');
-    Route::get('/paket/detail/{id_paket}', 'PaketWisataController@show')->name('paket.detail');
+    Route::get('/paket', ['middleware'=>'check-permission:customer|user','uses'=>'PaketWisataController@index'])->name('paket');
+    Route::post('/paket', ['middleware'=>'check-permission:customer|user','uses'=>'PaketWisataController@indexFilter'])->name('paket.filter');
+    Route::get('/paket/kabupaten/{id_kabupaten}', ['middleware'=>'check-permission:customer|user','uses'=>'PaketWisataController@indexFilterKabupaten'])->name('paket.filter.kabupaten');
+    Route::get('/paket/detail/{id_paket}', ['middleware'=>'check-permission:customer|user','uses'=>'PaketWisataController@show'])->name('paket.detail');
     //comment
-    Route::resource('/comments','CommentsController');
-    Route::resource('/replies','RepliesController');
-    Route::post('/replies/ajaxDelete','RepliesController@ajaxDelete');
+    Route::resource('/comments','CommentsController')->middleware('check-permission:customer|user');
+    Route::resource('/replies','RepliesController')->middleware('check-permission:customer|user');
+    Route::post('/replies/ajaxDelete',['middleware'=>'check-permission:customer|user','uses'=>'RepliesController@ajaxDelete']);
     //pemesanan
     Route::get('/pemesanan', ['middleware'=>'check-permission:customer','uses'=>'PemesananController@index'])->name('pemesanan');
     Route::put('/paket/{id_paket}/pesan', ['middleware'=>'check-permission:customer','uses'=>'PemesananController@store'])->name('paket.pesan');
@@ -101,7 +101,6 @@ Route::namespace('Admin')->group(function () {
     Route::put('/adm/pemesanan/transaksi/upload/{id_pemesanan}', ['middleware'=>'check-permission:admin','uses'=>'PemesananController@uploadUlangPembayaran'])->name('admin.pemesanan.upload');
     Route::put('/adm/pemesanan/ubahPesan/{id_pemesanan}', ['middleware'=>'check-permission:admin','uses'=>'PemesananController@ubahPesan'])->name('admin.pemesanan.ubahPesan');
 
-    Route::get('/adm/paket', ['middleware'=>'check-permission:admin','uses'=>'PaketWisataController@index'])->name('admin.paket');
 //edit paket
     Route::get('/adm/paket/edit/{id_paket}/choice', ['middleware'=>'check-permission:admin','uses'=>'PaketWisataController@editChoice'])->name('admin.paket.editChoice');
 
@@ -118,20 +117,23 @@ Route::namespace('Admin')->group(function () {
 
 
 //view Paket
+    Route::get('/adm/paket', ['middleware'=>'check-permission:admin','uses'=>'PaketWisataController@index'])->name('admin.paket');
+    Route::post('/adm/paket', ['middleware'=>'check-permission:admin','uses'=>'PaketWisataController@indexFilter'])->name('admin.paket.filter');
     Route::get('/adm/paket/show/{id_paket}', ['middleware'=>'check-permission:admin','uses'=>'PaketWisataController@show'])->name('admin.paket.show');
 
 //craete new paket
     Route::get('/adm/paket/add', ['middleware'=>'check-permission:admin','uses'=>'PaketWisataController@create'])->name('admin.paket.tambah');
-    Route::post('/adm/paket', ['middleware'=>'check-permission:admin','uses'=>'PaketWisataController@store'])->name('admin.paket.store');
+    Route::post('/adm/paket/add', ['middleware'=>'check-permission:admin','uses'=>'PaketWisataController@store'])->name('admin.paket.store');
 //hapus
     Route::delete('/adm/paket/delete/{id_paket}', ['middleware'=>'check-permission:admin','uses'=>'PaketWisataController@destroy'])->name('admin.paket.hapus');
+    Route::post('/adm/paket/recycle/{id_paket}', ['middleware'=>'check-permission:admin','uses'=>'PaketWisataController@recycle'])->name('admin.paket.recycle');
 
 });
 //anggota CBT
 
 
 Route::namespace('AnggotaCBT')->group(function () {
-    Route::get('anggotacbt/dashboard','AnggotaCBTController@count')->name('home.anggotacbt');
+    Route::get('anggotacbt/dashboard',['middleware'=>'check-permission:member','uses'=>'AnggotaCBTController@count'])->name('home.anggotacbt');
 
     //Layanan Wisata
     Route::get('anggotacbt/layananwisata', ['middleware'=>'check-permission:member','uses'=>'LayananWisataController@index'])->name('anggotacbt.layanan');
@@ -144,8 +146,8 @@ Route::namespace('AnggotaCBT')->group(function () {
 
 Auth::routes();
 Route::namespace('Auth')->group(function () {
-    Route::get('register/menu/pilih', 'RegisterController@choice')->name('register.choice');
-    Route::get('konfirmasiemail/{email}/{token}', 'RegisterController@konfirmasiemail')->name('konfirmasiemail');
+    Route::get('register/menu/pilih', ['middleware'=>'check-permission:user','uses'=>'RegisterController@choice'])->name('register.choice');
+    Route::get('konfirmasiemail/{email}/{token}', ['middleware'=>'check-permission:user','uses'=>'RegisterController@konfirmasiemail'])->name('konfirmasiemail');
 });
 
 
@@ -161,8 +163,8 @@ Route::get('/adm/komunitas/pendaftar',['middleware'=>'check-permission:admin','u
 
 //komunitas anggota cbt
 Route::get('/anggotacbt/komunitas',['middleware'=>'check-permission:member','uses'=>'KomunitasCBTController@index'])->name('data_komunitas.anggota');
-Route::get('/anggotacbt/komunitas/pendaftar','PendaftarController@index')->name('view_anggota');
-Route::post('/anggotacbt/komunitas/pendaftar/create','PendaftarController@daftar')->name('gabung_daftar');
+Route::get('/anggotacbt/komunitas/pendaftar',['middleware'=>'check-permission:member','uses'=>'PendaftarController@index'])->name('view_anggota');
+Route::post('/anggotacbt/komunitas/pendaftar/create',['middleware'=>'check-permission:member','uses'=>'PendaftarController@daftar'])->name('gabung_daftar');
 
 Route::get('/design',function(){
     $pemesanan = \App\Pemesanan::first();

@@ -25,7 +25,7 @@ class HomeController extends Controller
     public function index()
     {
         if (checkPermission(['customer'])||checkPermission(['user']))
-            return redirect(route('home.customer'));
+            return $this->home();
         elseif (checkPermission(['member']))
             return redirect(route('home.anggotacbt'));
         elseif (checkPermission(['admin']))

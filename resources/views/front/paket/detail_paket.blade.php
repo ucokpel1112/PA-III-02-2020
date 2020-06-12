@@ -305,7 +305,7 @@
 
         </div>
         {{--    Akhir Komentar--}}
-        @if(isset($paket_lainnya))
+        @if(isset($paket_lain))
             <div class="popular_places_area">
                 <div class="container">
                     <div class="row justify-content-center">
@@ -315,8 +315,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        @foreach($paket_lainnya as $rows)
+                    <div class="row justify-content-center">
+                        @foreach($paket_lain as $row)
                             <div class="col-lg-4 col-md-6">
                                 <div class="single_place">
                                     <div class="thumb">
@@ -347,7 +347,7 @@
                     </div>
                     <div class="row">
                         <div class="col">
-                            {!! $paket->links() !!}
+                            {!! $paket_lain->links() !!}
                         </div>
                     </div>
                 </div>

@@ -10,6 +10,7 @@ use App\paketWisata;
 use App\Sesi;
 use File;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
 class PaketWisataController extends Controller
@@ -21,11 +22,40 @@ class PaketWisataController extends Controller
      */
     public function index()
     {
-        $pakets = paketWisata::with(['getIncludedNotIncluded', 'getKabupaten'])->orderBy('created_at', 'DESC')->paginate(10);
-//        $pakets= paketWisata::where('id_paket',0)->paginate();
-        return view('admin.paket.paket_wisata', compact('pakets'));
+        $pakets = paketWisata::with(['getIncludedNotIncluded', 'getKabupaten'])->where('status','!=',2)->orderBy('created_at', 'DESC')->paginate(10);
+        $kabupaten = Kabupaten::all();
+        //        $pakets= paketWisata::where('id_paket',0)->paginate();
+        return view('admin.paket.paket_wisata', compact('kabupaten','pakets'));
     }
 
+    public function indexFilter(Request $request)
+    {
+        $kabupaten = Kabupaten::all();
+        $id_kabupaten = $request->kabupaten;
+        $id_status = $request->status;
+
+        if ($request->status == -1) {
+            if ($request->kabupaten == 'semua'||$request->kabupaten == null) {
+                $pakets = paketWisata::query()->orderBy('created_at', 'DESC')->paginate(10);
+            } else {
+                $pakets = paketWisata::where('kabupaten_id', $id_kabupaten)->orderBy('created_at', 'DESC')->paginate(10);
+            }
+        } elseif($request->status == null){
+            if ($request->kabupaten == 'semua'||$request->kabupaten == null) {
+                $pakets = paketWisata::where('status','!=',2)->orderBy('created_at', 'DESC')->paginate(10);
+            } else {
+                $pakets = paketWisata::where([['kabupaten_id', $id_kabupaten],['status','!=',2]])->orderBy('created_at', 'DESC')->paginate(10);
+            }
+        }else {
+            if ($request->kabupaten == 'semua'||$request->kabupaten == null) {
+                $pakets = paketWisata::where( 'status', $id_status)->orderBy('created_at', 'DESC')->paginate(10);
+            } else {
+                $pakets = paketWisata::where([['status', $id_status], ['kabupaten_id', $id_kabupaten]])->orderBy('created_at', 'DESC')->paginate(10);
+            }
+        }
+
+        return view('admin.paket.paket_wisata', compact('kabupaten','pakets', 'id_kabupaten', 'kabupaten', 'id_status'));
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -268,11 +298,19 @@ class PaketWisataController extends Controller
 //        print_r($paket);
 //        if ($count == 0) {
         $pakets = paketWisata::find($id_paket);
-        $pakets->getPaketLayanan()->detach();
-        $pakets->delete();
+        $pakets->status = 2;
+        $pakets->save();
         return redirect(route('admin.paket'));
 //        }
 //        return redirect(route('admin.paket'));
+    }
+
+    public function recycle($id_paket){
+        $paket = paketWisata::find($id_paket);
+        $paket->status = 0;
+        $paket->save();
+
+        return redirect(route('admin.paket'));
     }
 
     public function createSesi($id_paket)
@@ -307,8 +345,6 @@ class PaketWisataController extends Controller
             $sesi = Sesi::where('paket_id', $id_paket)->orderBy('status', 'DESC')->paginate(10);
             return view('admin.paket.detail_paket_wisata', compact('sesi', 'paket','error'));
         }
-
-
     }
 
     public function nonaktifSesi($id_sesi)

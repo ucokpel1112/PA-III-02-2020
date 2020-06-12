@@ -306,7 +306,7 @@
 
         </div>
         
-        <?php if(isset($paket_lainnya)): ?>
+        <?php if(isset($paket_lain)): ?>
             <div class="popular_places_area">
                 <div class="container">
                     <div class="row justify-content-center">
@@ -316,8 +316,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <?php $__currentLoopData = $paket_lainnya; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $rows): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <div class="row justify-content-center">
+                        <?php $__currentLoopData = $paket_lain; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <div class="col-lg-4 col-md-6">
                                 <div class="single_place">
                                     <div class="thumb">
@@ -348,7 +348,7 @@
                     </div>
                     <div class="row">
                         <div class="col">
-                            <?php echo $paket->links(); ?>
+                            <?php echo $paket_lain->links(); ?>
 
                         </div>
                     </div>

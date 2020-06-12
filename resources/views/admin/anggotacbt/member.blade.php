@@ -168,7 +168,7 @@
                                                 <td class="project-actions text-right">
                                                     <button type="submit" style="width: 180px"
                                                             class="btn btn-success btn-sm">
-                                                        <i class="fas fa-pencil-alt">
+                                                        <i class="fas fa-filter">
                                                         </i>
                                                         Filter
                                                     </button>

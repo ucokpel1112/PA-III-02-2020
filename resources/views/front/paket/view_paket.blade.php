@@ -65,20 +65,16 @@
                         @forelse($paket as $row)
                             <div class="col-lg-6 col-md-6">
                                 <div class="single_place">
-                                    <div class="thumb">
+                                    <div class="thumb" style="max-height: 200px">
                                         <img src="{{asset('storage/img/paket/'.$row->gambar)}}" alt="">
                                         <a href="#" class="prise">Rp.{{number_format($row->harga_paket)}}</a>
                                     </div>
                                     <div class="place_info">
-                                        <a href="{{route('paket.detail',$row->id_paket)}}"><h3>{{$row->nama_paket}}</h3></a>
+                                        <a href="{{route('paket.detail',$row->id_paket)}}"><h3>{{$row->nama_paket}}</h3>
+                                        </a>
                                         <p>{{$row->getKabupaten->nama_kabupaten}}</p>
                                         <div class="rating_days d-flex justify-content-between">
                                         <span class="d-flex justify-content-center align-items-center">
-                                             <i class="fa fa-star"></i>
-                                             <i class="fa fa-star"></i>
-                                             <i class="fa fa-star"></i>
-                                             <i class="fa fa-star"></i>
-                                             <i class="fa fa-star"></i>
                                              <a href="#">(20 Review)</a>
                                         </span>
                                             <div class="days">
@@ -112,59 +108,31 @@
             <div class="row justify-content-center">
                 <div class="col-lg-6">
                     <div class="section_title text-center mb_70">
-                        <h3>Paket Wisata Terbatu</h3>
+                        <h3>Paket Wisata Terbaru</h3>
                     </div>
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-4 col-md-6">
-                    <div class="single_trip">
-                        <div class="thumb">
-                            <img src="img/trip/1.png" alt="">
-                        </div>
-                        <div class="info">
-                            <div class="date">
-                                <span>Oct 12, 2019</span>
+                @foreach($paket_lainnya as $roww)
+                    <div class="col-lg-4 col-md-6">
+                        <div class="single_trip">
+                            <div class="thumb" style="max-height: 180px">
+                                <img src="{{asset('/storage/img/paket/'.$roww->gambar)}}" alt="">
                             </div>
-                            <a href="#">
-                                <h3>Journeys Are Best Measured In
-                                    New Friends</h3>
-                            </a>
+                            <div class="info">
+                                <div class="date">
+                                    <span>
+                                        <i class="fa fa-clock-o"></i>
+                                        <a href="#">{{$row->durasi}}</a>
+                                    </span>
+                                </div>
+                                <a href="#">
+                                    <h3>{{str_limit($roww->nama_paket,40)}}</h3>
+                                </a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="single_trip">
-                        <div class="thumb">
-                            <img src="img/trip/2.png" alt="">
-                        </div>
-                        <div class="info">
-                            <div class="date">
-                                <span>Oct 12, 2019</span>
-                            </div>
-                            <a href="#">
-                                <h3>Journeys Are Best Measured In
-                                    New Friends</h3>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="single_trip">
-                        <div class="thumb">
-                            <img src="img/trip/3.png" alt="">
-                        </div>
-                        <div class="info">
-                            <div class="date">
-                                <span>Oct 12, 2019</span>
-                            </div>
-                            <a href="#">
-                                <h3>Journeys Are Best Measured In
-                                    New Friends</h3>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>
