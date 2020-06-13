@@ -75,43 +75,18 @@
                 <div class="col-lg-4">
                     <div class="blog_right_sidebar">
                         <aside class="single_sidebar_widget popular_post_widget">
-                            <h3 class="widget_title">Recent Post</h3>
+                            <h3 class="widget_title">Upcoming Event</h3>
+                            @foreach($kals_up as $kals_up)
                             <div class="media post_item">
-                                <img src="img/post/post_1.png" alt="post">
+                                <img src="{{asset('storage/img/kalender/'.$kals_up->gambar_event)}}"  style="height: 50px;" alt="post">
                                 <div class="media-body">
                                     <a href="single-blog.html">
-                                        <h3>From life was you fish...</h3>
+                                        <h3>{{$kals_up->nama_event}}</h3>
                                     </a>
-                                    <p>January 12, 2019</p>
+                                    <p>{{$kals_up->tanggal_event}}</p>
                                 </div>
                             </div>
-                            <div class="media post_item">
-                                <img src="img/post/post_2.png" alt="post">
-                                <div class="media-body">
-                                    <a href="single-blog.html">
-                                        <h3>The Amazing Hubble</h3>
-                                    </a>
-                                    <p>02 Hours ago</p>
-                                </div>
-                            </div>
-                            <div class="media post_item">
-                                <img src="img/post/post_3.png" alt="post">
-                                <div class="media-body">
-                                    <a href="single-blog.html">
-                                        <h3>Astronomy Or Astrology</h3>
-                                    </a>
-                                    <p>03 Hours ago</p>
-                                </div>
-                            </div>
-                            <div class="media post_item">
-                                <img src="img/post/post_4.png" alt="post">
-                                <div class="media-body">
-                                    <a href="single-blog.html">
-                                        <h3>Asteroids telescope</h3>
-                                    </a>
-                                    <p>01 Hours ago</p>
-                                </div>
-                            </div>
+                            @endforeach
                         </aside>
                     </div>
                 </div>

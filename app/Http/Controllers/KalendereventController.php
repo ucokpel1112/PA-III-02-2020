@@ -77,7 +77,8 @@ class KalendereventController extends Controller
     public function customer_all()
     {
         $kalenders = KalenderEvent::latest()->limit(9)->get();
-        return view('front.kalender-event.eventkalender', compact('kalenders'));
+        $kals_up = KalenderEvent::latest()->limit(4)->get();
+        return view('front.kalender-event.eventkalender', compact('kals_up','kalenders'));
     }
 
     public function detail($id_kalenderevent)

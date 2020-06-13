@@ -77,9 +77,10 @@ class DashboardController extends Controller
         $count = KalenderEvent::count();
         $count_p = paketWisata::count();
         $count_m = Pendaftar::count();
+        $count_c = User::where('status',0)->count();
         //akhir kalender event
 
-        return view('admin.dashboard',compact('data','tabel_chart','transaksi','usersChart','count','count_p','count_m'));
+        return view('admin.dashboard',compact('count_c','data','tabel_chart','transaksi','usersChart','count','count_p','count_m'));
     }
 
 }

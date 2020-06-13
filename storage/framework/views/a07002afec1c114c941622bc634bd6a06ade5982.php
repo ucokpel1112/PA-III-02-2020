@@ -1,0 +1,20 @@
+<table class="action" align="center" width="100%" cellpadding="0" cellspacing="0" role="presentation">
+    <tr>
+        <td align="center">
+            <table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation">
+                <tr>
+                    <td align="center">
+                        <table border="0" cellpadding="0" cellspacing="0" role="presentation">
+                            <tr>
+                                <td>
+                                    <a href="<?php echo e($url); ?>" class="button button-<?php echo e($color ?? 'primary'); ?>" target="_blank"><?php echo e($slot); ?></a>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+<?php /**PATH D:\Backup Data Kristopel\Kuliah ITdel\Semester 6\PA III\Project\git\v.5.1\PA-III-02-2020\resources\views/vendor/mail/html/button.blade.php ENDPATH**/ ?>
