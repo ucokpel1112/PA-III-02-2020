@@ -44,9 +44,9 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleFormControlSelect1">Pilih Jenis Layanan</label>
-                                    <select name="jenislayanan_id" class="form-control" id="exampleFormControlSelect1">
+                                    <select name="jenisLayanan_id" class="form-control" id="exampleFormControlSelect1">
                                         @foreach($jenis_layanan as $row)
-                                            <option value="{{$row->id}}" @if($layanan_wisata->jenislayanan_id == $row->id) selected @endif>{{$row->nama_jenis_layanan}}</option>
+                                            <option value="{{$row->id}}" @if($layanan_wisata->jenisLayanan_id == $row->id) selected @endif>{{$row->nama_jenis_layanan}}</option>
                                         @endforeach
                                     </select>
                                 </div>

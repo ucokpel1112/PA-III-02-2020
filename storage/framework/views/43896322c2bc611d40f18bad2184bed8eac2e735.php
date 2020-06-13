@@ -43,9 +43,9 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleFormControlSelect1">Pilih Jenis Layanan</label>
-                                    <select name="jenislayanan_id" class="form-control" id="exampleFormControlSelect1">
+                                    <select name="jenisLayanan_id" class="form-control" id="exampleFormControlSelect1">
                                         <?php $__currentLoopData = $jenis_layanan; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                            <option value="<?php echo e($row->id); ?>" <?php if($layanan_wisata->jenislayanan_id == $row->id): ?> selected <?php endif; ?>><?php echo e($row->nama_jenis_layanan); ?></option>
+                                            <option value="<?php echo e($row->id); ?>" <?php if($layanan_wisata->jenisLayanan_id == $row->id): ?> selected <?php endif; ?>><?php echo e($row->nama_jenis_layanan); ?></option>
                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </select>
                                 </div>

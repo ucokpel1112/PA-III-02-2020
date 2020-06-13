@@ -26,14 +26,11 @@
                     <!-- Profile Image -->
                     <div class="card card-primary card-outline">
                         <div class="card-body box-profile">
-                            <div class="text-center">
-                                <img class="profile-user-img img-fluid img-circle"
-                                     src="{{asset('adminlte/dist/img/user4-128x128.jpg')}}" alt="User profile picture">
-                            </div>
+
 
                             <h3 class="profile-username text-center">{{$user->name}}</h3>
 
-                            <p class="text-muted text-center">Pemesanan</p>
+                            <p class="text-muted text-center">( Customer Pemesan )</p>
 
 
                             <ul class="list-group list-group-unbordered mb-3">
@@ -117,8 +114,8 @@
                                     </p>
 
                                     <ul class="nav nav-pills">
-                                        <li class="nav-item"><a class="btn btn-light nav-link" href="#formubahpesan"
-                                                                data-toggle="tab">Ubah Pesan</a></li>
+                                        <li class="nav-item"><a class="btn btn-light border nav-link" href="#formubahpesan"
+                                                                data-toggle="tab">Titip Pesan Untuk Customer</a></li>
                                     </ul>
                                     <div class="tab-content">
                                         <div class="tab-pane" id="formubahpesan">
@@ -126,13 +123,13 @@
                                                 @csrf
                                                 @method('PUT')
                                                 <div class="form-group">
-                                                    <label for="pesan">Ubah Pesan Pemesanan</label>
+                                                    <label for="pesan">Pesan Untuk Customer</label>
                                                     <input type="text" class="form-control" name="pesan"
                                                            id="pesan"
                                                            placeholder="Pesan" required>
                                                     {{--                                    <p class="text-danger">{{$error->first('nama-paket-wisata')}}</p>--}}
                                                 </div>
-                                                <button type="submit" class="btn btn-primary">Submit</button>
+                                                <button type="submit" class="btn btn-primary">Kirim</button>
                                             </form>
                                         </div>
                                     </div>

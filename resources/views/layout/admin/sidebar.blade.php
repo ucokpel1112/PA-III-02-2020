@@ -1,6 +1,6 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
+    <a href="#" class="brand-link">
         <img src="{{asset('adminlte/dist/img/admin-settings-male.png')}}" alt="AdminLTE Logo"
              class="brand-image img-circle elevation-3"
              style="opacity: .8">
@@ -16,7 +16,7 @@
                      alt="User Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block">Visit Toba</a>
+                <a href="{{route('home.admin')}}" class="d-block">Visit Toba</a>
             </div>
         </div>
 
@@ -37,7 +37,7 @@
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-copy"></i>
                         <p>
-                            Komunitas Pariwisita
+                            Komunitas
                             <i class="fas fa-angle-left right"></i>
                         </p>
                     </a>
@@ -48,13 +48,6 @@
                                 <p>Daftar Komunitas </p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="{{url('adm/komunitas/pendaftar')}}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Daftar Anggota Komunitas </p>
-                            </a>
-                        </li>
-
                     </ul>
                 </li>
                 <li class="nav-item has-treeview {{Request::segment(2) === 'paket' ? 'menu-open' : null}}">

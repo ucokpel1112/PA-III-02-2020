@@ -68,11 +68,12 @@
                                             <input type="file" name="gambar_event" class="custom-file-input" id="exampleInputFile">
                                             <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                                         </div>
-                                        <div class="row">
-                                            <div class="col-sm-10">
-                                                <img class="img-fluid" src="{{asset('storage/img/kalender/'.$kalenders->gambar_event)}}" alt="Photo">
-                                            </div>
-                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm text-center border" style="padding: 5px;border-radius: 10px">
+                                        <img class="img-fluid" src="{{asset('storage/img/kalender/'.$kalenders->gambar_event)}}" alt="Photo">
                                     </div>
                                 </div>
                             </div>

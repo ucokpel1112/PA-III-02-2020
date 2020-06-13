@@ -10,6 +10,7 @@ use App\Member;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 use Mail;
 
 class MemberController extends Controller
@@ -82,19 +83,6 @@ class MemberController extends Controller
         }
 
         return $member;
-    }
-
-    public function indexFilterK($id_komunitas)
-    {
-        $id_komut = $id_komunitas;
-        $status = 1;
-        $member = $this->defineMember($id_komut, $status);
-        $req = $this->defineMember(null, 0);
-
-        $komunitas = Komunitas::all();
-        $status_req = 0;
-//        return $member;
-        return view('admin.anggotacbt.member', compact('req', 'status_req', 'member', 'komunitas', 'id_komut', 'status'));
     }
 
     public function indexFilterM(Request $request)
@@ -250,22 +238,29 @@ class MemberController extends Controller
      */
     public function store(Request $request)
     {
-        $user = User::create([
-            'name' => $request->name,
-            'no_WA' => $request->no_WA,
-            'no_HP' => $request->no_HP,
-            'email' => $request->email,
-            'email_verified_at' => now(),
-            'password' => Hash::make($request->password),
-            'register_status' => 1,
-            'status' => 1,
-        ]);
-        $member = Member::create([
-            'user_id' => $user->id,
-            'photo' => $request->photo,
-            'no_KTP' => $request->no_KTP
-        ]);
-        return redirect(route('member'));
+        if ($request->hasFile('photo')) {
+            $file = $request->file('photo');
+            $filename = time() .'-'. Str::slug($request->name) . '.' . $file->getClientOriginalExtension();
+
+            $file->move('storage/img/member', $filename);
+
+            $user = User::create([
+                'name' => $request->name,
+                'no_WA' => $request->no_WA,
+                'no_HP' => $request->no_HP,
+                'email' => $request->email,
+                'email_verified_at' => now(),
+                'password' => Hash::make($request->password),
+                'register_status' => 1,
+                'status' => 1,
+            ]);
+            $member = Member::create([
+                'user_id' => $user->id,
+                'photo' => $filename,
+                'no_KTP' => $request->no_KTP
+            ]);
+            return redirect(route('member'));
+        }
     }
 
     /**

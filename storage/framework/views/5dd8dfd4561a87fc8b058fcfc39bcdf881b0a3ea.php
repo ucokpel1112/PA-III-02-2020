@@ -61,24 +61,53 @@
                                         </div>
                                     </div>
                                 </div>
-                                <form action="<?php echo e(route('delete-eventkalender',$kalenders->id_kalenderevent)); ?>"
-                                      method="post">
                                     <div class="card-footer">
                                         <div class="text-right">
                                             <a href="<?php echo e(url('/adm/updatekalender',$kalenders->id_kalenderevent)); ?>"
                                                class="btn btn-sm bg-warning">
                                                 <i class="fas fa-edit"></i> Update
                                             </a>
-                                            <?php echo csrf_field(); ?>
-                                            <?php echo method_field('DELETE'); ?>
 
-                                            <button type="submit" class="btn btn-sm btn-danger">
-                                                <i class="fas fa-trash"></i> Hapus
+                                            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
+                                                    data-target="#delete_<?php echo e($kalenders->id_kalenderevent); ?>">
+                                                <i class="fas fa-trash-alt">
+                                                </i>
+                                                Hapus
                                             </button>
+                                            <div class="modal fade" id="delete_<?php echo e($kalenders->id_kalenderevent); ?>" tabindex="-1" role="dialog"
+                                                 aria-labelledby="deleteModalCenterTitle" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="hapusModalLongTitle">Hapus Kalender Event</h5>
+                                                            <button type="button" class="close" data-dismiss="modal"
+                                                                    aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body text-left">
+                                                            Anda Yakin Ingin Menghapus Kalender Event ...
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">
+                                                                Batal
+                                                            </button>
+                                                            <form action="<?php echo e(route('delete-eventkalender',$kalenders->id_kalenderevent)); ?>"
+                                                                  method="post">
+                                                                <?php echo csrf_field(); ?>
+                                                                <?php echo method_field('DELETE'); ?>
+                                                            <button type="submit"
+                                                               class="btn btn-danger btn-sm">
+                                                                <i class="fa fa-trash-alt"> </i> Hapus
+                                                            </button>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
 
-                                </form>
 
                             </div>
                         </div>

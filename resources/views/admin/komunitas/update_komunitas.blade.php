@@ -10,7 +10,7 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{route('home.admin')}}">Home</a></li>
-                        <li class="breadcrumb-item"><a href="{{route('data_komunitas.admin')}}">Komunitas Pariwisata</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('data_komunitas.admin')}}">Komunitas</a></li>
                         <li class="breadcrumb-item active">Edit</li>
                     </ol>
                 </div>

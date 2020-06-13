@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 use App\KalenderEvent;
 use Illuminate\Notifications\Notifiable;
-
+use Illuminate\Support\Str;
 
 class KalendereventController extends Controller
 {
@@ -47,11 +47,11 @@ class KalendereventController extends Controller
         $gambar = $kalender->gambar_event;
 
         if ($request->hasFile('gambar_event')) {
-            !empty($gambar) ? File::delete(public_path('public/storage/Image/kalender/' . $gambar)) : null;
+            !empty($gambar) ? File::delete(public_path('storage/img/kalender/' . $gambar)) : null;
             $file = $request->file('gambar_event');
-            $gambar = time() . Str::slug($request->nama_paket_wisata) . '.' . $file->getClientOriginalExtension();
+            $gambar = time() .'-'.Str::slug($request->nama_event) . '.' . $file->getClientOriginalExtension();
 
-            $file->move('public/storage/img/kalender/', $gambar);
+            $file->move('storage/img/kalender', $gambar);
         }
 
         $kalender->update([

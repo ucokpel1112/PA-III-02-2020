@@ -108,7 +108,8 @@
                             <!-- /.card-body -->
 
                             <div class="card-footer">
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="submit" class="btn btn-primary">Edit</button>
+                                <a href="<?php echo e(route('admin.paket.editChoice',$paket->id_paket)); ?>" class="btn btn-danger">Batal</a>
                             </div>
                         </form>
 

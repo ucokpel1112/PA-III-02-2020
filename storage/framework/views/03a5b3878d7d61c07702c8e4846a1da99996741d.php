@@ -3,12 +3,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Detail Paket</h1>
+                    <h1>Member/Anggota CBT</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item"><a href="#">Member</a></li>
+                        <li class="breadcrumb-item">Member</li>
                     </ol>
                 </div>
             </div>
@@ -31,9 +31,9 @@
                         <div class="card-body">
                             <div class="tab-content">
                                 <div class="tab-pane <?php echo e(((Request::segment(2) === 'member')&&(Request::segment(3) == null)) ? 'active' : null); ?> " id="member">
-                                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
+                                    <button style="margin-bottom: 10px" type="button" class="btn btn-primary btn-sm" data-toggle="modal"
                                             data-target="#exampleModal">
-                                        <i class="fas fa-plus"> </i> Tambah Data Layanan Wisata
+                                        <i class="fas fa-plus"> </i> Tambah Member
                                     </button>
 
                                     <!-- Modal -->
@@ -193,7 +193,7 @@
                                                 <td><?php echo e($row->getUser->email); ?></td>
                                                 <td><?php echo e($row->defineStatus($row->getUser->register_status)); ?></td>
                                                 <td>
-                                                    <a href="<?php echo e(route('member.detail',$row->id)); ?>" class="btn btn-sm btn-info">Detail</a>
+                                                    <a href="<?php echo e(route('member.detail',$row->id)); ?>" class="btn btn-sm btn-info"><i class="fa fa-eye"> </i> Lihat</a>
                                                     <?php if($row->getUser->register_status==1): ?>
                                                         <a href="<?php echo e(route('member.nonaktifkan',$row->id)); ?>" class="btn btn-sm btn-warning">Non-Aktif kan</a>
                                                     <?php elseif($row->getUser->register_status==2): ?>

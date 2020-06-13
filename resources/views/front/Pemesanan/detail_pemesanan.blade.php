@@ -97,7 +97,6 @@
                                             <td colspan="3"><p>{{$pemesanan->pesan}}</p></td>
                                         </tr>
                                     </table>
-
                                 </div>
                             </div>
                             <div v-if="status==1">

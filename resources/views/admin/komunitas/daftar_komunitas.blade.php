@@ -4,12 +4,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Komunitas Pariwisata</h1>
+                    <h1>Komunitas</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{route('home.admin')}}">Home</a></li>
-                        <li class="breadcrumb-item active">Komunitas Pariwisata</li>
+                        <li class="breadcrumb-item active">Komunitas</li>
                     </ol>
                 </div>
             </div>
@@ -47,6 +47,7 @@
                         <th class="text-center" style="width: 20%">
                             Kabupaten
                         </th>
+                        <th></th>
                         <th class="text-center" style="width:20%">
                             Aksi
                         </th>
@@ -60,6 +61,14 @@
                             <td> <?php echo $komunitas->deskripsi ?></td>
                             <td><a href="{{$komunitas->link}}">{{$komunitas->link}}</a></td>
                             <td>{{$komunitas->getKabupaten->nama_kabupaten}}</td>
+                            <td>
+                                <form action="{{route('member.filter')}}" method="post">
+                                    @csrf
+                                    <input name="komunitas" value="{{$komunitas->id}}" type="text" hidden>
+                                    <input name="status" value="semua" type="text" hidden>
+                                    <button type="submit" class="btn btn-primary btn-sm">Lihat</button>
+                                </form>
+                            </td>
                             <td>
                                 <a href="{{ route('edit_komunitas',$komunitas->id)}}" class="btn btn-info btn-sm"><i class="fa fa-edit"> </i> Edit</a>
                                 <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"

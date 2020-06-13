@@ -98,7 +98,6 @@
                                             <td colspan="3"><p><?php echo e($pemesanan->pesan); ?></p></td>
                                         </tr>
                                     </table>
-
                                 </div>
                             </div>
                             <div v-if="status==1">
