@@ -9,8 +9,9 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Kalender Event</a></li>
-                        <li class="breadcrumb-item active">Tambah Kalender</li>
+                        <li class="breadcrumb-item"><a href="{{url('/adm/dashboard')}}">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{{url('/adm/kalender/listkalender')}}">Kalender Event</a></li>
+                        <li class="breadcrumb-item active">Update Kalender</li>
                     </ol>
                 </div>
             </div>

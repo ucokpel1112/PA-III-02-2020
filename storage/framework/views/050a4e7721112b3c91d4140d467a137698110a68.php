@@ -1,16 +1,15 @@
-@extends('layout.admin.app')
-@section('content')
+<?php $__env->startSection('content'); ?>
     <section class="content-header">
         <div class="container-fluid">
               <div class="row mb-2">
                 <div class="col-sm-6">
                     <h1>Dashboard</h1>
                 </div>
-                {{--                <div class="col-sm-6">--}}
-                {{--                    <ol class="breadcrumb float-sm-right">--}}
-                {{--                        <li class="breadcrumb-item"><a href="#">Kalender Event</a></li>--}}
-                {{--                    </ol>--}}
-                {{--                </div>--}}
+                
+                
+                
+                
+                
             </div>
         </div><!-- /.container-fluid -->
     </section>
@@ -23,14 +22,14 @@
                     <!-- small box -->
                     <div class="small-box bg-info">
                         <div class="inner">
-                            <h3>{{$count_p}}</h3>
+                            <h3><?php echo e($count_p); ?></h3>
 
                             <p>Paket Wisata</p>
                         </div>
                         <div class="icon">
                             <i class="ion ion-cube"></i>
                         </div>
-                        <a href="{{ url('/adm/paket') }}" class="small-box-footer">More info <i
+                        <a href="<?php echo e(url('/adm/paket')); ?>" class="small-box-footer">More info <i
                                 class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
@@ -39,7 +38,7 @@
                     <!-- small box -->
                     <div class="small-box bg-success">
                         <div class="inner">
-                            <h3>{{$count}}</h3>
+                            <h3><?php echo e($count); ?></h3>
 
                             <p>Kalender Wisata</p>
                         </div>
@@ -47,7 +46,7 @@
                             <i class="ion ion-pricetag"></i>
 
                         </div>
-                        <a href="{{ url('/adm/listkalender') }}" class="small-box-footer">More info <i
+                        <a href="<?php echo e(url('/adm/listkalender')); ?>" class="small-box-footer">More info <i
                                 class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
@@ -56,14 +55,14 @@
                     <!-- small box -->
                     <div class="small-box bg-warning">
                         <div class="inner">
-                            <h3>{{$count_m}}</h3>
+                            <h3><?php echo e($count_m); ?></h3>
 
                             <p>Member CBT</p>
                         </div>
                         <div class="icon">
                             <i class="ion ion-person"></i>
                         </div>
-                        <a href="{{url('adm/komunitas/pendaftar')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="<?php echo e(url('adm/komunitas/pendaftar')); ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
@@ -71,7 +70,7 @@
                     <!-- small box -->
                     <div class="small-box bg-danger">
                         <div class="inner">
-                            <h3>{{$count_c}}</h3>
+                            <h3><?php echo e($count_c); ?></h3>
 
                             <p>Customer</p>
                         </div>
@@ -99,7 +98,8 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            {!! $usersChart->container() !!}
+                            <?php echo $usersChart->container(); ?>
+
                         </div>
                         <!-- /.card-body -->
                         <div class="card-footer">
@@ -134,7 +134,7 @@
                                             <?php
                                             $no = 1;
                                             ?>
-                                            @foreach($tabel_chart as $tabel)
+                                            <?php $__currentLoopData = $tabel_chart; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $tabel): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                 <tr>
                                                     <td><?=$no?></td>
                                                     <td><?=$tabel->nama_paket?></td>
@@ -145,7 +145,7 @@
                                                 <?php
                                                 $no++;
                                                 ?>
-                                            @endforeach
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                             </tbody>
                                         </table>
                                     </div>
@@ -163,10 +163,13 @@
         </div>
     </section>
 
-    <script src="{{ $usersChart->cdn() }}"></script>
-    {!! $usersChart->script() !!}
-@endsection
+    <script src="<?php echo e($usersChart->cdn()); ?>"></script>
+    <?php echo $usersChart->script(); ?>
+
+<?php $__env->stopSection(); ?>
 
 
 
 
+
+<?php echo $__env->make('layout.admin.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\Backup Data Kristopel\Kuliah ITdel\Semester 6\PA III\Project\git\v.6.1\PA-III-02-2020\resources\views/admin/dashboard.blade.php ENDPATH**/ ?>
