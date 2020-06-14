@@ -18,6 +18,8 @@ class CreateCommentsTable extends Migration
             $table->string('name');
             $table->text('comment');
             $table->integer('user_id');
+            $table->integer('paket_id');
+            $table->foreign('paket_id')->references('id_paket')->on('paket_wisatas');
             $table->timestamps();
         });
     }

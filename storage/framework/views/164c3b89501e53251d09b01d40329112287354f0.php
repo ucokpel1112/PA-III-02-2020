@@ -58,7 +58,8 @@
                                     <div class="rating_days d-flex justify-content-between">
                                         <div class="days">
                                             <i class="fa fa-clock-o"></i>
-                                            <a href="<?php echo e(route('paket.filter.kabupaten',$row->id_kabupaten)); ?>"><?php echo e($count_toba); ?> Paket Wisata</a>
+                                            <a href="<?php echo e(route('paket.filter.kabupaten',$row->id_kabupaten)); ?>">4 Paket
+                                                Wisata</a>
                                         </div>
                                     </div>
                                 <?php endif; ?>
@@ -80,7 +81,7 @@
 
                                         <div class="days">
                                             <i class="fa fa-clock-o"></i>
-                                            <a href="<?php echo e(route('paket.filter.kabupaten',$row->id_kabupaten)); ?>"><?php echo e($count_samosir); ?>
+                                            <a href="<?php echo e(route('paket.filter.kabupaten',$row->id_kabupaten)); ?>"><?php echo e($row->getPaketWisata->count()); ?>
 
                                                 Paket Wisata</a>
                                         </div>
@@ -104,7 +105,7 @@
 
                                         <div class="days">
                                             <i class="fa fa-clock-o"></i>
-                                            <a href="<?php echo e(route('paket.filter.kabupaten',$row->id_kabupaten)); ?>"><?php echo e($count_taput); ?>
+                                            <a href="<?php echo e(route('paket.filter.kabupaten',$row->id_kabupaten)); ?>"><?php echo e($row->getPaketWisata->count()); ?>
 
                                                 Paket Wisata</a>
                                         </div>
@@ -127,7 +128,7 @@
 
                                         <div class="days">
                                             <i class="fa fa-clock-o"></i>
-                                            <a href="<?php echo e(route('paket.filter.kabupaten',$row->id_kabupaten)); ?>"><?php echo e($count_karo); ?>
+                                            <a href="<?php echo e(route('paket.filter.kabupaten',$row->id_kabupaten)); ?>"><?php echo e($row->getPaketWisata->count()); ?>
 
                                                 Paket Wisata</a>
                                         </div>
@@ -151,7 +152,7 @@
 
                                         <div class="days">
                                             <i class="fa fa-clock-o"></i>
-                                            <a href="<?php echo e(route('paket.filter.kabupaten',$row->id_kabupaten)); ?>"><?php echo e($count_simalungun); ?>
+                                            <a href="<?php echo e(route('paket.filter.kabupaten',$row->id_kabupaten)); ?>"><?php echo e($row->getPaketWisata->count()); ?>
 
                                                 Paket Wisata</a>
                                         </div>
@@ -176,7 +177,7 @@
 
                                         <div class="days">
                                             <i class="fa fa-clock-o"></i>
-                                            <a href="<?php echo e(route('paket.filter.kabupaten',$row->id_kabupaten)); ?>"><?php echo e($count_humbang); ?>
+                                            <a href="<?php echo e(route('paket.filter.kabupaten',$row->id_kabupaten)); ?>"><?php echo e($row->getPaketWisata->count()); ?>
 
                                                 Paket Wisata</a>
                                         </div>
@@ -200,7 +201,7 @@
 
                                         <div class="days">
                                             <i class="fa fa-clock-o"></i>
-                                            <a href="<?php echo e(route('paket.filter.kabupaten',$row->id_kabupaten)); ?>"><?php echo e($count_dairi); ?>
+                                            <a href="<?php echo e(route('paket.filter.kabupaten',$row->id_kabupaten)); ?>"><?php echo e($row->getPaketWisata->count()); ?>
 
                                                 Paket Wisata</a>
                                         </div>
@@ -267,6 +268,68 @@
             </div>
         </div>
     </div>
+
+
+    <!-- testimonial_area  -->
+    <div class="testimonial_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="testmonial_active owl-carousel">
+                        <div class="single_carousel">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-8">
+                                    <div class="single_testmonial text-center">
+                                        <div class="author_thumb">
+                                            <img src="img/testmonial/author.png" alt="">
+                                        </div>
+                                        <p>"Working in conjunction with humanitarian aid agencies, we have supported
+                                            programmes to help alleviate human suffering.</p>
+                                        <div class="testmonial_author">
+                                            <h3>- Micky Mouse</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="single_carousel">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-8">
+                                    <div class="single_testmonial text-center">
+                                        <div class="author_thumb">
+                                            <img src="img/testmonial/author.png" alt="">
+                                        </div>
+                                        <p>"Working in conjunction with humanitarian aid agencies, we have supported
+                                            programmes to help alleviate human suffering.</p>
+                                        <div class="testmonial_author">
+                                            <h3>- Tom Mouse</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="single_carousel">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-8">
+                                    <div class="single_testmonial text-center">
+                                        <div class="author_thumb">
+                                            <img src="img/testmonial/author.png" alt="">
+                                        </div>
+                                        <p>"Working in conjunction with humanitarian aid agencies, we have supported
+                                            programmes to help alleviate human suffering.</p>
+                                        <div class="testmonial_author">
+                                            <h3>- Jerry Mouse</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /testimonial_area  -->
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make('layout.front.main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\PA-III-02-2020\resources\views/welcome.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layout.front.main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\PAIII-paling baru\PA-III-02-2020\resources\views/welcome.blade.php ENDPATH**/ ?>

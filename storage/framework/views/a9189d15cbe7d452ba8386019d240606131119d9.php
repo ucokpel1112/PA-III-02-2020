@@ -16,27 +16,27 @@
                         <div class="socail_links">
                             <ul>
                                 <li>
-                                    <a href="https://www.facebook.com/visittoba00/">
+                                    <a href="#">
                                         <i class="ti-facebook"></i>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="https://www.twitter.com/visittoba00/">
+                                    <a href="#">
                                         <i class="ti-twitter-alt"></i>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="https://www.instagram.com/visittoba00/">
+                                    <a href="#">
                                         <i class="fa fa-instagram"></i>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="https://www.linkedin.com/visittoba00/">
+                                    <a href="#">
                                         <i class="fa fa-linkedin"></i>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="https://www.youtube.com/visittoba00/">
+                                    <a href="#">
                                         <i class="fa fa-youtube-play"></i>
                                     </a>
                                 </li>
@@ -51,10 +51,10 @@
                             Layanan
                         </h3>
                         <ul class="links">
-                            <li><a href="<?php echo e(url('/paket')); ?>">Paket Wisata</a></li>
-                            <li><a href="<?php echo e(url('/eventkalender')); ?>">Kalender Event</a></li>
-                            <li><a href="<?php echo e(url('/')); ?>">Member CBT</a></li>
-                            <li><a href="<?php echo e(url('/kontak')); ?>"> Tentang</a></li>
+                            <li><a href="#">Paket Wisata</a></li>
+                            <li><a href="#">Kalender Event</a></li>
+                            <li><a href="#">Member CBT</a></li>
+                            <li><a href="#"> Tentang</a></li>
                         </ul>
                     </div>
                 </div>
@@ -81,7 +81,38 @@
                         <h3 class="footer_title">
                             Instagram
                         </h3>
-                        <p>PA III-2020-02</p>
+                        <div class="instagram_feed">
+                            <div class="single_insta">
+                                <a href="#">
+                                    <img src="img/instagram/1.png" alt="">
+                                </a>
+                            </div>
+                            <div class="single_insta">
+                                <a href="#">
+                                    <img src="img/instagram/2.png" alt="">
+                                </a>
+                            </div>
+                            <div class="single_insta">
+                                <a href="#">
+                                    <img src="img/instagram/3.png" alt="">
+                                </a>
+                            </div>
+                            <div class="single_insta">
+                                <a href="#">
+                                    <img src="img/instagram/4.png" alt="">
+                                </a>
+                            </div>
+                            <div class="single_insta">
+                                <a href="#">
+                                    <img src="img/instagram/5.png" alt="">
+                                </a>
+                            </div>
+                            <div class="single_insta">
+                                <a href="#">
+                                    <img src="img/instagram/6.png" alt="">
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -94,7 +125,7 @@
                 <div class="col-xl-12">
                     <p class="copy_right text-center">
                         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                        Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Visit-Toba | PAIII-02-2020
+                        Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Visit-Toba
                         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                     </p>
                 </div>
@@ -102,4 +133,4 @@
         </div>
     </div>
 </footer>
-<?php /**PATH C:\xampp\htdocs\PA-III-02-2020\resources\views/layout/front/includes/footer.blade.php ENDPATH**/ ?>
+<?php /**PATH C:\xampp\htdocs\PAIII-paling baru\PA-III-02-2020\resources\views/layout/front/includes/footer.blade.php ENDPATH**/ ?>

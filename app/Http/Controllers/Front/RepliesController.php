@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Front;
 
+use App\Comment;
 use App\Http\Controllers\Controller;
 use App\Reply;
 use Illuminate\Http\Request;
@@ -33,6 +34,7 @@ class RepliesController extends Controller
     public function store(Request $request)
     {
         if (Auth::check()) {
+            $comments = Comment::find($request->input('comment_id'));
             Reply::create([
                 'comment_id' => $request->input('comment_id'),
                 'name' => $request->input('name'),
@@ -40,7 +42,7 @@ class RepliesController extends Controller
                 'user_id' => Auth::user()->id
             ]);
 
-            return redirect()->route('paket')->with('success','Reply added');
+            return redirect()->route('paket.detail',$comments->paket_id)->with('status','Balasan komentar anda telah ditambahkan !');
         }
 
         return back()->withInput()->with('error','Something wronmg');

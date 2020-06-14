@@ -1,5 +1,8 @@
 <?php
 
+use App\Comment;
+use App\paketWisata;
+use App\Sesi;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -166,6 +169,16 @@ Route::get('/anggotacbt/komunitas/pendaftar',['middleware'=>'check-permission:me
 Route::post('/anggotacbt/komunitas/pendaftar/create',['middleware'=>'check-permission:member','uses'=>'PendaftarController@daftar'])->name('gabung_daftar');
 
 Route::get('/design',function(){
-    $pemesanan = \App\Pemesanan::first();
-   return view('desgin',compact('pemesanan'));
+    $paket = paketWisata::first();
+    $id_paket = $paket->id_paket;
+    $sesi = Sesi::where([['paket_id', $id_paket], ['status', 1]])->get();
+    $hotel = null;
+    $comments = Comment::where('paket_id',$id_paket)->get();
+
+    foreach ($paket->getPaketLayanan as $row) {
+        if ($row->jenisLayanan_id == 2)
+            array_push($hotel, $row);
+    }
+    $paket_lain = paketWisata::where([['status', 1],['kabupaten_id',$paket->kabupaten_id],['id_paket','!=',$id_paket]])->orderBy('created_at', 'DESC')->paginate(3);
+    return view('desgin', compact('paket_lain','comments','paket', 'hotel', 'sesi'));
 });

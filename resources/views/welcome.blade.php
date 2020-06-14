@@ -60,8 +60,7 @@
                                     <div class="rating_days d-flex justify-content-between">
                                         <div class="days">
                                             <i class="fa fa-clock-o"></i>
-                                            <a href="{{route('paket.filter.kabupaten',$row->id_kabupaten)}}">{{$count_toba}} Paket
-                                                Wisata</a>
+                                            <a href="{{route('paket.filter.kabupaten',$row->id_kabupaten)}}">{{$count_toba}} Paket Wisata</a>
                                         </div>
                                     </div>
                                 @endif

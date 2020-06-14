@@ -1,207 +1,484 @@
 @extends('layout.front.main')
 @section('content')
-    <div class="bradcam_area bradcam_bg_4">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl">
-                    <div class="bradcam_text text-center">
 
+
+    <div class="destination_banner_wrap overlay"
+         style="background-image: url({{asset('storage/img/paket/'.$paket->gambar)}});">
+        <div class="destination_text text-center">
+            <h3>{{$paket->nama_paket}}</h3>
+            <p>Kabupaten {{ucfirst($paket->getKabupaten->nama_kabupaten)}}</p>
+            <a style="margin-top: 50px;" href="#pemesanan" class="boxed-btn3">Pemesanan</a>
+            {{--            <a    class="genric-btn info e-large">Pemesanan</a>--}}
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row cakupan">
+            <div class="col item">
+                <div class="row simbol">
+                    <div class="col">
+                        <i class="fa fa-clock-o simbol-detail" aria-hidden="true"></i>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <h2 style="color: white;">{{$paket->durasi}}</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col item">
+                <div class="row simbol">
+                    <div class="col">
+                        <i class="fa fa-user simbol-detail" aria-hidden="true"></i>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <h2 style="color: white;">{{$paket->availability}} Orang</h2>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <div class="container-fluid popular_places_area " style="margin-top: 1px">
-        <div class="row" style="margin-left: 10px">
-            <div style="padding-bottom: 0px;" class="col-4">
-                <div class="blog_right_sidebar border" style="background-color: white;border-radius: 5px;">
-                    <aside class="single_sidebar_widget post_category_widget" style="background: white;">
-                        <h4 class="widget_title">Paket Wisata</h4>
-                        <div class="single_place border cat-list">
-                            <div class="thumb">
-                                <img src="{{asset('storage/img/paket/'.$pemesanan->getSesi->getPaket->gambar)}}" alt="">
-                                <a href="#"
-                                   class="prise">Rp.{{number_format($pemesanan->getSesi->getPaket->harga_paket)}}</a>
-                            </div>
-                            <div class="place_info">
-                                <a href="{{route('paket.detail',$pemesanan->getSesi->getPaket->id_paket)}}">
-                                    <h3>{{$pemesanan->getSesi->getPaket->nama_paket}}</h3></a>
-                                <p>{{$pemesanan->getSesi->getPaket->getKabupaten->nama_kabupaten}}
-                                    <a href="#" class="float-right"><i
-                                            class="fa fa-clock-o"> </i> {{$pemesanan->getSesi->getPaket->durasi}}</a>
-                                </p>
-                            </div>
-                        </div>
-                    </aside>
+    <div class="destination_details_info">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 col-md-9">
+                    <div class="destination_info">
+                        <h3>Description</h3>
+                        <hr>
+                        {{--                        Mulai Deskripsi--}}
+                        <?php echo($paket->deskripsi_paket); ?>
+                        {{--                        Akhir Deskripsi--}}
+                        <br><br>
+                        <h3>Itinerary</h3>
+                        <hr>
+                        {{--                    Mulai Itinerary        --}}
+                        <?= $paket->rencana_perjalanan ?>
+                        {{--                        Akhir Itinerary--}}
+                        <br><br>
+                    </div>
+                    <div class="destination_info">
+                        <h3>Tambahan</h3>
+                        <hr>
+                        <?= $paket->tambahan ?>
+                    </div>
                 </div>
             </div>
-            <div class=" col-lg" style="margin-left: 5px;">
-                <div class="row border"
-                     style="border-radius: 5px; background: white;padding: 10px;margin-bottom: 10px;">
-                    <div class="col ">
-                        <h2 class="gj-text-align-center">Detail Pemesanan</h2>
-                        <hr>
-                        <table width="100%">
-                            <tr>
-                                <th style="width: 48%"></th>
-                                <th></th>
-                                <th></th>
-                            </tr>
-                            <tr>
-                                <td><b>Status</b></td>
-                                <td><p>: </p></td>
-                                <td><p>Menunggu Pembayaran</p></td>
-                            </tr>
-                            <tr>
-                                <td><b>Tanggal Pemesanan</b></td>
-                                <td><p>: </p></td>
-                                <td><p>12 Agustus 2019</p></td>
-                            </tr>
-                            <tr>
-                                <td><b>Total Pembayaran</b></td>
-                                <td><p>: </p></td>
-                                <td><p>Rp. 20.000,00</p></td>
-                            </tr>
-                            <tr>
-                                <td><b>Jumlah Peserta</b></td>
-                                <td><p>: </p></td>
-                                <td><p>3 Orang</p></td>
-                            </tr>
-                            <tr>
-                                <td><b>Pesan :</b></td>
-                                <td><p></p></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td colspan="3"><p>pesan pesan pesan pesan pesan pesan pesan pesan pesan pesan pesan
-                                        pesan </p></td>
-
-                            </tr>
-                        </table>
-
+        </div>
+    </div>
+    @if(isset($hotel))
+        <div class="popular_places_area">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-6">
+                        <div class="section_title text-center mb_70">
+                            <h3>Rekomendasi Hotel</h3>
+                        </div>
                     </div>
                 </div>
-                <div class="border row "
-                     style="border-radius: 5px; background: #fbf9ff;padding: 10px;margin-bottom: 10px;">
-                    <div class="col gj-text-align-center" style="padding-bottom: 20px">
-                        <p>Segera selesaikan pembayaran Anda !</p>
-                        <br>
-                        <h2>23 jam 40 menit 30 detik</h2>
-                        <br>
-                        <p><i>(Sebelum Sabtu, Juni 6 2020, 4:52:29 sore)</i></p>
+                <div class="row">
+                    @foreach($hotel as $row)
+                        <div class="col-lg-4 col-md-6">
+                            <div class="single_place">
+
+                                <div class="place_info">
+                                    <a href="#"><h3>{{$row->nama_layanan}}</h3></a>
+                                    <p>{{$row->deskripsi_layanan}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+    @endif
+    <div class="newletter_area overlay">
+        <div class="container">
+            <div class="row justify-content-center align-items-center">
+                <div class="col-lg-10">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="newsletter_text">
+                                <center><h4>Included</h4></center>
+                                <ul class="unordered-list ior">
+                                    @foreach($paket->getIncludedNotIncluded as $row)
+                                        @if($row->jenis_ini=='included')
+                                            <li>{{$row->keterangan}}</li>
+                                        @endif
+                                    @endforeach
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="newsletter_text">
+                                <center><h4>Not Included</h4></center>
+                                <ul class="unordered-list ior">
+                                    @foreach($paket->getIncludedNotIncluded as $row)
+                                        @if($row->jenis_ini=='not included')
+                                            <li>{{$row->keterangan}}</li>
+                                        @endif
+                                    @endforeach
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="border row" style="background: white;padding: 10px;margin-bottom: 10px;border-radius: 5px">
-                    <div class="col ">
-                        <p class="gj-text-align-center">Transfer pembayaran ke nomor Virtual Account :</p>
-                        <hr>
-                        <h3 class="mb-30">Bank BRI</h3>
-                        <div class="row">
-                            <div class="col-md-2">
-                                <img src="img/elements/d.jpg" alt="" class="img-fluid">
-                            </div>
-                            <div class="col-md-10 mt-sm-20">
-                                <p><b>Nomor Rekening : 1212121212</b></p>
-                                <p>a/n Ruth Elvin Harianja </p>
-                            </div>
-                        </div>
-                        <hr>
-                        <h3 class="mb-30">Bank BNI</h3>
-                        <div class="row">
-                            <div class="col-md-2">
-                                <img src="img/elements/d.jpg" alt="" class="img-fluid">
-                            </div>
-                            <div class="col-md-10 mt-sm-20">
-                                <p><b>Nomor Rekening : 1212121212</b></p>
-                                <p>a/n Ruth Elvin Harianja </p>
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="row">
-                            <button data-toggle="modal"
-                                    data-target="#exampleModal" type="button" class="btn btn-primary col-md mt-sm-20">
-                                Upload Bukti Pembayaran
-                            </button>
+            </div>
+        </div>
+    </div>
+    <div id="pemesanan" class="destination_details_info">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 col-md-9">
+                    <div></div>
+                    <div class="contact_join text-center">
+                        @if(Auth::check())
+                            <h3>P E M E S A N A N <br><br>(Rp.{{number_format($paket->harga_paket)}} / Person)</h3>
+                            <form name="pemesanan" action="{{route('paket.pesan',$paket->id_paket)}}" method="POST">
+                                @csrf
+                                @method('PUT')
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12">
+                                        <div class="mt-10">
+                                            <input min="1" type="number" name="jumlah_peserta"
+                                                   placeholder="Jumlah Peserta Wisata"
+                                                   onfocus="this.placeholder = ''"
+                                                   onblur="this.placeholder = 'Jumlah Peserta Wisata'" required
+                                                   class="single-input-primary">
 
-                            <!-- Modal -->
-                            <div
-                                class="modal fade"
-                                id="exampleModal"
-                                tabindex="-1"
-                                role="dialog"
-                                aria-labelledby="exampleModalLabel"
-                                aria-hidden="true"
-                            >
-                                <div class="modal-dialog modal-dialog-centered" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Upload Bukti Bayar</h5>
-                                            <button
-                                                type="button"
-                                                class="close"
-                                                data-dismiss="modal"
-                                                aria-label="Close"
-                                            >
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
                                         </div>
-                                        <form>
-                                            <div class="modal-body">
-                                                <p>Total Yang Harus Dibayar : <b>Rp. 50.000,00</b></p>
-                                                <hr>
-                                                <label for="rekening" class="small">Pilih Rekening</label>
-                                                <hr>
-                                                <div id="rekening" class="form-group">
-                                                    <input type="radio" id="rekening_1" name="rekening_id">
-                                                    <label for="rekening_1">
-                                                        <img src="img/elements/d.jpg" width="50"> Bank BRI
-                                                        (112313123123)</label>
-                                                </div>
-                                                <div class="form-group">
-                                                    <input type="radio" id="rekening_2" name="rekening_id">
-                                                    <label for="rekening_2">
-                                                        <img src="img/elements/d.jpg" width="50"> Bank BRI
-                                                        (112313123123)</label>
-                                                </div>
-                                                <br>
-                                                <hr>
-                                                <div class="form-group">
-                                                    <label for="bukti" class="small">Bukti Pembayaran</label>
-                                                    {{--                                                    <hr>--}}
-                                                    <div class="upload-btn-wrapper">
-                                                        <input id="bukti" name="gambar" class="form-control-file"
-                                                               type="file"
-                                                               name="myfile">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="input-group-icon mt-10">
+                                            <div class="icon"><i class="fa fa-plane" aria-hidden="true"></i></div>
+                                            <div class="form-select single-input-primary" id="default-select">
+                                                {{--                                            sini--}}
+                                                <select name="sesi">
+                                                    <option>Pilih Jadwal</option>
+                                                    @foreach($sesi as $row)
+                                                        <option
+                                                            value="{{$row->id_sesi}}"
+                                                        >{{$row->jadwal}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="mt-10">
+                                        <textarea name="pesan" class="single-textarea single-input-primary"
+                                                  placeholder="Pesan/Pertanyaan Untuk Pemesanan"
+                                                  onfocus="this.placeholder = ''"
+                                                  onblur="this.placeholder = 'Pesan/Pertanyaan Untuk Pemesanan'"
+                                                  required></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="submit_btn mt-10">
+                                            <button class="boxed-btn4" type="submit">submit</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        @else
+                            <h3>P E M E S A N A N <br><br></h3>
+                            <h4 class="text-dark">Untuk Melakukan Pemesanan, Anda Harus Login Terlebih Dahulu <br><br>
+                            </h4>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="submit_btn mt-10">
+                                        <a href="{{route('login')}}" class="boxed-btn4" type="submit"><i
+                                                class="fa fa-sign-in"></i> Login </a>
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8 posts-list">
+
+                    <div class="comment-form">
+                        <h4>Berikan Komentar</h4>
+                        <form method="POST" class="form-contact comment_form" action="{{ route('comments.store') }}" id="commentForm">
+                            @csrf
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+                                        <input type="hidden" name="paket_id" value="{{ $paket->id_paket }}">
+                                        <textarea class="form-control w-100" name="comment" id="comment" cols="30" rows="9"
+                                        placeholder="Write Comment"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="button button-contactForm btn_1 boxed-btn">Kirim</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="comments-area comment-container">
+                        @if (session('status'))
+                            <div class="alert alert-success">
+                                {{ session('status') }}
+                            </div>
+                        @endif
+                        <h4>{{$paket->comments->count()}} Comments</h4>
+                            @forelse($paket->comments as $comment)
+                        <div class="comment-list">
+                            <div class="single-comment justify-content-between d-flex">
+                                <div class="user justify-content-between d-flex">
+                                    <div class="desc">
+                                        <p class="comment">
+                                            {{$comment->comment}}
+                                        </p>
+                                        <div class="d-flex justify-content-between">
+                                            <div class="d-flex align-items-center">
+                                                <h5>
+                                                    <a href="#">{{$comment->name}}</a>
+                                                </h5>
+                                                <p class="date">
+                                                    {{\Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $comment->created_at)->format('F d, Y')}} at {{\Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $comment->created_at)->format('g:i a')}}
+                                                </p>
+                                            </div>
+                                            <div class="reply-btn ">
+                                                <a class="btn-reply text-uppercase reply"
+                                                   style="cursor: pointer;"
+                                                   cid="{{ $comment->id }}"
+                                                   name_a="{{ Auth::user()->name }}"
+                                                   token="{{ csrf_token() }}"
+                                                   >Balas</a>
+                                            </div>
+                                            <div class="reply-btn ">
+                                                <a class="btn-reply text-uppercase delete-comment"
+                                                   style="cursor: pointer;"
+                                                   token="{{ csrf_token() }}"
+                                                   comment-did="{{ $comment->id }}">Hapus</a>
+                                            </div>
+                                        </div>
+                                        <div class="reply-form"></div>
+                                        <div class="row">
+                                            <div class="col-2">
+
+                                            </div>
+                                            <div class="col">
+                                                @forelse($comment->replies as $rep)
+                                                    @if($comment->id === $rep->comment_id)
+                                                        <div class="comment-list">
+                                                    <div class="single-comment justify-content-between d-flex">
+                                                        <div class="user justify-content-between d-flex">
+                                                            <div class="desc">
+                                                                <p class="comment">
+                                                                    {{$rep->reply}}
+                                                                </p>
+                                                                <div class="d-flex justify-content-between">
+                                                                    <div class="d-flex align-items-center">
+                                                                        <h5>
+                                                                            <a href="#">{{$rep->name}}</a>
+                                                                        </h5>
+                                                                        <p class="date">
+                                                                            {{\Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $rep->created_at)->format('F d, Y')}} at {{\Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $rep->created_at)->format('g:i a')}}
+                                                                        </p>
+                                                                    </div>
+                                                                    <div class="reply-btn">
+                                                                        <a class="btn-reply text-uppercase reply-to-reply"
+                                                                           rname="{{ Auth::user()->name }}"
+                                                                           rid="{{ $comment->id }}"
+                                                                           style="cursor: pointer;"
+                                                                           token="{{ csrf_token() }}"
+                                                                        >Balas</a>
+
+                                                                    </div>
+                                                                    <div class="reply-btn">
+                                                                        <a class="btn-reply text-uppercase delete-reply"
+                                                                           did="{{ $rep->id }}"
+                                                                           token="{{ csrf_token() }}"
+                                                                        >Hapus</a>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="reply-to-reply-form">
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                    <small class="form-text text-muted"></small>
                                                 </div>
-                                            </div>
-                                        </form>
-                                        <div class="row modal-footer">
-                                            <div class="col-1">
-                                            </div>
-                                            <button type="submit" class="col btn btn-primary">Upload
-                                            </button>
-                                            <div class="col-1">
+                                                    @endif
+                                                @empty
+
+                                                @endforelse
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <!-- end Modal -->
                         </div>
-                        <form action="#">
-                            <div class="row" style="margin-top:10px">
-                                <button class="btn btn-danger col-md mt-sm-20">
-                                    Batalkan Pemesanan
-                                </button>
-                            </div>
-                        </form>
+
+                                @empty
+
+                        @endforelse
                     </div>
-                </div>
             </div>
         </div>
     </div>
+{{--    @if(\Illuminate\Support\Facades\Auth::check())--}}
+{{--        --}}{{--    Awal Komentar --}}
+{{--        <div class="container">--}}
+{{--            <div class="row justify-content-center">--}}
+{{--                <div class="col-lg-8 col-md-9">--}}
+{{--                    <div class="panel panel-default">--}}
+{{--                        <div class="panel-heading">Comments</div>--}}
 
+{{--                        <div class="panel-body">--}}
+{{--                            @if (session('status'))--}}
+{{--                                <div class="alert alert-success">--}}
+{{--                                    {{ session('status') }}--}}
+{{--                                </div>--}}
+{{--                            @endif--}}
+
+
+{{--                            <form id="comment-form" method="post" action="{{ route('comments.store') }}">--}}
+{{--                                {{ csrf_field() }}--}}
+
+{{--                                <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">--}}
+{{--                                <input type="hidden" name="paket_id" value="{{ $paket->id_paket }}">--}}
+{{--                                <div class="row" style="padding: 10px;">--}}
+{{--                                    <div class="form-group">--}}
+{{--                                        <textarea class="single-textarea single-input-primary" name="comment"--}}
+{{--                                                  placeholder="Write something from your heart..!"></textarea>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                                <div class="row" style="padding: 0 10px 0 10px;">--}}
+{{--                                    <div class="form-group">--}}
+{{--                                        <input type="submit" class="btn btn-primary btn-lg" style="width: 100%"--}}
+{{--                                               name="submit">--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </form>--}}
+
+
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--            @endif--}}
+{{--            <div class="row justify-content-center" id="comment">--}}
+{{--                <div class="col-md-8 col-md-9">--}}
+{{--                    <div class="panel panel-default">--}}
+{{--                        <div class="panel-heading">Comments</div>--}}
+
+{{--                        <div class="panel-body comment-container">--}}
+{{--                            @forelse($paket->comments as $comment)--}}
+{{--                                <div class="well">--}}
+{{--                                    <i><b> {{ $comment->name }} </b></i>&nbsp;&nbsp;--}}
+{{--                                    <span> {{ $comment->comment }} </span>--}}
+{{--                                    <div style="margin-left:10px;">--}}
+{{--                                        @if(Auth::check())--}}
+{{--                                            <a style="cursor: pointer;" cid="{{ $comment->id }}"--}}
+{{--                                               name_a="{{ Auth::user()->name }}" token="{{ csrf_token() }}"--}}
+{{--                                               class="reply">Reply</a>--}}
+{{--                                            &nbsp;--}}
+{{--                                            <a style="cursor: pointer;" class="delete-comment"--}}
+{{--                                               token="{{ csrf_token() }}"--}}
+{{--                                               comment-did="{{ $comment->id }}">Delete</a>--}}
+{{--                                        @endif--}}
+{{--                                        <div class="reply-form">--}}
+
+{{--                                            <!-- Dynamic Reply form -->--}}
+
+{{--                                        </div>--}}
+{{--                                        @foreach($comment->replies as $rep)--}}
+{{--                                            @if($comment->id === $rep->comment_id)--}}
+{{--                                                <div class="well">--}}
+{{--                                                    <i><b> {{ $rep->name }} </b></i>&nbsp;&nbsp;--}}
+{{--                                                    <span> {{ $rep->reply }} </span>--}}
+{{--                                                    <div style="margin-left:10px;">--}}
+{{--                                                        <a rname="{{ Auth::user()->name }}" rid="{{ $comment->id }}"--}}
+{{--                                                           style="cursor: pointer;" class="reply-to-reply"--}}
+{{--                                                           token="{{ csrf_token() }}">Reply</a>&nbsp;<a--}}
+{{--                                                            did="{{ $rep->id }}"--}}
+{{--                                                            class="delete-reply"--}}
+{{--                                                            token="{{ csrf_token() }}">Delete</a>--}}
+{{--                                                    </div>--}}
+{{--                                                    <div class="reply-to-reply-form">--}}
+
+{{--                                                        <!-- Dynamic Reply form -->--}}
+
+{{--                                                    </div>--}}
+
+{{--                                                </div>--}}
+{{--                                            @endif--}}
+{{--                                        @endforeach--}}
+
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            @empty--}}
+
+{{--                            @endforelse--}}
+
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+
+
+{{--        </div>--}}
+        {{--    Akhir Komentar--}}
+        @if(isset($paket_lain))
+            <div class="popular_places_area">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-6">
+                            <div class="section_title text-center mb_70">
+                                <h3>Paket Wisata Lainnya</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center">
+                        @foreach($paket_lain as $row)
+                            <div class="col-lg-4 col-md-6">
+                                <div class="single_place">
+                                    <div class="thumb">
+                                        <img src="{{asset('storage/img/paket/'.$row->gambar)}}" alt="">
+                                        <a href="#" class="prise">Rp.{{number_format($row->harga_paket)}}</a>
+                                    </div>
+                                    <div class="place_info">
+                                        <a href="{{route('paket.detail',$row->id_paket)}}"><h3>{{$row->nama_paket}}</h3>
+                                        </a>
+                                        <p>{{$row->getKabupaten->nama_kabupaten}}</p>
+                                        <div class="rating_days d-flex justify-content-between">
+                                        <span class="d-flex justify-content-center align-items-center">
+                                             <i class="fa fa-star"></i>
+                                             <i class="fa fa-star"></i>
+                                             <i class="fa fa-star"></i>
+                                             <i class="fa fa-star"></i>
+                                             <i class="fa fa-star"></i>
+                                             <a href="#">(20 Review)</a>
+                                        </span>
+                                            <div class="days">
+                                                <i class="fa fa-clock-o"></i>
+                                                <a href="#">{{$row->durasi}}</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            {!! $paket_lain->links() !!}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endif
 @endsection
