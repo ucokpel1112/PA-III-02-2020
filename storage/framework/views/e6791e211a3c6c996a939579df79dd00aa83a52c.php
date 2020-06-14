@@ -152,58 +152,59 @@
                                     <div class="col-lg-12">
                                         <div class="input-group-icon mt-10">
                                             <div class="icon"><i class="fa fa-plane" aria-hidden="true"></i></div>
-                                            <div class="form-select single-input-primary" id="default-select"">
-                                                <select name="sesi">
-                                                    <option>Pilih Jadwal</option>
-                                                    <?php $__currentLoopData = $sesi; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                        <option
-                                                            value="<?php echo e($row->id_sesi); ?>"
-                                                        ><?php echo e($row->jadwal); ?></option>
-                                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                                </select>
-                                            </div>
+                                            <div class="form-select single-input-primary" id="default-select"
+                                            ">
+                                            <select name="sesi">
+                                                <option>Pilih Jadwal</option>
+                                                <?php $__currentLoopData = $sesi; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                    <option
+                                                        value="<?php echo e($row->id_sesi); ?>"
+                                                    ><?php echo e($row->jadwal); ?></option>
+                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
+                    </div>
 
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="mt-10">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="mt-10">
                                         <textarea name="pesan" class="single-textarea single-input-primary"
                                                   placeholder="Pesan/Pertanyaan Untuk Pemesanan"
                                                   onfocus="this.placeholder = ''"
                                                   onblur="this.placeholder = 'Pesan/Pertanyaan Untuk Pemesanan'"
                                                   required></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="submit_btn mt-10">
-                                            <button class="boxed-btn4" type="submit">submit</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                        <?php else: ?>
-                            <h3>P E M E S A N A N <br><br></h3>
-                            <h4 class="text-dark">Untuk Melakukan Pemesanan, Anda Harus Login Terlebih Dahulu <br><br>
-                            </h4>
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <div class="submit_btn mt-10">
-                                        <a href="<?php echo e(route('login')); ?>" class="boxed-btn4" type="submit"><i
-                                                class="fa fa-sign-in"></i> Login </a>
-                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="submit_btn mt-10">
+                                <button class="boxed-btn4" type="submit">submit</button>
+                            </div>
+                        </div>
+                    </div>
+                    </form>
+                    <?php else: ?>
+                        <h3>P E M E S A N A N <br><br></h3>
+                        <h4 class="text-dark">Untuk Melakukan Pemesanan, Anda Harus Login Terlebih Dahulu <br><br>
+                        </h4>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="submit_btn mt-10">
+                                    <a href="<?php echo e(route('login')); ?>" class="boxed-btn4" type="submit"><i
+                                            class="fa fa-sign-in"></i> Login </a>
                                 </div>
                             </div>
-                        <?php endif; ?>
-                    </div>
+                        </div>
+                    <?php endif; ?>
                 </div>
             </div>
-            <div class="row justify-content-center">
-                <div class="col-lg-8 posts-list">
-
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-8 posts-list">
+                <?php if(Auth::check()): ?>
                     <div class="comment-form">
                         <h4>Berikan Komentar</h4>
                         <form method="POST" class="form-contact comment_form" action="<?php echo e(route('comments.store')); ?>"
@@ -225,259 +226,259 @@
                             </div>
                         </form>
                     </div>
+                <?php endif; ?>
+                <div class="comments-area comment-container">
+                    <?php if(session('status')): ?>
+                        <div class="alert alert-success">
+                            <?php echo e(session('status')); ?>
 
-                    <div class="comments-area comment-container">
-                        <?php if(session('status')): ?>
-                            <div class="alert alert-success">
-                                <?php echo e(session('status')); ?>
+                        </div>
+                    <?php endif; ?>
+                    <?php $__currentLoopData = $paket->comments; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $c): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <?php $counts += $c->replies->count()?>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                    <h4><?php echo e($paket->comments->count()+$counts); ?> Komentar</h4>
+                    <?php $__empty_1 = true; $__currentLoopData = $paket->comments; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $comment): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
+                        <div class="comment-list">
+                            <div class="single-comment justify-content-between d-flex">
+                                <div class="user justify-content-between d-flex">
+                                    <div class="desc">
 
-                            </div>
-                        <?php endif; ?>
-                        <?php $__currentLoopData = $paket->comments; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $c): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                            <?php $counts += $c->replies->count()?>
-                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                        <h4><?php echo e($paket->comments->count()+$counts); ?> Comments</h4>
-                        <?php $__empty_1 = true; $__currentLoopData = $paket->comments; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $comment): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
-                            <div class="comment-list">
-                                <div class="single-comment justify-content-between d-flex">
-                                    <div class="user justify-content-between d-flex">
-                                        <div class="desc">
+                                        <div class="d-flex justify-content-between">
+                                            <div class="d-flex align-items-center">
+                                                <h5>
+                                                    <a href="#"><?php echo e($comment->name); ?></a>
+                                                </h5>
+                                                <p class="date">
+                                                    <?php echo e(\Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $comment->created_at)->format('F d, Y')); ?>
 
-                                            <div class="d-flex justify-content-between">
-                                                <div class="d-flex align-items-center">
-                                                    <h5>
-                                                        <a href="#"><?php echo e($comment->name); ?></a>
-                                                    </h5>
-                                                    <p class="date">
-                                                        <?php echo e(\Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $comment->created_at)->format('F d, Y')); ?>
+                                                    at <?php echo e(\Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $comment->created_at)->format('g:i a')); ?>
 
-                                                        at <?php echo e(\Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $comment->created_at)->format('g:i a')); ?>
-
-                                                    </p>
-                                                </div>
-                                                <?php if(Auth::check()): ?>
-                                                    <div class="reply-btn ">
-                                                        <a class="btn-reply text-uppercase reply"
-                                                           style="cursor: pointer;"
-                                                           cid="<?php echo e($comment->id); ?>"
-                                                           name_a="<?php echo e(Auth::user()->name); ?>"
-                                                           token="<?php echo e(csrf_token()); ?>"
-                                                        >Balas</a>
-                                                    </div>
-                                                    <?php if(Auth::user()->id==$comment->user_id): ?>
-                                                        <div class="reply-btn ">
-                                                            <a class="btn-reply text-uppercase delete-comment"
-                                                               style="cursor: pointer;"
-                                                               token="<?php echo e(csrf_token()); ?>"
-                                                               comment-did="<?php echo e($comment->id); ?>">Hapus</a>
-                                                        </div>
-                                                    <?php endif; ?>
-                                                <?php endif; ?>
+                                                </p>
                                             </div>
-                                            <p class="comment">
-                                                <?php echo e($comment->comment); ?>
-
-                                            </p>
-                                            <div class="reply-form"></div>
-                                            <div class="row" style="margin-top: 10px">
-                                                <div class="col-2">
-
+                                            <?php if(Auth::check()): ?>
+                                                <div class="reply-btn ">
+                                                    <a class="btn-reply text-uppercase reply"
+                                                       style="cursor: pointer;"
+                                                       cid="<?php echo e($comment->id); ?>"
+                                                       name_a="<?php echo e(Auth::user()->name); ?>"
+                                                       token="<?php echo e(csrf_token()); ?>"
+                                                    >Balas</a>
                                                 </div>
-                                                <div class="col">
-                                                    <?php $__empty_2 = true; $__currentLoopData = $comment->replies; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $rep): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_2 = false; ?>
-                                                        <?php if($comment->id === $rep->comment_id): ?>
-                                                            <div class="comment-list">
-                                                                <div
-                                                                    class="single-comment justify-content-between d-flex">
-                                                                    <div class="user justify-content-between d-flex">
-                                                                        <div class="desc">
+                                                <?php if(Auth::user()->id==$comment->user_id): ?>
+                                                    <div class="reply-btn ">
+                                                        <a class="btn-reply text-uppercase delete-comment"
+                                                           style="cursor: pointer;"
+                                                           token="<?php echo e(csrf_token()); ?>"
+                                                           comment-did="<?php echo e($comment->id); ?>">Hapus</a>
+                                                    </div>
+                                                <?php endif; ?>
+                                            <?php endif; ?>
+                                        </div>
+                                        <p class="comment">
+                                            <?php echo e($comment->comment); ?>
 
-                                                                            <div class="d-flex justify-content-between">
-                                                                                <div class="d-flex align-items-center">
-                                                                                    <h5>
-                                                                                        <a href="#"><?php echo e($rep->name); ?></a>
-                                                                                    </h5>
-                                                                                    <p class="date">
-                                                                                        <?php echo e(\Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $rep->created_at)->format('F d, Y')); ?>
+                                        </p>
+                                        <div class="reply-form"></div>
+                                        <div class="row" style="margin-top: 10px">
+                                            <div class="col-2">
 
-                                                                                        at <?php echo e(\Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $rep->created_at)->format('g:i a')); ?>
+                                            </div>
+                                            <div class="col">
+                                                <?php $__empty_2 = true; $__currentLoopData = $comment->replies; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $rep): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_2 = false; ?>
+                                                    <?php if($comment->id === $rep->comment_id): ?>
+                                                        <div class="comment-list">
+                                                            <div
+                                                                class="single-comment justify-content-between d-flex">
+                                                                <div class="user justify-content-between d-flex">
+                                                                    <div class="desc">
 
-                                                                                    </p>
+                                                                        <div class="d-flex justify-content-between">
+                                                                            <div class="d-flex align-items-center">
+                                                                                <h5>
+                                                                                    <a href="#"><?php echo e($rep->name); ?></a>
+                                                                                </h5>
+                                                                                <p class="date">
+                                                                                    <?php echo e(\Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $rep->created_at)->format('F d, Y')); ?>
+
+                                                                                    at <?php echo e(\Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $rep->created_at)->format('g:i a')); ?>
+
+                                                                                </p>
+                                                                            </div>
+                                                                            <?php if(Auth::check()): ?>
+                                                                                <div class="reply-btn">
+                                                                                    <a class="btn-reply text-uppercase reply-to-reply"
+                                                                                       rname="<?php echo e(Auth::user()->name); ?>"
+                                                                                       rid="<?php echo e($comment->id); ?>"
+                                                                                       style="cursor: pointer;"
+                                                                                       token="<?php echo e(csrf_token()); ?>"
+                                                                                    >Balas</a>
+
                                                                                 </div>
-                                                                                <?php if(Auth::check()): ?>
+                                                                                <?php if(Auth::user()->id==$rep->user_id): ?>
                                                                                     <div class="reply-btn">
-                                                                                        <a class="btn-reply text-uppercase reply-to-reply"
-                                                                                           rname="<?php echo e(Auth::user()->name); ?>"
-                                                                                           rid="<?php echo e($comment->id); ?>"
-                                                                                           style="cursor: pointer;"
+                                                                                        <a class="btn-reply text-uppercase delete-reply"
+                                                                                           did="<?php echo e($rep->id); ?>"
                                                                                            token="<?php echo e(csrf_token()); ?>"
-                                                                                        >Balas</a>
-
+                                                                                        >Hapus</a>
                                                                                     </div>
-                                                                                    <?php if(Auth::user()->id==$rep->user_id): ?>
-                                                                                        <div class="reply-btn">
-                                                                                            <a class="btn-reply text-uppercase delete-reply"
-                                                                                               did="<?php echo e($rep->id); ?>"
-                                                                                               token="<?php echo e(csrf_token()); ?>"
-                                                                                            >Hapus</a>
-                                                                                        </div>
-                                                                                    <?php endif; ?>
                                                                                 <?php endif; ?>
-                                                                            </div>
-                                                                            <p class="comment">
-                                                                                <?php echo e($rep->reply); ?>
+                                                                            <?php endif; ?>
+                                                                        </div>
+                                                                        <p class="comment">
+                                                                            <?php echo e($rep->reply); ?>
 
-                                                                            </p>
-                                                                            <div class="reply-to-reply-form">
-                                                                            </div>
+                                                                        </p>
+                                                                        <div class="reply-to-reply-form">
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        <?php endif; ?>
-                                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_2): ?>
-
+                                                        </div>
                                                     <?php endif; ?>
-                                                </div>
+                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_2): ?>
+
+                                                <?php endif; ?>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                        </div>
 
-                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
 
-                        <?php endif; ?>
-                    </div>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>
-        
-        
-        
-        
-        
-        
-        
+    </div>
+    
+    
+    
+    
+    
+    
+    
 
-        
-        
-        
-        
-        
-        
-
-
-        
-        
-
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+    
+    
+    
+    
+    
+    
 
 
-        
-        
-        
-        
-        
-        
-        
-        
-        
+    
+    
 
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-
-        
-
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-
-        
-
-        
-
-        
-        
-        
-
-        
-        
-        
-
-        
-
-        
-        
-        
-        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
 
-        
-        
-        <?php if(isset($paket_lain)): ?>
-            <div class="popular_places_area">
-                <div class="container">
-                    <div class="row justify-content-center">
-                        <div class="col-lg-6">
-                            <div class="section_title text-center mb_70">
-                                <h3>Paket Wisata Lainnya</h3>
-                            </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+
+    
+
+    
+    
+    
+
+    
+    
+    
+
+    
+
+    
+    
+    
+    
+
+
+    
+    
+    <?php if(isset($paket_lain)): ?>
+        <div class="popular_places_area">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-6">
+                        <div class="section_title text-center mb_70">
+                            <h3>Paket Wisata Lainnya</h3>
                         </div>
                     </div>
-                    <div class="row justify-content-center">
-                        <?php $__currentLoopData = $paket_lain; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                            <div class="col-lg-4 col-md-6">
-                                <div class="single_place">
-                                    <div class="thumb">
-                                        <img src="<?php echo e(asset('storage/img/paket/'.$row->gambar)); ?>" alt="">
-                                        <a href="#" class="prise">Rp.<?php echo e(number_format($row->harga_paket)); ?></a>
-                                    </div>
-                                    <div class="place_info">
-                                        <a href="<?php echo e(route('paket.detail',$row->id_paket)); ?>"><h3><?php echo e($row->nama_paket); ?></h3>
-                                        </a>
-                                        <p><?php echo e($row->getKabupaten->nama_kabupaten); ?></p>
-                                        <div class="rating_days d-flex justify-content-between">
+                </div>
+                <div class="row justify-content-center">
+                    <?php $__currentLoopData = $paket_lain; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="single_place">
+                                <div class="thumb">
+                                    <img src="<?php echo e(asset('storage/img/paket/'.$row->gambar)); ?>" alt="">
+                                    <a href="#" class="prise">Rp.<?php echo e(number_format($row->harga_paket)); ?></a>
+                                </div>
+                                <div class="place_info">
+                                    <a href="<?php echo e(route('paket.detail',$row->id_paket)); ?>"><h3><?php echo e($row->nama_paket); ?></h3>
+                                    </a>
+                                    <p><?php echo e($row->getKabupaten->nama_kabupaten); ?></p>
+                                    <div class="rating_days d-flex justify-content-between">
                                         <span class="d-flex justify-content-center align-items-center">
                                              <i class="fa fa-star"></i>
                                              <i class="fa fa-star"></i>
@@ -486,24 +487,24 @@
                                              <i class="fa fa-star"></i>
                                              <a href="#">(20 Review)</a>
                                         </span>
-                                            <div class="days">
-                                                <i class="fa fa-clock-o"></i>
-                                                <a href="#"><?php echo e($row->durasi); ?></a>
-                                            </div>
+                                        <div class="days">
+                                            <i class="fa fa-clock-o"></i>
+                                            <a href="#"><?php echo e($row->durasi); ?></a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <?php echo $paket_lain->links(); ?>
-
                         </div>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <?php echo $paket_lain->links(); ?>
+
                     </div>
                 </div>
             </div>
+        </div>
     <?php endif; ?>
 <?php $__env->stopSection(); ?>
 
