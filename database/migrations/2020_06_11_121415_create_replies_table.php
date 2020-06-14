@@ -15,8 +15,8 @@ class CreateRepliesTable extends Migration
     {
         Schema::create('replies', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('comment_id');
-            $table->foreign('commend_id')->references('id')->on('comments');
+            $table->unsignedBigInteger('comment_id');
+            $table->foreign('comment_id')->references('id')->on('comments');
             $table->string('name');
             $table->text('reply');
             $table->timestamps();

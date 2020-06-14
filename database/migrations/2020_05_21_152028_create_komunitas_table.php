@@ -14,7 +14,7 @@ class CreateKomunitasTable extends Migration
     public function up()
     {
         Schema::create('komunitas', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->unsignedBigInteger('kabupaten_id');
             $table->string('nama_komunitas');
             $table->string('deskripsi');

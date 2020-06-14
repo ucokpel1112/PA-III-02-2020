@@ -14,7 +14,7 @@ class AddColumnUserIdInRepliesTable extends Migration
     public function up()
     {
         Schema::table('replies', function (Blueprint $table) {
-            $table->integer('user_id')->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
         });
     }
 
