@@ -1,0 +1,109 @@
+<?php $__env->startSection('content'); ?>
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Kalender Event</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Kalender Event</a></li>
+                        <li class="breadcrumb-item active">Blank Page</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="card card-solid">
+            <div class="card-body pb-0">
+                <div class="row d-flex align-items-stretch">
+                    <?php $__currentLoopData = $kalenders; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $kalenders): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch">
+                            <div class="card bg-light">
+                                <div class="card-header text-muted border-bottom-0">
+                                    <?php echo e($kalenders->nama_event); ?>
+
+                                </div>
+                                <div class="card-body pt-0">
+                                    <div class="row">
+                                        <div class="col-7">
+                                            <h2 class="lead"><b>Lokasi</b></h2>
+                                            <p class="text-muted text-sm"><b> Deskripsi</b>
+                                                <?php echo substr(strip_tags(str_replace(PHP_EOL, '<br>', $kalenders->deskripsi_event), '<br>'), 0, 300);?>
+                                                <a href="<?php echo e(route('detail-admin',$kalenders->id_kalenderevent)); ?>"> baca
+                                                    selengkapnya...</a>
+                                            </p>
+                                            <ul class="ml-4 mb-0 fa-ul text-muted">
+                                                <li class="small"><span class="fa-li"><i class="fa fa-map-marker "></i></span> <?php echo e($kalenders->nama_tempat); ?>
+
+                                                </li>
+                                                <li class="small"><span class="fa-li"><i
+                                                            class="fa fa-calendar"></i></span> <?php echo e($kalenders->tanggal_event); ?>
+
+                                                </li>
+                                                <li class="small"><span class="fa-li"><i
+                                                            class="fa fa-clock"></i></span> <?php echo e($kalenders->jam_event); ?>
+
+                                                </li>
+                                                <li class="small"><span class="fa-li"><i
+                                                            class="fa fa-location-arrow"></i></span> <?php echo e($kalenders->alamat_event); ?>
+
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-5 text-center">
+                                            <img src="<?php echo e(asset('storage/img/kalender/'.$kalenders->gambar_event)); ?>"
+                                                 alt="" class="img-circle img-fluid">
+                                        </div>
+                                    </div>
+                                </div>
+                                <form action="<?php echo e(route('delete-eventkalender',$kalenders->id_kalenderevent)); ?>"
+                                      method="post">
+                                    <div class="card-footer">
+                                        <div class="text-right">
+                                            <a href="<?php echo e(url('/adm/updatekalender',$kalenders->id_kalenderevent)); ?>"
+                                               class="btn btn-sm bg-warning">
+                                                <i class="fas fa-edit"></i> Update
+                                            </a>
+                                            <?php echo csrf_field(); ?>
+                                            <?php echo method_field('DELETE'); ?>
+
+                                            <button type="submit" class="btn btn-sm btn-danger">
+                                                <i class="fas fa-trash"></i> Hapus
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                </form>
+
+                            </div>
+                        </div>
+
+
+
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
+                </div>
+            </div>
+
+            <!-- /.card-body -->
+            <div class="card-footer">
+                <nav aria-label="Contacts Page Navigation">
+                    <ul class="pagination justify-content-center m-0">
+                        
+                    </ul>
+                </nav>
+            </div>
+            <!-- /.card-footer -->
+        </div>
+        <!-- /.card -->
+
+    </section>
+
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layout.admin.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\Backup Data Kristopel\Kuliah ITdel\Semester 6\PA III\Project\git\v.5.1\PA-III-02-2020\resources\views/admin/kalender/eventkalender.blade.php ENDPATH**/ ?>
