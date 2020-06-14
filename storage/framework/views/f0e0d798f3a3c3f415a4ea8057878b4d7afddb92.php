@@ -58,7 +58,8 @@
                                     <div class="rating_days d-flex justify-content-between">
                                         <div class="days">
                                             <i class="fa fa-clock-o"></i>
-                                            <a href="<?php echo e(route('paket.filter.kabupaten',$row->id_kabupaten)); ?>"><?php echo e($count_toba); ?> Paket Wisata</a>
+                                            <a href="<?php echo e(route('paket.filter.kabupaten',$row->id_kabupaten)); ?>"><?php echo e($count_toba); ?> Paket
+                                                Wisata</a>
                                         </div>
                                     </div>
                                 <?php endif; ?>
@@ -269,4 +270,4 @@
     </div>
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make('layout.front.main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\PA-III-02-2020\resources\views/welcome.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layout.front.main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\Backup Data Kristopel\Kuliah ITdel\Semester 6\PA III\Project\git\v.7.1\PA-III-02-2020\resources\views/welcome.blade.php ENDPATH**/ ?>

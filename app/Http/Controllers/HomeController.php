@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Kabupaten;
 use App\KalenderEvent;
+use App\PaketLayanan;
+use App\paketWisata;
 
 class HomeController extends Controller
 {
@@ -35,6 +37,15 @@ class HomeController extends Controller
     public function home(){
         $kals = KalenderEvent::latest()->limit(6)->get();
         $kabupaten = Kabupaten::all();
-        return view('welcome', compact('kabupaten','kals'));
+        $count_toba = paketWisata::where('kabupaten_id',1)->count();
+        $count_taput = paketWisata::where('kabupaten_id',2)->count();
+        $count_karo = paketWisata::where('kabupaten_id',3)->count();
+        $count_samosir = paketWisata::where('kabupaten_id',4)->count();
+        $count_simalungun = paketWisata::where('kabupaten_id',5)->count();
+        $count_humbang = paketWisata::where('kabupaten_id',6)->count();
+        $count_dairi = paketWisata::where('kabupaten_id',7)->count();
+
+        return view('welcome', compact('count_toba','count_taput','kabupaten','kals','count_karo','count_samosir','count_dairi','count_humbang','count_simalungun'));
     }
+
 }

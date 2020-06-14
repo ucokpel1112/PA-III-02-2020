@@ -6,7 +6,7 @@
                     <div class="footer_widget">
                         <div class="footer_logo">
                             <a href="#">
-                                <img src="{{asset('img/footer_logo.png')}}" alt="">
+                                <img src="<?php echo e(asset('img/footer_logo.png')); ?>" alt="">
                             </a>
                         </div>
                         <p>Jl. P.I. Del, Sitoluama, Lagu Boti, Kabupaten Toba Samosir, Sumatera Utara 22381 <br>
@@ -51,10 +51,10 @@
                             Layanan
                         </h3>
                         <ul class="links">
-                            <li><a href="{{url('/paket')}}">Paket Wisata</a></li>
-                            <li><a href="{{url('/eventkalender')}}">Kalender Event</a></li>
-                            <li><a href="{{url('/')}}">Member CBT</a></li>
-                            <li><a href="{{url('/kontak')}}"> Tentang</a></li>
+                            <li><a href="<?php echo e(url('/paket')); ?>">Paket Wisata</a></li>
+                            <li><a href="<?php echo e(url('/eventkalender')); ?>">Kalender Event</a></li>
+                            <li><a href="<?php echo e(url('/')); ?>">Member CBT</a></li>
+                            <li><a href="<?php echo e(url('/kontak')); ?>"> Tentang</a></li>
                         </ul>
                     </div>
                 </div>
@@ -102,3 +102,4 @@
         </div>
     </div>
 </footer>
+<?php /**PATH D:\Backup Data Kristopel\Kuliah ITdel\Semester 6\PA III\Project\git\v.7.1\PA-III-02-2020\resources\views/layout/front/includes/footer.blade.php ENDPATH**/ ?>
