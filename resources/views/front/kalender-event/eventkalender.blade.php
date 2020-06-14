@@ -62,6 +62,26 @@
                         {{--                    batas--}}
                     </div>
                 </div>
+                {{--            div class samping--}}
+                <div class="col-lg-4">
+                    <div class="blog_right_sidebar">
+                        <aside class="single_sidebar_widget popular_post_widget">
+                            <h3 class="widget_title">Upcoming Event</h3>
+                            @foreach($kals_up as $kals_up)
+                                <div class="media post_item">
+                                    <img src="{{asset('storage/img/kalender/'.$kals_up->gambar_event)}}"
+                                         style="height: 50px;" alt="post">
+                                    <div class="media-body">
+                                        <a href="single-blog.html">
+                                            <h3>{{$kals_up->nama_event}}</h3>
+                                        </a>
+                                        <p>{{$kals_up->tanggal_event}}</p>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </aside>
+                    </div>
+                </div>
             </div>
             <div class="row">
                 <div class="col"></div>
