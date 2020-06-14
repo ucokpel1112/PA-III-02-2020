@@ -21,7 +21,7 @@
         <div class="card card-solid">
             <div class="card-body pb-0">
                 <div class="row d-flex align-items-stretch">
-                    <?php $__currentLoopData = $kalenders; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $kalenders): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <?php $__currentLoopData = $kalender; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $kalenders): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch">
                             <div class="card bg-light">
                                 <div class="card-header text-muted border-bottom-0">
@@ -123,7 +123,8 @@
             <div class="card-footer">
                 <nav aria-label="Contacts Page Navigation">
                     <ul class="pagination justify-content-center m-0">
-                        
+                                                <?php echo $kalender->links(); ?>
+
                     </ul>
                 </nav>
             </div>

@@ -31,17 +31,6 @@
                     </div>
                 @endforeach
             </div>
-            <div class="row">
-                <div class="col">
-
-                </div>
-                <div class="col-2" style="text-align: center">
-                    {!! $kals->links() !!}
-                </div>
-                <div class="col">
-
-                </div>
-            </div>
         </div>
     </div>
     <!-- popular_destination_area_end  -->

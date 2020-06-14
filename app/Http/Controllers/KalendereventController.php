@@ -17,8 +17,8 @@ class KalendereventController extends Controller
     public function index()
     {
 
-        $kalenders = KalenderEvent::orderBy('created_at', 'DESC')->paginate(10);
-        return view('admin.kalender.eventkalender', compact('kalenders'));
+        $kalender = KalenderEvent::orderBy('created_at', 'DESC')->paginate(6);
+        return view('admin.kalender.eventkalender', compact('kalender'));
     }
 
     public function store(Request $request)
@@ -75,7 +75,7 @@ class KalendereventController extends Controller
 
     public function customer_all()
     {
-        $kalenders = KalenderEvent::latest()->limit(9)->get();
+        $kalenders = KalenderEvent::query()->paginate(4);
         return view('front.kalender-event.eventkalender', compact('kalenders'));
     }
 

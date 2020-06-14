@@ -33,7 +33,7 @@ class HomeController extends Controller
     }
 
     public function home(){
-        $kals = KalenderEvent::query()->orderBy('created_at','DESC')->paginate(6);
+        $kals = KalenderEvent::latest()->limit(6)->get();
         $kabupaten = Kabupaten::all();
         return view('welcome', compact('kabupaten','kals'));
     }

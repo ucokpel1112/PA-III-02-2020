@@ -14,63 +14,63 @@
     <!--================Blog Area =================-->
     <section class="blog_area section-padding">
         <div class="container">
+
+            <div class="row" style="margin-bottom: 20px">
+                <div class="col"></div>
+                <div class="col-3">
+                    <?php echo $kalenders->appends(['sort' => 'nama_event'])->links(); ?>
+
+                </div>
+                <div class="col"></div>
+            </div>
             <div class="row">
                 <div class="col-lg-8 mb-5 mb-lg-0">
                     <div class="blog_left_sidebar">
-                        <?php $__currentLoopData = $kalenders; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $kalenders): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <?php $__currentLoopData = $kalenders; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $kalender): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <article class="blog_item">
                                 <div class="blog_item_img">
-                                    <img class="card-img rounded-0" src="<?php echo e(asset('storage/img/kalender/'.$kalenders->gambar_event)); ?>" alt="">
+                                    <img class="card-img rounded-0"
+                                         src="<?php echo e(asset('storage/img/kalender/'.$kalender->gambar_event)); ?>" alt="">
                                     <a href="#" class="blog_item_date">
-                                        <h3><?php echo e($kalenders->tanggal_event); ?>
+                                        <h3><?php echo e($kalender->tanggal_event); ?>
 
                                         <!--                                    --><?php //echo date('d F Y');?>
                                         </h3>
-                                        <p><?php echo e($kalenders->jam_event); ?></p>
+                                        <p><?php echo e($kalender->jam_event); ?></p>
                                     </a>
                                 </div>
                                 <div class="blog_details">
-                                    <a class="d-inline-block" href="<?php echo e(route('detail-eventkalender',$kalenders->id_kalenderevent)); ?>">
-                                        <h2><?php echo e($kalenders->nama_event); ?></h2>
+                                    <a class="d-inline-block"
+                                       href="<?php echo e(route('detail-eventkalender',$kalender->id_kalenderevent)); ?>">
+                                        <h2><?php echo e($kalender->nama_event); ?></h2>
                                     </a>
                                     <p>
-                                        <?php echo substr(strip_tags(str_replace(PHP_EOL,'<br>',$kalenders->deskripsi_event),'<br>'),0,310);?>
+                                        <?php echo substr(strip_tags(str_replace(PHP_EOL, '<br>', $kalender->deskripsi_event), '<br>'), 0, 310);?>
 
-                                        <a href="<?php echo e(route('detail-eventkalender',$kalenders->id_kalenderevent)); ?>">  baca selengkapnya...</a>
+                                        <a href="<?php echo e(route('detail-eventkalender',$kalender->id_kalenderevent)); ?>"> baca
+                                            selengkapnya...</a>
                                     </p>
                                     <ul class="blog-info-link">
                                         <li><a href="#"><i class="fa fa-user"></i> Travel, Lifestyle</a></li>
                                         <li><a href="#"><i class="fa fa-comments"></i> 03 Comments</a></li>
                                         <li><a href="#"><i class="fas fa-address-book"></i> 03 Comments</a></li>
-                                        <li class="small"><span class="fa-li"><i class="fa fa-clock"></i></span> Test</li>
+                                        <li class="small"><span class="fa-li"><i class="fa fa-clock"></i></span> Test
+                                        </li>
                                     </ul>
                                 </div>
                             </article>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         
-                        <nav class="blog-pagination justify-content-center d-flex">
-                            <ul class="pagination">
-                                <li class="page-item">
-                                    <a href="#" class="page-link" aria-label="Previous">
-                                        <i class="ti-angle-left"></i>
-                                    </a>
-                                </li>
-                                <li class="page-item">
-                                    <a href="#" class="page-link">1</a>
-                                </li>
-                                <li class="page-item active">
-                                    <a href="#" class="page-link">2</a>
-                                </li>
-                                <li class="page-item">
-                                    <a href="#" class="page-link" aria-label="Next">
-                                        <i class="ti-angle-right"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </nav>
                     </div>
                 </div>
+            </div>
+            <div class="row">
+                <div class="col"></div>
+                <div class="col-3">
+                    <?php echo $kalenders->appends(['sort' => 'nama_event'])->links(); ?>
 
+                </div>
+                <div class="col"></div>
             </div>
         </div>
     </section>

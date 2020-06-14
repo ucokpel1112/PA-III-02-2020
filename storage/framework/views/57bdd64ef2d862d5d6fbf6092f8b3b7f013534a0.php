@@ -29,18 +29,6 @@
                     </div>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </div>
-            <div class="row">
-                <div class="col">
-
-                </div>
-                <div class="col-2" style="text-align: center">
-                    <?php echo $kals->links(); ?>
-
-                </div>
-                <div class="col">
-
-                </div>
-            </div>
         </div>
     </div>
     <!-- popular_destination_area_end  -->
