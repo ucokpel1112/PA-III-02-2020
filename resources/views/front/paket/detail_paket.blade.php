@@ -175,7 +175,7 @@
                                                   placeholder="Pesan/Pertanyaan Untuk Pemesanan"
                                                   onfocus="this.placeholder = ''"
                                                   onblur="this.placeholder = 'Pesan/Pertanyaan Untuk Pemesanan'"
-                                                  required></textarea>
+                                                  ></textarea>
                             </div>
                         </div>
                     </div>

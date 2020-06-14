@@ -21,7 +21,7 @@ class CreatePemesanansTable extends Migration
             $table->unsignedBigInteger('sesi_id');
             $table->foreign('sesi_id')->references('id_sesi')->on('sesis');
             $table->integer('status');
-            $table->string('pesan');
+            $table->string('pesan')->nullable();
             $table->integer('jumlah_peserta');
             $table->timestamps();
         });

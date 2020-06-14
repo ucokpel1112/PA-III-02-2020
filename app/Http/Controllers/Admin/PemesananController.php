@@ -5,12 +5,56 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\paketWisata;
 use App\Pemesanan;
+use App\Rekening;
 use App\Sesi;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class PemesananController extends Controller
 {
+
+    public function updateRekening(Request $request, $id_rekening){
+        $rekening = Rekening::find($id_rekening);
+        $rekening->nama_bank = $request->nama_bank;
+        if ($request->hasFile('gambar')) {
+            !empty($photo) ? File::delete(public_path('storage/img/rekening/' . $rekening->gambar)) : null;
+            $file = $request->file('gambar');
+            $photo = time() .'_'. Str::slug($request->nama_bank) . '.' . $file->getClientOriginalExtension();
+
+            $file->move('storage/img/rekening', $photo);
+            $rekening->gambar = $photo;
+        }
+        $rekening->nomor_rekening = $request->nomor_rekening;
+        $rekening->save();
+        return redirect(route('admin.pemesanan'))->with('status','Rekening Berhasil Diubah');
+    }
+    public function destroyRekening($id_rekening){
+        $rekening = Rekening::find($id_rekening);
+        $rekening->delete();
+        return redirect(route('admin.pemesanan'))->with('status','Rekening Berhasil Dihapus');
+    }
+    public function editRekening($id_rekening){
+        $rekening = Rekening::find($id_rekening);
+
+        return view('admin.pemesanan.edit_rekening',compact('rekening'));
+    }
+
+    public function tambahRekening(Request $request){
+        if ($request->hasFile('gambar')) {
+            $file = $request->file('gambar');
+            $filename = time() . '_' . $request->nama_bank . '.' . $file->getClientOriginalExtension();
+
+            $file->move('storage/img/rekening', $filename);
+            Rekening::create([
+                'nama_bank' => $request->nama_bank,
+                'nomor_rekening' => $request->nomor_rekening,
+                'gambar'=> $filename
+            ]);
+        }
+        return redirect(route('admin.pemesanan'))->with('status','Rekening Berhasil Ditambahkan');
+    }
     public function ubahPesan(Request $request,$id_pemesanan){
         $pemesanan = Pemesanan::find($id_pemesanan);
         $pemesanan->pesan = $request->pesan;
@@ -23,8 +67,8 @@ class PemesananController extends Controller
     {
         $pemesanan = Pemesanan::paginate(10);
         $paket = paketWisata::all();
-
-        return view('admin.pemesanan.pemesanan', compact('paket', 'pemesanan'));
+        $rekening = Rekening::all();
+        return view('admin.pemesanan.pemesanan', compact('rekening','paket', 'pemesanan'));
     }
 
     public function show($id_pemesanan){
@@ -117,8 +161,8 @@ class PemesananController extends Controller
         }
 //            echo $id_paket . " " . $status;
         $paket = paketWisata::all();
+        $rekening = Rekening::all();
 
-
-        return view('admin.pemesanan.pemesanan',compact('pemesanan','paket','id_paket','status'));
+        return view('admin.pemesanan.pemesanan',compact('rekening','pemesanan','paket','id_paket','status'));
     }
 }

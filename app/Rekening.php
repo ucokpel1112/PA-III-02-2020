@@ -10,7 +10,7 @@ class Rekening extends Model
 
     protected $primaryKey = 'id_rekening';
 
-    protected $fillable = ['nama_bank ','nomor_rekening','gambar'];
+    protected $fillable = ['nama_bank','nomor_rekening','gambar'];
 
     public function getTransaksi(){
         return $this->hasMany(Transaksi::class,'rekening_id','id_rekening');

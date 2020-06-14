@@ -63,6 +63,8 @@ Route::namespace('Front')->group(function () {
     Route::put('/pemesanan/detail/{id_transaksi}/update', ['middleware'=>'check-permission:customer','uses'=>'PemesananController@updateTransaksi'])->name('transaksi.update');
     Route::get('/pemesanan/detail/{id_pemesanan}', ['middleware'=>'check-permission:customer','uses'=>'PemesananController@show'])->name('pemesanan.detail');
     Route::delete('/pemesanan/cancel/{id_pemesanan}', ['middleware'=>'check-permission:customer','uses'=>'PemesananController@cancel'])->name('pemesanan.batal');
+
+
 });
 
 
@@ -103,7 +105,10 @@ Route::namespace('Admin')->group(function () {
     Route::put('/adm/pemesanan/transaksi/tolak/{id_pemesanan}', ['middleware'=>'check-permission:admin','uses'=>'PemesananController@tolakPembayaran'])->name('admin.pemesanan.tolak');
     Route::put('/adm/pemesanan/transaksi/upload/{id_pemesanan}', ['middleware'=>'check-permission:admin','uses'=>'PemesananController@uploadUlangPembayaran'])->name('admin.pemesanan.upload');
     Route::put('/adm/pemesanan/ubahPesan/{id_pemesanan}', ['middleware'=>'check-permission:admin','uses'=>'PemesananController@ubahPesan'])->name('admin.pemesanan.ubahPesan');
-
+    Route::post('/pemesanan/rekening',['middleware'=>'check-permission:admin','uses'=>'PemesananController@tambahRekening'])->name('admin.rekening.tambah');
+    Route::get('/pemesanan/rekening/edit/{id_rekening}',['middleware'=>'check-permission:admin','uses'=>'PemesananController@editRekening'])->name('admin.rekening.edit');
+    Route::put('/pemesanan/rekening/update/{id_rekening}',['middleware'=>'check-permission:admin','uses'=>'PemesananController@updateRekening'])->name('admin.rekening.update');
+    Route::delete('/pemesanan/rekening/delete/{id_rekening}',['middleware'=>'check-permission:admin','uses'=>'PemesananController@destroyRekening'])->name('admin.rekening.hapus');
 //edit paket
     Route::get('/adm/paket/edit/{id_paket}/choice', ['middleware'=>'check-permission:admin','uses'=>'PaketWisataController@editChoice'])->name('admin.paket.editChoice');
 
