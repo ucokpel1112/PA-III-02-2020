@@ -58,7 +58,7 @@
                                     <div class="rating_days d-flex justify-content-between">
                                         <div class="days">
                                             <i class="fa fa-clock-o"></i>
-                                            <a href="<?php echo e(route('paket.filter.kabupaten',$row->id_kabupaten)); ?>">4 Paket
+                                            <a href="<?php echo e(route('paket.filter.kabupaten',$row->id_kabupaten)); ?>"><?php echo e($row->getPaketWisata->count()); ?> Paket
                                                 Wisata</a>
                                         </div>
                                     </div>

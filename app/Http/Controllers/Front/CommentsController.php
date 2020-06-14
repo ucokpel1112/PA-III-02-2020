@@ -38,10 +38,11 @@ class CommentsController extends Controller
             Comment::create([
                 'name' => Auth::user()->name,
                 'comment' => $request->input('comment'),
-                'user_id' => Auth::user()->id
+                'user_id' => Auth::user()->id,
+                'paket_id' => $request->paket_id
             ]);
 
-            return redirect()->route('front.paket.detail_paket')->with('success','Comment Added successfully..!');
+            return redirect()->route('paket.detail',$request->paket_id)->with('success','Komentar anda telah berhasil ditambahkan..!');
         }else{
             return back()->withInput()->with('error','Something wrong');
         }

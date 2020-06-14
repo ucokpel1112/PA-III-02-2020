@@ -22,6 +22,9 @@ class paketWisata extends Model
     public function getPaketLayanan(){
         return $this->belongsToMany(LayananWisata::class,'paket_layanans','paket_wisata_id','layanan_wisata_id','id_paket','id');
     }
+    public function comments(){
+        return $this->hasMany(Comment::class,'paket_id','id_paket');
+    }
     public static function boot() {
         parent::boot();
 
