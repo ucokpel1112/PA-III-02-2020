@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 
 use App\KalenderEvent;
+use App\Member;
 use App\paketWisata;
 use App\Pendaftar;
 use App\Pemesanan;
@@ -76,11 +77,11 @@ class DashboardController extends Controller
         //kalender event
         $count = KalenderEvent::count();
         $count_p = paketWisata::count();
-
+        $count_m = Member::count();
         $count_c = User::where('status',0)->count();
         //akhir kalender event
 
-        return view('admin.dashboard',compact('count_c','data','tabel_chart','transaksi','usersChart','count','count_p'));
+        return view('admin.dashboard',compact('count_m','count_c','data','tabel_chart','transaksi','usersChart','count','count_p'));
     }
 
 }
