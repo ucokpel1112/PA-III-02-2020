@@ -15,7 +15,8 @@ class LayananWisataController extends Controller
 {
     public function index()
     {
-        $data_layanan_wisata = LayananWisata::all();
+        $member = Member::where('user_id',Auth::id())->first();
+        $data_layanan_wisata = LayananWisata::where('member_id',$member->id)->get();
         $kabupaten = Kabupaten::all();
         $jenis = JenisLayanan::all();
 

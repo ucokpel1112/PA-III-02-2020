@@ -306,11 +306,11 @@
                                                 <td>
                                                     <a href="<?php echo e(route('member.request.detail',$row->id)); ?>" class="btn btn-sm btn-info">Detail</a>
                                                     <?php if($row->getUser->register_status==0): ?>
-                                                        <a href="<?php echo e(route('member.request.tolak',$row->id)); ?>" class="btn btn-sm btn-warning">Tolak</a>
+                                                        <a href="<?php echo e(route('member.request.tolak',$row->id)); ?>" class="btn btn-sm btn-danger">Tolak</a>
                                                         <a href="<?php echo e(route('member.request.terima',$row->id)); ?>" class="btn btn-sm btn-warning">Terima</a>
                                                     <?php elseif($row->getUser->register_status==4): ?>
                                                         <a href="<?php echo e(route('member.request.terima',$row->id)); ?>" class="btn btn-sm btn-success">Terima</a>
-                                                        <a href="<?php echo e(route('member.request.hapus',$row->id)); ?>" class="btn btn-sm btn-success">Hapus</a>
+                                                        <a href="<?php echo e(route('member.request.hapus',$row->id)); ?>" class="btn btn-sm btn-danger">Hapus</a>
                                                     <?php endif; ?>
                                                 </td>
                                             </tr>

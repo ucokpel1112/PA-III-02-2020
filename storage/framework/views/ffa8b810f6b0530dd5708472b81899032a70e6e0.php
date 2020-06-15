@@ -3,12 +3,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Detail Pemesanan</h1>
+                    <h1>Detail Anggota CBT</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item"><a href="#">Pemesanan</a></li>
+                        <li class="breadcrumb-item"><a href="<?php echo e(route('home.admin')); ?>">Home</a></li>
+                        <li class="breadcrumb-item"><a href="<?php echo e(route('member')); ?>">Anggota CBT</a></li>
                         <li class="breadcrumb-item active">Detail</li>
                     </ol>
                 </div>
@@ -25,8 +25,33 @@
                     <div class="card card-primary card-outline">
                         <div class="card-body box-profile">
                             <div class="text-center">
-                                <img class="profile-user-img img-fluid img-circle"
-                                     src="<?php echo e(asset('/storage/img/member/'.$member->photo)); ?>" alt="User profile picture">
+                                <button type="button" class="btn btn-default" data-toggle="modal"
+                                        data-target="#modal-default">
+                                    <img src="<?php echo e(asset('/storage/img/member/'.$member->photo)); ?>" class="img-fluid mb-2"
+                                         alt="white sample"/>
+                                </button>
+                                <div class="modal fade" id="modal-default">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h4 class="modal-title">Gambar</h4>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="ekko-lightbox-container">
+                                                    <img
+                                                        src="<?php echo e(asset('/storage/img/member/'.$member->photo)); ?>"
+                                                        class="img-fluid" style="width: 100%;">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- /.modal-content -->
+                                    </div>
+                                    <!-- /.modal-dialog -->
+                                </div>
                             </div>
 
                             <h3 class="profile-username text-center"><?php echo e($member->getUser->name); ?></h3>
