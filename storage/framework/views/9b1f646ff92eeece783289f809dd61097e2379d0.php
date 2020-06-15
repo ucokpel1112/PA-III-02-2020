@@ -37,4 +37,4 @@
 </div>
 </body>
 </html>
-<?php /**PATH C:\xampp\htdocs\PAIII-paling baru\PA-III-02-2020\resources\views/layout/auth/app.blade.php ENDPATH**/ ?>
+<?php /**PATH D:\Backup Data Kristopel\Kuliah ITdel\Semester 6\PA III\Project\git\v.8.1\PA-III-02-2020\resources\views/layout/auth/app.blade.php ENDPATH**/ ?>
