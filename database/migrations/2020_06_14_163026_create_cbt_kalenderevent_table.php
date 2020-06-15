@@ -14,7 +14,7 @@ class CreateCbtKalendereventTable extends Migration
     public function up()
     {
         Schema::create('cbt_kalenderevent', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->bigIncrements('id_kalenderevent');
             $table->string('nama_event',255);
             $table->string('nama_tempat',255);
             $table->date('tanggal_event');
