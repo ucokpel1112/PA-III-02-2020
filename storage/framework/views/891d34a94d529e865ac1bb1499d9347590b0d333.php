@@ -1,5 +1,4 @@
-@extends('layout.anggotacbt.app')
-@section('content')
+<?php $__env->startSection('content'); ?>
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
@@ -56,26 +55,26 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($data_pendaftar as $daftar)
+                    <?php $__currentLoopData = $data_pendaftar; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $daftar): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <tr>
-                            <td>{{$daftar->getUser->name}}</td>
-                            <td>{{$daftar->getUser->no_WA}}</td>
+                            <td><?php echo e($daftar->getUser->name); ?></td>
+                            <td><?php echo e($daftar->getUser->no_WA); ?></td>
                             <td>
                                 <ul>
-                                    @foreach($daftar->getLayanan as $row)
-                                        <li>{{$row->nama_layanan}}</li>
-                                    @endforeach
+                                    <?php $__currentLoopData = $daftar->getLayanan; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <li><?php echo e($row->nama_layanan); ?></li>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </ul>
                             </td>
                             <td>
                                 <ul>
-                                    @foreach($daftar->getKomunitasMember as $row)
-                                        <li>{{$row->nama_komunitas}}</li>
-                                    @endforeach
+                                    <?php $__currentLoopData = $daftar->getKomunitasMember; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <li><?php echo e($row->nama_komunitas); ?></li>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </ul>
                             </td>
                         </tr>
-                    @endforeach
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </table>
             </div>
 
@@ -90,17 +89,18 @@
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <form action="{{route('gabung_daftar')}}" method="POST">
-                            {{csrf_field()}}
+                        <form action="<?php echo e(route('gabung_daftar')); ?>" method="POST">
+                            <?php echo e(csrf_field()); ?>
+
                             <div class="modal-body">
                                 <div class="form-group">
                                     <label for="exampleFormControlSelect1">Pilih Komunitas</label>
                                     <select name="komunitas_id" class="form-control" id="exampleFormControlSelect1">
                                         <option selected="" disabled="">Pilih Komunitas</option>
-                                        @foreach($komunitas as $row)
-                                            <option value="{{$row->id}}"
-                                                    @if($row->id) selected @endif>{{$row->nama_komunitas}}</option>
-                                        @endforeach
+                                        <?php $__currentLoopData = $komunitas; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                            <option value="<?php echo e($row->id); ?>"
+                                                    <?php if($row->id): ?> selected <?php endif; ?>><?php echo e($row->nama_komunitas); ?></option>
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </select>
                                 </div>
                             </div>
@@ -124,4 +124,6 @@
         <!-- /.card -->
 
     </section>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layout.anggotacbt.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\PAIII-paling baru\PA-III-02-2020\resources\views/anggotacbt/komunitas/anggota_komunitas.blade.php ENDPATH**/ ?>
