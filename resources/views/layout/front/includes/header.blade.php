@@ -53,11 +53,10 @@
                                             </form>
                                         </li>
                                         <?php else: ?>
-                                        <li><a href="<?php echo e(route('login')); ?>"> <i class="fa fa-sign-in"></i>
+                                        <li><a href="<?php echo e(route('login')); ?>">
                                                 Login</a>
                                         </li>
-                                        <li><a href="<?php echo e(route('register.choice')); ?>"> <i
-                                                    class="fa fa-registered"></i>
+                                        <li><a href="<?php echo e(route('register.choice')); ?>">
                                                 Register</a></li>
                                         <?php endif; ?>
                                     </ul>
