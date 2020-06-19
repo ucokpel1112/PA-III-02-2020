@@ -123,7 +123,7 @@
                                 <div class="date">
                                     <span>
                                         <i class="fa fa-clock-o"></i>
-                                        <a href="#"><?php echo e($row->durasi); ?></a>
+                                        <a href="#"><?php echo e($roww->durasi); ?></a>
                                     </span>
                                 </div>
                                 <a href="#">

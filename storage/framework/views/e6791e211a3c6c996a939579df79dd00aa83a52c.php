@@ -65,7 +65,7 @@
             </div>
         </div>
     </div>
-    <?php if(isset($hotel)): ?>
+    <?php if(isset($hotel)&&count($hotel)>0): ?>
         <div class="popular_places_area">
             <div class="container">
                 <div class="row justify-content-center">
@@ -174,7 +174,7 @@
                                                   placeholder="Pesan/Pertanyaan Untuk Pemesanan"
                                                   onfocus="this.placeholder = ''"
                                                   onblur="this.placeholder = 'Pesan/Pertanyaan Untuk Pemesanan'"
-                                                  ></textarea>
+                                        ></textarea>
                             </div>
                         </div>
                     </div>
@@ -188,13 +188,31 @@
                     </form>
                     <?php else: ?>
                         <h3>P E M E S A N A N <br><br></h3>
-                        <h4 class="text-dark">Untuk Melakukan Pemesanan, Anda Harus Login Terlebih Dahulu <br><br>
+                        <h4 class="text-dark">Untuk Melakukan Pemesanan, Anda Harus <b>Login</b> atau <b>Daftar</b>
+                            Terlebih Dahulu <br><br>
                         </h4>
                         <div class="row">
                             <div class="col-lg-12">
-                                <div class="submit_btn mt-10">
-                                    <a href="<?php echo e(route('login')); ?>" class="boxed-btn4" type="submit"><i
-                                            class="fa fa-sign-in"></i> Login </a>
+                                <div class="button-group-area ">
+                                    <a href="<?php echo e(route('login')); ?>" class="genric-btn radius large primary"> Login </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-10">
+                            <div class="col">
+                                <hr>
+                            </div>
+                            <div class="col-2 mt-10" >
+                                <h4>Atau</h4>
+                            </div>
+                            <div class="col ">
+                                <hr>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="button-group-area mt-10">
+                                    <a href="<?php echo e(route('register',0)); ?>" class="genric-btn radius large success">Daftar</a>
                                 </div>
                             </div>
                         </div>
@@ -237,7 +255,7 @@
                     <?php $__currentLoopData = $paket->comments; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $c): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <?php $counts += $c->replies->count()?>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                    <h4><?php echo e($paket->comments->count()+$counts); ?> Komentar</h4>
+                    <h3><?php echo e(count($paket->comments)+$counts); ?> Komentar</h3>
                     <?php $__empty_1 = true; $__currentLoopData = $paket->comments; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $comment): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                         <div class="comment-list">
                             <div class="single-comment justify-content-between d-flex">
@@ -456,7 +474,7 @@
 
     
     
-    <?php if(isset($paket_lain)): ?>
+    <?php if(isset($paket_lain)&&$paket_lain->count()>0): ?>
         <div class="popular_places_area">
             <div class="container">
                 <div class="row justify-content-center">

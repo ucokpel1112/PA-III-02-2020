@@ -66,7 +66,7 @@
             </div>
         </div>
     </div>
-    @if(isset($hotel)&&$hotel->count()>0)
+    @if(isset($hotel)&&count($hotel)>0)
         <div class="popular_places_area">
             <div class="container">
                 <div class="row justify-content-center">
@@ -175,7 +175,7 @@
                                                   placeholder="Pesan/Pertanyaan Untuk Pemesanan"
                                                   onfocus="this.placeholder = ''"
                                                   onblur="this.placeholder = 'Pesan/Pertanyaan Untuk Pemesanan'"
-                                                  ></textarea>
+                                        ></textarea>
                             </div>
                         </div>
                     </div>
@@ -189,13 +189,31 @@
                     </form>
                     @else
                         <h3>P E M E S A N A N <br><br></h3>
-                        <h4 class="text-dark">Untuk Melakukan Pemesanan, Anda Harus Login Terlebih Dahulu <br><br>
+                        <h4 class="text-dark">Untuk Melakukan Pemesanan, Anda Harus <b>Login</b> atau <b>Daftar</b>
+                            Terlebih Dahulu <br><br>
                         </h4>
                         <div class="row">
                             <div class="col-lg-12">
-                                <div class="submit_btn mt-10">
-                                    <a href="{{route('login')}}" class="boxed-btn4" type="submit"><i
-                                            class="fa fa-sign-in"></i> Login </a>
+                                <div class="button-group-area ">
+                                    <a href="{{route('login')}}" class="genric-btn radius large primary"> Login </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-10">
+                            <div class="col">
+                                <hr>
+                            </div>
+                            <div class="col-2 mt-10" >
+                                <h4>Atau</h4>
+                            </div>
+                            <div class="col ">
+                                <hr>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="button-group-area mt-10">
+                                    <a href="{{ route('register',0)}}" class="genric-btn radius large success">Daftar</a>
                                 </div>
                             </div>
                         </div>
@@ -237,7 +255,7 @@
                     @foreach($paket->comments as $c)
                         <?php $counts += $c->replies->count()?>
                     @endforeach
-                    <h4>{{$paket->comments->count()+$counts}} Komentar</h4>
+                    <h3>{{count($paket->comments)+$counts}} Komentar</h3>
                     @forelse($paket->comments as $comment)
                         <div class="comment-list">
                             <div class="single-comment justify-content-between d-flex">
@@ -450,7 +468,7 @@
 
     {{--        </div>--}}
     {{--    Akhir Komentar--}}
-    @if(isset($paket_lain))
+    @if(isset($paket_lain)&&$paket_lain->count()>0)
         <div class="popular_places_area">
             <div class="container">
                 <div class="row justify-content-center">
