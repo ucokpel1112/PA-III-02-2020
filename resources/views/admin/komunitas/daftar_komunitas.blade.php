@@ -72,12 +72,12 @@
                             <td>
                                 <a href="{{ route('edit_komunitas',$komunitas->id)}}" class="btn btn-info btn-sm"><i class="fa fa-edit"> </i> Edit</a>
                                 <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
-                                        data-target="#delete_{{$komunitas->id_paket}}">
+                                        data-target="#delete_{{$komunitas->id}}">
                                     <i class="fas fa-trash-alt">
                                     </i>
                                     Hapus
                                 </button>
-                                <div class="modal fade" id="delete_{{$komunitas->id_paket}}" tabindex="-1" role="dialog"
+                                <div class="modal fade" id="delete_{{$komunitas->id}}" tabindex="-1" role="dialog"
                                      aria-labelledby="deleteModalCenterTitle" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content">

@@ -67,11 +67,11 @@ class PaketWisataController extends Controller
     {
         $paket = paketWisata::find($id_paket);
         $sesi = Sesi::where([['paket_id', $id_paket], ['status', 1]])->get();
-        $hotel = null;
+        $hotel = [];
         $comments = Comment::where('paket_id',$id_paket)->get();
 
         foreach ($paket->getPaketLayanan as $row) {
-            if ($row->jenisLayanan_id == 2)
+            if ($row->getJenisLayanan->nama_jenis_layanan == 'Akomodasi')
                 array_push($hotel, $row);
         }
         $counts = 0;

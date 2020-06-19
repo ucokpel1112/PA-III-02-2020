@@ -123,7 +123,7 @@
                                 <div class="date">
                                     <span>
                                         <i class="fa fa-clock-o"></i>
-                                        <a href="#">{{$row->durasi}}</a>
+                                        <a href="#">{{$roww->durasi}}</a>
                                     </span>
                                 </div>
                                 <a href="#">

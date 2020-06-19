@@ -66,7 +66,7 @@
             </div>
         </div>
     </div>
-    @if(isset($hotel))
+    @if(isset($hotel)&&$hotel->count()>0)
         <div class="popular_places_area">
             <div class="container">
                 <div class="row justify-content-center">
@@ -156,7 +156,7 @@
                                             <div class="form-select single-input-primary" id="default-select"
                                             ">
                                             <select name="sesi">
-                                                <option>Pilih Jadwal</option>
+                                                <option onselect="" disabled="">Pilih Jadwal</option>
                                                 @foreach($sesi as $row)
                                                     <option
                                                         value="{{$row->id_sesi}}"

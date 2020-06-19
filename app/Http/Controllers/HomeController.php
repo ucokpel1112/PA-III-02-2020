@@ -37,13 +37,13 @@ class HomeController extends Controller
     public function home(){
         $kals = KalenderEvent::latest()->limit(6)->get();
         $kabupaten = Kabupaten::all();
-        $count_toba = paketWisata::where('kabupaten_id',1)->count();
-        $count_taput = paketWisata::where('kabupaten_id',2)->count();
-        $count_karo = paketWisata::where('kabupaten_id',3)->count();
-        $count_samosir = paketWisata::where('kabupaten_id',4)->count();
-        $count_simalungun = paketWisata::where('kabupaten_id',5)->count();
-        $count_humbang = paketWisata::where('kabupaten_id',6)->count();
-        $count_dairi = paketWisata::where('kabupaten_id',7)->count();
+        $count_toba = paketWisata::where([['kabupaten_id',1],['status',1]])->count();
+        $count_taput = paketWisata::where([['kabupaten_id',2],['status',1]])->count();
+        $count_karo = paketWisata::where([['kabupaten_id',3],['status',1]])->count();
+        $count_samosir = paketWisata::where([['kabupaten_id',4],['status',1]])->count();
+        $count_simalungun = paketWisata::where([['kabupaten_id',5],['status',1]])->count();
+        $count_humbang = paketWisata::where([['kabupaten_id',6],['status',1]])->count();
+        $count_dairi = paketWisata::where([['kabupaten_id',7],['status',1]])->count();
 
         return view('welcome', compact('count_toba','count_taput','kabupaten','kals','count_karo','count_samosir','count_dairi','count_humbang','count_simalungun'));
     }

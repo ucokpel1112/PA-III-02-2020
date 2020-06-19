@@ -1,6 +1,4 @@
-@extends('layout.front.main')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
 
     <!-- bradcam_area  -->
     <div class="bradcam_area bradcam_bg_5">
@@ -8,8 +6,8 @@
             <div class="row">
                 <div class="col-xl-12">
                     <div class="bradcam_text text-center">
-{{--                        <h3>Pesanan Saya</h3>--}}
-{{--                        <p>Riwayat Pemesanan yang Sudah Pernah Anda Lakukan</p>--}}
+
+
                     </div>
                 </div>
             </div>
@@ -32,25 +30,28 @@
                             <div class="visit"></div>
                         </div>
 
-                        @forelse($pemesanan as $index => $row)
+                        <?php $__empty_1 = true; $__currentLoopData = $pemesanan; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $index => $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                             <div class="table-row">
                                 <div class="serial">
-                                    {{$index+1}}</div>
+                                    <?php echo e($index+1); ?></div>
                                 <div class="percentage">
-                                    {{$row->getSesi->getPaket->nama_paket}}
+                                    <?php echo e($row->getSesi->getPaket->nama_paket); ?>
+
                                 </div>
                                 <div class="country">
-                                    {{$row->defineStatus($row->status)}}
+                                    <?php echo e($row->defineStatus($row->status)); ?>
+
                                 </div>
                                 <div class="visit">
-                                    {{$row->jumlah_peserta}}
+                                    <?php echo e($row->jumlah_peserta); ?>
+
                                 </div>
                                 <div class="visit">
-                                    <a href="{{route('pemesanan.detail',$row->id_pemesanan)}}"
+                                    <a href="<?php echo e(route('pemesanan.detail',$row->id_pemesanan)); ?>"
                                        class="btn btn-success">Detail</a>
                                 </div>
                             </div>
-                        @empty
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
                             <div class="table-row">
                                 <div class="serial"></div>
                                 <div class="percentage"></div>
@@ -58,11 +59,13 @@
                                 <div class="visit"></div>
                                 <div class="visit"></div>
                             </div>
-                        @endforelse
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layout.front.main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\PAIII-paling baru\PA-III-02-2020\resources\views/front/Pemesanan/pemesanan.blade.php ENDPATH**/ ?>

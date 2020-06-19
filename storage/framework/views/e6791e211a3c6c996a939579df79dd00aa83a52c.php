@@ -155,7 +155,7 @@
                                             <div class="form-select single-input-primary" id="default-select"
                                             ">
                                             <select name="sesi">
-                                                <option>Pilih Jadwal</option>
+                                                <option onselect="" disabled="">Pilih Jadwal</option>
                                                 <?php $__currentLoopData = $sesi; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                     <option
                                                         value="<?php echo e($row->id_sesi); ?>"
@@ -174,7 +174,7 @@
                                                   placeholder="Pesan/Pertanyaan Untuk Pemesanan"
                                                   onfocus="this.placeholder = ''"
                                                   onblur="this.placeholder = 'Pesan/Pertanyaan Untuk Pemesanan'"
-                                                  required></textarea>
+                                                  ></textarea>
                             </div>
                         </div>
                     </div>
