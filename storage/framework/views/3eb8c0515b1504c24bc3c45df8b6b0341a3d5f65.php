@@ -28,7 +28,7 @@
 if (isset($message)) { $messageCache = $message; }
 $message = $errors->first('email'); ?> is-invalid <?php unset($message);
 if (isset($messageCache)) { $message = $messageCache; }
-endif; ?>" name="email" value="<?php echo e(old('email')); ?>" required autocomplete="email" autofocus placeholder="E-Mail Address">
+endif; ?>" name="email" value="<?php echo e(old('email')); ?>" required autocomplete="email" autofocus placeholder="Alamat E-Mail">
 
                                 <?php if ($errors->has('email')) :
 if (isset($message)) { $messageCache = $message; }
@@ -73,7 +73,7 @@ endif; ?>
 
                                 <?php if(Route::has('password.request')): ?>
                                     <a class="btn btn-link" href="<?php echo e(route('password.request')); ?>" style="color: #87CEEB">
-                                        <?php echo e(__('Forgot Your Password?')); ?>
+                                        <?php echo e(__('Lupa Password?')); ?>
 
                                     </a>
                                 <?php endif; ?>

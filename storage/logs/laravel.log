@@ -1,0 +1,26 @@
+[2020-06-22 17:40:11] laravel.EMERGENCY: Unable to create configured logger. Using emergency logger. {"exception":"[object] (InvalidArgumentException(code: 0): Log [] is not defined. at C:\\xampp\\htdocs\\PAIII-paling baru\\PA-III-02-2020\\vendor\\laravel\\framework\\src\\Illuminate\\Log\\LogManager.php:168)
+[stacktrace]
+#0 C:\\xampp\\htdocs\\PAIII-paling baru\\PA-III-02-2020\\vendor\\laravel\\framework\\src\\Illuminate\\Log\\LogManager.php(102): Illuminate\\Log\\LogManager->resolve(NULL)
+#1 C:\\xampp\\htdocs\\PAIII-paling baru\\PA-III-02-2020\\vendor\\laravel\\framework\\src\\Illuminate\\Log\\LogManager.php(90): Illuminate\\Log\\LogManager->get(NULL)
+#2 C:\\xampp\\htdocs\\PAIII-paling baru\\PA-III-02-2020\\vendor\\laravel\\framework\\src\\Illuminate\\Log\\LogManager.php(500): Illuminate\\Log\\LogManager->driver()
+#3 C:\\xampp\\htdocs\\PAIII-paling baru\\PA-III-02-2020\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Exceptions\\Handler.php(118): Illuminate\\Log\\LogManager->error('Too few argumen...', Array)
+#4 C:\\xampp\\htdocs\\PAIII-paling baru\\PA-III-02-2020\\app\\Exceptions\\Handler.php(37): Illuminate\\Foundation\\Exceptions\\Handler->report(Object(Symfony\\Component\\Debug\\Exception\\FatalThrowableError))
+#5 C:\\xampp\\htdocs\\PAIII-paling baru\\PA-III-02-2020\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(314): App\\Exceptions\\Handler->report(Object(Symfony\\Component\\Debug\\Exception\\FatalThrowableError))
+#6 C:\\xampp\\htdocs\\PAIII-paling baru\\PA-III-02-2020\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(122): Illuminate\\Foundation\\Http\\Kernel->reportException(Object(Symfony\\Component\\Debug\\Exception\\FatalThrowableError))
+#7 C:\\xampp\\htdocs\\PAIII-paling baru\\PA-III-02-2020\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#8 C:\\xampp\\htdocs\\PAIII-paling baru\\PA-III-02-2020\\server.php(21): require_once('C:\\\\xampp\\\\htdocs...')
+#9 {main}
+"} 
+[2020-06-22 17:40:11] laravel.ERROR: Too few arguments to function asset(), 0 passed in C:\xampp\htdocs\PAIII-paling baru\PA-III-02-2020\config\app.php on line 55 and at least 1 expected {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalThrowableError(code: 0): Too few arguments to function asset(), 0 passed in C:\\xampp\\htdocs\\PAIII-paling baru\\PA-III-02-2020\\config\\app.php on line 55 and at least 1 expected at C:\\xampp\\htdocs\\PAIII-paling baru\\PA-III-02-2020\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\helpers.php:146)
+[stacktrace]
+#0 C:\\xampp\\htdocs\\PAIII-paling baru\\PA-III-02-2020\\config\\app.php(55): asset()
+#1 C:\\xampp\\htdocs\\PAIII-paling baru\\PA-III-02-2020\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\LoadConfiguration.php(72): require('C:\\\\xampp\\\\htdocs...')
+#2 C:\\xampp\\htdocs\\PAIII-paling baru\\PA-III-02-2020\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\LoadConfiguration.php(39): Illuminate\\Foundation\\Bootstrap\\LoadConfiguration->loadConfigurationFiles(Object(Illuminate\\Foundation\\Application), Object(Illuminate\\Config\\Repository))
+#3 C:\\xampp\\htdocs\\PAIII-paling baru\\PA-III-02-2020\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(210): Illuminate\\Foundation\\Bootstrap\\LoadConfiguration->bootstrap(Object(Illuminate\\Foundation\\Application))
+#4 C:\\xampp\\htdocs\\PAIII-paling baru\\PA-III-02-2020\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(162): Illuminate\\Foundation\\Application->bootstrapWith(Array)
+#5 C:\\xampp\\htdocs\\PAIII-paling baru\\PA-III-02-2020\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(146): Illuminate\\Foundation\\Http\\Kernel->bootstrap()
+#6 C:\\xampp\\htdocs\\PAIII-paling baru\\PA-III-02-2020\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(116): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+#7 C:\\xampp\\htdocs\\PAIII-paling baru\\PA-III-02-2020\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#8 C:\\xampp\\htdocs\\PAIII-paling baru\\PA-III-02-2020\\server.php(21): require_once('C:\\\\xampp\\\\htdocs...')
+#9 {main}
+"} 
