@@ -177,11 +177,20 @@
                             @endif
 
                             <br>
-                            <div class="form-group row mb-0" style="padding-left: 280px; ">
-                                <div class="col-md-6 offset-md-4">
+                            <div class="form-group row mb-0" >
+                                <div class="col-md-8 offset-md-5">
                                     <button type="submit" class="btn btn-primary" style="background-color: #2E8B57">
                                         {{ __('Register') }}
                                     </button>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="form-group row mb-0" >
+                                <div class="col-md-6 offset-md-4">
+                                    <a class="btn btn-link" href="{{ route('login') }}"
+                                       style="color: #87CEEB">
+                                        {{ __('Sudah Memiliki Akun? Login.') }}
+                                    </a>
                                 </div>
                             </div>
 

@@ -85,7 +85,12 @@ endif; ?>
                                             <?php echo e(__('Lupa Password?')); ?>
 
                                         </a>
-                                    <?php endif; ?>
+                                    <?php endif; ?>|
+                                    <a class="btn btn-link" href="<?php echo e(route('register',0)); ?>"
+                                       style="color: #87CEEB">
+                                        <?php echo e(__('Belum Memiliki Akun? Daftar.')); ?>
+
+                                    </a>
                                 </div>
                             </div>
                         </form>

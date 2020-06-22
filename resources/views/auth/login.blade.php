@@ -67,7 +67,11 @@
                                            style="color: #87CEEB">
                                             {{ __('Lupa Password?') }}
                                         </a>
-                                    @endif
+                                    @endif|
+                                    <a class="btn btn-link" href="{{ route('register',0) }}"
+                                       style="color: #87CEEB">
+                                        {{ __('Belum Memiliki Akun? Daftar.') }}
+                                    </a>
                                 </div>
                             </div>
                         </form>
