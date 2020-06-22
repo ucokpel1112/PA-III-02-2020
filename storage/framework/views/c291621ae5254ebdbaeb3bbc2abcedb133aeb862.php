@@ -53,7 +53,7 @@
                                             </form>
                                         </li>
                                         <?php else: ?>
-                                        <li><a href="<?php echo e(route('login')); ?>"> 
+                                        <li><a href="<?php echo e(route('login')); ?>">
                                                 Login</a>
                                         </li>
                                         <li><a href="<?php echo e(route('register.choice')); ?>">
