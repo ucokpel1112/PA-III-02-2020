@@ -15,8 +15,18 @@
         </div><!-- /.container-fluid -->
     </section>
     <section class="content">
+        <?php if(session('sukses')): ?>
+            <div class="alert alert-success">
+                <?php echo e(session('sukses')); ?>
 
-        <!-- Default box -->
+            </div>
+        <?php elseif(session('gagal')): ?>
+            <div class="alert alert-danger">
+                <?php echo e(session('gagal')); ?>
+
+            </div>
+        <?php endif; ?>
+    <!-- Default box -->
         <div class="card">
             <div class="card-header">
                 <h3 class="card-title">
@@ -61,22 +71,19 @@
                             <td><a href="<?php echo e($komunitas->link); ?>"><?php echo e($komunitas->link); ?></a></td>
                             <td><?php echo e($komunitas->getKabupaten->nama_kabupaten); ?></td>
                             <td>
-                                <form action="<?php echo e(route('member.filter')); ?>" method="post">
-                                    <?php echo csrf_field(); ?>
-                                    <input name="komunitas" value="<?php echo e($komunitas->id); ?>" type="text" hidden>
-                                    <input name="status" value="semua" type="text" hidden>
-                                    <button type="submit" class="btn btn-primary btn-sm">Lihat</button>
-                                </form>
+                                <a href="<?php echo e(route('show_komunitas',$komunitas->id)); ?>" class="btn btn-primary btn-sm"><i
+                                        class="fa fa-eye"></i>Lihat</a>
                             </td>
                             <td>
-                                <a href="<?php echo e(route('edit_komunitas',$komunitas->id)); ?>" class="btn btn-info btn-sm"><i class="fa fa-edit"> </i> Edit</a>
+                                <a href="<?php echo e(route('edit_komunitas',$komunitas->id)); ?>" class="btn btn-info btn-sm"><i
+                                        class="fa fa-edit"> </i> Edit</a>
                                 <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
-                                        data-target="#delete_<?php echo e($komunitas->id_paket); ?>">
+                                        data-target="#delete_<?php echo e($komunitas->id); ?>">
                                     <i class="fas fa-trash-alt">
                                     </i>
                                     Hapus
                                 </button>
-                                <div class="modal fade" id="delete_<?php echo e($komunitas->id_paket); ?>" tabindex="-1" role="dialog"
+                                <div class="modal fade" id="delete_<?php echo e($komunitas->id); ?>" tabindex="-1" role="dialog"
                                      aria-labelledby="deleteModalCenterTitle" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content">
@@ -94,15 +101,15 @@
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">
                                                     Batal
                                                 </button>
-                                                    <a href="<?php echo e(route('hapus_komunitas',$komunitas->id)); ?>"
-                                                       class="btn btn-danger btn-sm">
-                                                        <i class="fa fa-trash-alt"> </i> Hapus
-                                                    </a>
+                                                <a href="<?php echo e(route('hapus_komunitas',$komunitas->id)); ?>"
+                                                   class="btn btn-danger btn-sm">
+                                                    <i class="fa fa-trash-alt"> </i> Hapus
+                                                </a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                </td>
+                            </td>
                         </tr>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </table>
@@ -121,7 +128,7 @@
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <form action="<?php echo e(route('tambah_komunitas')); ?>" method="POST">
+                        <form action="<?php echo e(route('tambah_komunitas')); ?>" enctype="multipart/form-data" role="form" method="POST">
                             <?php echo e(csrf_field()); ?>
 
                             <div class="modal-body">
@@ -134,6 +141,19 @@
                                     <label for="Deskripsi">Deskripsi</label>
                                     <textarea name="deskripsi" class="textarea" placeholder="Deskripsi"
                                               style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="gambar">Gambar</label>
+                                    <div class="input-group">
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input" name="gambar" id="gambar">
+                                            <label class="custom-file-label" for="gambar">Pilih file</label>
+                                        </div>
+                                        <div class="input-group-append">
+                                            <span class="input-group-text" id="">Upload</span>
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <div class="form-group">

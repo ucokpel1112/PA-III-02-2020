@@ -42,8 +42,7 @@
                                             </div>
                                             <div class="modal-body">
                                                 <div class="ekko-lightbox-container">
-                                                    <img
-                                                        src="<?php echo e(asset('/storage/img/member/'.$member->photo)); ?>"
+                                                    <img src="<?php echo e(asset('/storage/img/member/'.$member->photo)); ?>"
                                                         class="img-fluid" style="width: 100%;">
                                                 </div>
                                             </div>

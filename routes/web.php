@@ -163,6 +163,7 @@ Route::namespace('Auth')->group(function () {
 //komunitas admin
 Route::get('/adm/komunitas',['middleware'=>'check-permission:admin','uses'=>'KomunitasController@index'])->name('data_komunitas.admin');
 Route::post('adm/komunitas/create',['middleware'=>'check-permission:admin','uses'=>'KomunitasController@create'])->name('tambah_komunitas');
+Route::get('/adm/komunitas/{id}/show',['middleware'=>'check-permission:admin','uses'=>'KomunitasController@show'])->name('show_komunitas');
 Route::get('/adm/komunitas/{id}/edit', ['middleware'=>'check-permission:admin','uses'=>'KomunitasController@edit'])->name('edit_komunitas');
 Route::post('/adm/komunitas/{id}/update', ['middleware'=>'check-permission:admin','uses'=>'KomunitasController@update'])->name('update_komunitas');
 Route::get('/adm/komunitas/{id}/hapus',['middleware'=>'check-permission:admin','uses'=>'KomunitasController@hapus'])->name('hapus_komunitas');

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Komunitas;
 use Illuminate\Http\Request;
 use App\Kabupaten;
+use Illuminate\Support\Str;
 
 
 class KomunitasController extends Controller
@@ -16,10 +17,30 @@ class KomunitasController extends Controller
         return view('admin.komunitas.daftar_komunitas',compact('data_komunitas','kabupaten'));
     }
 
+    public function show($id){
+        $komunitas = Komunitas::find($id);
+        return view('admin.komunitas.detail_komunitas',compact('komunitas'));
+    }
+
     public function create(Request $request)
     {
-        \App\Komunitas::create($request->all());
-        return redirect('/adm/komunitas')->with('sukses', 'Data berhasil ditambah!');
+        if ($request->hasFile('gambar')) {
+            $file = $request->file('gambar');
+            $filename = time() .'-'. Str::slug($request->nama_komunitas) . '.' . $file->getClientOriginalExtension();
+
+            $file->move('storage/img/komunitas', $filename);
+
+
+            Komunitas::create([
+                'nama_komunitas'=>$request->nama_komunitas,
+                'deskripsi'=>$request->deskripsi,
+                'kabupaten_id'=>$request->kabupaten_id,
+                'gambar'=>$filename,
+                'link'=>$request->link,
+            ]);
+            return redirect('/adm/komunitas')->with('sukses', 'Data berhasil ditambah!');
+        }
+        return redirect('/adm/komunitas')->with('gagal', 'Data Gagal ditambah!');
     }
 
     public function edit($id)
@@ -44,6 +65,6 @@ class KomunitasController extends Controller
         $komunitas->delete($komunitas);
         return redirect('adm/komunitas')->with('sukses', 'Data berhasil dihapus!');
     }
-    
+
 
 }

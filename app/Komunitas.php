@@ -10,7 +10,7 @@ class Komunitas extends Model
 
     protected $primaryKey = 'id';
 
-    protected $fillable = ['nama_komunitas','deskripsi','kabupaten_id','link'];
+    protected $fillable = ['nama_komunitas','deskripsi','kabupaten_id','gambar','link'];
 
 
     public function getKabupaten(){

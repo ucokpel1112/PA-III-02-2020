@@ -16,8 +16,16 @@
         </div><!-- /.container-fluid -->
     </section>
     <section class="content">
-
-        <!-- Default box -->
+        @if (session('sukses'))
+            <div class="alert alert-success">
+                {{ session('sukses') }}
+            </div>
+        @elseif(session('gagal'))
+            <div class="alert alert-danger">
+                {{ session('gagal') }}
+            </div>
+        @endif
+    <!-- Default box -->
         <div class="card">
             <div class="card-header">
                 <h3 class="card-title">
@@ -62,15 +70,12 @@
                             <td><a href="{{$komunitas->link}}">{{$komunitas->link}}</a></td>
                             <td>{{$komunitas->getKabupaten->nama_kabupaten}}</td>
                             <td>
-                                <form action="{{route('member.filter')}}" method="post">
-                                    @csrf
-                                    <input name="komunitas" value="{{$komunitas->id}}" type="text" hidden>
-                                    <input name="status" value="semua" type="text" hidden>
-                                    <button type="submit" class="btn btn-primary btn-sm">Lihat</button>
-                                </form>
+                                <a href="{{route('show_komunitas',$komunitas->id)}}" class="btn btn-primary btn-sm"><i
+                                        class="fa fa-eye"></i>Lihat</a>
                             </td>
                             <td>
-                                <a href="{{ route('edit_komunitas',$komunitas->id)}}" class="btn btn-info btn-sm"><i class="fa fa-edit"> </i> Edit</a>
+                                <a href="{{ route('edit_komunitas',$komunitas->id)}}" class="btn btn-info btn-sm"><i
+                                        class="fa fa-edit"> </i> Edit</a>
                                 <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
                                         data-target="#delete_{{$komunitas->id}}">
                                     <i class="fas fa-trash-alt">
@@ -95,15 +100,15 @@
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">
                                                     Batal
                                                 </button>
-                                                    <a href="{{ route('hapus_komunitas',$komunitas->id)}}"
-                                                       class="btn btn-danger btn-sm">
-                                                        <i class="fa fa-trash-alt"> </i> Hapus
-                                                    </a>
+                                                <a href="{{ route('hapus_komunitas',$komunitas->id)}}"
+                                                   class="btn btn-danger btn-sm">
+                                                    <i class="fa fa-trash-alt"> </i> Hapus
+                                                </a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                </td>
+                            </td>
                         </tr>
                     @endforeach
                 </table>
@@ -122,7 +127,7 @@
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <form action="{{route('tambah_komunitas')}}" method="POST">
+                        <form action="{{route('tambah_komunitas')}}" enctype="multipart/form-data" role="form" method="POST">
                             {{csrf_field()}}
                             <div class="modal-body">
                                 <div class="form-group">
@@ -134,6 +139,19 @@
                                     <label for="Deskripsi">Deskripsi</label>
                                     <textarea name="deskripsi" class="textarea" placeholder="Deskripsi"
                                               style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="gambar">Gambar</label>
+                                    <div class="input-group">
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input" name="gambar" id="gambar">
+                                            <label class="custom-file-label" for="gambar">Pilih file</label>
+                                        </div>
+                                        <div class="input-group-append">
+                                            <span class="input-group-text" id="">Upload</span>
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <div class="form-group">

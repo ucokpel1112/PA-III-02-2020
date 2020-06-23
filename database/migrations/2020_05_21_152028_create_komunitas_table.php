@@ -17,7 +17,8 @@ class CreateKomunitasTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('kabupaten_id');
             $table->string('nama_komunitas');
-            $table->string('deskripsi');
+            $table->text('deskripsi');
+            $table->string('gambar');
             $table->string('link');
             $table->timestamps();
 
