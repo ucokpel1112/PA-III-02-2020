@@ -17,7 +17,7 @@
     <!-- Tentang Komunitas  -->
     <div class="about_story">
         <div class="container">
-            @foreach($komunitas as $row)
+            @forelse($komunitas as $row)
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="story_heading">
@@ -37,7 +37,7 @@
                                     <div class="row">
                                         <div class="col-lg-6 col-md-6">
                                             <div class="thumb">
-                                                <img src="{{asset('storage/img/komunitas/'.$row->gambar)}}" alt="">
+                                                <img src="{{asset('storage/img/komunitas/'.$row->gambar)}}">
                                             </div>
                                         </div>
                                     </div>
@@ -116,7 +116,14 @@
                         </div>
                     </div>
                 </div>
-            @endforeach
+            @empty
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h3>Belum Ada Komunitas Di Daerah Ini !</h3>
+                    </div>
+                </div>
+            @endforelse
         </div>
     </div>
     <!--/ Tentang Komunitas  -->

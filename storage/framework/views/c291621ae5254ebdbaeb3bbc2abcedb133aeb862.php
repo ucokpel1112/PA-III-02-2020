@@ -31,6 +31,7 @@
 
                                         </li>
                                         <li><a href="<?php echo e(asset('/kontak')); ?>">Tentang Visit Toba</a></li>
+                                        <li><a href="<?php echo e(asset('/komunitas')); ?>">Komunitas</a></li>
                                     </ul>
                                 </nav>
                             </div>
@@ -56,7 +57,7 @@
                                         <li><a href="<?php echo e(route('login')); ?>">
                                                 Login</a>
                                         </li>
-                                        <li><a href="<?php echo e(route('register.choice')); ?>">
+                                        <li><a href="<?php echo e(route('register',0)); ?>">
                                                 Register</a></li>
                                         <?php endif; ?>
                                     </ul>

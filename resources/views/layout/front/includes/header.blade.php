@@ -31,6 +31,7 @@
 
                                         </li>
                                         <li><a href="{{asset('/kontak')}}">Tentang Visit Toba</a></li>
+                                        <li><a href="{{asset('/komunitas')}}">Komunitas</a></li>
                                     </ul>
                                 </nav>
                             </div>
@@ -46,17 +47,17 @@
                                                 <i class="fa fa-sign-out"></i> <?php echo e(__('Logout')); ?>
 
                                             </a>
-                                            <form id="logout-form" action="<?php echo e(route('logout')); ?>"
+                                            <form id="logout-form" action="{{route('logout')}}"
                                                   method="POST"
                                                   style="display: none;">
-                                                <?php echo csrf_field(); ?>
+                                                @csrf
                                             </form>
                                         </li>
                                         <?php else: ?>
-                                        <li><a href="<?php echo e(route('login')); ?>">
+                                        <li><a href="{{route('login')}}">
                                                 Login</a>
                                         </li>
-                                        <li><a href="<?php echo e(route('register.choice')); ?>">
+                                        <li><a href="{{ route('register',0) }}">
                                                 Register</a></li>
                                         <?php endif; ?>
                                     </ul>
