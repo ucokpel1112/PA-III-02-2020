@@ -6,6 +6,7 @@ use App\Komunitas;
 use Illuminate\Http\Request;
 use App\Kabupaten;
 use Illuminate\Support\Str;
+use File;
 
 
 class KomunitasController extends Controller
@@ -53,8 +54,22 @@ class KomunitasController extends Controller
     public function update(Request $request,$id)
     {
         $komunitas = \App\Komunitas::find($id);
+        $photo = $komunitas->gambar;
+        if ($request->hasFile('gambar')) {
+            !empty($photo) ? File::delete(public_path('storage/img/komunitas/' . $photo)) : null;
+            $file = $request->file('gambar');
+            $photo = time() . Str::slug($request->nama_paket_wisata) . '.' . $file->getClientOriginalExtension();
+
+            $file->move('storage/img/komunitas', $photo);
+        }
+        $komunitas->update([
+            'nama_komunitas'=>$request->nama_komunitas,
+            'deskripsi'=>$request->deskripsi,
+            'kabupaten_id'=>$request->kabupaten_id,
+            'gambar'=>$photo,
+            'link'=>$request->link,
+        ]);
         $kabupaten = Kabupaten::all();
-        $komunitas->update($request->all());
         return redirect('adm/komunitas')->with('sukses', 'Data berhasil diupdate!');
     }
 
