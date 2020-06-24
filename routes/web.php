@@ -175,9 +175,3 @@ Route::get('/adm/komunitas/{id}/hapus',['middleware'=>'check-permission:admin','
 Route::get('/anggotacbt/komunitas',['middleware'=>'check-permission:member','uses'=>'KomunitasCBTController@index'])->name('data_komunitas.anggota');
 Route::get('/anggotacbt/komunitas/pendaftar',['middleware'=>'check-permission:member','uses'=>'PendaftarController@index'])->name('view_anggota');
 Route::post('/anggotacbt/komunitas/pendaftar/create',['middleware'=>'check-permission:member','uses'=>'PendaftarController@daftar'])->name('gabung_daftar');
-
-Route::get('/design',function(){
-    $komunitas = \App\Komunitas::where('kabupaten_id',1)->get();
-
-    return view('desgin',compact('komunitas'));
-});

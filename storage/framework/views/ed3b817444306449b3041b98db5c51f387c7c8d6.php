@@ -46,7 +46,7 @@
                             <i class="ion ion-pricetag"></i>
 
                         </div>
-                        <a href="<?php echo e(url('/adm/listkalender')); ?>" class="small-box-footer">More info <i
+                        <a href="<?php echo e(url('/adm/kalender/listkalender')); ?>" class="small-box-footer">More info <i
                                 class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>

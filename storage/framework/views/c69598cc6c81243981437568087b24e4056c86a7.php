@@ -32,7 +32,7 @@
                     </li>
                     <?php if(Route::has('register')): ?>
                         <li class="nav-item">
-                            <a class="nav-link" href="<?php echo e(route('register.choice')); ?>"><?php echo e(__('Register')); ?></a>
+                            <a class="nav-link" href="<?php echo e(route('register',0)); ?>"><?php echo e(__('Register')); ?></a>
                         </li>
                     <?php endif; ?>
                 <?php else: ?>

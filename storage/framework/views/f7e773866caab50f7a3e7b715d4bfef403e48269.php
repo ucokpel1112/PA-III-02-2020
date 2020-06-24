@@ -1,6 +1,4 @@
-@extends('layout.admin.app')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
@@ -28,14 +26,14 @@
                         <div class="card-body box-profile">
 
 
-                            <h3 class="profile-username text-center">{{$user->name}}</h3>
+                            <h3 class="profile-username text-center"><?php echo e($user->name); ?></h3>
 
                             <p class="text-muted text-center">( Customer Pemesan )</p>
 
 
                             <ul class="list-group list-group-unbordered mb-3">
                                 <li class="list-group-item">
-                                    <b>Total Pemesanan</b> <a class="float-right">{{$user->getPemesanan->count()}}</a>
+                                    <b>Total Pemesanan</b> <a class="float-right"><?php echo e($user->getPemesanan->count()); ?></a>
                                 </li>
                             </ul>
                         </div>
@@ -53,20 +51,21 @@
                             <strong><i class="far fa-file-alt mr-1"></i> Nama</strong>
 
                             <p class="text-muted">
-                                {{$user->name}}
+                                <?php echo e($user->name); ?>
+
                             </p>
 
                             <hr>
 
                             <strong><i class="fas fa-book mr-1"></i> Nomor HP</strong>
 
-                            <p class="text-muted">{{$user->no_HP}}</p>
+                            <p class="text-muted"><?php echo e($user->no_HP); ?></p>
 
                             <hr>
 
                             <strong><i class="fas fa-book mr-1"></i> Nomor WhatsApp</strong>
 
-                            <p class="text-muted">{{$user->no_WA}}</p>
+                            <p class="text-muted"><?php echo e($user->no_WA); ?></p>
                         </div>
                         <!-- /.card-body -->
                     </div>
@@ -96,20 +95,23 @@
                                     <strong>Status</strong>
 
                                     <p class="text-muted">
-                                        {{$pemesanan->defineStatus($pemesanan->status)}}
+                                        <?php echo e($pemesanan->defineStatus($pemesanan->status)); ?>
+
                                     </p>
 
                                     <hr>
                                     <strong>Jumlah Peserta</strong>
 
                                     <p class="text-muted">
-                                        {{$pemesanan->jumlah_peserta}}
+                                        <?php echo e($pemesanan->jumlah_peserta); ?>
+
                                     </p>
 
                                     <hr>
                                     <strong>Pesan</strong>
                                     <p class="text-muted">
-                                        {{$pemesanan->pesan}}
+                                        <?php echo e($pemesanan->pesan); ?>
+
                                     </p>
                                     <ul class="nav nav-pills">
                                         <li class="nav-item"><a class="btn btn-light border nav-link" href="#formubahpesan"
@@ -117,15 +119,15 @@
                                     </ul>
                                     <div class="tab-content">
                                         <div class="tab-pane" id="formubahpesan">
-                                            <form action="{{route('admin.pemesanan.ubahPesan',$pemesanan->id_pemesanan)}}" method="post">
-                                                @csrf
-                                                @method('PUT')
+                                            <form action="<?php echo e(route('admin.pemesanan.ubahPesan',$pemesanan->id_pemesanan)); ?>" method="post">
+                                                <?php echo csrf_field(); ?>
+                                                <?php echo method_field('PUT'); ?>
                                                 <div class="form-group">
                                                     <label for="pesan">Pesan Untuk Customer</label>
                                                     <input type="text" class="form-control" name="pesan"
                                                            id="pesan"
                                                            placeholder="Pesan" required>
-                                                    {{--                                    <p class="text-danger">{{$error->first('nama-paket-wisata')}}</p>--}}
+                                                    
                                                 </div>
                                                 <button type="submit" class="btn btn-primary">Kirim</button>
                                             </form>
@@ -136,37 +138,39 @@
                                     <strong>Status</strong>
 
                                     <p class="text-muted">
-                                        {{$pemesanan->defineStatus($pemesanan->status)}}
+                                        <?php echo e($pemesanan->defineStatus($pemesanan->status)); ?>
+
                                     </p>
 
                                     <hr>
 
-                                    @forelse($pemesanan->getTransaksi as $index => $row)
+                                    <?php $__empty_1 = true; $__currentLoopData = $pemesanan->getTransaksi; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $index => $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                                         <div class="row">
                                             <div class="col">
                                                 <strong>Rekening Pembayaran</strong>
                                                 <ul>
-                                                    <li>{{$row->getRekening->nama_bank}} ({{$row->getRekening->nomor_rekening}})
+                                                    <li><?php echo e($row->getRekening->nama_bank); ?> (<?php echo e($row->getRekening->nomor_rekening); ?>)
                                                     </li>
                                                 </ul>
                                                 <br>
-                                                <img src="{{asset('storage/img/rekening/'.$row->getRekening->gambar)}}"
+                                                <img src="<?php echo e(asset('storage/img/rekening/'.$row->getRekening->gambar)); ?>"
                                                      style="width: 300px">
                                                 <hr>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col">
-                                                <strong>Bukti Pembayaran {{$index}}@if($pemesanan->status==2)(Belum Di
-                                                    Konfirmasi)@endif</strong>
+                                                <strong>Bukti Pembayaran <?php echo e($index); ?><?php if($pemesanan->status==2): ?>(Belum Di
+                                                    Konfirmasi)<?php endif; ?></strong>
                                                 <ul>
-                                                    <li>{{$row->getRekening->nama_bank}}
-                                                        ({{$row->getRekening->nomor_rekening}})
+                                                    <li><?php echo e($row->getRekening->nama_bank); ?>
+
+                                                        (<?php echo e($row->getRekening->nomor_rekening); ?>)
                                                     </li>
                                                 </ul>
                                                 <br>
                                                 <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-default">
-                                                    <img src="{{asset('storage/img/pembayaran/'.$row->gambar)}}"
+                                                    <img src="<?php echo e(asset('storage/img/pembayaran/'.$row->gambar)); ?>"
                                                          style="width: 400px"
                                                          class="img-fluid mb-2" alt="white sample">
                                                 </button>
@@ -182,8 +186,8 @@
                                                             </div>
                                                             <div class="modal-body">
                                                                 <div class="ekko-lightbox-container">
-                                                                    <a href="{{asset('storage/img/pembayaran/'.$row->gambar)}}">
-                                                                        <img src="{{asset('storage/img/pembayaran/'.$row->gambar)}}"
+                                                                    <a href="<?php echo e(asset('storage/img/pembayaran/'.$row->gambar)); ?>">
+                                                                        <img src="<?php echo e(asset('storage/img/pembayaran/'.$row->gambar)); ?>"
                                                                              class="img-fluid" style="width: 100%;">
                                                                     </a>
                                                                 </div>
@@ -194,31 +198,31 @@
                                                     <!-- /.modal-dialog -->
                                                 </div>
                                             </div>
-                                            @if($pemesanan->status==2)
-                                                <form action="{{route('admin.pemesanan.konfirmasi',$pemesanan->id_pemesanan)}}" method="post">
-                                                    @csrf
-                                                    @method('PUT')
+                                            <?php if($pemesanan->status==2): ?>
+                                                <form action="<?php echo e(route('admin.pemesanan.konfirmasi',$pemesanan->id_pemesanan)); ?>" method="post">
+                                                    <?php echo csrf_field(); ?>
+                                                    <?php echo method_field('PUT'); ?>
                                                     <div class="col ">
                                                         <button class="btn btn-primary btn-md">Konfirmasi</button>
                                                     </div>
                                                 </form>||
-                                                <form action="{{route('admin.pemesanan.upload',$pemesanan->id_pemesanan)}}" method="post">
-                                                    @csrf
-                                                    @method('PUT')
+                                                <form action="<?php echo e(route('admin.pemesanan.upload',$pemesanan->id_pemesanan)); ?>" method="post">
+                                                    <?php echo csrf_field(); ?>
+                                                    <?php echo method_field('PUT'); ?>
                                                     <div class="col ">
                                                         <button class="btn btn-success btn-md">Ajukan untuk Upload Ulang</button>
                                                     </div>
                                                 </form>||
-                                                <form action="{{route('admin.pemesanan.tolak',$pemesanan->id_pemesanan)}}" method="post">
-                                                    @csrf
-                                                    @method('PUT')
+                                                <form action="<?php echo e(route('admin.pemesanan.tolak',$pemesanan->id_pemesanan)); ?>" method="post">
+                                                    <?php echo csrf_field(); ?>
+                                                    <?php echo method_field('PUT'); ?>
                                                     <div class="col ">
                                                         <button class="btn btn-danger btn-md">Tolak</button>
                                                     </div>
                                                 </form>
-                                            @endif
+                                            <?php endif; ?>
                                         </div>
-                                    @empty
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
                                         <div class="row">
                                             <div class="col">
                                                 <strong>Bukti Pembayaran</strong>
@@ -228,53 +232,60 @@
                                                 <br>
                                             </div>
                                         </div>
-                                    @endforelse
+                                    <?php endif; ?>
                                     <hr>
                                     <strong>Jumlah Peserta</strong>
 
                                     <p class="text-muted">
-                                        {{$pemesanan->jumlah_peserta}}
+                                        <?php echo e($pemesanan->jumlah_peserta); ?>
+
                                     </p>
                                     <hr>
                                     <strong>Total Harga Yang harus Dibayarkan</strong>
 
                                     <p class="text-muted">
-                                        Rp. {{number_format((($pemesanan->jumlah_peserta)*($pemesanan->getSesi->getPaket->harga_paket)))}}
+                                        Rp. <?php echo e(number_format((($pemesanan->jumlah_peserta)*($pemesanan->getSesi->getPaket->harga_paket)))); ?>
+
                                     </p>
                                     <hr>
                                     <strong>Total yang telah dibayarkan</strong>
 
                                     <p class="text-muted">
-                                        {{$total}}
+                                        <?php echo e($total); ?>
+
                                     </p>
 
                                 </div>
                                 <div class="tab-pane" id="detail">
-                                    <strong>{{$paket->nama_paket}}</strong>
+                                    <strong><?php echo e($paket->nama_paket); ?></strong>
 
                                     <p class="text-muted">
-                                        Paket Kabupaten {{$paket->getKabupaten->nama_kabupaten}}
+                                        Paket Kabupaten <?php echo e($paket->getKabupaten->nama_kabupaten); ?>
+
                                     </p>
 
                                     <hr>
                                     <strong>Harga Paket Wisata</strong>
 
                                     <p class="text-muted">
-                                        {{number_format($paket->harga_paket)}}
+                                        <?php echo e(number_format($paket->harga_paket)); ?>
+
                                     </p>
 
                                     <hr>
                                     <strong>Avalability</strong>
 
                                     <p class="text-muted">
-                                        {{$paket->availability}}
+                                        <?php echo e($paket->availability); ?>
+
                                     </p>
 
                                     <hr>
                                     <strong>Durasi</strong>
 
                                     <p class="text-muted">
-                                        {{$paket->durasi}}
+                                        <?php echo e($paket->durasi); ?>
+
                                     </p>
 
                                     <hr>
@@ -305,7 +316,8 @@
                                     <strong>Daerah</strong>
 
                                     <p class="text-muted">
-                                        Kabupaten {{$paket->getKabupaten->nama_kabupaten}}
+                                        Kabupaten <?php echo e($paket->getKabupaten->nama_kabupaten); ?>
+
                                         <br>
                                     </p>
 
@@ -314,44 +326,47 @@
                                     <p></p>
                                     <div class="row">
                                         <div class="col-sm-10">
-                                            <img class="img-fluid" src="{{asset('storage/img/paket/'.$paket->gambar)}}"
+                                            <img class="img-fluid" src="<?php echo e(asset('storage/img/paket/'.$paket->gambar)); ?>"
                                                  alt="Photo">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="tab-pane" id="layanan-wisata">
-                                    @foreach($paket->getPaketLayanan as $layanan)
+                                    <?php $__currentLoopData = $paket->getPaketLayanan; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $layanan): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                         <hr>
-                                        <strong>{{$layanan->nama_layanan}}</strong>
+                                        <strong><?php echo e($layanan->nama_layanan); ?></strong>
 
                                         <p class="text-muted">
-                                            {{$layanan->deskripsi_layanan}}
+                                            <?php echo e($layanan->deskripsi_layanan); ?>
+
                                         </p>
-                                    @endforeach
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </div>
                                 <div class="tab-pane" id="included-not-included">
                                     <strong>Included</strong>
                                     <ul>
-                                        @foreach($paket->getIncludedNotIncluded as $ini)
-                                            @if($ini->jenis_ini=='included')
+                                        <?php $__currentLoopData = $paket->getIncludedNotIncluded; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $ini): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                            <?php if($ini->jenis_ini=='included'): ?>
                                                 <li>
-                                                    {{$ini->keterangan}}
-                                                </li>
-                                            @endif
+                                                    <?php echo e($ini->keterangan); ?>
 
-                                        @endforeach
+                                                </li>
+                                            <?php endif; ?>
+
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </ul>
                                     <hr>
                                     <strong>Not Included</strong>
 
                                     <ul>
-                                        @foreach($paket->getIncludedNotIncluded as $ini)
-                                            @if($ini->jenis_ini=='not included')
+                                        <?php $__currentLoopData = $paket->getIncludedNotIncluded; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $ini): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                            <?php if($ini->jenis_ini=='not included'): ?>
                                                 <li>
-                                                    {{$ini->keterangan}}
+                                                    <?php echo e($ini->keterangan); ?>
+
                                                 </li>
-                                            @endif
-                                        @endforeach
+                                            <?php endif; ?>
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </ul>
 
                                     <hr>
@@ -365,4 +380,6 @@
             </div>
         </div>
     </section>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layout.admin.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\PAIII-paling baru\PA-III-02-2020\resources\views/admin/pemesanan/detail.blade.php ENDPATH**/ ?>

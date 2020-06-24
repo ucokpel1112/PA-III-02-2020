@@ -47,7 +47,7 @@
                             <i class="ion ion-pricetag"></i>
 
                         </div>
-                        <a href="{{ url('/adm/listkalender') }}" class="small-box-footer">More info <i
+                        <a href="{{ url('/adm/kalender/listkalender') }}" class="small-box-footer">More info <i
                                 class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
