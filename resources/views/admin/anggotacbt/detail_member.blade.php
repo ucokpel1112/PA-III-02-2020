@@ -129,6 +129,7 @@
                                             <th>Nama Komunitas</th>
                                             <th>Kabupaten</th>
                                             <th>Link Whats App</th>
+                                            <th></th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -145,6 +146,13 @@
                                                 </td>
                                                 <td>
                                                     {{$row->link}}
+                                                </td>
+                                                <td>
+                                                    <form action="{{route('member.keluarkan',['id_komunitas'=>$row->id,'id_member'=>$member->id])}}" method="POST">
+                                                        @csrf
+                                                        @method('PUT')
+                                                        <button class="btn btn-danger btn-sm" type="submit"><i class="fa fa-sign-out-alt"></i> Keluarkan Dari Komunitas</button>
+                                                    </form>
                                                 </td>
                                             </tr>
                                         @endforeach

@@ -287,9 +287,11 @@ class MemberController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function keluarkan($id_komunitas,$id_member)
     {
-        //
+        $member = Member::find($id_member);
+        $member->getKomunitasMember()->detach($id_komunitas);
+        return redirect()->back();
     }
 
     /**

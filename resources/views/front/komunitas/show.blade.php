@@ -17,11 +17,14 @@
     <!-- Tentang Komunitas  -->
     <div class="about_story">
         <div class="container">
-            @forelse($komunitas as $row)
+            @forelse($komunitas as $indexK => $row)
                 <div class="row">
                     <div class="col-lg-12">
+                        @if($indexK>0)
+                            <br><br><br><br><br><br>
+                            @endif
                         <div class="story_heading">
-                            <h3>{{$row->nama_komunitas}}</h3>
+                            <h3>{{$indexK+1}}. {{$row->nama_komunitas}}</h3>
                         </div>
                         <div class="row">
                             <div class="col-lg-11 offset-lg-1">
@@ -56,12 +59,13 @@
                                             <div class="visit">Nama</div>
                                             <div class="percentage">Jumlah Layanan yang Dimiliki</div>
                                         </div>
-                                        @if(isset($row->getKomunitasMember))
+                                        @if(isset($row->getKomunitasMember)&&$row->getKomunitasMember->count()>0)
                                             @foreach($row->getKomunitasMember as $index => $member)
                                                 <div class="table-row">
                                                     <div class="serial">{{$index+1}}</div>
-                                                    <div class="country"><img src="img/elements/f1.jpg"
-                                                                              alt="flag">{{$member->photo}}
+                                                    <div class="country"><img
+                                                            src="{{asset('/storage/img/member/'.$member->photo)}}"
+                                                            alt="flag" style="width: 20%">
                                                     </div>
                                                     <div class="visit">{{$member->getUser->name}}</div>
                                                     <div class="percentage">{{$member->getLayanan->count()}}</div>
@@ -92,7 +96,7 @@
                                             <div class="visit">Jenis Layanan</div>
                                             <div class="percentage">Deskripsi</div>
                                         </div>
-                                        @if(isset($row->getKomunitasMember))
+                                        @if(isset($row->getKomunitasMember)&&$row->getKomunitasMember->count()>0)
                                             <?php $indexx = 1 ?>
                                             @foreach($row->getKomunitasMember as $member)
                                                 @if(isset($member->getLayanan))
@@ -109,6 +113,16 @@
                                                     @endforeach
                                                 @endif
                                             @endforeach
+                                        @else
+                                            <div class="table-row">
+                                                <div class="serial"></div>
+                                                <div class="country">Belum memiliki Layanan Wisata</div>
+                                                <div class="visit"></div>
+                                                <div
+                                                    class="visit"></div>
+                                                <div
+                                                    class="percentage"></div>
+                                            </div>
                                         @endif
                                     </div>
                                 </div>

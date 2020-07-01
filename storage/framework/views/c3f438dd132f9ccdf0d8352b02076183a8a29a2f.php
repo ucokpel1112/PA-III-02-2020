@@ -1,6 +1,6 @@
 <?php $__env->startSection('content'); ?>
     <!-- bradcam_area  -->
-    <div class="bradcam_area bradcam_bg_3">
+    <div class="bradcam_area bradcam_bg_6">
         <div class="container">
             <div class="row">
                 <div class="col-xl-12">
@@ -16,11 +16,14 @@
     <!-- Tentang Komunitas  -->
     <div class="about_story">
         <div class="container">
-            <?php $__empty_1 = true; $__currentLoopData = $komunitas; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
+            <?php $__empty_1 = true; $__currentLoopData = $komunitas; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $indexK => $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                 <div class="row">
                     <div class="col-lg-12">
+                        <?php if($indexK>0): ?>
+                            <br><br><br><br><br><br>
+                            <?php endif; ?>
                         <div class="story_heading">
-                            <h3><?php echo e($row->nama_komunitas); ?></h3>
+                            <h3><?php echo e($indexK+1); ?>. <?php echo e($row->nama_komunitas); ?></h3>
                         </div>
                         <div class="row">
                             <div class="col-lg-11 offset-lg-1">
@@ -55,13 +58,13 @@
                                             <div class="visit">Nama</div>
                                             <div class="percentage">Jumlah Layanan yang Dimiliki</div>
                                         </div>
-                                        <?php if(isset($row->getKomunitasMember)): ?>
+                                        <?php if(isset($row->getKomunitasMember)&&$row->getKomunitasMember->count()>0): ?>
                                             <?php $__currentLoopData = $row->getKomunitasMember; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $index => $member): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                 <div class="table-row">
                                                     <div class="serial"><?php echo e($index+1); ?></div>
-                                                    <div class="country"><img src="img/elements/f1.jpg"
-                                                                              alt="flag"><?php echo e($member->photo); ?>
-
+                                                    <div class="country"><img
+                                                            src="<?php echo e(asset('/storage/img/member/'.$member->photo)); ?>"
+                                                            alt="flag" style="width: 20%">
                                                     </div>
                                                     <div class="visit"><?php echo e($member->getUser->name); ?></div>
                                                     <div class="percentage"><?php echo e($member->getLayanan->count()); ?></div>
@@ -92,7 +95,7 @@
                                             <div class="visit">Jenis Layanan</div>
                                             <div class="percentage">Deskripsi</div>
                                         </div>
-                                        <?php if(isset($row->getKomunitasMember)): ?>
+                                        <?php if(isset($row->getKomunitasMember)&&$row->getKomunitasMember->count()>0): ?>
                                             <?php $indexx = 1 ?>
                                             <?php $__currentLoopData = $row->getKomunitasMember; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $member): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                 <?php if(isset($member->getLayanan)): ?>
@@ -109,6 +112,16 @@
                                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                                 <?php endif; ?>
                                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                        <?php else: ?>
+                                            <div class="table-row">
+                                                <div class="serial"></div>
+                                                <div class="country">Belum memiliki Layanan Wisata</div>
+                                                <div class="visit"></div>
+                                                <div
+                                                    class="visit"></div>
+                                                <div
+                                                    class="percentage"></div>
+                                            </div>
                                         <?php endif; ?>
                                     </div>
                                 </div>

@@ -128,6 +128,7 @@
                                             <th>Nama Komunitas</th>
                                             <th>Kabupaten</th>
                                             <th>Link Whats App</th>
+                                            <th></th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -148,6 +149,13 @@
                                                 <td>
                                                     <?php echo e($row->link); ?>
 
+                                                </td>
+                                                <td>
+                                                    <form action="<?php echo e(route('member.keluarkan',['id_komunitas'=>$row->id,'id_member'=>$member->id])); ?>" method="POST">
+                                                        <?php echo csrf_field(); ?>
+                                                        <?php echo method_field('PUT'); ?>
+                                                        <button class="btn btn-danger btn-sm" type="submit"><i class="fa fa-sign-out-alt"></i> Keluarkan Dari Komunitas</button>
+                                                    </form>
                                                 </td>
                                             </tr>
                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

@@ -85,6 +85,7 @@ Route::namespace('Admin')->group(function () {
     Route::post('/adm/member/add',['middleware'=>'check-permission:admin','uses'=>'MemberController@store'])->name('member.tambah');
     Route::get('/adm/member/aktif/{id_member}',['middleware'=>'check-permission:admin','uses'=>'MemberController@aktifkanStatus'])->name('member.aktifkan');
     Route::get('/adm/member/non-aktif/{id_member}',['middleware'=>'check-permission:admin','uses'=>'MemberController@nonAktif'])->name('member.nonaktifkan');
+    Route::put('/adm/member/keluarkan/{id_komunitas}/{id_member}',['middleware'=>'check-permission:admin','uses'=>'MemberController@keluarkan'])->name('member.keluarkan');
 
 
     //dashboard
