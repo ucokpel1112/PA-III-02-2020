@@ -2084,6 +2084,10 @@ h3 {
 .bradcam_bg_5 {
     background-image: url(../img/banner/pesanan-saya.png);
 }
+
+.bradcam_bg_6 {
+    background-image: url(../img/banner/komunitas.jpeg);
+}
 /* line 13, ../../Arafath/CL/December/231. Travel-02/HTML/scss/_bradcam.scss */
 .bradcam_area {
     background-size: cover;

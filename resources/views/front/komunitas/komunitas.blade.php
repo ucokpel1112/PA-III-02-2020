@@ -1,7 +1,7 @@
 @extends('layout.front.main')
 @section('content')
     <!-- bradcam_area  -->
-    <div class="bradcam_area bradcam_bg_3">
+    <div class="bradcam_area bradcam_bg_6">
         <div class="container">
             <div class="row">
                 <div class="col-xl-12">
