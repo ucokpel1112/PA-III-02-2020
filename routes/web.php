@@ -98,6 +98,7 @@ Route::namespace('Admin')->group(function () {
     Route::put('/adm/sesi/edit/{id_sesi}/update', ['middleware'=>'check-permission:admin','uses'=>'PaketWisataController@updateSesi'])->name('admin.sesi.update');
     Route::delete('/adm/sesi/delete/{id_sesi}', ['middleware'=>'check-permission:admin','uses'=>'PaketWisataController@destroySesi'])->name('admin.sesi.delete');
     Route::delete('/adm/sesi/nonaktif/{id_sesi}', ['middleware'=>'check-permission:admin','uses'=>'PaketWisataController@nonaktifSesi'])->name('admin.sesi.nonaktif');
+    Route::put('/adm/sesi/aktif/{id_sesi}', ['middleware'=>'check-permission:admin','uses'=>'PaketWisataController@aktifSesi'])->name('admin.sesi.aktif');
 
 
     //pemesanan
@@ -137,7 +138,9 @@ Route::namespace('Admin')->group(function () {
     Route::post('/adm/paket/add', ['middleware'=>'check-permission:admin','uses'=>'PaketWisataController@store'])->name('admin.paket.store');
 //hapus
     Route::delete('/adm/paket/delete/{id_paket}', ['middleware'=>'check-permission:admin','uses'=>'PaketWisataController@destroy'])->name('admin.paket.hapus');
-    Route::post('/adm/paket/recycle/{id_paket}', ['middleware'=>'check-permission:admin','uses'=>'PaketWisataController@recycle'])->name('admin.paket.recycle');
+    Route::put('/adm/paket/recycle/{id_paket}', ['middleware'=>'check-permission:admin','uses'=>'PaketWisataController@recycle'])->name('admin.paket.recycle');
+    Route::put('/adm/paket/nonaktif/{id_paket}', ['middleware'=>'check-permission:admin','uses'=>'PaketWisataController@nonaktifkanPaket'])->name('admin.paket.nonaktif');
+    Route::put('/adm/paket/aktifkan/{id_paket}', ['middleware'=>'check-permission:admin','uses'=>'PaketWisataController@aktifkanPaket'])->name('admin.paket.aktifkan');
 
 });
 //anggota CBT

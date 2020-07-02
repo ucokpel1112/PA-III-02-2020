@@ -60,7 +60,7 @@
                         <th style="width: 120px;" class="text-center">
                             Status
                         </th>
-                        <th style="width: 280px">
+                        <th style="width: 360px">
                         </th>
                     </tr>
                     </thead>
@@ -106,7 +106,7 @@
                                     </select>
                                 </div>
                             </td>
-                            <td>
+                            <td class="text-center">
                                 <button style="width: 180px" type="submit" class="btn btn-success btn-sm"><i
                                         class="fa fa-filter"></i>Filter
                                 </button>
@@ -140,7 +140,48 @@
                                 <span
                                     class="badge badge-{{$paket->defineClass($paket->status)}}">{{$paket->defineStatus($paket->status)}}</span>
                             </td>
-                            <td class="project-actions text-right">
+                            <td class="project-actions text-center">
+                                @if($paket->status==0)
+                                    <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
+                                            data-target="#aktifkan_{{$paket->id_paket}}">
+                                        <i class="fas fa-check-circle">
+                                        </i>
+                                        Aktifkan
+                                    </button>
+                                    <div class="modal fade" id="aktifkan_{{$paket->id_paket}}" tabindex="-1"
+                                         role="dialog"
+                                         aria-labelledby="aktifkanModalCenterTitle" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="aktifkanModalLongTitle">Aktifkan Kembali
+                                                        Paket
+                                                        Wisata</h5>
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                            aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body text-left">
+                                                    Anda Yakin Ingin Mengaktifkan kembali Paket ?
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                            data-dismiss="modal">
+                                                        Tidak
+                                                    </button>
+                                                    <form action="{{route('admin.paket.aktifkan',$paket->id_paket)}}"
+                                                          method="post">
+                                                        @csrf
+                                                        @method('PUT')
+                                                        <button type="submit" class="btn btn-success">Aktifkan
+                                                        </button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endif
                                 <a class="btn btn-primary btn-sm" href="{{route('admin.paket.show',$paket->id_paket)}}">
                                     <i class="fas fa-eye">
                                     </i>
@@ -154,17 +195,19 @@
                                 </a>
                                 @if($paket->status==2)
                                     <button type="button" class="btn btn-warning btn-sm" data-toggle="modal"
-                                            data-target="#aktifkan_{{$paket->id_paket}}">
+                                            data-target="#restore_{{$paket->id_paket}}">
                                         <i class="fas fa-recycle">
                                         </i>
-                                        Recycle
+                                        Restore
                                     </button>
-                                    <div class="modal fade" id="aktifkan_{{$paket->id_paket}}" tabindex="-1" role="dialog"
-                                         aria-labelledby="deleteModalCenterTitle" aria-hidden="true">
+                                    <div class="modal fade" id="restore_{{$paket->id_paket}}" tabindex="-1"
+                                         role="dialog"
+                                         aria-labelledby="restoreModalCenterTitle" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title" id="hapusModalLongTitle"><i>Recycle</i> Paket
+                                                    <h5 class="modal-title" id="restoreModalLongTitle"><i>Restore</i>
+                                                        Paket
                                                         Wisata</h5>
                                                     <button type="button" class="close" data-dismiss="modal"
                                                             aria-label="Close">
@@ -172,7 +215,7 @@
                                                     </button>
                                                 </div>
                                                 <div class="modal-body text-left">
-                                                    Anda Yakin Ingin Me-<i>recycle</i> Paket ...
+                                                    Anda Yakin Ingin Me-<i>restore</i> Paket ?
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary"
@@ -182,7 +225,9 @@
                                                     <form action="{{route('admin.paket.recycle',$paket->id_paket)}}"
                                                           method="post">
                                                         @csrf
-                                                        <button type="submit" class="btn btn-danger"><i>Recycle</i></button>
+                                                        @method('PUT')
+                                                        <button type="submit" class="btn btn-warning"><i>Restore</i>
+                                                        </button>
                                                     </form>
                                                 </div>
                                             </div>
@@ -220,6 +265,45 @@
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" class="btn btn-danger">Hapus</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @elseif($paket->status==1)
+                                    <button type="button" class="btn btn-warning btn-sm" data-toggle="modal"
+                                            data-target="#nonaktif_{{$paket->id_paket}}">
+                                        <i class="fas fa-ban">
+                                        </i>
+                                        Non-Aktifkan
+                                    </button>
+                                    <div class="modal fade" id="nonaktif_{{$paket->id_paket}}" tabindex="-1"
+                                         role="dialog"
+                                         aria-labelledby="deleteModalCenterTitle" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="hapusModalLongTitle">Non-Aktifkan Paket
+                                                        Wisata</h5>
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                            aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body text-left">
+                                                    Anda Yakin Ingin Non-Aktifkan Paket ...
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                            data-dismiss="modal">
+                                                        Batal
+                                                    </button>
+                                                    <form action="{{route('admin.paket.nonaktif',$paket->id_paket)}}"
+                                                          method="post">
+                                                        @csrf
+                                                        @method('PUT')
+                                                        <button type="submit" class="btn btn-warning">Non-Aktifkan
+                                                        </button>
                                                     </form>
                                                 </div>
                                             </div>

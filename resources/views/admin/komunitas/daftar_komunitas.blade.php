@@ -55,8 +55,7 @@
                         <th class="text-center" style="width: 20%">
                             Kabupaten
                         </th>
-                        <th></th>
-                        <th class="text-center" style="width:20%">
+                        <th class="text-center" style="width:25%">
                             Aksi
                         </th>
 
@@ -66,14 +65,12 @@
                     @foreach($data_komunitas as $komunitas)
                         <tr>
                             <td>{{$komunitas->nama_komunitas}}</td>
-                            <td> <?php echo $komunitas->deskripsi ?></td>
+                            <td> <?php echo str_limit($komunitas->deskripsi,100,'...'); ?></td>
                             <td><a href="{{$komunitas->link}}">{{$komunitas->link}}</a></td>
                             <td>{{$komunitas->getKabupaten->nama_kabupaten}}</td>
-                            <td>
+                            <td class="text-center">
                                 <a href="{{route('show_komunitas',$komunitas->id)}}" class="btn btn-primary btn-sm"><i
                                         class="fa fa-eye"></i>Lihat</a>
-                            </td>
-                            <td>
                                 <a href="{{ route('edit_komunitas',$komunitas->id)}}" class="btn btn-info btn-sm"><i
                                         class="fa fa-edit"> </i> Edit</a>
                                 <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"

@@ -56,8 +56,7 @@
                         <th class="text-center" style="width: 20%">
                             Kabupaten
                         </th>
-                        <th></th>
-                        <th class="text-center" style="width:20%">
+                        <th class="text-center" style="width:25%">
                             Aksi
                         </th>
 
@@ -67,14 +66,12 @@
                     <?php $__currentLoopData = $data_komunitas; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $komunitas): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <tr>
                             <td><?php echo e($komunitas->nama_komunitas); ?></td>
-                            <td> <?php echo $komunitas->deskripsi ?></td>
+                            <td> <?php echo str_limit($komunitas->deskripsi,100,'...'); ?></td>
                             <td><a href="<?php echo e($komunitas->link); ?>"><?php echo e($komunitas->link); ?></a></td>
                             <td><?php echo e($komunitas->getKabupaten->nama_kabupaten); ?></td>
-                            <td>
+                            <td class="text-center">
                                 <a href="<?php echo e(route('show_komunitas',$komunitas->id)); ?>" class="btn btn-primary btn-sm"><i
                                         class="fa fa-eye"></i>Lihat</a>
-                            </td>
-                            <td>
                                 <a href="<?php echo e(route('edit_komunitas',$komunitas->id)); ?>" class="btn btn-info btn-sm"><i
                                         class="fa fa-edit"> </i> Edit</a>
                                 <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"

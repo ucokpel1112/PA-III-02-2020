@@ -1,13 +1,13 @@
 <?php $__env->startSection('content'); ?>
     <section class="content-header">
         <div class="container-fluid">
-            <?php if(isset($error)): ?>
-            <div class="row danger bg-danger">
-                <div class="col text-center" style="margin: 5px;">
-                    <?php echo e($error); ?>
+            <?php if(session('error')): ?>
+                <div class="row danger bg-danger">
+                    <div class="col text-center" style="margin: 5px;">
+                        <?php echo e(session('error')); ?>
 
+                    </div>
                 </div>
-            </div>
             <?php endif; ?>
             <div class="row mb-2">
                 <div class="col-sm-6">
@@ -39,47 +39,182 @@
                                 <li class="nav-item"><a class="nav-link" href="#sesi"
                                                         data-toggle="tab">Sesi/Jadwal Paket Wisata</a></li>
                                 <li class="nav-item" style="margin-left: 10px">
-                                    <a class="btn btn-info btn-md" href="<?php echo e(route('admin.paket.editChoice',$paket->id_paket)); ?>">
+                                    <a class="btn btn-info btn-md"
+                                       href="<?php echo e(route('admin.paket.editChoice',$paket->id_paket)); ?>">
                                         <i class="fas fa-edit"></i>
                                         Edit Paket
                                     </a>
                                 </li>
-                                <li class="nav-item" style="margin-left: 10px">
-                                    <button type="button" class="btn btn-danger btn-md" data-toggle="modal"
-                                            data-target="#delete_<?php echo e($paket->id_paket); ?>">
-                                        <i class="fas fa-trash-alt">
-                                        </i>
-                                        Hapus Paket
-                                    </button>
-                                    <div class="modal fade" id="delete_<?php echo e($paket->id_paket); ?>" tabindex="-1" role="dialog"
-                                         aria-labelledby="deleteModalCenterTitle" aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog-centered" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="hapusModalLongTitle">Hapus Paket Wisata</h5>
-                                                    <button type="button" class="close" data-dismiss="modal"
-                                                            aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body text-left">
-                                                    Anda Yakin Ingin Menghapus Paket ...
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
-                                                        Batal
-                                                    </button>
-                                                    <form action="<?php echo e(route('admin.paket.hapus',$paket->id_paket)); ?>"
-                                                          method="post">
-                                                        <?php echo csrf_field(); ?>
-                                                        <?php echo method_field('DELETE'); ?>
-                                                        <button type="submit" class="btn btn-danger">Hapus</button>
-                                                    </form>
+                                <?php if($paket->status==1): ?>
+                                    <li class="nav-item" style="margin-left: 10px">
+                                        <button type="button" class="btn btn-warning btn-md" data-toggle="modal"
+                                                data-target="#nonaktif_<?php echo e($paket->id_paket); ?>">
+                                            <i class="fas fa-ban">
+                                            </i>
+                                            Non-Aktifkan
+                                        </button>
+                                        <div class="modal fade" id="nonaktif_<?php echo e($paket->id_paket); ?>" tabindex="-1"
+                                             role="dialog"
+                                             aria-labelledby="deleteModalCenterTitle" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="hapusModalLongTitle">Non-Aktifkan
+                                                            Paket
+                                                            Wisata</h5>
+                                                        <button type="button" class="close" data-dismiss="modal"
+                                                                aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body text-left">
+                                                        Anda Yakin Ingin Non-Aktifkan Paket ...
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary"
+                                                                data-dismiss="modal">
+                                                            Batal
+                                                        </button>
+                                                        <form
+                                                            action="<?php echo e(route('admin.paket.nonaktif',$paket->id_paket)); ?>"
+                                                            method="post">
+                                                            <?php echo csrf_field(); ?>
+                                                            <?php echo method_field('PUT'); ?>
+                                                            <button type="submit" class="btn btn-warning">Non-Aktifkan
+                                                            </button>
+                                                        </form>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </li>
+                                    </li>
+                                <?php elseif($paket->status==0): ?>
+                                    <li class="nav-item" style="margin-left: 10px">
+                                        <button type="button" class="btn btn-danger btn-md" data-toggle="modal"
+                                                data-target="#delete_<?php echo e($paket->id_paket); ?>">
+                                            <i class="fas fa-trash-alt">
+                                            </i>
+                                            Hapus Paket
+                                        </button>
+                                        <div class="modal fade" id="delete_<?php echo e($paket->id_paket); ?>" tabindex="-1"
+                                             role="dialog"
+                                             aria-labelledby="deleteModalCenterTitle" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="hapusModalLongTitle">Hapus Paket
+                                                            Wisata</h5>
+                                                        <button type="button" class="close" data-dismiss="modal"
+                                                                aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body text-left">
+                                                        Anda Yakin Ingin Menghapus Paket ...
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary"
+                                                                data-dismiss="modal">
+                                                            Batal
+                                                        </button>
+                                                        <form action="<?php echo e(route('admin.paket.hapus',$paket->id_paket)); ?>"
+                                                              method="post">
+                                                            <?php echo csrf_field(); ?>
+                                                            <?php echo method_field('DELETE'); ?>
+                                                            <button type="submit" class="btn btn-danger">Hapus</button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="nav-item" style="margin-left: 10px">
+                                        <button type="button" class="btn btn-success btn-md" data-toggle="modal"
+                                                data-target="#aktifkan_<?php echo e($paket->id_paket); ?>">
+                                            <i class="fas fa-check-circle">
+                                            </i>
+                                            Aktifkan
+                                        </button>
+                                        <div class="modal fade" id="aktifkan_<?php echo e($paket->id_paket); ?>" tabindex="-1"
+                                             role="dialog"
+                                             aria-labelledby="aktifkanModalCenterTitle" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="aktifkanModalLongTitle">Aktifkan
+                                                            Kembali
+                                                            Paket
+                                                            Wisata</h5>
+                                                        <button type="button" class="close" data-dismiss="modal"
+                                                                aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body text-left">
+                                                        Anda Yakin Ingin Mengaktifkan kembali Paket ?
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary"
+                                                                data-dismiss="modal">
+                                                            Tidak
+                                                        </button>
+                                                        <form
+                                                            action="<?php echo e(route('admin.paket.aktifkan',$paket->id_paket)); ?>"
+                                                            method="post">
+                                                            <?php echo csrf_field(); ?>
+                                                            <?php echo method_field('PUT'); ?>
+                                                            <button type="submit" class="btn btn-success">Aktifkan
+                                                            </button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                <?php elseif($paket->status==2): ?>
+                                    <li class="nav-item" style="margin-left: 10px">
+                                        <button type="button" class="btn btn-warning btn-sm" data-toggle="modal"
+                                                data-target="#restore_<?php echo e($paket->id_paket); ?>">
+                                            <i class="fas fa-recycle">
+                                            </i>
+                                            Restore
+                                        </button>
+                                        <div class="modal fade" id="restore_<?php echo e($paket->id_paket); ?>" tabindex="-1"
+                                             role="dialog"
+                                             aria-labelledby="restoreModalCenterTitle" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="restoreModalLongTitle">
+                                                            <i>Restore</i>
+                                                            Paket
+                                                            Wisata</h5>
+                                                        <button type="button" class="close" data-dismiss="modal"
+                                                                aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body text-left">
+                                                        Anda Yakin Ingin Me-<i>restore</i> Paket ?
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary"
+                                                                data-dismiss="modal">
+                                                            Tidak
+                                                        </button>
+                                                        <form action="<?php echo e(route('admin.paket.recycle',$paket->id_paket)); ?>"
+                                                              method="post">
+                                                            <?php echo csrf_field(); ?>
+                                                            <?php echo method_field('PUT'); ?>
+                                                            <button type="submit" class="btn btn-warning"><i>Restore</i>
+                                                            </button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                <?php endif; ?>
                             </ul>
                         </div>
                         <!-- /.card-header -->
@@ -253,6 +388,55 @@
                                                 </td>
 
                                                 <td class="project-actions text-right">
+
+                                                    <?php if($row->status==0): ?>
+                                                        <button type="button" class="btn btn-success btn-sm"
+                                                                data-toggle="modal"
+                                                                data-target="#aktifkan_sesi_<?php echo e($row->id_sesi); ?>">
+                                                            <i class="fas fa-check-circle">
+                                                            </i>
+                                                            Aktifkan
+                                                        </button>
+                                                        <div class="modal fade" id="aktifkan_sesi_<?php echo e($row->id_sesi); ?>"
+                                                             tabindex="-1" role="dialog"
+                                                             aria-labelledby="aktifkanSesiModalCenterTitle"
+                                                             aria-hidden="true">
+                                                            <div class="modal-dialog modal-dialog-centered"
+                                                                 role="document">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title"
+                                                                            id="aktifkanSesiModalLongTitle">
+                                                                            Aktifkan Sesi Paket Wisata</h5>
+                                                                        <button type="button" class="close"
+                                                                                data-dismiss="modal"
+                                                                                aria-label="Close">
+                                                                            <span aria-hidden="true">&times;</span>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="modal-body text-left">
+                                                                        Anda Yakin Ingin Mengaktifkan Sesi Paket ?
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-secondary"
+                                                                                data-dismiss="modal">
+                                                                            Batal
+                                                                        </button>
+                                                                        <form
+                                                                            action="<?php echo e(route('admin.sesi.aktif',$row->id_sesi)); ?>"
+                                                                            method="post">
+                                                                            <?php echo csrf_field(); ?>
+                                                                            <?php echo method_field('PUT'); ?>
+                                                                            <button type="submit"
+                                                                                    class="btn btn-success">
+                                                                                Aktifkan
+                                                                            </button>
+                                                                        </form>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    <?php endif; ?>
                                                     <a class="btn btn-info btn-sm"
                                                        href="<?php echo e(route('admin.sesi.edit',$row->id_sesi)); ?>">
                                                         <i class="fas fa-edit">
