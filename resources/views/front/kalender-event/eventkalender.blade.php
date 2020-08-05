@@ -28,8 +28,12 @@
                         @foreach($kalenders as $kalender)
                             <article class="blog_item">
                                 <div class="blog_item_img">
-                                    <img class="card-img rounded-0"
-                                         src="{{asset('storage/img/kalender/'.$kalender->gambar_event)}}" alt="">
+                                    <a class="d-inline-block"
+                                       href="{{ route('detail-eventkalender',$kalender->id_kalenderevent) }}">
+                                        <img class="card-img rounded-0"
+                                             src="{{asset('storage/img/kalender/'.$kalender->gambar_event)}}"
+                                             alt="">
+                                    </a>
                                     <a href="#" class="blog_item_date">
                                         <h3>{{$kalender->tanggal_event}}
                                         <!--                                    --><?php //echo date('d F Y');?>
@@ -68,10 +72,12 @@
                             <h3 class="widget_title">Upcoming Event</h3>
                             @foreach($kals_up as $kals_up)
                                 <div class="media post_item">
-                                    <img src="{{asset('storage/img/kalender/'.$kals_up->gambar_event)}}"
-                                         style="height: 50px;" alt="post">
+                                    <a href="{{ route('detail-eventkalender',$kals_up->id_kalenderevent) }}">
+                                        <img src="{{asset('storage/img/kalender/'.$kals_up->gambar_event)}}"
+                                             style="height: 50px;" alt="post">
+                                    </a>
                                     <div class="media-body">
-                                        <a href="single-blog.html">
+                                        <a href="{{ route('detail-eventkalender',$kals_up->id_kalenderevent) }}">
                                             <h3>{{$kals_up->nama_event}}</h3>
                                         </a>
                                         <p>{{$kals_up->tanggal_event}}</p>

@@ -27,8 +27,12 @@
                         <?php $__currentLoopData = $kalenders; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $kalender): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <article class="blog_item">
                                 <div class="blog_item_img">
-                                    <img class="card-img rounded-0"
-                                         src="<?php echo e(asset('storage/img/kalender/'.$kalender->gambar_event)); ?>" alt="">
+                                    <a class="d-inline-block"
+                                       href="<?php echo e(route('detail-eventkalender',$kalender->id_kalenderevent)); ?>">
+                                        <img class="card-img rounded-0"
+                                             src="<?php echo e(asset('storage/img/kalender/'.$kalender->gambar_event)); ?>"
+                                             alt="">
+                                    </a>
                                     <a href="#" class="blog_item_date">
                                         <h3><?php echo e($kalender->tanggal_event); ?>
 
@@ -68,10 +72,12 @@
                             <h3 class="widget_title">Upcoming Event</h3>
                             <?php $__currentLoopData = $kals_up; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $kals_up): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <div class="media post_item">
-                                    <img src="<?php echo e(asset('storage/img/kalender/'.$kals_up->gambar_event)); ?>"
-                                         style="height: 50px;" alt="post">
+                                    <a href="<?php echo e(route('detail-eventkalender',$kals_up->id_kalenderevent)); ?>">
+                                        <img src="<?php echo e(asset('storage/img/kalender/'.$kals_up->gambar_event)); ?>"
+                                             style="height: 50px;" alt="post">
+                                    </a>
                                     <div class="media-body">
-                                        <a href="single-blog.html">
+                                        <a href="<?php echo e(route('detail-eventkalender',$kals_up->id_kalenderevent)); ?>">
                                             <h3><?php echo e($kals_up->nama_event); ?></h3>
                                         </a>
                                         <p><?php echo e($kals_up->tanggal_event); ?></p>

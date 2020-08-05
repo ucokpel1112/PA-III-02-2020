@@ -221,34 +221,37 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-4 col-md-6">
-                    <div class="single_place">
-                        <div class="thumb">
-                            <img src="img/filter-paket/toba.png" alt="">
-                        </div>
-                        <div class="place_info">
-                            <?php $__currentLoopData = $kabupaten; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                <?php if($row->nama_kabupaten=='Toba'): ?>
+                <?php $__currentLoopData = $kabupaten; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <?php if($row->nama_kabupaten=='Toba'): ?>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="single_place">
+                                <div class="thumb">
+                                    <a href="<?php echo e(route('paket.filter.kabupaten',$row->id_kabupaten)); ?>">
+                                        <img src="img/filter-paket/toba.png" alt="">
+                                    </a>
+                                </div>
+                                <div class="place_info">
                                     <a href="<?php echo e(route('paket.filter.kabupaten',$row->id_kabupaten)); ?>"><h3>Toba</h3></a>
                                     <div class="rating_days d-flex justify-content-between">
                                         <div class="days">
                                             <i class="fa fa-clock-o"></i>
-                                            <a href="<?php echo e(route('paket.filter.kabupaten',$row->id_kabupaten)); ?>"><?php echo e($count_toba); ?> Paket Wisata</a>
+                                            <a href="<?php echo e(route('paket.filter.kabupaten',$row->id_kabupaten)); ?>"><?php echo e($count_toba); ?>
+
+                                                Paket Wisata</a>
                                         </div>
                                     </div>
-                                <?php endif; ?>
-                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="single_place">
-                        <div class="thumb">
-                            <img src="img/filter-paket/Samosir.png" alt="">
-                        </div>
-                        <div class="place_info">
-                            <?php $__currentLoopData = $kabupaten; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                <?php if($row->nama_kabupaten == 'Samosir'): ?>
+                    <?php elseif($row->nama_kabupaten == 'Samosir'): ?>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="single_place">
+                                <div class="thumb">
+                                    <a href="<?php echo e(route('paket.filter.kabupaten',$row->id_kabupaten)); ?>">
+                                        <img src="img/filter-paket/Samosir.png" alt="">
+                                    </a>
+                                </div>
+                                <div class="place_info">
                                     <a href="<?php echo e(route('paket.filter.kabupaten',$row->id_kabupaten)); ?>"><h3>Samosir</h3>
                                     </a>
                                     <div class="rating_days d-flex justify-content-between">
@@ -260,19 +263,17 @@
                                                 Paket Wisata</a>
                                         </div>
                                     </div>
-                                <?php endif; ?>
-                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="single_place">
-                        <div class="thumb">
-                            <img src="img/filter-paket/taput.png" alt="">
-                        </div>
-                        <div class="place_info">
-                            <?php $__currentLoopData = $kabupaten; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                <?php if($row->nama_kabupaten == 'Tapanuli Utara'): ?>
+                    <?php elseif($row->nama_kabupaten == 'Tapanuli Utara'): ?>
+
+                        <div class="col-lg-4 col-md-6">
+                            <div class="single_place">
+                                <div class="thumb"><a href="<?php echo e(route('paket.filter.kabupaten',$row->id_kabupaten)); ?>">
+                                        <img src="img/filter-paket/taput.png" alt=""></a>
+                                </div>
+                                <div class="place_info">
                                     <a href="<?php echo e(route('paket.filter.kabupaten',$row->id_kabupaten)); ?>"><h3>Tapanuli
                                             Utara</h3></a>
                                     <div class="rating_days d-flex justify-content-between">
@@ -284,20 +285,20 @@
                                                 Paket Wisata</a>
                                         </div>
                                     </div>
-                                <?php endif; ?>
-                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="single_place">
-                        <div class="thumb">
-                            <img src="img/filter-paket/karo.png" alt="">
-                        </div>
-                        <div class="place_info">
-                            <?php $__currentLoopData = $kabupaten; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                <?php if($row->nama_kabupaten == 'Karo'): ?>
-                                    <a href="<?php echo e(route('paket.filter.kabupaten',$row->id_kabupaten)); ?>"><h3>Karo</h3></a>
+                    <?php elseif($row->nama_kabupaten == 'Karo'): ?>
+
+                        <div class="col-lg-4 col-md-6">
+                            <div class="single_place">
+                                <div class="thumb"><a href="<?php echo e(route('paket.filter.kabupaten',$row->id_kabupaten)); ?>">
+                                        <img src="img/filter-paket/karo.png" alt=""></a>
+                                </div>
+                                <div class="place_info">
+                                    <a href="<?php echo e(route('paket.filter.kabupaten',$row->id_kabupaten)); ?>"><h3>Karo</h3>
+                                    </a>
                                     <div class="rating_days d-flex justify-content-between">
 
                                         <div class="days">
@@ -307,20 +308,18 @@
                                                 Paket Wisata</a>
                                         </div>
                                     </div>
-                                <?php endif; ?>
-                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="single_place">
-                        <div class="thumb">
-                            <img src="img/filter-paket/simalungun.png" alt="">
-                        </div>
-                        <div class="place_info">
-                            <?php $__currentLoopData = $kabupaten; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                <?php if($row->nama_kabupaten == 'Simalungun'): ?>
-                                    <a href="<?php echo e(route('paket.filter.kabupaten',$row->id_kabupaten)); ?>"><h3>Simalungun</h3>
+                    <?php elseif($row->nama_kabupaten == 'Simalungun'): ?>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="single_place">
+                                <div class="thumb"><a href="<?php echo e(route('paket.filter.kabupaten',$row->id_kabupaten)); ?>">
+                                        <img src="img/filter-paket/simalungun.png" alt=""></a>
+                                </div>
+                                <div class="place_info">
+                                    <a href="<?php echo e(route('paket.filter.kabupaten',$row->id_kabupaten)); ?>"><h3>
+                                            Simalungun</h3>
                                     </a>
                                     <div class="rating_days d-flex justify-content-between">
 
@@ -331,19 +330,18 @@
                                                 Paket Wisata</a>
                                         </div>
                                     </div>
-                                <?php endif; ?>
-                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="single_place">
-                        <div class="thumb">
-                            <img src="img/filter-paket/humbahas.png" alt="">
-                        </div>
-                        <div class="place_info">
-                            <?php $__currentLoopData = $kabupaten; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                <?php if($row->nama_kabupaten == 'Humbang Hasundutan'): ?>
+                    <?php elseif($row->nama_kabupaten == 'Humbang Hasundutan'): ?>
+
+                        <div class="col-lg-4 col-md-6">
+                            <div class="single_place">
+                                <div class="thumb">
+                                    <a href="<?php echo e(route('paket.filter.kabupaten',$row->id_kabupaten)); ?>">
+                                        <img src="img/filter-paket/humbahas.png" alt=""></a>
+                                </div>
+                                <div class="place_info">
 
                                     <a href="<?php echo e(route('paket.filter.kabupaten',$row->id_kabupaten)); ?>"><h3>Humbang
                                             Hasundutan</h3></a>
@@ -357,20 +355,21 @@
                                         </div>
 
                                     </div>
-                                <?php endif; ?>
-                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="single_place">
-                        <div class="thumb">
-                            <img src="img/filter-paket/dairi.png" alt="">
-                        </div>
-                        <div class="place_info">
-                            <?php $__currentLoopData = $kabupaten; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                <?php if($row->nama_kabupaten == 'Dairi'): ?>
-                                    <a href="<?php echo e(route('paket.filter.kabupaten',$row->id_kabupaten)); ?>"><h3>Dairi</h3></a>
+                    <?php elseif($row->nama_kabupaten == 'Dairi'): ?>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="single_place">
+                                <div class="thumb">
+                                    <a href="<?php echo e(route('paket.filter.kabupaten',$row->id_kabupaten)); ?>">
+                                        <img src="img/filter-paket/dairi.png" alt="">
+                                    </a>
+                                </div>
+                                <div class="place_info">
+                                    <a href="<?php echo e(route('paket.filter.kabupaten',$row->id_kabupaten)); ?>"><h3>Dairi</h3>
+                                    </a>
                                     <div class="rating_days d-flex justify-content-between">
 
                                         <div class="days">
@@ -380,11 +379,11 @@
                                                 Paket Wisata</a>
                                         </div>
                                     </div>
-                                <?php endif; ?>
-                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
+                    <?php endif; ?>
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </div>
         </div>
     </div>
@@ -422,16 +421,17 @@
             <div class="row">
                 <?php $__currentLoopData = $kals; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $kal): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <div class="col-lg-4 col-md-6">
-                        <div class="single_destination">
-                            <div class="thumb">
-                                <img src="<?php echo e(asset('storage/img/kalender/'.$kal->gambar_event)); ?>" alt=""
-                                     style="height: 250px;">
+                        <a href="<?php echo e(route('detail-eventkalender',$kal->id_kalenderevent)); ?>">
+                            <div class="single_destination">
+                                <div class="thumb">
+                                    <img src="<?php echo e(asset('storage/img/kalender/'.$kal->gambar_event)); ?>" alt=""
+                                         style="height: 250px;">
+                                </div>
+                                <div class="content">
+                                    <p class="d-flex align-items-center"><?php echo e($kal->nama_event); ?></p>
+                                </div>
                             </div>
-                            <div class="content">
-                                <a href="<?php echo e(route('detail-eventkalender',$kal->id_kalenderevent)); ?>"><p
-                                        class="d-flex align-items-center"><?php echo e($kal->nama_event); ?></p></a>
-                            </div>
-                        </div>
+                        </a>
                     </div>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </div>
