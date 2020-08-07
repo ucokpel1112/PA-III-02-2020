@@ -43,7 +43,7 @@
                             <div class="single_place">
                                 <div class="thumb">
                                     <a href="{{route('komunitas.show',$row->id_kabupaten)}}">
-                                        <img src="img/filter-paket/Samosir.png" alt="">
+                                        <img src="img/filter-paket/samosir.png" alt="">
                                     </a>
                                 </div>
                                 <div class="place_info">
@@ -242,7 +242,7 @@
                             <div class="single_place">
                                 <div class="thumb">
                                     <a href="{{route('paket.filter.kabupaten',$row->id_kabupaten)}}">
-                                        <img src="img/filter-paket/Samosir.png" alt="">
+                                        <img src="img/filter-paket/samosir.png" alt="">
                                     </a>
                                 </div>
                                 <div class="place_info">
